@@ -16,20 +16,23 @@ The broad novelty claim remains reduced after systematic comparison. Current res
 - frozen packet A/B validator verifies 144 rows each, identical scenario sets, different ordering, unchanged source context, blank annotation fields, no hidden metadata/scalar exposure;
 - completed-annotation validator enforces exact frozen scenario set and fails on source mutation or invalid annotation schema;
 - immutable first-pass archive tooling records SHA-256 and refuses overwrite;
+- synthetic fail-closed tests verify source-mutation rejection and immutable archive overwrite refusal without creating research labels;
 - expanded agreement/disagreement tooling implements confusion, per-class, acceptable-set, ambiguity/confidence, core-class and domain diagnostics;
 - counterfactual and temporal reliability tooling is implemented without hidden expected labels or forced monotonicity;
 - post-label lexical/metadata audit is implemented behind an explicit validated-human-label guard;
 - measurement controls cover row-shuffle framework plus pre-human scalar-removal, metadata-separation and deterministic corrupted-context checks;
 - strict accuracy, macro F1 and per-class precision/recall/F1 are implemented alongside existing asymmetric metrics;
 - formal kappa reporting flags the constant-class chance-agreement=1 case as degenerate;
-- final CI run `31707486480` is green on Python 3.10, 3.11 and 3.12;
-- pytest: **20 passed** on each matrix job.
+- fail-closed Gate-B decision and blocked-report tooling are implemented and CI-smoke-tested;
+- final code/test CI run `31708423785` is green on Python 3.10, 3.11 and 3.12;
+- pytest: **22 passed** on each matrix job.
 
 ### Preserved incidents / negative evidence
 
 - historical `pilot_v0` structural leakage remains recorded and is not rehabilitated;
 - construction-family lexical shortcut candidates remain warnings pending human labels;
-- CI run `31707105405` exposed a direct-script package-import regression (19 passed / 1 failed); the project is now installed editable in CI and the final run is green;
+- CI run `31707105405` exposed a direct-script package-import regression (19 passed / 1 failed); the project is now installed editable in CI;
+- CI run `31708318760` exposed an invalid synthetic archive fixture that used 2 rows while the production archive correctly requires the frozen 144-scenario set; the fixture was corrected rather than weakening the validator;
 - the one-dimensional escalation ordering remains a diagnostic convenience, not proof that `ASK` is universally more intrusive than `NOTIFY`.
 
 ### Blocking evidence
@@ -38,7 +41,7 @@ The broad novelty claim remains reduced after systematic comparison. Current res
 - raw agreement >= 0.80: **NOT EXECUTED**;
 - Cohen's kappa >= 0.60: **NOT EXECUTED**;
 - core-class reliability on human labels: **NOT EXECUTED**;
-- label-dependent lexical / metadata-label audit: **NOT EXECUTED_NO_INDEPENDENT_LABELS**;
+- label-dependent lexical / metadata-label audit: **NOT_EXECUTED_NO_INDEPENDENT_LABELS**;
 - formal row-shuffle control using human labels: **FRAMEWORK_PENDING_LABELS**.
 
 Gate B must not be marked PASS until the human-dependent evidence is executed and supported.
