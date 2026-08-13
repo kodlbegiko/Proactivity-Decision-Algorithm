@@ -44,6 +44,25 @@ def load_annotations(path:str|Path)->list[Annotation]:
     _,rows=_read_csv_strict(path); annotations=[parse_annotation_row(row) for row in rows]; ids=[a.scenario_id for a in annotations]
     if len(ids)!=len(set(ids)): raise ValueError("duplicate scenario_id in annotation file")
     return annotations
+def load_packet_sources(path:str|Path)->dict[str,dict[str,str]]:
+    header,rows=_read_csv_strict(path)
+    if tuple(header)!=PACKET_FIELDS: raise ValueError("packet schema differs from frozen annotation schema")
+    out={}
+    for row in rows:
+        sid=row.get("scenario_id","").strip()
+        if not sid or sid in out: raise ValueError(f"packet blank/duplicate scenario_id: {sid}")
+        out[sid]={field:row[field] for field in SOURCE_FIELDS}
+    return out
+def load_metadata(path:str|Path)->dict[str,dict]:
+    out={}
+    for lineno,line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(),1):
+        if not line.strip(): continue
+        try: row=json.loads(line)
+        except json.JSONDecodeError as e: raise ValueError(f"metadata line {lineno} invalid JSON") from e
+        sid=str(row.get("scenario_id","")).strip()
+        if not sid or sid in out: raise ValueError(f"metadata blank/duplicate scenario_id: {sid}")
+        out[sid]=row
+    return out
 def validate_completed_annotations(completed:str|Path,blank_packet:str|Path,expected_count:int=144)->dict:
     bh,br=_read_csv_strict(blank_packet); ch,cr=_read_csv_strict(completed)
     if tuple(bh)!=PACKET_FIELDS or tuple(ch)!=PACKET_FIELDS or bh!=ch: raise ValueError("annotation schema differs from frozen packet")
