@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proactivity Decision Scenario v0",
+  "type": "object",
+  "required": ["scenario_id", "timestamp", "domain", "user_state", "event", "task_state", "action_risk", "reversibility", "expected_delay_cost", "permission_required", "permission_granted", "context_freshness"],
+  "properties": {
+    "scenario_id": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "domain": {"type": "string", "minLength": 1},
+    "user_state": {
+      "type": "object",
+      "required": ["activity", "workload", "interruptibility"],
+      "properties": {
+        "activity": {"type": "string"},
+        "workload": {"type": "number", "minimum": 0, "maximum": 1},
+        "interruptibility": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": ["type", "importance", "urgency", "confidence", "evidence_reliability"],
+      "properties": {
+        "type": {"type": "string"},
+        "importance": {"type": "number", "minimum": 0, "maximum": 1},
+        "urgency": {"type": "number", "minimum": 0, "maximum": 1},
+        "deadline_seconds": {"type": ["integer", "null"], "minimum": 0},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "evidence_reliability": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "task_state": {"type": "object"},
+    "history": {"type": "array"},
+    "action_risk": {"type": "number", "minimum": 0, "maximum": 1},
+    "reversibility": {"type": "number", "minimum": 0, "maximum": 1},
+    "expected_delay_cost": {"type": "number", "minimum": 0, "maximum": 1},
+    "permission_required": {"type": "boolean"},
+    "permission_granted": {"type": "boolean"},
+    "context_freshness": {"type": "number", "minimum": 0, "maximum": 1},
+    "candidate_decisions": {"type": "array", "uniqueItems": true, "items": {"enum": ["IGNORE", "WAIT", "SUGGEST", "NOTIFY", "ASK", "ACT"]}}
+  },
+  "additionalProperties": false
+}
