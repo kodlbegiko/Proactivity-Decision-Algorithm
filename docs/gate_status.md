@@ -6,9 +6,28 @@ The broad novelty claim was reduced after systematic 2026 comparison. Current re
 
 ## Gate B — Benchmark Validity: BLOCKED_BY_INDEPENDENT_ANNOTATION
 
-Completed evidence includes a 144-scenario development-v1 across six domains, 24 counterfactual pairs, six temporal sequences, a raw-context primary track, blinded annotation packets, metric tooling, and a pre-annotation leakage pass with zero exact/structural/unrelated-near duplicate findings and zero hidden-metadata findings.
+### Evidence completed
 
-Blocking evidence remains genuinely independent human labels, raw agreement >= 0.80, Cohen's kappa >= 0.60, label-dependent lexical analysis, and shuffled/corrupted-feature controls.
+- pilot_v0 retained and formally retired from ranking after its structural leakage failure;
+- 144-scenario development_v1 built across six domains;
+- 24 counterfactual pairs and six temporal sequences created with hidden metadata separated from policy/annotator input;
+- raw-context primary track added to reduce engineered-label leakage;
+- pre-annotation leakage suite executed and passed: 0 exact duplicates, 0 structural duplicates, 0 unrelated >=0.90 near duplicates, 0 hidden-metadata findings;
+- blinded annotation packets A/B generated in different orders;
+- annotation parser, agreement, disagreement, and metric tooling implemented;
+- metric denominators defined, including corrected unsafe-autonomy denominator;
+- local tests: 10 passed;
+- local development_v1 validation: 144 valid unique scenarios.
+
+### Blocking evidence
+
+- genuinely independent human annotations: NOT EXECUTED;
+- raw agreement >= 0.80: NOT EXECUTED;
+- Cohen's kappa >= 0.60: NOT EXECUTED;
+- label-dependent lexical audit: NOT_EXECUTED_NO_INDEPENDENT_LABELS;
+- shuffled/corrupted-feature control: FRAMEWORK_PENDING_LABELS.
+
+Gate B must not be marked PASS until these are completed.
 
 ## Gates C–H
 
@@ -16,12 +35,16 @@ BLOCKED BY GATE ORDER. No formal baseline leaderboard, candidate tuning, protect
 
 ## Evidence-weighted completion
 
-- Problem definition: 10/10
-- Benchmark validity: 11/20
-- Baseline integrity: 0/15
-- Candidate evidence: 0/15
-- Protected validation: 0/15
-- Robustness: 0/10
-- Ablation: 0/10
-- Reproducibility: 4/5
-- **Total: 25%**
+| Evidence area | Weight | Supported now |
+|---|---:|---:|
+| Problem definition | 10% | 10% |
+| Benchmark validity | 20% | 11% |
+| Baseline integrity | 15% | 0% |
+| Candidate evidence | 15% | 0% |
+| Protected validation | 15% | 0% |
+| Robustness | 10% | 0% |
+| Ablation | 10% | 0% |
+| Reproducibility | 5% | 4% |
+| **Total** | **100%** | **25%** |
+
+Reproducibility remains conservatively scored 4/5 even with CI because an independent clean-machine reproduction audit has not yet been performed. This score does not award Gate-B completion for unexecuted human evidence.
