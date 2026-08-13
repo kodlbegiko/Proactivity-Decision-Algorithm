@@ -1,60 +1,27 @@
-# Gate Status — 2026-08-13
+# Gate Status — 2026-08-13 (Gate-B execution)
 
-## Gate A — Problem Definition: PASS (initial)
+## Gate A — Problem Definition: PASS (narrowed)
 
-Evidence available:
+The broad novelty claim was reduced after systematic 2026 comparison. Current research position is **PARTIAL NOVELTY ONLY**: a six-level cross-domain intervention-control measurement framework with explicit WAIT/silence, permission/autonomy separation, and asymmetric error costs. Independent annotation must still show the distinctions are measurable.
 
-- explicit core decision problem and RQs
-- in/out-of-scope boundaries
-- operational six-class taxonomy
-- current related-work reconnaissance and narrowed gap statement
+## Gate B — Benchmark Validity: BLOCKED_BY_INDEPENDENT_ANNOTATION
 
-Residual risk: literature reconnaissance is not yet systematic, so novelty remains provisional.
+Completed evidence includes a 144-scenario development-v1 across six domains, 24 counterfactual pairs, six temporal sequences, a raw-context primary track, blinded annotation packets, metric tooling, and a pre-annotation leakage pass with zero exact/structural/unrelated-near duplicate findings and zero hidden-metadata findings.
 
-## Gate B — Benchmark Validity: BLOCKED
+Blocking evidence remains genuinely independent human labels, raw agreement >= 0.80, Cohen's kappa >= 0.60, label-dependent lexical analysis, and shuffled/corrupted-feature controls.
 
-Available:
+## Gates C–H
 
-- scenario schema design
-- synthetic pilot batch
-- annotation guidelines
-- agreement computation tooling
-- executable structural leakage audit
-
-Blocking evidence / missing evidence:
-
-- independent multi-annotator labels are not yet available
-- raw agreement >= 0.80 is NOT EXECUTED
-- kappa >= 0.60 is NOT EXECUTED
-- current 24-scenario pilot FAILS structural anti-template-leakage audit: 24/24 scenarios fall into four exact repeated structural templates (six members each)
-- remaining lexical/metadata/near-duplicate/shuffled-feature leakage checks are incomplete
-- benchmark schema/evaluation rule are not frozen
-
-The failed leakage audit means the current pilot may be used only for schema/taxonomy/annotation-pipeline validation, not formal policy ranking.
-
-## Gates C–H: BLOCKED BY GATE ORDER
-
-Formal baseline evaluation, candidate development, protected evaluation, robustness, ablation, and final research-support claims are intentionally not started.
-
-## Reproducibility evidence
-
-- local pytest: 9/9 passed
-- local dataset validation: 24 valid unique scenarios after one malformed timestamp was found, fixed, and recorded
-- GitHub Actions run 31693834315: completed / success
-- CI matrix: Python 3.10, 3.11, 3.12; tests and dataset validator succeeded on all three
+BLOCKED BY GATE ORDER. No formal baseline leaderboard, candidate tuning, protected evaluation, robustness claim, ablation claim, or final research-support claim has been executed.
 
 ## Evidence-weighted completion
 
-| Evidence area | Weight | Supported now |
-|---|---:|---:|
-| Problem definition | 10% | 10% |
-| Benchmark validity | 20% | 5% |
-| Baseline integrity | 15% | 0% |
-| Candidate evidence | 15% | 0% |
-| Protected validation | 15% | 0% |
-| Robustness | 10% | 0% |
-| Ablation | 10% | 0% |
-| Reproducibility | 5% | 4% |
-| **Total** | **100%** | **19%** |
-
-This is an evidence score, not file-completion progress. Failed checks are evidence about validity but do not count as passing gate evidence.
+- Problem definition: 10/10
+- Benchmark validity: 11/20
+- Baseline integrity: 0/15
+- Candidate evidence: 0/15
+- Protected validation: 0/15
+- Robustness: 0/10
+- Ablation: 0/10
+- Reproducibility: 4/5
+- **Total: 25%**
