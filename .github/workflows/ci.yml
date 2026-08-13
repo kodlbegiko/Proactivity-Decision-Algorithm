@@ -21,7 +21,13 @@ jobs:
         run: |
           python scripts/generate_development_v1.py
           sha256sum -c data/development/development_v1.sha256
+      - name: Validate frozen blinded annotation packets
+        run: python scripts/build_annotation_packets.py --validate-only
       - run: python -m pytest -q
       - run: PYTHONPATH=src python scripts/validate_dataset.py data/development/pilot_v0.jsonl
       - run: PYTHONPATH=src python scripts/validate_dataset.py data/development/development_v1.jsonl --require-raw-context
       - run: PYTHONPATH=src python scripts/audit_development_v1.py data/development/development_v1.jsonl data/development/development_v1.meta.jsonl
+      - name: Verify pre-label Gate-B state remains blocked
+        run: |
+          test ! -e annotations/raw/annotator_a_v1.csv
+          test ! -e annotations/raw/annotator_b_v1.csv
