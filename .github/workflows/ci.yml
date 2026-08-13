@@ -32,6 +32,12 @@ jobs:
           PYTHONPATH=src python scripts/shuffled_feature_control.py --packet annotation/packet_a.csv > /tmp/controls.json
           grep -q 'FRAMEWORK_PENDING_LABELS' /tmp/controls.json
           grep -q '"pass": true' /tmp/controls.json
+      - name: Verify blocked report and gate decision
+        run: |
+          PYTHONPATH=src python scripts/generate_gate_b_report.py > /tmp/gate_b_report.json
+          grep -q 'BLOCKED_BY_INDEPENDENT_ANNOTATION' /tmp/gate_b_report.json
+          grep -q 'NOT EXECUTED' /tmp/gate_b_report.json
+          test "$(PYTHONPATH=src python scripts/decide_gate_b.py)" = "GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION"
       - name: Verify pre-label Gate-B state remains blocked
         run: |
           test ! -e annotations/raw/annotator_a_v1.csv
