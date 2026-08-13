@@ -27,6 +27,11 @@ jobs:
       - run: PYTHONPATH=src python scripts/validate_dataset.py data/development/pilot_v0.jsonl
       - run: PYTHONPATH=src python scripts/validate_dataset.py data/development/development_v1.jsonl --require-raw-context
       - run: PYTHONPATH=src python scripts/audit_development_v1.py data/development/development_v1.jsonl data/development/development_v1.meta.jsonl
+      - name: Exercise pre-human measurement controls
+        run: |
+          PYTHONPATH=src python scripts/shuffled_feature_control.py --packet annotation/packet_a.csv > /tmp/controls.json
+          grep -q 'FRAMEWORK_PENDING_LABELS' /tmp/controls.json
+          grep -q '"pass": true' /tmp/controls.json
       - name: Verify pre-label Gate-B state remains blocked
         run: |
           test ! -e annotations/raw/annotator_a_v1.csv
