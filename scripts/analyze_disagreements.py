@@ -1,12 +1,6 @@
 from __future__ import annotations
-import argparse, json
-from collections import Counter
+import argparse,json
 from proactivity.evaluation.annotations import load_annotations
-
+from proactivity.evaluation.gate_b_analysis import disagreement_report
 p=argparse.ArgumentParser(); p.add_argument("a"); p.add_argument("b"); args=p.parse_args()
-a={x.scenario_id:x for x in load_annotations(args.a)}; b={x.scenario_id:x for x in load_annotations(args.b)}
-ids=sorted(set(a)&set(b)); pairs=Counter()
-for i in ids:
-    if a[i].preferred_action!=b[i].preferred_action:
-        pair=" vs ".join(sorted([a[i].preferred_action.value,b[i].preferred_action.value])); pairs[pair]+=1
-print(json.dumps({"disagreements":sum(pairs.values()),"taxonomy":dict(pairs.most_common())},indent=2))
+print(json.dumps(disagreement_report(load_annotations(args.a),load_annotations(args.b)),indent=2,sort_keys=True))
