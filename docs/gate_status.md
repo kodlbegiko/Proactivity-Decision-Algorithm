@@ -1,60 +1,50 @@
-# Gate Status — 2026-08-13
+# Gate Status — 2026-08-13 (Gate-B execution)
 
-## Gate A — Problem Definition: PASS (initial)
+## Gate A — Problem Definition: PASS (narrowed)
 
-Evidence available:
+The broad novelty claim was reduced after systematic 2026 comparison. Current research position is **PARTIAL NOVELTY ONLY**: a six-level cross-domain intervention-control measurement framework with explicit WAIT/silence, permission/autonomy separation, and asymmetric error costs. Independent annotation must still show the distinctions are measurable.
 
-- explicit core decision problem and RQs
-- in/out-of-scope boundaries
-- operational six-class taxonomy
-- current related-work reconnaissance and narrowed gap statement
+## Gate B — Benchmark Validity: BLOCKED_BY_INDEPENDENT_ANNOTATION
 
-Residual risk: literature reconnaissance is not yet systematic, so novelty remains provisional.
+### Evidence completed
 
-## Gate B — Benchmark Validity: BLOCKED
+- pilot_v0 retained and formally retired from ranking after its structural leakage failure;
+- 144-scenario development_v1 built across six domains;
+- 24 counterfactual pairs and six temporal sequences created with hidden metadata separated from policy/annotator input;
+- raw-context primary track added to reduce engineered-label leakage;
+- pre-annotation leakage suite executed and passed: 0 exact duplicates, 0 structural duplicates, 0 unrelated >=0.90 near duplicates, 0 hidden-metadata findings;
+- blinded annotation packets A/B generated in different orders;
+- annotation parser, agreement, disagreement, and metric tooling implemented;
+- metric denominators defined, including corrected unsafe-autonomy denominator;
+- local tests: 10 passed;
+- local development_v1 validation: 144 valid unique scenarios.
 
-Available:
+### Blocking evidence
 
-- scenario schema design
-- synthetic pilot batch
-- annotation guidelines
-- agreement computation tooling
-- executable structural leakage audit
+- genuinely independent human annotations: NOT EXECUTED;
+- raw agreement >= 0.80: NOT EXECUTED;
+- Cohen's kappa >= 0.60: NOT EXECUTED;
+- label-dependent lexical audit: NOT_EXECUTED_NO_INDEPENDENT_LABELS;
+- shuffled/corrupted-feature control: FRAMEWORK_PENDING_LABELS.
 
-Blocking evidence / missing evidence:
+Gate B must not be marked PASS until these are completed.
 
-- independent multi-annotator labels are not yet available
-- raw agreement >= 0.80 is NOT EXECUTED
-- kappa >= 0.60 is NOT EXECUTED
-- current 24-scenario pilot FAILS structural anti-template-leakage audit: 24/24 scenarios fall into four exact repeated structural templates (six members each)
-- remaining lexical/metadata/near-duplicate/shuffled-feature leakage checks are incomplete
-- benchmark schema/evaluation rule are not frozen
+## Gates C–H
 
-The failed leakage audit means the current pilot may be used only for schema/taxonomy/annotation-pipeline validation, not formal policy ranking.
-
-## Gates C–H: BLOCKED BY GATE ORDER
-
-Formal baseline evaluation, candidate development, protected evaluation, robustness, ablation, and final research-support claims are intentionally not started.
-
-## Reproducibility evidence
-
-- local pytest: 9/9 passed
-- local dataset validation: 24 valid unique scenarios after one malformed timestamp was found, fixed, and recorded
-- GitHub Actions run 31693834315: completed / success
-- CI matrix: Python 3.10, 3.11, 3.12; tests and dataset validator succeeded on all three
+BLOCKED BY GATE ORDER. No formal baseline leaderboard, candidate tuning, protected evaluation, robustness claim, ablation claim, or final research-support claim has been executed.
 
 ## Evidence-weighted completion
 
 | Evidence area | Weight | Supported now |
 |---|---:|---:|
 | Problem definition | 10% | 10% |
-| Benchmark validity | 20% | 5% |
+| Benchmark validity | 20% | 11% |
 | Baseline integrity | 15% | 0% |
 | Candidate evidence | 15% | 0% |
 | Protected validation | 15% | 0% |
 | Robustness | 10% | 0% |
 | Ablation | 10% | 0% |
 | Reproducibility | 5% | 4% |
-| **Total** | **100%** | **19%** |
+| **Total** | **100%** | **25%** |
 
-This is an evidence score, not file-completion progress. Failed checks are evidence about validity but do not count as passing gate evidence.
+Reproducibility remains conservatively scored 4/5 even with CI because an independent clean-machine reproduction audit has not yet been performed. This score does not award Gate-B completion for unexecuted human evidence.

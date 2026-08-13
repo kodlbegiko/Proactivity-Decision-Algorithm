@@ -1,53 +1,58 @@
-# Methodology v0
+# Methodology v1 — Gate B Measurement Design
 
 ## Research design
 
-Stage 1 is a controlled, model-agnostic benchmark study of proactive intervention decisions. Candidate development is forbidden until benchmark validity is supported.
+This repository studies **intervention control**, not general agent task completion. Candidate development remains forbidden until Gate B is supported.
 
-## Scenario representation
+## Two input tracks
 
-Each scenario stores context only. Ground-truth annotations live separately to reduce accidental label leakage.
+### Raw-context track — primary validity track
 
-Core fields include domain; user activity/workload/interruptibility; event importance/urgency/deadline/confidence/evidence reliability; task acknowledgement/completion; action risk/reversibility; expected delay cost; permission state; context freshness; and history.
+Policy-visible input is restricted to observable text/state facts: current activity, event summary, observable facts, recent history, permission evidence, time context, source kind, timestamp/domain, and candidate actions. It excludes researcher-derived scalar judgments such as `importance`, `urgency`, `expected_delay_cost`, `interruptibility`, and `action_risk`.
 
-## Benchmark strategy
+This track is the primary benchmark track because directly providing those scalars may pre-compute much of the decision for the policy.
 
-1. Create synthetic-but-realistic development scenarios for taxonomy/pipeline testing.
-2. Audit lexical/template/metadata leakage.
-3. Run independent human annotation.
-4. Compute raw agreement and Cohen/Fleiss kappa as appropriate.
-5. Revise taxonomy/guidelines only on development material.
-6. Freeze benchmark schema and evaluation rules.
-7. Create protected set with a separate generation/annotation batch.
-8. Hash and freeze protected artifacts before formal candidate evaluation.
+### Structured-state track — mechanistic control only
+
+The original normalized scalar state is retained for controlled ablation/mechanistic analysis. It must not be presented as the only evidence of general intervention reasoning.
+
+## Development v1
+
+`development_v1.jsonl` contains 144 deterministic synthetic-but-realistic scenarios, 24 in each of six domains: study, work, scheduling, communication, device, and travel.
+
+It includes:
+
+- 72 domain-specific independent scenarios;
+- 24 counterfactual pairs / 48 pair members;
+- 6 temporal mini-sequences / 24 sequence members.
+
+Pair/sequence design metadata is stored separately in `development_v1.meta.jsonl` and is not policy-visible or annotator-visible.
+
+## Dataset roles
+
+- `pilot_v0.jsonl`: infrastructure-only; prohibited for formal policy ranking because it failed structural template leakage.
+- `development_v1.jsonl`: Gate-B development candidate; may be used for formal baseline development only after independent annotation and full label-dependent leakage checks pass.
+- protected set: not created yet.
 
 ## Ground truth
 
-Preferred action may be accompanied by an acceptable-action set where legitimate ambiguity exists. Formal handling of acceptable sets must be frozen before protected evaluation.
+Scenario generation and annotation are separated. Dataset records contain no gold/preferred action. Independent humans supply preferred action, acceptable-action set, confidence, ambiguity, reason code, and criticality.
 
-## Gates
+## Leakage gates
 
-### Gate A — Problem Definition
-Requires explicit RQs, scope, operational taxonomy, and evidence-backed gap.
+Pre-annotation checks include exact duplicates, normalized structured duplicates, unrelated near duplicates, metadata/ID leakage, ordering/domain concentration, and hidden design-category lexical diagnostics.
 
-### Gate B — Benchmark Validity
-Requires frozen schema, documented labels, leakage audit, and acceptable independent annotation agreement.
+After labels exist, label-dependent token shortcuts and shuffled/corrupted-feature controls must run before Gate B can pass.
 
-No formal baseline leaderboard or candidate optimization is allowed before Gate B.
+## Agreement gate
 
-## Planned metrics after Gate B
+First-pass independent preferred-action labels must achieve:
 
-- accuracy / macro F1 / per-class precision-recall
-- confusion matrix
-- intervention precision
-- critical-event recall
-- false interruption rate
-- missed critical-event rate
-- premature intervention rate
-- unsafe autonomy rate
-- over/under-escalation
-- preregistered cost-sensitive utility profiles
+- raw agreement >= 0.80;
+- Cohen's kappa >= 0.60 for two annotators (or preregistered appropriate multi-rater metric).
 
-## Protected-evaluation rule
+If either fails, no candidate tuning is allowed.
 
-Exactly one confirmatory protected run per frozen candidate, except an infrastructure failure that prevents a valid evaluation. Performance failure is not infrastructure failure.
+## Evaluation principle
+
+All metric denominators are explicitly defined in `docs/metric_definitions.md`. Utility weights remain provisional and require sensitivity analysis; they cannot be tuned to favor a candidate.

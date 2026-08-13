@@ -1,0 +1,9 @@
+from __future__ import annotations
+from typing import Any
+from .schema import Scenario
+DERIVED_FIELDS={"workload","interruptibility","importance","urgency","confidence","evidence_reliability","action_risk","reversibility","expected_delay_cost","context_freshness","permission_required","permission_granted"}
+def raw_context_projection(s:Scenario)->dict[str,Any]:
+    if s.raw_context is None: raise ValueError("raw_context track unavailable for legacy scenario")
+    return {"scenario_id":s.scenario_id,"timestamp":s.timestamp.isoformat(),"domain":s.domain,"raw_context":{"current_activity":s.raw_context.current_activity,"event_summary":s.raw_context.event_summary,"observable_facts":list(s.raw_context.observable_facts),"recent_history":list(s.raw_context.recent_history),"permission_evidence":s.raw_context.permission_evidence,"time_context":s.raw_context.time_context,"source_kind":s.raw_context.source_kind},"candidate_decisions":[d.value for d in s.candidate_decisions]}
+def structured_state_projection(s:Scenario)->dict[str,Any]:
+    return {"scenario_id":s.scenario_id,"timestamp":s.timestamp.isoformat(),"domain":s.domain,"user_state":{"activity":s.user_state.activity,"workload":s.user_state.workload,"interruptibility":s.user_state.interruptibility},"event":{"type":s.event.type,"importance":s.event.importance,"urgency":s.event.urgency,"deadline_seconds":s.event.deadline_seconds,"confidence":s.event.confidence,"evidence_reliability":s.event.evidence_reliability},"task_state":{"status":s.task_state.status,"acknowledged":s.task_state.acknowledged,"completed":s.task_state.completed},"history":list(s.history),"action_risk":s.action_risk,"reversibility":s.reversibility,"expected_delay_cost":s.expected_delay_cost,"permission_required":s.permission_required,"permission_granted":s.permission_granted,"context_freshness":s.context_freshness,"candidate_decisions":[d.value for d in s.candidate_decisions]}
