@@ -1,13 +1,18 @@
 # Annotation packet
 
-`packet_a.csv.gz` and `packet_b.csv.gz` contain the same 144 development-v1 scenarios in different deterministic orders. Materialize them before distribution:
+The two blinded packets are generated deterministically from the canonical generator rather than stored as opaque binary artifacts:
 
 ```bash
-gzip -dk annotation/packet_a.csv.gz
-gzip -dk annotation/packet_b.csv.gz
+python scripts/generate_development_v1.py
+sha256sum -c data/development/development_v1.sha256
 ```
 
-Give packet A and packet B to two genuinely independent human annotators. The packet text is generated from the **raw-context projection only**; researcher-derived scalar state and hidden design metadata are excluded.
+This materializes:
+
+- `annotation/packet_a.csv`
+- `annotation/packet_b.csv`
+
+They contain the same 144 scenarios in different deterministic orders. Give packet A and packet B to two genuinely independent human annotators. Packet text is generated from the **raw-context projection only**; researcher-derived scalar state and hidden design metadata are excluded.
 
 After collection, save first-pass files without overwriting them, e.g.:
 

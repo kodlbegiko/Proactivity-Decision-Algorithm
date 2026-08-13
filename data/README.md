@@ -8,15 +8,22 @@ The 24-scenario pilot failed the structural template audit: all 24 members colla
 
 See `development/pilot_v0.metadata.json` and `reports/pilot_leakage_audit.md`.
 
-## `development/development_v1.jsonl.gz`
+## Development v1
 
-A compressed, canonical Gate-B development artifact containing 144 diversified scenarios. Materialize it with:
+The canonical Gate-B development artifact is generated deterministically with:
 
 ```bash
-gzip -dk data/development/development_v1.jsonl.gz
+python scripts/generate_development_v1.py
+sha256sum -c data/development/development_v1.sha256
 ```
 
-`development_v1.meta.jsonl.gz` contains hidden generation metadata, counterfactual IDs, sequence IDs, and design categories. It must never be supplied to annotators or policies. The SHA-256 manifest in `development_v1.sha256` covers the uncompressed canonical artifacts.
+This produces:
+
+- `data/development/development_v1.jsonl` — 144 scenarios;
+- `data/development/development_v1.meta.jsonl` — hidden generation metadata;
+- `annotation/packet_a.csv` / `packet_b.csv` — blinded annotation packets.
+
+The expected hashes are versioned in `development_v1.sha256`. Hidden pair/sequence/design metadata must never be supplied to annotators or policies.
 
 Scenario records contain no gold action. Formal policy evaluation must use the **raw-context projection** as the primary validity track; researcher-derived scalar state remains a mechanistic/control track only.
 

@@ -1,54 +1,8 @@
 # Research Log
 
-## 2026-08-13 — Repository initialization
+## 2026-08-13 — Gate-B research decisions carried forward
 
-**Decision:** Keep `main` minimal and move substantive work to `research/proactivity-decision-v0`.  
-**Evidence:** Repository metadata reported size 0 and commit listing returned `Git Repository is empty`.  
-**Alternatives:** Build directly on `main`.  
-**Reason:** Preserve a stable entry branch and clean research evidence trail.  
-**Risk:** Minimal bootstrap commit on `main` precedes full research structure.  
-**Reversible?:** Yes.  
-**Follow-up:** Open a draft PR from the research branch.
-
-## 2026-08-13 — Clone infrastructure deviation
-
-**Decision:** Use the GitHub connector/API for remote writes rather than local network git.  
-**Evidence:** Sandbox `git clone` failed because `github.com` DNS could not resolve; the GitHub connector retained admin/push access.  
-**Alternatives:** Stop all research work.  
-**Reason:** Transport failure does not prevent repository inspection, branch control, commits, or evidence preservation through the connector.  
-**Risk:** Local git command provenance is unavailable for initialization.  
-**Reversible?:** Yes.  
-**Follow-up:** Preserve exact remote SHAs and local test outputs.
-
-## 2026-08-13 — Research gap narrowed
-
-**Decision:** Reject the broad claim that proactive-agent benchmarks are absent. Test a narrower intervention-control contribution.  
-**Evidence:** ProactiveEval, ProActor, π-Bench, Pare-Bench, ProAgentBench and NIABench materially overlap with proactive evaluation/timing.  
-**Alternatives:** Continue with a generic “proactive assistant benchmark.”  
-**Reason:** That would be poorly differentiated.  
-**Risk:** A deeper review may find an equivalent formulation.  
-**Reversible?:** Yes; negative novelty is valid.  
-**Follow-up:** Complete systematic comparison.
-
-## 2026-08-13 — Stop before candidate development
-
-**Decision:** Build measurement infrastructure but do not tune a substantive candidate.  
-**Evidence:** No independent annotation agreement has been measured.  
-**Alternatives:** Generate labels from one researcher and optimize immediately.  
-**Reason:** That risks measuring researcher self-consistency rather than proactive decision quality.  
-**Risk:** Slower visible progress, stronger validity.  
-**Reversible?:** Candidate work begins once gates pass.  
-**Follow-up:** Obtain independent labels.
-
-## 2026-08-13 — Local validation incident
-
-**Decision:** Treat the first dataset validation failure as real evidence, fix the malformed timestamp, then rerun checks.  
-**Evidence:** Initial validator rejected `2026-08-15T010:00:00Z`; after correction the pilot validated and pytest passed.  
-**Alternatives:** Ignore because unit tests passed.  
-**Reason:** Dataset validity is independent evidence.  
-**Risk:** Generator needed stronger regression coverage.  
-**Reversible?:** Yes.  
-**Follow-up:** Keep dataset validation in CI.
+Repository initialization, transport deviation, pilot validation incident, broad-gap narrowing, and the stop-before-candidate decision remain preserved in earlier commits and PR history.
 
 ## 2026-08-13 — Broad intervention-control novelty rejected
 
@@ -56,14 +10,14 @@
 **Evidence:** KnowU-Bench explicitly evaluates when to intervene, seek consent, or remain silent; PACT formalizes ask-or-act; NIABench jointly decides when to act and what to do under non-interruption; ProActor, Pare-Bench, ProEvent, ProMediate, π-Bench, and ProAgentBench cover overlapping timing/longitudinal/proactive constructs.  
 **Alternatives:** Continue claiming a first benchmark for intervention/silence/permission.  
 **Reason:** Current primary literature contradicts that claim.  
-**Risk:** Remaining contribution may still collapse if six-way distinctions are not annotatable or if a closer equivalent is found.  
+**Risk:** Remaining contribution may still collapse if six-way distinctions are not annotatable or a closer equivalent is found.  
 **Reversible?:** Only with materially stronger evidence.  
 **Follow-up:** Test the narrower integrated six-level cost-sensitive formulation.
 
 ## 2026-08-13 — Raw-context track made primary
 
 **Decision:** Retain normalized scalar state only as a mechanistic control and introduce a raw-context policy projection as the primary validity track.  
-**Evidence:** Existing schema directly supplied importance, urgency, interruptibility, action risk, and expected delay cost, which may encode researcher judgment close to the decision target.  
+**Evidence:** Existing schema directly supplied importance, urgency, interruptibility, action risk, and expected delay cost, which can encode researcher judgment close to the decision target.  
 **Alternatives:** Use scalar state as the only benchmark input.  
 **Reason:** Avoid evaluating weighted sums over pre-digested label features as if they were general context reasoning.  
 **Risk:** Raw-context evaluation adds inference difficulty.  
@@ -73,10 +27,10 @@
 ## 2026-08-13 — Development v1 replaces pilot for Gate-B validation
 
 **Decision:** Build a diversified 144-scenario development batch with six balanced domains, 24 counterfactual pairs, and six temporal sequences.  
-**Evidence:** Executed pre-annotation audit: exact duplicate members 0; structural duplicates 0; unrelated >=0.90 near duplicates 0; metadata leakage findings 0; longest same-domain run 3.  
+**Evidence:** Executed pre-annotation audit after deterministic regeneration: exact duplicate members 0; structural duplicates 0; unrelated >=0.90 near duplicates 0; metadata leakage findings 0; longest same-domain run 3.  
 **Alternatives:** Repair and expand pilot-v0 templates.  
 **Reason:** Pilot-v0 structure was fundamentally duplicated and unsuitable for formal ranking.  
-**Risk:** Synthetic v1 may still contain lexical shortcuts correlated with future human labels.  
+**Risk:** Synthetic v1 may still contain lexical shortcuts correlated with future human labels. Construction-family vocabulary is explicitly flagged for post-label testing.  
 **Reversible?:** Yes, development data may be revised before freeze.  
 **Follow-up:** Run label-dependent leakage analysis after independent annotation.
 
@@ -89,3 +43,13 @@
 **Risk:** A policy that never ACTs yields undefined rate and must be reported with action coverage.  
 **Reversible?:** Yes, before metric freeze.  
 **Follow-up:** Preserve explicit denominators in metric documentation.
+
+## 2026-08-13 — CI binary-artifact transport failure
+
+**Decision:** Reject opaque gzip transport through the connector and make deterministic source generation plus SHA-256 verification the canonical artifact path.  
+**Evidence:** GitHub Actions run `31701084246` failed before tests at `gzip -dk data/development/development_v1.jsonl.gz` with `invalid compressed data--format violated`, while local uncompressed generation, hash checks, validation, audit, and tests were valid.  
+**Alternatives:** Re-upload the same opaque binaries and retry until green.  
+**Reason:** Repeated opaque transport would make reproducibility dependent on a flaky connector path and could hide corruption.  
+**Risk:** Generated artifacts are materialized on demand rather than stored directly as large binary blobs.  
+**Reversible?:** Yes.  
+**Follow-up:** Commit the readable deterministic generator and expected hashes; regenerate on CI and require hash equality before tests.

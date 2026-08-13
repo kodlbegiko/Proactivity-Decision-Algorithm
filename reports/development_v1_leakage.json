@@ -1,41 +1,15 @@
 {
-  "design_category_shortcut_candidates": [
-    [
-      "2",
-      "redundant_intervention",
-      6,
-      1.0
-    ],
-    [
-      "explicitly",
-      "permission_ambiguity",
-      5,
-      1.0
-    ],
-    [
-      "older",
-      "stale_context",
-      5,
-      1.0
-    ]
-  ],
-  "domain_counts": {
-    "communication": 24,
-    "device": 24,
-    "scheduling": 24,
-    "study": 24,
-    "travel": 24,
-    "work": 24
-  },
-  "exact_duplicate_members": 0,
-  "intentional_related_near_pairs": 2,
-  "label_dependent_lexical_audit": "NOT_EXECUTED_NO_INDEPENDENT_LABELS",
-  "longest_same_domain_run": 3,
-  "metadata_leakage_findings": [],
-  "pre_annotation_leakage_gate": "PASS",
   "scenario_count": 144,
-  "shuffled_feature_control": "FRAMEWORK_PENDING_LABELS",
-  "structural_duplicate_members": 0,
   "unique_ids": 144,
-  "unrelated_near_duplicate_pairs": 0
+  "domain_counts": {"communication": 24, "device": 24, "scheduling": 24, "study": 24, "travel": 24, "work": 24},
+  "exact_duplicate_members": 0,
+  "structural_duplicate_members": 0,
+  "unrelated_near_duplicate_pairs": 0,
+  "intentional_related_near_pairs": 4,
+  "metadata_leakage_findings": [],
+  "longest_same_domain_run": 3,
+  "pre_annotation_leakage_gate": "PASS",
+  "label_dependent_lexical_audit": "NOT_EXECUTED_NO_INDEPENDENT_LABELS",
+  "shuffled_feature_control": "FRAMEWORK_PENDING_LABELS",
+  "construction_family_lexical_warning": "Counterfactual and temporal construction families still have identifiable shared vocabulary; this is not treated as gold-label leakage before independent labels, and must be re-tested conditionally on human labels before Gate B PASS."
 }
