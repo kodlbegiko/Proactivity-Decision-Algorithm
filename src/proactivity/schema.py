@@ -45,7 +45,6 @@ class Scenario:
         timestamp=datetime.fromisoformat(str(data["timestamp"]).replace("Z","+00:00")); decisions=tuple(Decision(x) for x in data.get("candidate_decisions",[d.value for d in Decision]))
         if len(set(decisions))!=len(decisions): raise ValueError("candidate_decisions must not contain duplicates")
         raw=RawContext.from_dict(data["raw_context"]) if "raw_context" in data else None
-        obj=cls(sid,timestamp,str(data["domain"]),raw,UserState.from_dict(data["user_state"]),Event.from_dict(data["event"]),TaskState.from_dict(data.get("task_state",{})),tuple(data.get("history",[])),_unit("action_risk",data.get("action_risk",0.0)),_unit("reversibility",data.get("reversibility",1.0)),_unit("expected_delay_cost",data.get("expected_delay_cost",0.0)),bool(data.get("permission_required",False)),bool(data.get("permission_granted",False)),_unit("context_freshness",data.get("context_freshness",1.0)),decisions)
-        obj.validate_safety_consistency(); return obj
+        return cls(sid,timestamp,str(data["domain"]),raw,UserState.from_dict(data["user_state"]),Event.from_dict(data["event"]),TaskState.from_dict(data.get("task_state",{})),tuple(data.get("history",[])),_unit("action_risk",data.get("action_risk",0.0)),_unit("reversibility",data.get("reversibility",1.0)),_unit("expected_delay_cost",data.get("expected_delay_cost",0.0)),bool(data.get("permission_required",False)),bool(data.get("permission_granted",False)),_unit("context_freshness",data.get("context_freshness",1.0)),decisions)
     def validate_safety_consistency(self):
         if self.permission_granted and not self.permission_required: raise ValueError("permission_granted=true requires permission_required=true")

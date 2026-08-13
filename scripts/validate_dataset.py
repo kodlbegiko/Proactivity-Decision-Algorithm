@@ -7,7 +7,9 @@ def validate(path: Path) -> list[Scenario]:
     scenarios=[]; seen=set()
     for lineno,line in enumerate(path.read_text(encoding="utf-8").splitlines(),1):
         if not line.strip(): continue
-        try: s=Scenario.from_dict(json.loads(line))
+        try:
+            s=Scenario.from_dict(json.loads(line))
+            s.validate_safety_consistency()
         except Exception as e: raise ValueError(f"{path}:{lineno}: {e}") from e
         if s.scenario_id in seen: raise ValueError(f"duplicate scenario_id: {s.scenario_id}")
         seen.add(s.scenario_id); scenarios.append(s)

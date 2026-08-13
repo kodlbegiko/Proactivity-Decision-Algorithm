@@ -13,7 +13,8 @@ def test_unit_interval_and_permission_consistency():
     d=base(); d["event"]["urgency"]=1.2
     with pytest.raises(ValueError): Scenario.from_dict(d)
     d=base(); d["permission_granted"]=True
-    with pytest.raises(ValueError): Scenario.from_dict(d)
+    s=Scenario.from_dict(d)
+    with pytest.raises(ValueError): s.validate_safety_consistency()
 def test_decision_grouping():
     assert not is_intervention(Decision.IGNORE) and not is_intervention(Decision.WAIT)
     assert all(is_intervention(x) for x in [Decision.SUGGEST,Decision.NOTIFY,Decision.ASK,Decision.ACT])
