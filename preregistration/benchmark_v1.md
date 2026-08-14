@@ -1,6 +1,8 @@
-# Benchmark v1 Gate-B Preregistration
+# Benchmark v1 Gate-B Preregistration — HISTORICAL PROTOCOL v1
 
-Status: development methodology preregistered before independent labels.
+Status: **HISTORICAL / SUPERSEDED AS PRIMARY TRACK**. This document preserves the methodology preregistered before independent human labels under Protocol v1. It is intentionally not rewritten as if that evidence occurred.
+
+Protocol-v1 historical verdict remains `GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION`. Protocol v2 uses a different primary research question, ground truth, and gate architecture; see `docs/protocol_v2.md`.
 
 ## Dataset
 
@@ -10,9 +12,9 @@ Status: development methodology preregistered before independent labels.
 - six 4-stage temporal sequences (24 members).
 - no gold/preferred action stored with scenario generation.
 
-## Primary track
+## Primary track under Protocol v1
 
-Raw-context projection is primary. Researcher-derived normalized scalar state is a secondary mechanistic/control track.
+Raw-context projection was primary. Researcher-derived normalized scalar state was a secondary mechanistic/control track.
 
 ## Pre-annotation leakage requirements
 
@@ -23,27 +25,29 @@ Raw-context projection is primary. Researcher-derived normalized scalar state is
 - opaque scenario IDs, no domain/category/label semantics;
 - domain ordering must not create long homogeneous blocks (current gate <= 3 consecutive same-domain records).
 
-## Post-annotation leakage requirements
+## Post-annotation leakage requirements — NOT EXECUTED
 
-Before Gate B pass:
+Protocol v1 required, before its Gate B could pass:
 
-- run label-conditional lexical shortcut audit;
-- run shuffled/corrupted-feature controls;
-- document any suspicious token/metadata correlations and remediation;
-- preserve raw outputs.
+- label-conditional lexical shortcut audit;
+- shuffled/corrupted-feature controls;
+- suspicious token/metadata correlation review;
+- preservation of raw outputs.
 
-No exact numerical threshold for shuffled-control performance is invented before labels. The control must be interpreted against the strongest trivial/majority behavior once class distribution exists.
+These label-dependent checks were not executed because independent human labels were not collected. Protocol v2 does not retroactively mark them PASS.
 
-## Annotation reliability
+## Annotation reliability — NOT EXECUTED
 
-Required on immutable first-pass independent human labels:
+Protocol v1 required immutable first-pass independent human labels with:
 
 - raw preferred-action agreement >= 0.80;
-- Cohen's kappa >= 0.60 (for two annotators);
+- Cohen's kappa >= 0.60;
 - original labels hashed before adjudication.
 
-If the threshold fails, the six-class benchmark is not frozen; diagnose taxonomy/guideline/scenario ambiguity first.
+No such human reliability result exists.
 
-## Gate B rule
+## Historical Gate-B rule
 
-Gate B can pass only after the novelty/overlap position is documented, development-v1 is valid, independent agreement passes, label-dependent leakage checks pass, and metric definitions are frozen sufficiently for baseline evaluation.
+Under Protocol v1, Gate B could pass only after the novelty/overlap position was documented, development-v1 was valid, independent agreement passed, label-dependent leakage checks passed, and metric definitions were frozen sufficiently for baseline evaluation.
+
+That rule remains historically true for Protocol v1 but is not the current Protocol-v2 Gate-B definition.
