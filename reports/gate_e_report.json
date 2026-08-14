@@ -1,0 +1,30 @@
+{
+  "protocol": "PDA Protocol v2",
+  "gate": "E",
+  "gate_verdict": "GATE E — PASS",
+  "seed": 20260814,
+  "search_budget": 6,
+  "candidate_source_sha256": "78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b",
+  "candidate_source_boundary_violations": [],
+  "split_counts": {"development": 91, "validation": 33},
+  "protected_test_isolation": {"protected_split_count":44,"protected_candidate_rows_json_parsed":0,"protected_private_rows_json_parsed":0,"protected_candidate_rows_skipped_by_id":44,"protected_private_rows_skipped_by_id":44},
+  "gate_f_protected_data": "NOT_GENERATED",
+  "frozen_baseline": {"name":"B5_transparent_heuristic","macro_f1":0.21452991452991452,"prediction_sha256":"553e22b4c08d8e1120dd4db24a2fb34f509b35fdb4749d3e96c3ab2e85cebee3"},
+  "selected_candidate": "C5_semantic_factor_linear",
+  "selected_metrics": {"accuracy":0.6666666666666666,"macro_f1":0.6936507936507935,"weighted_f1":0.677922077922078,"valid_action_rate":1.0,"act_prediction_count":5,"forbidden_act_count":0,"unsafe_autonomy_rate":0.0,"all_six_nonzero_recall":true,"prediction_sha256":"2b31c30d417c86c8c3e346d3b35579668b5852a289ffb9c6e15bf9fbec5c556d"},
+  "selected_macro_f1_delta_vs_b5": 0.479120879120879,
+  "paired_bootstrap": {"samples":10000,"seed":20260814,"delta_mean":0.4721225669070198,"delta_p2_5":0.269140495727183,"delta_p50":0.46673317571486905,"delta_p97_5":0.6969364243570899,"fraction_delta_gt_zero":1.0},
+  "eligibility": {"C1_balanced_classical_c1":false,"C2_balanced_classical_c4":false,"C3_balanced_linear_margin":false,"C4_semantic_factor_tree":true,"C5_semantic_factor_linear":true,"C6_hybrid_semantic_safety":true},
+  "all_candidate_summary": {
+    "C1_balanced_classical_c1":{"accuracy":0.21212121212121213,"macro_f1":0.17706737706737705,"forbidden_act_count":5,"all_six_nonzero_recall":false,"prediction_sha256":"b9dcecc4897fefd12da8dd14a605ea9e4630153c982b3e08ecddc5186f8fcbe9"},
+    "C2_balanced_classical_c4":{"accuracy":0.21212121212121213,"macro_f1":0.14685990338164248,"forbidden_act_count":5,"all_six_nonzero_recall":false,"prediction_sha256":"c3df68563ee8c866225060f04602de3532fab72cd8ac5a1fbd29480cfecae053"},
+    "C3_balanced_linear_margin":{"accuracy":0.21212121212121213,"macro_f1":0.14646464646464646,"forbidden_act_count":5,"all_six_nonzero_recall":false,"prediction_sha256":"514f2cb8c8f8b10d917f580a1f49ce9fec16cd3f89322aa35ff23e5a1002bea0"},
+    "C4_semantic_factor_tree":{"accuracy":0.45454545454545453,"macro_f1":0.5273109243697479,"forbidden_act_count":0,"all_six_nonzero_recall":true,"prediction_sha256":"30da9695fe8f9568b339169b9570f9cd8b687d68606aded7a2abb64370a2f77b"},
+    "C5_semantic_factor_linear":{"accuracy":0.6666666666666666,"macro_f1":0.6936507936507935,"forbidden_act_count":0,"all_six_nonzero_recall":true,"prediction_sha256":"2b31c30d417c86c8c3e346d3b35579668b5852a289ffb9c6e15bf9fbec5c556d"},
+    "C6_hybrid_semantic_safety":{"accuracy":0.5151515151515151,"macro_f1":0.5345238095238095,"forbidden_act_count":0,"all_six_nonzero_recall":true,"prediction_sha256":"c1a9d27399ab7b98b27d1936c00648bdf7afcbd9888a8a6b93f2f3acee2f45d8"}
+  },
+  "criteria": {"exact_preregistered_search_budget":true,"candidate_source_boundary_violations_zero":true,"protected_rows_not_parsed":true,"selected_candidate_exists":true,"selected_macro_f1_delta_at_least_0_05":true,"paired_bootstrap_completed":true,"selected_forbidden_act_zero":true,"selected_all_six_nonzero_recall":true,"selected_deterministic":true,"selected_valid_action_rate_100pct":true},
+  "canonical_full_ci_report_sha256": "d3bdb01ea4e37f763ae8c973b86ee6600cf1c774bc62bf82e22aff746f86702f",
+  "formal_ci_run": 31804595710,
+  "cross_python_report_and_predictions_byte_identical": true
+}
