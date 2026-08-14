@@ -2,7 +2,7 @@
   "protocol": "PDA Protocol v2",
   "gate": "C",
   "benchmark_version": "benchmark_v2",
-  "generator_version": "2.0.0",
+  "generator_version": "2.0.1",
   "seed": 20260814,
   "frozen_upstream": {
     "branch": "research/proactivity-specification-v2",
@@ -34,6 +34,17 @@
     "largest_observation_template_family_share_max": 0.34,
     "candidate_private_forbidden_field_overlap_max": 0
   },
+  "remediation_history": [
+    {
+      "from_generator_version": "2.0.0",
+      "trigger": "CI run 31791152951 failed Gate-C audit with TEMPLATE_DOMINANCE; initial three-family distribution was 65/45/58 over 168 records (largest share 0.3869047619)",
+      "change": "add a fourth genuinely distinct non-normative observation paraphrase family and retain deterministic relation-family-consistent allocation",
+      "normative_spec_changed": false,
+      "oracle_changed": false,
+      "gold_actions_changed": false,
+      "preregistered_criteria_changed": false
+    }
+  ],
   "split_policy": {
     "development": 0.6,
     "validation": 0.2,
