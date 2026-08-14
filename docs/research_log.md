@@ -119,3 +119,25 @@ Gate-D machine verdict: `GATE D — PASS`. Protocol-v2 evidence-weighted complet
 ## 2026-08-14 — Gate D documentation-integrity incident preserved
 
 Freeze commit `3352fbe98da3f681cd34f81b6cf66a13b2b1cdd3` correctly added Gate-D evidence artifacts but over-compressed the pre-existing research documentation. A diff audit caught the excessive deletion before Gate D was closed. The corrective commit restored the Gate-C document bodies and limited edits to Gate-D additions/status changes. This is classified as a documentation/infrastructure integrity defect; no scientific evidence, benchmark, specification, oracle, score, or criterion changed.
+
+## 2026-08-14 — Gate E preregistration and source freeze
+
+Created `research/proactivity-candidate-v2` from exact Gate-D terminal HEAD `cbb73cde89ac74f194c19d52e14379223ddc8c8a`. Gate-E preregistration commit `da6f205f4c1aff001b9f24b4782a44a94e885acd` froze the six-configuration search budget, Gate-D B5 comparator, eligibility rules, paired-bootstrap procedure, and no-protected-test rule before formal candidate evaluation.
+
+Development-only engineering produced an independently implemented raw-observation semantic-factor extractor. Candidate source was frozen at `554da731c962cdbf2ebd63cb65149f393e05b617` before formal validation. Subsequent CI explicitly checks `src/proactivity/candidate_v2.py` is unchanged from that commit.
+
+## 2026-08-14 — Gate E protected-isolation pre-scoring fix
+
+After the evaluator was added at `c3c814c6020d0fb9b47a0bf71b6d80b67202c1d9`, audit found that the initial loader would parse the entire private JSONL before subsetting. No formal Gate-E validation result had yet been generated. Commit `8ad2411b5db48cfe180bb500c996a7557abbda9b` replaced it with split-first isolation: protected candidate/private lines are recognized only by scenario ID and skipped without JSON parsing their payload. Candidate source and scientific criteria were unchanged.
+
+## 2026-08-14 — Gate E formal candidate evidence
+
+Formal CI enable commit `fc030269e347142d5a9ad730499d189647ccded7`; run `31804595710` succeeded on Python 3.10, 3.11, and 3.12. Every matrix job re-ran upstream Gates B–D, the complete 79-test regression suite, Protocol-v1 negative-evidence validators, candidate-source immutability, two Gate-E evaluations, terminal criteria, and evidence upload.
+
+The three formal reports and all six candidate prediction files were byte-identical across Python versions. Canonical full report SHA-256: `d3bdb01ea4e37f763ae8c973b86ee6600cf1c774bc62bf82e22aff746f86702f`.
+
+Selected candidate: `C5_semantic_factor_linear`. Validation macro-F1 `0.6936507936507935`, accuracy `0.6666666666666666`, weighted F1 `0.677922077922078`, valid-action rate 100%, forbidden ACT 0, six-action recall all non-zero. Frozen B5 delta: `+0.479120879120879`. 10,000 paired bootstrap resamples gave mean delta `0.4721225669070198`, 95% interval `[0.269140495727183, 0.6969364243570899]`, and fraction delta > 0 `1.0`.
+
+C1–C3 each produced five forbidden ACT predictions and failed all-six-action-recall eligibility; C4 and C6 passed eligibility but scored below C5. Protected candidate/private payload rows parsed by Gate E: zero. Gate-F protected data remains not generated.
+
+Gate-E formal-source verdict: `GATE E — PASS`. Evidence-weighted Protocol-v2 completion is **78%** once the terminal freeze HEAD itself completes regression CI.
