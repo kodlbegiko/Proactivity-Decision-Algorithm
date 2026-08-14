@@ -1,41 +1,43 @@
 # Protocol v2 Claim Boundaries
 
-## Supported claim categories, conditional on later gate evidence
+## Supported now
 
-Protocol v2 may evaluate and eventually support narrowly scoped claims about:
+With Gate B and Gate C passed, current evidence supports narrowly scoped claims that:
 
-- compliance with the repository's frozen proactivity specification;
-- deterministic mapping from explicit structured state to intervention-control mode;
-- permission-sensitive autonomous action constraints;
-- information/risk/reversibility/side-effect constraints;
-- counterfactual policy consistency;
-- temporal-rule consistency;
-- invariant satisfaction and fail-closed invalid-state handling;
-- rule/prohibition traceability;
-- reproducibility of machine-grounded benchmark generation and evaluation;
-- robustness or OOD behavior only after the corresponding later gates execute.
+- the frozen `PDA-SPEC-v2` is deterministically executable over its bounded valid state space;
+- the Gate-C benchmark is reproducibly generated from generator-known state plus the frozen oracle;
+- the benchmark has the audited action/rule/prohibition coverage, candidate/private separation, structural diversity, leakage controls, group-aware split integrity, counterfactual integrity, and temporal integrity recorded in `gate_c/freeze_v2.json`;
+- future candidate evaluation can be structured to prevent direct runtime reuse of the oracle/private evidence via the Gate-C representation contract.
 
-## Claims explicitly out of scope
+## Not supported yet
 
-Without a separate human study, Protocol v2 must not claim:
+Gate C does **not** establish:
 
+- candidate performance or superiority;
+- formal baseline performance/ranking;
+- robustness or adversarial resilience;
+- OOD generalization;
+- independent protected-set performance;
 - human preference alignment;
 - that the oracle represents what users generally want;
-- universal or objective correctness of the six intervention modes;
-- user satisfaction, trust, comfort, or psychological validity;
-- social acceptability;
-- ecological validity beyond supported modeled/synthetic conditions;
+- universal/objective correctness of the six intervention modes;
+- user satisfaction, trust, comfort, psychological validity, or social acceptability;
+- ecological validity beyond the modeled/synthetic conditions;
 - general personal-assistant quality;
 - human consensus or annotation reliability.
 
-## Interpretation of the oracle
+## Oracle interpretation
 
-The deterministic oracle is the executable reference implementation of a **research policy**. Agreement with it means specification compliance. It does not constitute evidence that the policy is universally desirable.
+The deterministic oracle is the executable reference implementation of a **research policy**. Agreement means specification compliance, not universal desirability.
 
-## Action taxonomy caveat
+## Track-specific boundary
 
-`IGNORE`, `WAIT`, `SUGGEST`, `NOTIFY`, `ASK`, and `ACT` are discrete intervention-control modes. A single universal scalar ordering is not part of the formal claim. Existing v1 intensity helpers remain historical/diagnostic only.
+Track A uses structured state and supports mechanistic diagnostics. Track B uses deterministic synthetic semantic observations and supports benchmark evaluation under that generated representation. Track B must not be described as evidence of unrestricted natural-language understanding or real-world contextual proactivity.
 
-## Human validation
+## Protected-set boundary
 
-Protocol-v1 annotation infrastructure remains available for optional future external-validity or preference studies. Such evidence, if ever collected, must be reported separately rather than retroactively treated as part of Protocol-v2 Gate B.
+The Gate-C `protected_test` partition is deterministic and publicly regenerable. It is not independent Gate-F protected evidence. Protected-validation credit remains zero until an isolated confirmatory process executes.
+
+## Historical human validation
+
+Protocol-v1 human-annotation infrastructure remains historical/optional external-validity infrastructure. Protocol v1 itself remains blocked by independent annotation and is not retroactively passed.

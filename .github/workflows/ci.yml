@@ -8,10 +8,13 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -30,13 +33,19 @@ jobs:
           test ! -e annotations/raw/annotator_a_v1.csv
           test ! -e annotations/raw/annotator_b_v1.csv
 
-      # Protocol v2 is the current primary specification-grounded research track.
-      - name: Generate and hash-verify Protocol-v2 development benchmark
+      # Protocol v2 Gate B remains a frozen upstream dependency.
+      - name: Verify Gate-B upstream ancestry and normative immutability
+        run: |
+          git merge-base --is-ancestor 89e00052d68b2862269daf2adc8b31ebb1ae592c HEAD
+          git diff --exit-code 89e00052d68b2862269daf2adc8b31ebb1ae592c HEAD -- spec/proactivity_policy_v2.json src/proactivity/specification
+          test "$(sha256sum spec/proactivity_policy_v2.json | awk '{print $1}')" = "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+          test "$(sha256sum src/proactivity/specification/oracle.py | awk '{print $1}')" = "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f"
+      - name: Generate and hash-verify Protocol-v2 development transport set
         run: |
           PYTHONPATH=src python scripts/generate_development_v2.py
           sha256sum -c data/development/development_v2.sha256
           PYTHONPATH=src python scripts/validate_development_v2.py
-      - name: Exhaustively validate Protocol-v2 Gate B
+      - name: Exhaustively validate Protocol-v2 Gate B regression
         run: |
           PYTHONPATH=src python scripts/audit_spec_v2.py --output /tmp/gate_b_v2.json
           python - <<'PY'
@@ -56,6 +65,33 @@ jobs:
           assert report['traceability']['pass'] is True
           PY
           test "$(PYTHONPATH=src python scripts/decide_gate_b_v2.py --evidence /tmp/gate_b_v2.json)" = "GATE B — PASS"
+
+      # Protocol v2 Gate C: oracle/benchmark validity only. These diagnostics are not Gate-D baselines.
+      - name: Deterministically regenerate Gate-C benchmark twice
+        run: |
+          rm -rf /tmp/gate-c-a /tmp/gate-c-b data/benchmark_v2
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir /tmp/gate-c-a
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir /tmp/gate-c-b
+          diff -ru /tmp/gate-c-a /tmp/gate-c-b
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir data/benchmark_v2
+      - name: Audit Gate-C provenance diversity leakage relations and splits
+        run: |
+          PYTHONPATH=src python scripts/run_gate_c_audit.py --output reports/gate_c_report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/gate_c_report.json').read_text())
+          assert report['ground_truth_provenance']['manual_gold_findings'] == 0
+          assert report['ground_truth_provenance']['llm_gold_findings'] == 0
+          assert report['ground_truth_provenance']['oracle_mismatch_findings'] == 0
+          assert report['leakage']['forbidden_metadata_findings'] == []
+          assert report['split_integrity']['group_leakage'] == {}
+          assert report['counterfactual']['violations'] == []
+          assert report['temporal']['violations'] == []
+          assert report['reproducibility']['deterministic_regeneration'] is True
+          PY
+          test "$(PYTHONPATH=src python scripts/decide_gate_c.py --evidence reports/gate_c_report.json)" = "GATE C — PASS"
+
       - name: Run complete regression and failure-path suite
         run: python -m pytest -q
 
@@ -64,3 +100,13 @@ jobs:
           PYTHONPATH=src python scripts/validate_dataset.py data/development/pilot_v0.jsonl
           PYTHONPATH=src python scripts/validate_dataset.py data/development/development_v1.jsonl --require-raw-context
           PYTHONPATH=src python scripts/audit_development_v1.py data/development/development_v1.jsonl data/development/development_v1.meta.jsonl
+
+      - name: Upload Gate-C evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-c-evidence-py${{ matrix.python-version }}
+          path: |
+            data/benchmark_v2/
+            reports/gate_c_report.json
+          if-no-files-found: warn

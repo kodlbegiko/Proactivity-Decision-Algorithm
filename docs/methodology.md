@@ -4,117 +4,111 @@
 
 Protocol v2 studies **specification compliance for intervention control**, not general assistant task completion and not human-preference prediction.
 
-The primary validity path is:
+Primary evidence path:
 
 ```text
 explicit structured state
 -> frozen versioned specification
 -> deterministic reference oracle
--> intervention-control action + trace
--> machine-verifiable evidence
+-> oracle action + rule/prohibition trace
+-> leakage-controlled benchmark representation
+-> reproducible evaluation evidence
 ```
 
-Candidate development is forbidden until the current gate sequence authorizes it.
+## Frozen structured state and action semantics
 
-## Structured-state primary track
+The formal state contains permission, information sufficiency/contradiction, urgency, intervention need, side-effect scope, risk, reversibility, deferral availability, execution possibility, clarification possibility, acknowledgement, and completion. Invalid combinations fail closed.
 
-The formal state is finite and machine validated. Protocol v2 currently represents:
-
-- permission: `not_required | missing | granted`;
-- information: `sufficient | insufficient | contradictory`;
-- urgency: `none | normal | high | expired`;
-- intervention need: `none | optional | material`;
-- side-effect scope: `none | local | external`;
-- risk: `low | medium | high`;
-- reversibility: `reversible | irreversible`;
-- deferral availability;
-- execution possibility;
-- clarification possibility;
-- acknowledgement;
-- completion.
-
-Invalid cross-field combinations fail closed. The current spec treats external side effects as requiring an explicit permission scope, while a no-side-effect state must use `not_required` permission semantics.
-
-## Action semantics
-
-The six actions are discrete control modes:
-
-- `IGNORE`: no current intervention and no explicit deferred trigger is required.
-- `WAIT`: do not intervene now; retain a defined future trigger/observation.
-- `SUGGEST`: low-pressure optional recommendation without a material side effect.
-- `NOTIFY`: surface material information/change/deadline/risk for awareness.
-- `ASK`: request missing information, choice, confirmation, or authorization.
-- `ACT`: perform an authorized material action only when required information, permission, risk, reversibility, and execution conditions are satisfied.
-
-No universal scalar ordering is assumed. Legacy Protocol-v1 intensity helpers remain diagnostic/historical only.
+The six actions are `IGNORE`, `WAIT`, `SUGGEST`, `NOTIFY`, `ASK`, and `ACT`. No universal scalar ordering is assumed.
 
 ## Formal specification and oracle
 
-`spec/proactivity_policy_v2.json` is the transparent machine-readable research policy. It contains the finite schema, invalid-state conditions, hard prohibitions, explicit selection-rule priorities, action semantics, and named invariants.
+`spec/proactivity_policy_v2.json` is the transparent machine-readable policy. `src/proactivity/specification/` implements the deterministic reference oracle and validation logic. The oracle has no network/LLM dependency, reads only formal state for normative decisions, rejects invalid states, computes hard prohibitions, fails closed on conflicts, and returns a trace.
 
-`src/proactivity/specification/` implements the deterministic reference oracle and validators. The oracle:
+Gate-C normative dependency is frozen at:
 
-- has no network or LLM dependency;
-- reads only the formal `state` for its normative decision;
-- rejects invalid states;
-- derives prohibited actions separately from the selection rules;
-- fails closed on an equal-priority action conflict;
-- rejects a selected action if it is simultaneously prohibited;
-- returns matched-rule, prohibition, eligible-action, spec-version, and spec-hash trace fields.
+- policy `PDA-SPEC-v2`;
+- schema `2.0.0`;
+- spec SHA-256 `ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4`;
+- oracle source SHA-256 `11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f`;
+- Gate-B commit `89e00052d68b2862269daf2adc8b31ebb1ae592c`.
 
-Scenario IDs, pair IDs, sequence IDs, domain names, file order, annotator fields, and hidden expected-action metadata are not oracle inputs.
+Gate C is prohibited from changing these normative artifacts for benchmark convenience.
 
 ## Gate B — Formal Specification Validity
 
-Gate B evaluates the specification itself, not PDA candidate performance.
+Gate B exhaustively validated 62,208 raw Cartesian combinations, 41,472 valid states, deterministic output, rule coverage, traces, invariants, counterfactual checks, temporal behavior, metadata/domain invariance, and Python 3.10/3.11/3.12 CI. Its machine verdict remains `GATE B — PASS`.
 
-Required checks include:
+## Gate C — Oracle and Benchmark Validity
 
-1. exact schema validity and invalid-combination rejection;
-2. exhaustive bounded-state enumeration;
-3. deterministic repeated oracle output;
-4. equal-priority conflict detection and precedence-cycle checking;
-5. zero valid-state fallthrough;
-6. rule reachability diagnostics;
-7. complete decision traces;
-8. ACT permission/information/risk/reversibility/execution invariants;
-9. completed-state non-intervention invariant;
-10. counterfactual permission/risk/information degradation tests;
-11. explicit temporal transition tests without assuming monotonic escalation;
-12. metadata/domain/row-order independence;
-13. CI across Python 3.10, 3.11, and 3.12.
+Gate C asks whether the frozen oracle-derived benchmark is a valid measurement instrument for later evaluation. It does **not** test a PDA candidate.
 
-Hard specification and safety invariants use fail-closed / zero-tolerance criteria at Gate B.
+### Ground-truth provenance
 
-## Protocol-v2 development generator
+The only accepted label chain is:
 
-`scripts/generate_development_v2.py` deterministically samples explicit valid states and adds canonical reachability states so all six action modes are exercised. Each `oracle_action` and selected rule is recomputed by the frozen oracle. A separate handwritten gold-label table does not exist.
+```text
+generator-known structured state
+-> frozen validator
+-> frozen specification
+-> deterministic oracle
+-> oracle action + trace
+```
 
-The v2 development artifact is Gate-B transport/reachability infrastructure only. Formal benchmark validity belongs to Gate C.
+Manual gold actions, LLM-authored gold actions, post-hoc label overrides, or candidate-derived answers are forbidden. The final Gate-C benchmark contains 168/168 oracle-derived records, with zero manual gold, zero LLM gold dependency, and zero oracle mismatch.
 
-## Counterfactual and temporal methodology
+### Representation tracks
 
-Counterfactual expectations are derived from the frozen specification before candidate evaluation. Current Gate-B checks start from oracle-eligible ACT states and verify that removing required permission, increasing risk, or degrading information disables autonomous action.
+**Track A — mechanistic structured-state track:** candidate transport may contain `scenario_id`, `domain`, `state`; the evaluated model/policy input excludes the transport identifier. This track supports mechanistic rule-compliance diagnostics only.
 
-Temporal checks are explicit predicate/rule checks rather than a global scalar escalation assumption. The reference Gate-B sequence exercises defer, urgent notification, acknowledgement/defer, and completion/silence behavior.
+**Track B — synthetic observation/context track:** candidate transport contains `scenario_id`, `domain`, `observation`; evaluated input excludes the transport identifier. Observation text is deterministically rendered from source-state semantics and excludes oracle action, rule/prohibition trace, relation IDs, template ID, split, and other answer-bearing metadata.
 
-## Raw-context secondary track
+Track B is synthetic. It cannot alone support broad real-world contextual-proactivity or ecological-validity claims.
 
-Protocol v1 made raw-context input the primary validity path. Protocol v2 changes this: natural-language context is secondary and may later test state extraction, paraphrase robustness, or adversarial rendering.
+### Anti-circularity
 
-If text is deterministically rendered from a structured state, the generator-known state remains the source of truth. The reference oracle must not infer normative labels from prose.
+`gate_c/representation_contract_v2.json` separates candidate-visible transport from oracle-private evidence. `scripts/validate_candidate_boundary_v2.py` rejects future candidate source that imports the frozen oracle/benchmark implementation or directly reads private evidence artifacts. Corresponding failure-path tests are in CI.
 
-## Dataset migration
+### Coverage and relational design
 
-The 144 `development_v1` scenarios are preserved but are not assigned Protocol-v2 gold decisions by after-the-fact prose interpretation. The migration audit records all 144 as ambiguous with respect to the complete new semantic state. Their design concepts and infrastructure remain reusable.
+Gate-C criteria were frozen before formal statistics. Final benchmark evidence includes:
 
-## Historical human-validation track
+- all six actions, each with at least 12 examples;
+- every reachable selected non-fallback decision rule with at least 6 examples;
+- every hard prohibition with at least 6 trigger examples and one single-variable action-changing prohibition counterfactual;
+- 8 generic counterfactual families;
+- 8 prohibition-counterfactual families;
+- 8 temporal sequences;
+- zero relation violations.
 
-Protocol-v1 annotation packets, completed-return validation, immutable archive tooling, agreement/kappa analysis, and negative evidence are preserved. A future human study may test external validity or preference alignment, but it is optional and does not block the primary Protocol-v2 gate sequence.
+The natural exhaustive action distribution is reported separately from the intentionally coverage-efficient benchmark sampling distribution.
 
-## Evaluation principle
+### Diversity and leakage
 
-Oracle correctness means correctness **with respect to the frozen research specification**. It does not imply that the specification is universally desirable or human-preferred. Later candidate metrics must keep this claim boundary explicit and use denominators defined in `docs/metric_definitions.md`.
+The final benchmark has 168 unique IDs, zero exact candidate-record duplicates, zero structural/source-state duplicate members, four observation template families (`41/38/39/50`), and a largest template-family share of 29.76%, below the preregistered 34% maximum.
+
+Candidate-visible records contain no forbidden answer metadata and no direct action-label tokens. Diagnostic ID-prefix, row-bucket, domain-only, template-only, and lexical analyses are leakage diagnostics, not formal Gate-D baselines. Group-aware splitting prevents counterfactual/temporal/state-family siblings from crossing development/validation/public-holdout sets.
+
+### Split and protected-set boundary
+
+Final deterministic split counts are development 91, validation 33, and `protected_test` 44. The Gate-C `protected_test` split is publicly regenerable and therefore validates freeze/split mechanics only. It is **not** independent Gate-F protected evidence. A future confirmatory protected set must use the isolation protocol in `gate_c/protected_test_protocol_v2.json`.
+
+### Reproducibility
+
+Gate-C CI regenerates the benchmark twice and requires byte-identical artifacts, re-runs Gate-B regression, executes the Gate-C audit and fail-closed decision engine, runs the full regression/failure-path suite, and preserves Protocol-v1 negative evidence.
+
+Passing run `31791713759` completed successfully on Python 3.10, 3.11, and 3.12. Each matrix job ran 73 pytest tests successfully. Frozen benchmark hashes are recorded in `gate_c/freeze_v2.json`.
+
+## Preserved Gate-C failures
+
+1. Run `31791152951` produced a real Gate-C scientific benchmark-generator failure: the first three-template allocation was `65/45/58`, giving a 38.69% largest-family share and violating the preregistered 34% cap. The fix added a fourth non-normative paraphrase family. No specification, oracle, gold action, or threshold changed.
+2. Run `31791651373` exposed an infrastructure-only audit-wrapper import-path failure (`ModuleNotFoundError: scripts`) after benchmark regeneration succeeded. The wrapper was made path-independent; no scientific criterion changed.
+
+Negative results remain part of the evidence chain.
+
+## Historical Protocol v1
+
+Protocol v1 remains `GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION`; its 25% historical completion and missing human-label evidence are not rewritten by Protocol v2.
 
 ## Gate order
 
@@ -127,4 +121,4 @@ Gate F: protected/OOD validation.
 Gate G: robustness/adversarial/invariant stress testing.  
 Gate H: ablation/reproducibility/independent reproduction/final claim audit.
 
-This migration mission stops before Gate C even if Gate B passes.
+Gate C has passed. The scientifically valid next gate is Gate D, but Gate D is outside the Gate-C mission and must not execute here.

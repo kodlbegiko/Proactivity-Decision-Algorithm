@@ -1,0 +1,83 @@
+{
+  "protocol": "PDA Protocol v2",
+  "gate": "C",
+  "verdict": "GATE C — PASS",
+  "benchmark_version": "benchmark_v2",
+  "generator_version": "2.0.1",
+  "seed": 20260814,
+  "passing_source_commit": "6653424a3e90b4b67c792bc9e0a15762d3d6966e",
+  "passing_ci_run": 31791713759,
+  "ci_matrix": {
+    "python_3_10": "SUCCESS",
+    "python_3_11": "SUCCESS",
+    "python_3_12": "SUCCESS"
+  },
+  "pytest_count_per_matrix_job": 73,
+  "frozen_upstream": {
+    "branch": "research/proactivity-specification-v2",
+    "commit": "89e00052d68b2862269daf2adc8b31ebb1ae592c",
+    "policy_id": "PDA-SPEC-v2",
+    "schema_version": "2.0.0",
+    "spec_sha256": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4",
+    "oracle_sha256": "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f",
+    "normative_changes_in_gate_c": false
+  },
+  "scenario_count": 168,
+  "action_distribution": {
+    "ACT": 16,
+    "ASK": 50,
+    "IGNORE": 15,
+    "NOTIFY": 38,
+    "SUGGEST": 16,
+    "WAIT": 33
+  },
+  "split_counts": {
+    "development": 91,
+    "validation": 33,
+    "protected_test": 44
+  },
+  "artifact_sha256": {
+    "candidate.jsonl": "7e9826fe4f0b59aa92556048bf45abc44e525644dc27fca3425c140350b1e587",
+    "private.jsonl": "9d15c5a2f4454f049c7f60ee26f7247efc583b718c115e59293a8c95c3985ae8",
+    "relations.json": "8cf4d939378185accb4b5506620c626fa83d566114140ba692ffd085dbc8bd66",
+    "splits.jsonl": "9b9ffdfad6ca0561d2142723053c3582a748e5fefc60b37e5e82762dd1544a27",
+    "structured.jsonl": "a1533cd6289fd8a97b2c92c26d3f78172c32ebf4203cb47e0f9ccdad7e7f149e"
+  },
+  "template_distribution": {
+    "t0": 41,
+    "t1": 38,
+    "t2": 39,
+    "t3": 50
+  },
+  "largest_template_family_share": 0.2976190476190476,
+  "integrity": {
+    "unique_ids": 168,
+    "exact_candidate_duplicates": 0,
+    "structural_duplicate_members": 0,
+    "manual_gold_findings": 0,
+    "llm_gold_findings": 0,
+    "oracle_mismatch_findings": 0,
+    "forbidden_candidate_metadata_findings": 0,
+    "candidate_private_forbidden_overlap": 0,
+    "split_family_leakage": 0,
+    "hard_prohibition_safety_violations": 0,
+    "counterfactual_violations": 0,
+    "temporal_violations": 0,
+    "criteria_failures": 0
+  },
+  "relations": {
+    "generic_counterfactual_families": 8,
+    "prohibition_counterfactual_families": 8,
+    "temporal_sequences": 8
+  },
+  "candidate_visible_schema": ["scenario_id", "domain", "observation"],
+  "candidate_model_input": ["domain", "observation"],
+  "protected_test_limitation": "The Gate-C protected_test split is deterministic and publicly regenerable. It validates freeze/split mechanics only and is not independent Gate-F protected evidence.",
+  "evidence_artifacts": {
+    "python_3_10": {"artifact_id": 9216219365, "zip_sha256": "0d0a425c299debbd7140cf591148e95a6c1eae71f20e33e888b4894e8f36a866"},
+    "python_3_11": {"artifact_id": 9216149325, "zip_sha256": "0144df560f9f6869738c65e3a6a6f8a12a972a8787655815d2a7c646cb755715"},
+    "python_3_12": {"artifact_id": 9216230051, "zip_sha256": "c8dd60e578755d5646ec6163df03df6796e3477ebf05b036cbf336f3b29bcef5"}
+  },
+  "next_gate": "Gate D — Baseline Integrity",
+  "do_not_execute_next_gate_in_this_mission": true
+}

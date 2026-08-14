@@ -6,41 +6,53 @@ The research target is the proactivity decision layer itself, not a full persona
 
 ## Current primary track — Protocol v2
 
-Protocol v2 is **specification-grounded**. Its primary evidence chain is:
+Protocol v2 is specification-grounded:
 
 ```text
 structured state
 -> frozen formal specification
 -> deterministic oracle
--> expected intervention mode
--> rule/prohibition trace
--> machine-verifiable evaluation
+-> expected intervention mode + trace
+-> reproducible benchmark
+-> later baseline/candidate evaluation
 ```
 
-The current research question is whether a deterministic, auditable decision layer can map explicit permission, information, timing, intervention need, side-effect, risk, reversibility, and execution state to one of:
+The action vocabulary is:
 
 `IGNORE`, `WAIT`, `SUGGEST`, `NOTIFY`, `ASK`, `ACT`
 
-while satisfying frozen invariants and counterfactual/temporal consistency checks.
+These are discrete intervention-control modes, not a universally valid scalar ordering.
 
-These are discrete intervention-control modes, not a universally valid scalar intensity ordering.
+## Current gate status
+
+```text
+Gate A — PASS (narrowed)
+Gate B — PASS
+Gate C — PASS
+READY FOR GATE D
+DO NOT START GATE D IN THE GATE-C MISSION
+```
+
+Gate C is isolated on `research/proactivity-benchmark-v2` and Draft PR #8. It froze `benchmark_v2` at 168 oracle-derived scenarios and validated deterministic regeneration, provenance, candidate/private schema separation, rule/action/prohibition coverage, structural diversity, leakage controls, counterfactual/temporal relations, and group-aware split integrity across Python 3.10/3.11/3.12 CI.
+
+The Gate-C candidate-facing context track is synthetic and deterministically rendered from generator-known structured state. Passing Gate C establishes measurement integrity **within this modeled benchmark design**; it does not establish real-world contextual understanding.
 
 ## Claim boundary
 
-Protocol v2 studies **specification compliance**. It does not establish human preference alignment, universal correctness, social acceptability, user satisfaction, or ecological validity outside the modeled conditions. The oracle is the executable reference implementation of a research policy, not universal human truth.
+Protocol v2 studies specification compliance. It does **not** establish human preference alignment, universal correctness, social acceptability, user satisfaction, ecological validity beyond supported modeled/synthetic conditions, robustness, OOD generalization, or candidate quality unless the corresponding later evidence exists.
 
-Novelty remains conservatively **PARTIAL NOVELTY ONLY** after comparison with constrained-policy/shielding work and recent proactive-agent research.
+The oracle is an executable research policy, not universal human truth. Novelty remains conservatively `PARTIAL NOVELTY ONLY`.
 
 ## Historical Protocol v1
 
-Protocol v1 used independent human annotation as its primary validity path. Its historical result remains:
+Protocol v1 remains preserved as negative/historical evidence:
 
 ```text
 GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION
 Evidence-weighted completion: 25%
 ```
 
-The annotation packets, validators, archival helpers, agreement/kappa tooling, historical leakage evidence, and CI incidents remain preserved. Human annotation is now optional future external-validity evidence rather than a blocker for the primary Protocol-v2 sequence.
+Protocol v2 does not retroactively convert missing human annotation into a pass.
 
 ## Gate sequence
 
@@ -53,8 +65,4 @@ The annotation packets, validators, archival helpers, agreement/kappa tooling, h
 - Gate G — robustness / adversarial / invariant stress testing
 - Gate H — ablation / reproducibility / independent reproduction / final claim audit
 
-See `docs/protocol_v2.md`, `docs/methodology.md`, and `docs/gate_status.md` for the authoritative protocol and current verdict.
-
-## Research branch
-
-Protocol-v2 work is conducted on `research/proactivity-specification-v2`. Gate C must not start merely because Gate-B infrastructure exists; it requires an explicit Gate-B PASS and a separate authorization/task.
+See `docs/protocol_v2.md`, `docs/methodology.md`, `docs/gate_status.md`, `docs/claim_boundaries.md`, and `gate_c/freeze_v2.json`.
