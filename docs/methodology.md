@@ -67,7 +67,7 @@ Track B is synthetic. It cannot alone support broad real-world contextual-proact
 
 ### Anti-circularity
 
-`gate_c/representation_contract_v2.json` separates candidate-visible transport from oracle-private evidence. `scripts/validate_candidate_boundary_v2.py` rejects future candidate source that imports the frozen oracle/benchmark implementation or directly reads private evidence artifacts. Corresponding failure-path tests are in CI.
+`gate_c/representation_contract_v2.json` separates candidate-visible transport from oracle-private evidence. `scripts/validate_candidate_boundary_v2.py` rejects future candidate source that imports the frozen oracle/benchmark implementation or directly reads private evidence artifacts at runtime; machine-checkable guards and failure-path tests enforce this boundary.
 
 ### Coverage and relational design
 
@@ -106,6 +106,18 @@ Passing run `31791713759` completed successfully on Python 3.10, 3.11, and 3.12.
 
 Negative results remain part of the evidence chain.
 
+## Gate D — Baseline Integrity
+
+Gate D evaluates whether later candidate work has an honest, deterministic comparison suite. It does not require baselines themselves to be strong or safe.
+
+The preregistered raw-context baselines are B0 majority action, B1 development-prior sampled random, B2 domain-only, B3 unigram Multinomial Naive Bayes, B4 word/character TF-IDF plus domain one-hot logistic regression, and B5 fixed transparent heuristic. Models receive only preregistered candidate-visible fields; private/oracle state and answer-bearing transport metadata are evaluator-only.
+
+Source guards reject oracle/spec imports, private/structured benchmark reads, relation files, matched-rule/prohibition traces, family/split metadata, hard-coded scenario-ID lookup, and direct gold tables. Formal controls include frozen benchmark hashes, repeated fixed-seed runs, row-order shuffle, domain ablation, observation shuffle, label permutation, token shuffle, prediction coverage, valid-action coverage, and independent metric recomputation.
+
+Formal Gate-D implementation commit `6377d31eaa57f162df68c4c3f89c7b6cb7e0206c` passed run `31801340084` on Python 3.10, 3.11, and 3.12. The full report and six prediction files were byte-identical across the three environments. Strongest honest raw-context baseline by macro-F1 is B5 at `0.21452991452991452`; Gate E must compare against that frozen value.
+
+Preregistration amendment D-001 changed only the scikit-learn version pin to `1.7.1` before formal scoring so the predeclared Python 3.10/3.11/3.12 matrix remained executable. Scientific criteria and model definitions did not change.
+
 ## Historical Protocol v1
 
 Protocol v1 remains `GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION`; its 25% historical completion and missing human-label evidence are not rewritten by Protocol v2.
@@ -121,4 +133,4 @@ Gate F: protected/OOD validation.
 Gate G: robustness/adversarial/invariant stress testing.  
 Gate H: ablation/reproducibility/independent reproduction/final claim audit.
 
-Gate C has passed. The scientifically valid next gate is Gate D, but Gate D is outside the Gate-C mission and must not execute here.
+Gate D has passed at the scientific-source/evidence level. The next scientifically valid gate is Gate E after the Gate-D terminal freeze HEAD completes regression CI.

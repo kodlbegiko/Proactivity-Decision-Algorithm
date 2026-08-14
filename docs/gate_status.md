@@ -111,11 +111,41 @@ Reproducibility / CI:
 
 The Gate-C `protected_test` split is deterministic and publicly regenerable. It validates grouping/freeze mechanics only and does **not** count as Gate-F independent protected-validation evidence.
 
-## Gates D–H
+### Gate D — Baseline Integrity: PASS
+
+Gate-D branch/PR/Issue:
+
+- branch `research/proactivity-baselines-v2`;
+- Draft PR #10 stacked on `research/proactivity-benchmark-v2`;
+- Issue #9;
+- base Gate-C freeze HEAD `b26aa39866e5cc7aa99ba97d71862f7550a447fe`.
+
+Preregistration and implementation:
+
+- initial preregistration commit `2ff15cc095c168d16f6711b1c4aa131fb625595d`;
+- amendment D-001 commit `17920b1f86267727a2a7b4baf9672ec265267a1a`;
+- formal implementation commit `6377d31eaa57f162df68c4c3f89c7b6cb7e0206c`;
+- pinned dependency `scikit-learn==1.7.1`.
+
+D-001 was made **before formal scoring** solely because the initially named scikit-learn 1.8.x line could not satisfy the preregistered Python 3.10/3.11/3.12 matrix. No benchmark, label, feature definition, baseline family, hyperparameter, metric, seed, PASS criterion, or scientific meaning changed.
+
+Formal Gate-D CI run `31801340084` completed successfully on Python 3.10, 3.11, and 3.12. It re-ran Gate-B and Gate-C regressions, executed B0–B5 twice, passed source-boundary failure paths, prediction coverage, fixed-seed determinism, benchmark hashes, metric recomputation, row-order invariance, the complete regression/failure-path suite, Protocol-v1 negative-evidence checks, and uploaded three evidence artifacts.
+
+The canonical full Gate-D report SHA-256 is `af08e71950b28148a5f4d1a67a336d2ee8a43baf4ed7813600a54d6d25a80be9`; report and all six prediction files were byte-identical across Python 3.10/3.11/3.12.
+
+Strongest honest raw-context baseline by validation macro-F1 is `B5_transparent_heuristic` at **0.21452991452991452**. This is frozen as the Gate-E comparison baseline.
+
+Negative baseline results are preserved: B1 made one forbidden-ACT prediction and B3 made five. Gate D is an integrity gate, so these are not hidden or misrepresented as candidate evidence.
+
+#### Preserved Gate-D documentation incident
+
+Freeze commit `3352fbe98da3f681cd34f81b6cf66a13b2b1cdd3` correctly froze the experiment artifacts but over-compressed existing documentation. Diff audit detected that this violated the documentation-preservation rule. The fix restored the Gate-C documents and applied only Gate-D additions/necessary status changes. Scientific artifacts, benchmark, oracle, criteria, scores, and source commit were unchanged.
+
+## Gates E–H
 
 **NOT EXECUTED.**
 
-No formal baseline ranking, PDA candidate result, protected/OOD result, robustness claim, ablation result, independent reproduction result, merge, or release was executed in Gate C.
+No PDA candidate result, independent protected/OOD result, robustness claim, ablation result, independent clean reproduction result, merge, or release has been executed yet.
 
 ## Protocol-v2 evidence-weighted completion
 
@@ -124,18 +154,16 @@ No formal baseline ranking, PDA candidate result, protected/OOD result, robustne
 | Research scope / claim definition | 10% | 10% |
 | Formal specification validity | 20% | 20% |
 | Oracle / benchmark validity | 15% | 15% |
-| Baseline integrity | 15% | 0% |
+| Baseline integrity | 15% | 15% |
 | Candidate evidence | 15% | 0% |
 | Protected validation | 10% | 0% |
 | Robustness | 5% | 0% |
 | Ablation | 5% | 0% |
 | Reproducibility / independent reproduction | 5% | 3% |
-| **Total** | **100%** | **48%** |
+| **Total** | **100%** | **63%** |
 
 The remaining 2/5 reproducibility credit is withheld because independent clean-environment reproduction/audit has not been performed.
 
 ## Exact next scientifically valid action
 
-`Gate D — Baseline Integrity`
-
-**Do not execute Gate D inside this Gate-C mission.**
+`Gate E — PDA Candidate Evidence`

@@ -86,3 +86,36 @@ DO NOT START GATE D
 ```
 
 Protocol-v2 evidence-weighted completion is now **48%**: 10% scope + 20% formal specification + 15% oracle/benchmark validity + 3% reproducibility. Independent reproduction remains incomplete; Gates D–H remain unexecuted.
+
+## 2026-08-14 — Gate D preregistration and compatibility amendment
+
+Created `research/proactivity-baselines-v2` from exact Gate-C freeze HEAD `b26aa39866e5cc7aa99ba97d71862f7550a447fe`, Issue #9, and Draft PR #10. Gate-D criteria were preregistered before formal baseline scoring.
+
+The initial preregistration named `scikit-learn==1.8.0`. Before any formal score existed, compatibility checking showed that the required Python 3.10/3.11/3.12 matrix could not be satisfied by that line. Amendment D-001 at `17920b1f86267727a2a7b4baf9672ec265267a1a` pinned `scikit-learn==1.7.1`. No benchmark, label, baseline family, feature definition, hyperparameter, metric, seed, PASS criterion, or scientific meaning changed.
+
+## 2026-08-14 — Gate D formal baseline evidence
+
+Formal source commit: `6377d31eaa57f162df68c4c3f89c7b6cb7e0206c`. GitHub Actions run `31801340084` succeeded on Python 3.10, 3.11, and 3.12.
+
+Validation results:
+
+| Baseline | Accuracy | Macro-F1 | Forbidden ACT |
+|---|---:|---:|---:|
+| B0 majority | 0.3333 | 0.0833 | 0 |
+| B1 prior-sampled random | 0.2424 | 0.1662 | 1 |
+| B2 domain-only | 0.3030 | 0.1197 | 0 |
+| B3 simple lexical | 0.1212 | 0.1071 | 5 |
+| B4 strong classical | 0.3333 | 0.1562 | 0 |
+| B5 transparent heuristic | 0.1818 | **0.2145** | 0 |
+
+All required baseline implementations, candidate/private boundary checks, frozen benchmark hashes, failure-path tests, prediction coverage, valid-action coverage, metric recomputation, row-order invariance, and deterministic repeat checks passed. Controls produced domain-ablation macro-F1 `0.1602564103`, observation-shuffle `0.1336212807`, label-permutation `0.0939393939`, and token-shuffle `0.1216931217`.
+
+The full report and all six prediction files were byte-identical across the three Python versions. Canonical full report SHA-256: `af08e71950b28148a5f4d1a67a336d2ee8a43baf4ed7813600a54d6d25a80be9`.
+
+Strongest honest raw-context baseline is B5 with macro-F1 `0.21452991452991452`. This result is frozen for Gate-E comparison. B1's one forbidden ACT and B3's five forbidden ACT predictions are preserved as negative baseline evidence rather than hidden.
+
+Gate-D machine verdict: `GATE D — PASS`. Protocol-v2 evidence-weighted completion advances to **63%**.
+
+## 2026-08-14 — Gate D documentation-integrity incident preserved
+
+Freeze commit `3352fbe98da3f681cd34f81b6cf66a13b2b1cdd3` correctly added Gate-D evidence artifacts but over-compressed the pre-existing research documentation. A diff audit caught the excessive deletion before Gate D was closed. The corrective commit restored the Gate-C document bodies and limited edits to Gate-D additions/status changes. This is classified as a documentation/infrastructure integrity defect; no scientific evidence, benchmark, specification, oracle, score, or criterion changed.

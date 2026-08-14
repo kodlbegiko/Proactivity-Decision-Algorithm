@@ -2,19 +2,22 @@
 
 ## Supported now
 
-With Gate B and Gate C passed, current evidence supports narrowly scoped claims that:
+With Gates B, C, and D passed, current evidence supports narrowly scoped claims that:
 
 - the frozen `PDA-SPEC-v2` is deterministically executable over its bounded valid state space;
 - the Gate-C benchmark is reproducibly generated from generator-known state plus the frozen oracle;
 - the benchmark has the audited action/rule/prohibition coverage, candidate/private separation, structural diversity, leakage controls, group-aware split integrity, counterfactual integrity, and temporal integrity recorded in `gate_c/freeze_v2.json`;
-- future candidate evaluation can be structured to prevent direct runtime reuse of the oracle/private evidence via the Gate-C representation contract.
+- future candidate evaluation can be structured to prevent direct runtime reuse of the oracle/private evidence via the Gate-C representation contract;
+- Gate D provides a deterministic, leakage-controlled B0–B5 comparison suite and freezes `B5_transparent_heuristic` as the strongest honest raw-context validation baseline at macro-F1 `0.21452991452991452`.
+
+Gate-D PASS is an **integrity** result. It does not imply the baselines are safe, useful, or high-performing.
 
 ## Not supported yet
 
-Gate C does **not** establish:
+Current evidence does **not** establish:
 
 - candidate performance or superiority;
-- formal baseline performance/ranking;
+- candidate safety;
 - robustness or adversarial resilience;
 - OOD generalization;
 - independent protected-set performance;
@@ -36,7 +39,7 @@ Track A uses structured state and supports mechanistic diagnostics. Track B uses
 
 ## Protected-set boundary
 
-The Gate-C `protected_test` partition is deterministic and publicly regenerable. It is not independent Gate-F protected evidence. Protected-validation credit remains zero until an isolated confirmatory process executes.
+The Gate-C `protected_test` partition is deterministic and publicly regenerable. It is not independent Gate-F protected evidence. Protected-validation credit remains zero until an isolated confirmatory process executes after a Gate-E candidate freeze.
 
 ## Historical human validation
 
