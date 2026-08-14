@@ -1,0 +1,10 @@
+{
+  "dataset": "pilot_v0",
+  "formal_evaluation_allowed": false,
+  "role": ["schema_validation", "taxonomy_pilot", "annotation_pipeline", "regression_test"],
+  "reason": "structural template leakage",
+  "scenario_count": 24,
+  "unique_structural_fingerprints": 4,
+  "duplicate_member_rate": 1.0,
+  "status": "INFRASTRUCTURE_PILOT_ONLY"
+}
