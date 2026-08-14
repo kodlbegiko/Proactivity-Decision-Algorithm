@@ -6,6 +6,10 @@ Base commit: `b26aa39866e5cc7aa99ba97d71862f7550a447fe`
 Frozen upstream spec commit: `89e00052d68b2862269daf2adc8b31ebb1ae592c`  
 Frozen benchmark: `benchmark_v2`, generator `2.0.1`, seed `20260814`, 168 scenarios.
 
+## Amendment D-001 — dependency compatibility, before formal scoring
+
+The initial preregistration named `scikit-learn==1.8.0`. Before any formal Gate-D baseline score was computed, compatibility verification established that scikit-learn 1.8.x requires Python >=3.11 and therefore cannot satisfy the preregistered Python 3.10/3.11/3.12 CI matrix. The pin is replaced by `scikit-learn==1.7.1`, which supports Python >=3.10. This amendment changes no benchmark, label, feature definition, model family, hyperparameter, metric, seed, PASS criterion, or scientific meaning. No formal validation result existed when this amendment was committed.
+
 ## Scientific question
 
 Does Protocol v2 have a deterministic, reproducible, leakage-controlled set of comparison baselines suitable for later candidate evaluation? Gate D assesses **baseline integrity**, not whether baseline performance is high.
@@ -29,7 +33,7 @@ No PDA candidate tuning is allowed in Gate D.
 
 ## Dependency policy
 
-Use Python standard library plus pinned `scikit-learn==1.8.0` for B3/B4 and metric recomputation. CI must exercise Python 3.10, 3.11, and 3.12. If this exact version is unavailable on a supported Python version, that is an infrastructure issue requiring an explicit amendment before formal evaluation; thresholds are not changed.
+Use Python standard library plus pinned `scikit-learn==1.7.1` for B3/B4 and metric recomputation. CI must exercise Python 3.10, 3.11, and 3.12.
 
 ## Metrics
 
