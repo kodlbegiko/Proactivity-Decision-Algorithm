@@ -1,12 +1,14 @@
-# Benchmark v0 Preregistration Draft
+# Benchmark v0 Preregistration Draft — HISTORICAL PRE-v2
 
-Status: **DRAFT — NOT FROZEN**
+Status: **HISTORICAL DRAFT — NEVER FROZEN**
 
-## Unit of evaluation
+This file preserves the earliest benchmark-planning record. It is not the active Protocol-v2 benchmark preregistration and must not be used to claim current Gate progress.
+
+## Historical unit of evaluation
 
 A scenario-level proactive decision from standardized context to one of six actions.
 
-## Planned domains
+## Historical planned domains
 
 - calendar/deadlines
 - study/coursework
@@ -17,30 +19,31 @@ A scenario-level proactive decision from standardized context to one of six acti
 - file/document workflow
 - shopping/logistics
 
-## Required scenario families
+## Historical scenario-family ideas
 
 Critical intervention; useful non-critical; premature intervention; redundant intervention; distracting intervention; ambiguous context; unsafe autonomy; false urgency; delayed benefit; conflicting signals.
 
-## Split policy
+## Historical split concept
 
-- development: visible; used for taxonomy and pipeline iteration
-- validation: visible labels; used only after taxonomy stabilization
-- protected_test: labels hidden from candidate development; separately generated/annotated and frozen
-- optional adversarial and cross-domain sets
+The original draft contemplated development, visible validation, protected test, optional adversarial/cross-domain sets, and separately generated/annotated labels. It was never frozen.
 
-## Protected-set requirements
+## Protocol-v2 supersession
 
-Before any formal candidate run, record SHA-256, scenario count, generation method, raw/adjudicated label artifacts, freeze commit, and metric implementation version/hash.
+Protocol v2 uses explicit generator-known structured state + frozen specification + deterministic oracle as the primary expected-decision source. Human annotation is not required for the primary gate sequence. No protected set exists yet.
 
-## Leakage audit requirements
+Formal Protocol-v2 benchmark design belongs to **Gate C — Oracle and Benchmark Validity** and must be frozen there before Gate-D baselines. Do not transfer old label/adjudication assumptions into v2 merely because they appear in this historical draft.
 
-- keyword/label correlation
-- template-ID shortcuts
-- scenario ordering
-- metadata/filename leakage
-- duplicated structures
-- shuffled-feature control
+## Historical leakage concerns retained
 
-## Gate condition
+The following ideas remain relevant as general benchmark controls, but their exact Protocol-v2 definitions must be frozen at Gate C:
 
-This benchmark cannot be frozen until independent annotation agreement meets the preregistered thresholds or the protocol is revised and re-piloted.
+- keyword/state/action shortcuts;
+- template/generator-family shortcuts;
+- scenario ordering;
+- metadata/filename/identifier leakage;
+- duplicated or trivially repeated structures;
+- shuffled/corrupted controls where scientifically meaningful.
+
+## Historical gate condition
+
+The old draft required independent annotation agreement unless the protocol was revised and re-piloted. The protocol has now been explicitly revised as Protocol v2. That does not retroactively make this v0 draft a passed benchmark.
