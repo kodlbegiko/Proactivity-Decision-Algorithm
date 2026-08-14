@@ -38,16 +38,23 @@ jobs:
           PYTHONPATH=src python scripts/validate_development_v2.py
       - name: Exhaustively validate Protocol-v2 Gate B
         run: |
-          set +e
           PYTHONPATH=src python scripts/audit_spec_v2.py --output /tmp/gate_b_v2.json
-          audit_status=$?
-          set -e
-          echo "audit_exit_code=${audit_status}"
-          cat /tmp/gate_b_v2.json
-          test ${audit_status} -eq 0
-          grep -q '"raw_state_combinations": 62208' /tmp/gate_b_v2.json
-          grep -q '"valid_state_combinations": 41472' /tmp/gate_b_v2.json
-          grep -q '"gate_verdict": "GATE B — PASS"' /tmp/gate_b_v2.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('/tmp/gate_b_v2.json').read_text())
+          assert report['raw_state_combinations'] == 62208
+          assert report['valid_state_combinations'] == 41472
+          assert report['gate_verdict'] == 'GATE B — PASS'
+          assert report['coverage']['conflicts'] == 0
+          assert report['coverage']['fallback_count'] == 0
+          assert report['coverage']['unreachable_matching_rules'] == []
+          assert report['determinism']['pass'] is True
+          assert report['invariants']['pass'] is True
+          assert report['counterfactual']['pass'] is True
+          assert report['temporal']['pass'] is True
+          assert report['traceability']['pass'] is True
+          PY
           test "$(PYTHONPATH=src python scripts/decide_gate_b_v2.py --evidence /tmp/gate_b_v2.json)" = "GATE B — PASS"
       - name: Run complete regression and failure-path suite
         run: python -m pytest -q
