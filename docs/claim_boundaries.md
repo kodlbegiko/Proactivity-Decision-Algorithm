@@ -2,18 +2,45 @@
 
 ## Supported now
 
-Current evidence supports narrowly scoped claims that the frozen `PDA-SPEC-v2` is deterministically executable over its bounded valid state space; the Gate-C synthetic benchmark is reproducibly oracle-derived with audited coverage/leakage/split/relational controls; and Gate D provides a deterministic, leakage-controlled comparison-baseline suite with a frozen strongest honest raw-context baseline of macro-F1 `0.21452991452991452`.
+With Gates B, C, and D passed, current evidence supports narrowly scoped claims that:
 
-Agreement with the oracle means compliance with a research specification, not universal desirability. Gate-D PASS means baseline integrity, not that any baseline is safe, useful, or strong.
+- the frozen `PDA-SPEC-v2` is deterministically executable over its bounded valid state space;
+- the Gate-C benchmark is reproducibly generated from generator-known state plus the frozen oracle;
+- the benchmark has the audited action/rule/prohibition coverage, candidate/private separation, structural diversity, leakage controls, group-aware split integrity, counterfactual integrity, and temporal integrity recorded in `gate_c/freeze_v2.json`;
+- future candidate evaluation can be structured to prevent direct runtime reuse of the oracle/private evidence via the Gate-C representation contract;
+- Gate D provides a deterministic, leakage-controlled B0–B5 comparison suite and freezes `B5_transparent_heuristic` as the strongest honest raw-context validation baseline at macro-F1 `0.21452991452991452`.
+
+Gate-D PASS is an **integrity** result. It does not imply the baselines are safe, useful, or high-performing.
 
 ## Not supported yet
 
-The evidence does **not** yet establish candidate superiority, candidate safety, protected/OOD generalization, robustness/adversarial resilience, real-world contextual understanding, ecological validity beyond the modeled synthetic conditions, human preference alignment, universal correctness, user satisfaction/trust/comfort, psychological validity, social acceptability, production readiness, SOTA status, or general assistant superiority.
+Current evidence does **not** establish:
 
-## Track and protected-set boundary
+- candidate performance or superiority;
+- candidate safety;
+- robustness or adversarial resilience;
+- OOD generalization;
+- independent protected-set performance;
+- human preference alignment;
+- that the oracle represents what users generally want;
+- universal/objective correctness of the six intervention modes;
+- user satisfaction, trust, comfort, psychological validity, or social acceptability;
+- ecological validity beyond the modeled/synthetic conditions;
+- general personal-assistant quality;
+- human consensus or annotation reliability.
 
-The structured-state track is mechanistic/diagnostic. The raw observation track uses deterministic synthetic semantic observations. The Gate-C `protected_test` partition is publicly regenerable and does not count as independent Gate-F protected evidence. Gate F must use a new chronological/process-isolated confirmatory set generated only after the Gate-E candidate is frozen.
+## Oracle interpretation
 
-## Historical human-validation boundary
+The deterministic oracle is the executable reference implementation of a **research policy**. Agreement means specification compliance, not universal desirability.
 
-Protocol v1 human-annotation infrastructure remains historical/optional external-validity infrastructure. Protocol v1 itself remains blocked by independent annotation and is not retroactively passed by Protocol v2.
+## Track-specific boundary
+
+Track A uses structured state and supports mechanistic diagnostics. Track B uses deterministic synthetic semantic observations and supports benchmark evaluation under that generated representation. Track B must not be described as evidence of unrestricted natural-language understanding or real-world contextual proactivity.
+
+## Protected-set boundary
+
+The Gate-C `protected_test` partition is deterministic and publicly regenerable. It is not independent Gate-F protected evidence. Protected-validation credit remains zero until an isolated confirmatory process executes after a Gate-E candidate freeze.
+
+## Historical human validation
+
+Protocol-v1 human-annotation infrastructure remains historical/optional external-validity infrastructure. Protocol v1 itself remains blocked by independent annotation and is not retroactively passed.

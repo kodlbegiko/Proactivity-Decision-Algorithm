@@ -24,7 +24,7 @@
   "hidden_gold_hardcoding_findings":0,
   "failure_path_tests":"PASS",
   "amendments":[{"id":"D-001","type":"infrastructure compatibility","change":"scikit-learn pin 1.8.0 -> 1.7.1 before formal scoring","scientific_criteria_changed":false,"formal_results_seen_before_change":false}],
-  "preserved_negative_results":["B1 produced 1 forbidden ACT on validation.","B3 produced 5 forbidden ACT predictions on validation.","No weak-baseline safety failure was reclassified as candidate evidence."],
+  "preserved_failures":[{"classification":"DOCUMENTATION/INFRASTRUCTURE FAILURE","commit":"3352fbe98da3f681cd34f81b6cf66a13b2b1cdd3","finding":"Gate-D freeze documentation over-compressed pre-existing Gate-C research history.","scientific_meaning_changed":false,"benchmark_spec_oracle_changed":false,"previous_scientific_evidence_valid":true},{"classification":"BASELINE NEGATIVE RESULT","finding":"B1 produced one forbidden ACT on validation."},{"classification":"BASELINE NEGATIVE RESULT","finding":"B3 produced five forbidden ACT predictions on validation."}],
   "evidence_weighted_completion_after_gate_d":63,
   "next_gate":"Gate E — PDA Candidate Evidence",
   "merge":false,
