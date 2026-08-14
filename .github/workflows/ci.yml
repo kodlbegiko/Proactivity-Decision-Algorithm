@@ -76,7 +76,7 @@ jobs:
           PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir data/benchmark_v2
       - name: Audit Gate-C provenance diversity leakage relations and splits
         run: |
-          PYTHONPATH=src python scripts/audit_gate_c.py --output reports/gate_c_report.json
+          PYTHONPATH=src python scripts/run_gate_c_audit.py --output reports/gate_c_report.json
           python - <<'PY'
           import json
           from pathlib import Path
