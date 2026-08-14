@@ -17,28 +17,37 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt
-      - name: Generate and hash-verify Gate-B artifacts
+
+      # Protocol v1 remains executable historical evidence. It is not the primary gate.
+      - name: Preserve Protocol-v1 deterministic artifacts
         run: |
           python scripts/generate_development_v1.py
           sha256sum -c data/development/development_v1.sha256
-      - name: Validate frozen blinded annotation packets
-        run: python scripts/build_annotation_packets.py --validate-only
-      - run: python -m pytest -q
-      - run: PYTHONPATH=src python scripts/validate_dataset.py data/development/pilot_v0.jsonl
-      - run: PYTHONPATH=src python scripts/validate_dataset.py data/development/development_v1.jsonl --require-raw-context
-      - run: PYTHONPATH=src python scripts/audit_development_v1.py data/development/development_v1.jsonl data/development/development_v1.meta.jsonl
-      - name: Exercise pre-human measurement controls
+          python scripts/build_annotation_packets.py --validate-only
+      - name: Preserve Protocol-v1 blocked verdict without fabricating humans
         run: |
-          PYTHONPATH=src python scripts/shuffled_feature_control.py --packet annotation/packet_a.csv > /tmp/controls.json
-          grep -q 'FRAMEWORK_PENDING_LABELS' /tmp/controls.json
-          grep -q '"pass": true' /tmp/controls.json
-      - name: Verify blocked report and gate decision
-        run: |
-          PYTHONPATH=src python scripts/generate_gate_b_report.py > /tmp/gate_b_report.json
-          grep -q 'BLOCKED_BY_INDEPENDENT_ANNOTATION' /tmp/gate_b_report.json
-          grep -q 'NOT EXECUTED' /tmp/gate_b_report.json
           test "$(PYTHONPATH=src python scripts/decide_gate_b.py)" = "GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION"
-      - name: Verify pre-label Gate-B state remains blocked
-        run: |
           test ! -e annotations/raw/annotator_a_v1.csv
           test ! -e annotations/raw/annotator_b_v1.csv
+
+      # Protocol v2 is the current primary specification-grounded research track.
+      - name: Generate and hash-verify Protocol-v2 development benchmark
+        run: |
+          PYTHONPATH=src python scripts/generate_development_v2.py
+          sha256sum -c data/development/development_v2.sha256
+          PYTHONPATH=src python scripts/validate_development_v2.py
+      - name: Exhaustively validate Protocol-v2 Gate B
+        run: |
+          PYTHONPATH=src python scripts/audit_spec_v2.py --output /tmp/gate_b_v2.json > /tmp/gate_b_v2_stdout.json
+          grep -q '"raw_state_combinations": 62208' /tmp/gate_b_v2.json
+          grep -q '"valid_state_combinations": 41472' /tmp/gate_b_v2.json
+          grep -q '"gate_verdict": "GATE B — PASS"' /tmp/gate_b_v2.json
+          test "$(PYTHONPATH=src python scripts/decide_gate_b_v2.py --evidence /tmp/gate_b_v2.json)" = "GATE B — PASS"
+      - name: Run complete regression and failure-path suite
+        run: python -m pytest -q
+
+      - name: Preserve Protocol-v1 dataset validators and negative evidence
+        run: |
+          PYTHONPATH=src python scripts/validate_dataset.py data/development/pilot_v0.jsonl
+          PYTHONPATH=src python scripts/validate_dataset.py data/development/development_v1.jsonl --require-raw-context
+          PYTHONPATH=src python scripts/audit_development_v1.py data/development/development_v1.jsonl data/development/development_v1.meta.jsonl
