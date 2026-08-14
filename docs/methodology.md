@@ -1,70 +1,130 @@
-# Methodology v1 — Gate B Measurement Design
+# Methodology v2 — Specification-Grounded Intervention Control
 
 ## Research design
 
-This repository studies **intervention control**, not general agent task completion. Candidate development remains forbidden until Gate B is supported.
+Protocol v2 studies **specification compliance for intervention control**, not general assistant task completion and not human-preference prediction.
 
-## Two input tracks
+The primary validity path is:
 
-### Raw-context track — primary validity track
+```text
+explicit structured state
+-> frozen versioned specification
+-> deterministic reference oracle
+-> intervention-control action + trace
+-> machine-verifiable evidence
+```
 
-Policy-visible input is restricted to observable text/state facts: current activity, event summary, observable facts, recent history, permission evidence, time context, source kind, timestamp/domain, and candidate actions. It excludes researcher-derived scalar judgments such as `importance`, `urgency`, `expected_delay_cost`, `interruptibility`, and `action_risk`.
+Candidate development is forbidden until the current gate sequence authorizes it.
 
-### Structured-state track — mechanistic control only
+## Structured-state primary track
 
-The original normalized scalar state is retained for controlled ablation/mechanistic analysis. It must not be presented as the only evidence of general intervention reasoning.
+The formal state is finite and machine validated. Protocol v2 currently represents:
 
-## Development v1
+- permission: `not_required | missing | granted`;
+- information: `sufficient | insufficient | contradictory`;
+- urgency: `none | normal | high | expired`;
+- intervention need: `none | optional | material`;
+- side-effect scope: `none | local | external`;
+- risk: `low | medium | high`;
+- reversibility: `reversible | irreversible`;
+- deferral availability;
+- execution possibility;
+- clarification possibility;
+- acknowledgement;
+- completion.
 
-`development_v1.jsonl` contains 144 deterministic synthetic-but-realistic scenarios, 24 in each of six domains: study, work, scheduling, communication, device, and travel.
+Invalid cross-field combinations fail closed. The current spec treats external side effects as requiring an explicit permission scope, while a no-side-effect state must use `not_required` permission semantics.
 
-It includes 72 independent scenarios, 24 counterfactual pairs / 48 pair members, and 6 temporal mini-sequences / 24 sequence members. Pair/sequence design metadata is stored separately and is not policy-visible or annotator-visible.
+## Action semantics
 
-## Dataset roles
+The six actions are discrete control modes:
 
-- `pilot_v0.jsonl`: infrastructure-only; prohibited for formal policy ranking because it failed structural template leakage.
-- `development_v1.jsonl`: Gate-B development candidate; formal baseline development remains blocked until independent annotation and full label-dependent leakage checks pass.
-- protected set: not created yet.
+- `IGNORE`: no current intervention and no explicit deferred trigger is required.
+- `WAIT`: do not intervene now; retain a defined future trigger/observation.
+- `SUGGEST`: low-pressure optional recommendation without a material side effect.
+- `NOTIFY`: surface material information/change/deadline/risk for awareness.
+- `ASK`: request missing information, choice, confirmation, or authorization.
+- `ACT`: perform an authorized material action only when required information, permission, risk, reversibility, and execution conditions are satisfied.
 
-## Ground truth
+No universal scalar ordering is assumed. Legacy Protocol-v1 intensity helpers remain diagnostic/historical only.
 
-Scenario generation and annotation are separated. Dataset records contain no gold/preferred action. Independent humans supply preferred action, acceptable-action set, confidence, ambiguity, reason code, and criticality.
+## Formal specification and oracle
 
-## First-pass evidence handling
+`spec/proactivity_policy_v2.json` is the transparent machine-readable research policy. It contains the finite schema, invalid-state conditions, hard prohibitions, explicit selection-rule priorities, action semantics, and named invariants.
 
-Completed annotation files are validated against the frozen packet before analysis. Validation requires the complete 144-scenario set, legal annotation fields, and byte-equivalent source fields (`scenario_id`, domain, timestamp, scenario context). Source mutation or duplicate/missing scenarios fail closed.
+`src/proactivity/specification/` implements the deterministic reference oracle and validators. The oracle:
 
-Validated first-pass files can then be copied into an immutable raw archive. The archival workflow refuses overwrite, records SHA-256 in `annotations/raw/SHA256SUMS`, and writes a manifest without annotator identity. Adjudication must occur only after first-pass evidence is preserved and initial agreement is computed.
+- has no network or LLM dependency;
+- reads only the formal `state` for its normative decision;
+- rejects invalid states;
+- derives prohibited actions separately from the selection rules;
+- fails closed on an equal-priority action conflict;
+- rejects a selected action if it is simultaneously prohibited;
+- returns matched-rule, prohibition, eligible-action, spec-version, and spec-hash trace fields.
 
-## Reliability workflow
+Scenario IDs, pair IDs, sequence IDs, domain names, file order, annotator fields, and hidden expected-action metadata are not oracle inputs.
 
-**IMPLEMENTED / PIPELINE TESTABLE / HUMAN EXECUTION PENDING:**
+## Gate B — Formal Specification Validity
 
-- preferred-action raw agreement and Cohen's kappa;
-- degenerate-kappa warning for constant-class collapse;
-- six-class confusion matrix and per-class agreement;
-- acceptable-action Jaccard and mutual acceptability as secondary evidence;
-- ambiguity and confidence distributions;
-- domain-specific reliability;
-- explicit `IGNORE vs WAIT` and `ASK vs ACT` core-class diagnostics;
-- disagreement categories using human reason codes;
-- counterfactual transition consistency without hidden expected labels;
-- temporal-sequence consistency without forcing monotonic escalation.
+Gate B evaluates the specification itself, not PDA candidate performance.
 
-Primary thresholds remain raw agreement >= 0.80 and Cohen's kappa >= 0.60. There is no invented numeric threshold for core-class collapse; core distinctions are reported descriptively unless a threshold is frozen before results.
+Required checks include:
 
-## Leakage and control workflow
+1. exact schema validity and invalid-combination rejection;
+2. exhaustive bounded-state enumeration;
+3. deterministic repeated oracle output;
+4. equal-priority conflict detection and precedence-cycle checking;
+5. zero valid-state fallthrough;
+6. rule reachability diagnostics;
+7. complete decision traces;
+8. ACT permission/information/risk/reversibility/execution invariants;
+9. completed-state non-intervention invariant;
+10. counterfactual permission/risk/information degradation tests;
+11. explicit temporal transition tests without assuming monotonic escalation;
+12. metadata/domain/row-order independence;
+13. CI across Python 3.10, 3.11, and 3.12.
 
-Pre-annotation checks include exact duplicates, normalized structural duplicates, unrelated near duplicates, metadata/ID leakage, ordering/domain concentration, and design-family lexical diagnostics.
+Hard specification and safety invariants use fail-closed / zero-tolerance criteria at Gate B.
 
-Post-label lexical and metadata analyses are implemented behind an explicit validated-human-label guard. Without such evidence they report `NOT_EXECUTED_NO_INDEPENDENT_LABELS`.
+## Protocol-v2 development generator
 
-Measurement controls include row-order invariance after labels exist and pre-human pipeline checks for raw-context scalar removal, hidden-metadata separation, and deterministic context corruption. These controls test measurement infrastructure; they are not candidate-performance results.
+`scripts/generate_development_v2.py` deterministically samples explicit valid states and adds canonical reachability states so all six action modes are exercised. Each `oracle_action` and selected rule is recomputed by the frozen oracle. A separate handwritten gold-label table does not exist.
+
+The v2 development artifact is Gate-B transport/reachability infrastructure only. Formal benchmark validity belongs to Gate C.
+
+## Counterfactual and temporal methodology
+
+Counterfactual expectations are derived from the frozen specification before candidate evaluation. Current Gate-B checks start from oracle-eligible ACT states and verify that removing required permission, increasing risk, or degrading information disables autonomous action.
+
+Temporal checks are explicit predicate/rule checks rather than a global scalar escalation assumption. The reference Gate-B sequence exercises defer, urgent notification, acknowledgement/defer, and completion/silence behavior.
+
+## Raw-context secondary track
+
+Protocol v1 made raw-context input the primary validity path. Protocol v2 changes this: natural-language context is secondary and may later test state extraction, paraphrase robustness, or adversarial rendering.
+
+If text is deterministically rendered from a structured state, the generator-known state remains the source of truth. The reference oracle must not infer normative labels from prose.
+
+## Dataset migration
+
+The 144 `development_v1` scenarios are preserved but are not assigned Protocol-v2 gold decisions by after-the-fact prose interpretation. The migration audit records all 144 as ambiguous with respect to the complete new semantic state. Their design concepts and infrastructure remain reusable.
+
+## Historical human-validation track
+
+Protocol-v1 annotation packets, completed-return validation, immutable archive tooling, agreement/kappa analysis, and negative evidence are preserved. A future human study may test external validity or preference alignment, but it is optional and does not block the primary Protocol-v2 gate sequence.
 
 ## Evaluation principle
 
-Metric denominators remain explicitly defined in `docs/metric_definitions.md`. Unsafe-autonomy rate conditions on predicted autonomous actions. The existing single-axis escalation order is retained only as a diagnostic convenience; pairwise interpretation is primary where permission and intervention intensity are not a clean single ordering.
+Oracle correctness means correctness **with respect to the frozen research specification**. It does not imply that the specification is universally desirable or human-preferred. Later candidate metrics must keep this claim boundary explicit and use denominators defined in `docs/metric_definitions.md`.
 
 ## Gate order
 
-Until all independent-human reliability and post-label leakage requirements pass, Gate B remains `BLOCKED_BY_INDEPENDENT_ANNOTATION`. No formal Gate C baseline leaderboard, candidate tuning, protected evaluation, merge, or release is authorized by this pre-human infrastructure work.
+Gate A: scope / claim boundary / prior art.  
+Gate B: formal specification validity.  
+Gate C: oracle and benchmark validity.  
+Gate D: baseline integrity.  
+Gate E: candidate evidence.  
+Gate F: protected/OOD validation.  
+Gate G: robustness/adversarial/invariant stress testing.  
+Gate H: ablation/reproducibility/independent reproduction/final claim audit.
+
+This migration mission stops before Gate C even if Gate B passes.
