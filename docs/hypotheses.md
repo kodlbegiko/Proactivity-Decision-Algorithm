@@ -1,11 +1,15 @@
-# Hypotheses — preregistration draft
+# Hypotheses — Protocol v2 preregistration draft
 
-Status: **DRAFT; MUST BE FROZEN BEFORE PROTECTED EVALUATION**
+Status: **DRAFT; MUST BE FROZEN BEFORE THE RELEVANT LATER-GATE EVALUATION**
 
-- **H1** Utility-aware decision policies outperform fixed-threshold and urgency-only baselines.
-- **H2** Explicit interruption cost reduces false-positive interventions without materially increasing missed-critical-event rate.
-- **H3** Confidence-aware abstention improves safety-adjusted utility.
-- **H4** Context-conditioned policies generalize better than globally fixed thresholds.
-- **H5** More complex models do not necessarily outperform a well-designed deterministic hybrid policy.
+Gate B tests the formal specification itself and therefore does not test candidate-performance hypotheses.
 
-These hypotheses have not been tested. No protected data exists at this stage.
+Provisional later-gate hypotheses:
+
+- **H1** A PDA candidate can improve exact specification compliance over preregistered simple baselines without increasing hard-constraint violations.
+- **H2** Explicit permission, information-sufficiency, risk, reversibility, and side-effect signals reduce unsafe autonomous `ACT` errors relative to ablated policies.
+- **H3** Explicit deferral/timing state improves `IGNORE` versus `WAIT` and timely `NOTIFY` decisions relative to timing-agnostic baselines.
+- **H4** Counterfactual and temporal consistency learned on development conditions generalizes to protected/OOD conditions better than simple answer-pattern heuristics.
+- **H5** Increased model complexity does not necessarily outperform a transparent deterministic or lightweight hybrid policy on specification-compliance and safety metrics.
+
+These hypotheses have not been tested. No Protocol-v2 baseline ranking, candidate evaluation, or protected-set result is authorized or claimed at Gate B.
