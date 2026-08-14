@@ -2,7 +2,7 @@
 
 ## Historical Protocol v1
 
-Protocol v1 remains preserved as historical evidence. Its last scientific state was:
+Protocol v1 remains preserved as historical negative evidence:
 
 - Gate A: `PASS (narrowed)`;
 - Gate B: `BLOCKED_BY_INDEPENDENT_ANNOTATION`;
@@ -10,139 +10,132 @@ Protocol v1 remains preserved as historical evidence. Its last scientific state 
 - genuinely independent human annotation: **NOT EXECUTED**;
 - raw agreement / Cohen's kappa / human-label-dependent leakage checks: **NOT EXECUTED**.
 
-Protocol v2 does not retroactively convert those missing results into passes. The project changed its primary research question and ground-truth definition.
+Protocol v2 does not retroactively convert those missing results into passes.
 
-## Protocol v2 primary track
+## Protocol v2
 
-### Gate A — Scope / claim boundary / prior-art positioning: PASS (narrowed)
+### Gate A — Scope / claim boundary / prior art: PASS (narrowed)
 
-The primary research target is now **specification-grounded intervention control**. The frozen specification is a research policy, not universal human truth. Protocol v2 may evaluate specification compliance, permission-sensitive autonomy, constraint satisfaction, traceability, counterfactual/temporal consistency, and later robustness/OOD behavior. It must not claim human-preference alignment, user satisfaction, universal correctness, or ecological validity beyond the modeled conditions.
-
-The novelty verdict remains **PARTIAL NOVELTY ONLY**. Constrained policies, shielding/action filtering, proactive intervention timing, ask/act trade-offs, and permission/capability separation all have prior art. Any later contribution must therefore be supported at the integrated formulation/evaluation/evidence level rather than by terminology alone.
+The primary target is specification-grounded intervention control. Novelty remains `PARTIAL NOVELTY ONLY`. Human preference alignment, universal correctness, user satisfaction, and unsupported ecological-validity claims remain outside the current evidence boundary.
 
 ### Gate B — Formal Specification Validity: PASS
 
-Machine-generated verdict:
+Frozen upstream:
+
+- branch `research/proactivity-specification-v2`;
+- commit `89e00052d68b2862269daf2adc8b31ebb1ae592c`;
+- policy `PDA-SPEC-v2`;
+- schema `2.0.0`;
+- spec SHA-256 `ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4`;
+- oracle source SHA-256 `11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f`.
+
+Gate-B bounded-state evidence remains 62,208 raw combinations, 41,472 valid states, zero nondeterministic outputs, zero final-action conflicts, zero unexplained fallback selections, complete traces, zero mandatory-invariant violations, zero metadata/domain invariance violations, 140 counterfactual cases with zero violations, and the reference temporal transition `WAIT -> NOTIFY -> WAIT -> IGNORE` with zero violations.
+
+Historical Gate-B CI incidents remain preserved: run `31788612273` exposed a workflow assertion problem; run `31788931319` showed the formal Gate-B PASS but failed on Unicode text matching. The typed assertion repair did not weaken any Gate-B rule or criterion. Final Gate-B run `31788997247` was green on Python 3.10/3.11/3.12.
+
+### Gate C — Oracle and Benchmark Validity: PASS
+
+Machine verdict:
 
 ```text
-GATE B — PASS
-READY FOR GATE C
-DO NOT START GATE C
+GATE C — PASS
+READY FOR GATE D
+DO NOT START GATE D
 ```
 
-#### Frozen specification
+Gate-C branch/PR:
 
-- policy: `PDA-SPEC-v2`;
-- schema version: `2.0.0`;
-- specification SHA-256: `ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4`;
-- six discrete intervention-control modes: `IGNORE`, `WAIT`, `SUGGEST`, `NOTIFY`, `ASK`, `ACT`;
-- no universal scalar ordering is assumed;
-- invalid states fail closed rather than being coerced to one of the six actions.
+- branch `research/proactivity-benchmark-v2`;
+- Draft PR #8, stacked on `research/proactivity-specification-v2`;
+- Gate-B normative artifacts unchanged throughout Gate C.
 
-#### Exhaustive bounded-state evidence
+Final benchmark freeze:
 
-- raw Cartesian combinations: **62,208**;
-- valid states: **41,472**;
-- invalid states rejected: **20,736**;
-- deterministic states tested: **41,472**;
-- nondeterministic outputs: **0**;
-- equal-priority/final-action conflicts: **0**;
-- unexplained fallback selections: **0**;
-- unreachable matching selection rules: **0**;
-- trace-missing valid decisions: **0**;
-- mandatory invariant violations: **0**;
-- metadata/domain invariance violations: **0**.
+- version `benchmark_v2`;
+- generator `2.0.1`;
+- seed `20260814`;
+- scenarios / unique IDs: **168 / 168**;
+- action counts: ACT 16, ASK 50, IGNORE 15, NOTIFY 38, SUGGEST 16, WAIT 33;
+- splits: development 91, validation 33, deterministic public holdout 44;
+- candidate hash `7e9826fe4f0b59aa92556048bf45abc44e525644dc27fca3425c140350b1e587`;
+- private hash `9d15c5a2f4454f049c7f60ee26f7247efc583b718c115e59293a8c95c3985ae8`;
+- relations hash `8cf4d939378185accb4b5506620c626fa83d566114140ba692ffd085dbc8bd66`;
+- splits hash `9b9ffdfad6ca0561d2142723053c3582a748e5fefc60b37e5e82762dd1544a27`;
+- structured hash `a1533cd6289fd8a97b2c92c26d3f78172c32ebf4203cb47e0f9ccdad7e7f149e`.
 
-Action distribution is diagnostic only and was not optimized for balance:
+Ground-truth / circularity evidence:
 
-| Action | Exhaustive valid-state count |
-|---|---:|
-| IGNORE | 24,192 |
-| WAIT | 7,518 |
-| SUGGEST | 2,076 |
-| NOTIFY | 1,938 |
-| ASK | 5,688 |
-| ACT | 60 |
+- 168/168 records oracle-derived;
+- manual gold findings: 0;
+- LLM gold findings: 0;
+- oracle mismatches: 0;
+- candidate/private forbidden-field overlap: 0;
+- candidate direct answer-token findings: 0;
+- future candidate forbidden-import/private-path guard implemented and tested.
 
-#### Structural relation tests
+Diversity / leakage evidence:
 
-- counterfactual cases: **140**;
-- counterfactual violations: **0**;
-- temporal reference sequence: `WAIT -> NOTIFY -> WAIT -> IGNORE`;
-- temporal violations: **0**;
-- ACT constraints cover information sufficiency, permission scope, low risk, reversibility, execution possibility, material need, and completion state;
-- scenario/domain identifiers and row ordering are not normative oracle inputs.
+- exact candidate duplicates: 0;
+- structural/source-state duplicate members: 0;
+- template distribution: `41 / 38 / 39 / 50`;
+- largest template share: **29.76%**, below preregistered 34%;
+- domain distribution: communication 30, device 20, scheduling 30, study 28, travel 22, work 38;
+- forbidden metadata findings: 0;
+- high-purity forbidden lexical answer leaks: 0;
+- split-family leakage: 0.
 
-#### Protocol-v2 development transport artifact
+Coverage / relation evidence:
 
-- deterministic generated rows: **300**;
-- unique IDs: **300**;
-- all six actions represented;
-- dataset SHA-256: `cab5f6428302b8106435b08e05550371a9977d7f438a761dfa0d16d76b22f4a5`;
-- every expected action is recomputed from the frozen state + frozen specification; there is no separate hand-written gold-label table.
+- all six actions meet the preregistered minimum;
+- every reachable selected non-fallback rule meets the preregistered minimum;
+- all eight hard prohibitions meet trigger coverage and each has one action-changing counterfactual pair;
+- generic counterfactual families: 8, violations 0;
+- prohibition counterfactual families: 8, violations 0;
+- temporal sequences: 8, violations 0;
+- hard-prohibition safety violations: 0.
 
-This artifact proves deterministic transport/reachability infrastructure at Gate B. It does **not** by itself establish Gate-C benchmark validity.
+Reproducibility / CI:
 
-#### Dataset migration audit
+- benchmark regenerated repeatedly with byte-identical hashes;
+- final source commit before status documentation: `6653424a3e90b4b67c792bc9e0a15762d3d6966e`;
+- GitHub Actions run `31791713759`: SUCCESS on Python 3.10, 3.11, 3.12;
+- complete pytest suite: **73 passed per matrix job**;
+- evidence artifacts uploaded for all three Python versions.
 
-The historical `development_v1` set was not silently relabeled. Classification of its 144 scenarios under the complete Protocol-v2 semantic state:
+#### Preserved Gate-C incidents
 
-- A — directly reusable as v2 formal evidence: **0**;
-- B — demonstrably recoverable by deterministic complete-state migration: **0**;
-- C — incomplete/ambiguous under the full v2 state and therefore not assigned v2 gold: **144**;
-- D — intrinsically incompatible: **0 demonstrated**.
+1. **Scientific generator failure — run `31791152951`.** Initial three-template distribution `65/45/58` produced a 38.69% largest-family share, violating the preregistered 34% maximum. This was recorded as `TEMPLATE_DOMINANCE`. Remediation added a fourth non-normative paraphrase family. The normative spec, oracle, gold actions, and threshold were unchanged.
+2. **Infrastructure failure — run `31791651373`.** Gate-C audit wrapper raised `ModuleNotFoundError: scripts` after benchmark regeneration. The wrapper path was repaired without changing the benchmark criterion, specification, oracle, or labels.
 
-The v1 scenarios and their negative evidence remain preserved for historical/secondary use.
+### Protected-test limitation
 
-#### CI / test evidence
-
-Final validation run: **GitHub Actions `31788997247` — SUCCESS**.
-
-- Python 3.10: SUCCESS;
-- Python 3.11: SUCCESS;
-- Python 3.12: SUCCESS;
-- full pytest suite: **40 passed** on the inspected 3.10 matrix job;
-- Protocol-v1 generation, frozen SHA verification, packet validation, blocked historical verdict, and dataset validators remain green in the same workflow;
-- no human annotation files were fabricated or introduced.
-
-#### Preserved Protocol-v2 CI incidents
-
-1. Run `31788612273` failed at the Gate-B workflow assertion after v1 checks and v2 benchmark hash/row validation had passed. The later diagnostic run established that the formal audit itself returned `GATE B — PASS`; the failure was a fragile shell text assertion.
-2. Run `31788931319` surfaced the complete Gate-B JSON: the verdict was `GATE B — PASS`, but a `grep` expected a literal Unicode em dash while JSON serialized it as `\u2014`. The workflow was repaired by parsing JSON and asserting typed fields. No specification rule, threshold, invariant, state count, or Gate criterion was weakened to obtain the final green run.
-
-## Gate C — Oracle and Benchmark Validity
-
-**NOT EXECUTED — BLOCKED BY GATE ORDER / EXPLICIT TASK BOUNDARY.**
-
-Gate B PASS authorizes the next research task but this mission stops before Gate C. No formal benchmark-validity claim, baseline ranking, candidate tuning, protected-set evaluation, or candidate-performance result has been executed.
+The Gate-C `protected_test` split is deterministic and publicly regenerable. It validates grouping/freeze mechanics only and does **not** count as Gate-F independent protected-validation evidence.
 
 ## Gates D–H
 
 **NOT EXECUTED.**
 
-No baseline integrity result, PDA candidate result, protected/OOD result, robustness claim, ablation claim, independent reproduction result, merge, or release has been executed.
+No formal baseline ranking, PDA candidate result, protected/OOD result, robustness claim, ablation result, independent reproduction result, merge, or release was executed in Gate C.
 
 ## Protocol-v2 evidence-weighted completion
-
-Weights are frozen for this Protocol-v2 status report before later candidate results exist:
 
 | Evidence area | Weight | Supported now |
 |---|---:|---:|
 | Research scope / claim definition | 10% | 10% |
 | Formal specification validity | 20% | 20% |
-| Oracle / benchmark validity | 15% | 0% |
+| Oracle / benchmark validity | 15% | 15% |
 | Baseline integrity | 15% | 0% |
 | Candidate evidence | 15% | 0% |
 | Protected validation | 10% | 0% |
 | Robustness | 5% | 0% |
 | Ablation | 5% | 0% |
 | Reproducibility / independent reproduction | 5% | 3% |
-| **Total** | **100%** | **33%** |
+| **Total** | **100%** | **48%** |
 
-The 3/5 reproducibility credit reflects deterministic generators, frozen SHA manifests, and successful Python 3.10/3.11/3.12 CI. The remaining 2/5 is withheld because an independent clean-environment reproduction/audit has not been performed. Gate-C infrastructure volume receives no scientific completion credit before Gate C actually executes.
+The remaining 2/5 reproducibility credit is withheld because independent clean-environment reproduction/audit has not been performed.
 
 ## Exact next scientifically valid action
 
-Run **Gate C — Oracle and Benchmark Validity** as a separate mission. It should validate that the oracle-derived benchmark is non-circular, structurally diverse, leakage-resistant, domain-balanced only where scientifically justified, counterfactually/temporally well-formed, and suitable for freezing before any formal baseline or PDA candidate comparison.
+`Gate D — Baseline Integrity`
 
-Do not begin baseline ranking or candidate optimization until Gate C passes.
+**Do not execute Gate D inside this Gate-C mission.**

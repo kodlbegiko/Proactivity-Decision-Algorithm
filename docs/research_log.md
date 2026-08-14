@@ -1,112 +1,88 @@
 # Research Log
 
-## 2026-08-13 — Gate-B research decisions carried forward
+This file records the current scientific decision history. Earlier full-detail entries remain recoverable from Git history; the statuses below intentionally preserve negative evidence rather than rewriting prior failures as successes.
 
-Repository initialization, transport deviation, pilot validation incident, broad-gap narrowing, and the stop-before-candidate decision remain preserved in earlier commits and PR history.
+## 2026-08-13 — Protocol v1 negative evidence
 
-## 2026-08-13 — Broad intervention-control novelty rejected
-
-**Decision:** Downgrade novelty verdict to `PARTIAL NOVELTY ONLY`.  
-**Evidence:** KnowU-Bench explicitly evaluates when to intervene, seek consent, or remain silent; PACT formalizes ask-or-act; NIABench jointly decides when to act and what to do under non-interruption; ProActor, Pare-Bench, ProEvent, ProMediate, π-Bench, and ProAgentBench cover overlapping timing/longitudinal/proactive constructs.  
-**Reason:** Current primary literature contradicts a broad first claim.  
-**Risk:** Remaining contribution may still collapse if six-way distinctions are not annotatable.  
-**Follow-up:** Test the narrower integrated six-level formulation.
-
-## 2026-08-13 — Raw-context track made primary
-
-**Decision:** Retain normalized scalar state only as a mechanistic control and use a raw-context policy projection as the primary validity track.  
-**Reason:** Avoid evaluating weighted sums over pre-digested label features as if they were general context reasoning.
-
-## 2026-08-13 — Development v1 replaces pilot for Gate-B validation
-
-**Decision:** Use a diversified deterministic 144-scenario development batch with six balanced domains, 24 counterfactual pairs, and six temporal sequences.  
-**Evidence:** Pre-annotation audit: exact duplicates 0; structural duplicates 0; unrelated >=0.90 near duplicates 0; metadata leakage findings 0; longest same-domain run 3.  
-**Risk:** Construction-family vocabulary may still correlate with future human labels.  
-**Follow-up:** Run label-dependent leakage analysis only after immutable independent annotation.
-
-## 2026-08-13 — Unsafe-autonomy metric denominator corrected
-
-**Decision:** Define unsafe autonomy rate as forbidden `ACT` predictions divided by all predicted `ACT` actions.  
-**Reason:** The rate should answer how often autonomous execution is unacceptable when the system actually acts.  
-**Risk:** A policy that never ACTs yields an undefined rate and must be reported as such.
-
-## 2026-08-13 — CI binary-artifact transport failure
-
-**Decision:** Reject opaque gzip transport through the connector and make deterministic source generation plus SHA-256 verification canonical.  
-**Evidence:** Actions run `31701084246` failed on corrupted gzip transport while deterministic local generation and validation were valid.  
-**Follow-up:** Regenerate in CI and require hash equality before tests.
-
-## 2026-08-13 — Pre-human Gate-B infrastructure hardening
-
-**Decision:** Exhaust engineering work that does not require independent humans while preserving the Gate order.  
-**Implemented:** strict completed-annotation validation, source-mutation detection, immutable raw archival with SHA-256 and overwrite refusal, expanded agreement diagnostics, core-class reporting, acceptable-set analysis, domain/counterfactual/temporal reliability functions, guarded label-dependent lexical/metadata audit, packet validation, and measurement-control infrastructure.  
-**Scientific boundary:** no synthetic labels were stored as benchmark ground truth; no human reliability result was fabricated; no Gate-C baseline or candidate evaluation was started.  
-**Metric finding:** formal kappa reporting now flags the constant-class `expected agreement = 1` case as degenerate rather than using it as evidence that six classes are reliable. The legacy single-axis escalation metric remains a diagnostic with a documented semantic caveat.  
-**Pre-label shortcut finding:** construction-family vocabulary remains a warning and is documented in `reports/prelabel_generator_shortcut_review.md`; no frozen scenario was rewritten because human labels do not yet exist.  
-**CI incident:** after adding package-backed post-label audit imports, run `31707105405` exposed a direct-script import-path regression. Packet regeneration/hash verification and packet validation passed; pytest reported 19 passed / 1 failed. The packaging path was then hardened by installing the project itself via requirements so direct scripts can resolve the package.  
-**Gate status:** `GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION`.  
-**Follow-up:** require final three-version green CI, then wait only for two genuinely independent first-pass human annotation files.
+Protocol v1 narrowed the research target after prior-art review, made raw context primary, built deterministic development/annotation infrastructure, and preserved generator-shortcut warnings. Its scientific state remained `GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION`; genuinely independent human annotation was never fabricated. Historical evidence-weighted completion remains 25%.
 
 ## 2026-08-14 — Protocol v2 research-question pivot
 
-**Decision:** Supersede the human-annotation-centered Protocol v1 as the PRIMARY research track with `PDA Specification-Grounded Track v2`. Protocol v1 remains historical evidence; it is not rewritten as a success.  
-**Source commit:** `e619d2a238cdc85cfa7f1b26779fb6e8a91e65d3`.  
-**New branch:** `research/proactivity-specification-v2`.  
-**New primary question:** whether a deterministic, auditable intervention-control layer can map explicit permission, information, timing, intervention-need, side-effect, risk, reversibility, and execution state to a policy-compliant intervention mode under a frozen specification.  
-**Ground-truth change:** `independent human annotation -> reliability analysis` is replaced for the primary track by `structured state -> frozen formal specification -> deterministic oracle -> machine-verifiable decision trace`.  
-**Claim boundary:** specification compliance is not human-preference alignment, universal correctness, user satisfaction, or social/ecological validity.  
-**Gate architecture:** Gate A scope/prior art; Gate B formal specification validity; Gate C oracle/benchmark validity; Gate D baseline; Gate E candidate; Gate F protected/OOD; Gate G robustness/adversarial/invariants; Gate H ablation/reproduction/final claim audit.  
-**Stop boundary:** this migration mission is not authorization to enter Gate C.
+Protocol v2 superseded Protocol v1 as the primary track without retroactively changing Protocol-v1 outcomes. The new primary question is specification-grounded intervention control under an explicit finite state, frozen formal specification, deterministic oracle, and machine-verifiable trace. Human-preference alignment and universal correctness were explicitly removed from the primary claim.
 
-## 2026-08-14 — Protocol v2 formal specification implemented
+## 2026-08-14 — Gate B formal specification evidence
 
-**Specification:** `PDA-SPEC-v2`, schema version `2.0.0`, SHA-256 `ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4`.  
-**State variables:** finite permission, information, urgency, intervention need, side-effect scope, risk, reversibility plus boolean deferral/execution/clarification/acknowledgement/completion state.  
-**Action semantics:** retain `IGNORE`, `WAIT`, `SUGGEST`, `NOTIFY`, `ASK`, `ACT` as discrete modes rather than a universal scalar ranking.  
-**Fail-closed behavior:** invalid state -> `INVALID_STATE`; equal-priority incompatible final rules or selection of a prohibited action -> `INVALID_SPEC`.  
-**ACT constraints:** sufficient information, appropriate permission scope, low risk, reversibility, execution possibility, material need, and non-completed state.  
-**Traceability:** decisions carry matched rule, matching rule set, prohibition rules/actions, eligible actions, spec version, and spec SHA.
+`PDA-SPEC-v2`, schema `2.0.0`, was frozen at SHA-256 `ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4`; oracle source SHA-256 is `11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f`.
 
-## 2026-08-14 — v1 dataset not relabeled into v2 gold
+The bounded state audit covered 62,208 raw combinations / 41,472 valid states, with zero nondeterminism, conflicts, mandatory-invariant violations, trace gaps, counterfactual violations, temporal violations, or metadata/domain invariance violations. The 144 Protocol-v1 scenarios were not subjectively relabeled into v2 gold. Final Gate-B CI run `31788997247` was green across Python 3.10/3.11/3.12. Gate B verdict: `GATE B — PASS`.
 
-**Decision:** Do not infer missing Protocol-v2 semantic state from `development_v1` prose.  
-**Migration audit:** A/direct reuse 0; B/deterministic complete-state migration demonstrated 0; C/ambiguous or incomplete under the full v2 state 144; D/intrinsically incompatible demonstrated 0.  
-**Reason:** after-the-fact interpretation of raw prose would reintroduce subjective labeling under a different name.  
-**Reuse boundary:** six-domain organization, deterministic generation/SHA patterns, counterfactual/temporal design concepts, leakage lessons, and CI infrastructure remain reusable. The 144 v1 scenarios remain preserved historical/secondary artifacts.
+Preserved Gate-B CI incidents: `31788612273` exposed a workflow assertion problem; `31788931319` exposed Unicode text-matching fragility after the formal audit itself had passed. Fixes changed CI parsing, not scientific criteria.
 
-## 2026-08-14 — Machine-grounded development-v2 transport set
+## 2026-08-14 — Gate C authorization and isolation
 
-**Decision:** Generate expected actions only from explicit valid structured state plus the frozen spec/oracle; do not maintain a handwritten gold-action table.  
-**Artifact:** deterministic 300-row `development_v2` reachability/transport set with 300 unique IDs and all six actions represented.  
-**Dataset SHA-256:** `cab5f6428302b8106435b08e05550371a9977d7f438a761dfa0d16d76b22f4a5`.  
-**Boundary:** this is Gate-B transport/reachability infrastructure, not evidence that Gate-C benchmark validity has passed.
+Created `research/proactivity-benchmark-v2` from exact Gate-B PASS commit `89e00052d68b2862269daf2adc8b31ebb1ae592c` and Draft PR #8 stacked on `research/proactivity-specification-v2`. Gate-C criteria were preregistered before formal benchmark statistics. The frozen specification/oracle were treated as upstream dependencies and were not modified for benchmark convenience.
 
-## 2026-08-14 — Exhaustive Protocol-v2 Gate-B evidence
+## 2026-08-14 — Gate C representation and anti-circularity contract
 
-**Bounded state space:** 62,208 raw Cartesian combinations; 41,472 valid; 20,736 invalid and rejected.  
-**Determinism:** 41,472 valid states tested; 0 nondeterministic outputs.  
-**Coverage:** 0 final-action conflicts; 0 unexplained fallback selections; 0 unreachable matching selection rules.  
-**Traceability:** 0 missing traces.  
-**Safety invariants:** 0 violations.  
-**Counterfactual checks:** 140 cases, 0 violations.  
-**Temporal check:** expected and observed `WAIT -> NOTIFY -> WAIT -> IGNORE`; 0 violations.  
-**Metadata/domain invariance:** 0 violations.  
-**Diagnostic action distribution:** IGNORE 24,192; WAIT 7,518; SUGGEST 2,076; NOTIFY 1,938; ASK 5,688; ACT 60. This distribution was not tuned for balance.  
-**Machine verdict:** `GATE B — PASS`.
+Defined two tracks: Track A for mechanistic structured-state diagnostics and Track B for deterministic synthetic semantic observations. Candidate-visible transport is separated from oracle-private state/action/rule/prohibition/relation metadata. Future candidate source is forbidden from importing the reference oracle/benchmark implementation or reading private benchmark evidence at runtime; machine-checkable guards and failure-path tests enforce this boundary.
 
-## 2026-08-14 — Protocol-v2 CI incidents preserved
+The deterministic public holdout is explicitly not treated as independent Gate-F protected evidence.
 
-**Run `31788612273`:** first formal v2 workflow failed at the Gate-B workflow assertion. Protocol-v1 regeneration/hash/packet checks and Protocol-v2 benchmark generation/hash/300-row validation had already passed. The failure did not establish a spec contradiction; the audit output was initially hidden by redirection.  
-**Action:** change CI to print the evidence JSON before enforcing the assertion so failures are diagnosable.
+## 2026-08-14 — Gate C initial scientific failure preserved
 
-**Run `31788931319`:** diagnostic CI exposed the full evidence object. The formal audit returned `GATE B — PASS`, with 41,472 deterministic valid states, zero conflicts/invariant violations/counterfactual violations, and complete traces. The workflow still failed because shell `grep` expected a literal Unicode em dash while Python JSON serialized the verdict as `GATE B \u2014 PASS`.  
-**Fix:** replace text grep with typed JSON parsing/assertions. No rule, threshold, invariant, state count, or scientific Gate criterion was changed or weakened.
+Run `31791152951` passed frozen-upstream and deterministic-regeneration checks but the formal Gate-C audit returned:
 
-## 2026-08-14 — Final Protocol-v2 Gate-B CI green
+```text
+GATE C — FAIL: BENCHMARK_VALIDITY_CRITERIA_NOT_MET
+reason: TEMPLATE_DOMINANCE
+```
 
-**Run:** `31788997247`.  
-**Result:** SUCCESS on Python 3.10, 3.11, and 3.12.  
-**Regression evidence:** full pytest suite reported **40 passed** on the inspected Python-3.10 job.  
-**Historical preservation:** v1 deterministic generation, four frozen v1 SHA checks, packet validation, the historical `BLOCKED_BY_INDEPENDENT_ANNOTATION` verdict, pilot/development validators, and pre-annotation negative evidence remain executable in the same workflow.  
-**Final Gate-B verdict:** `GATE B — PASS`.  
-**Stop:** `READY FOR GATE C / DO NOT START GATE C`.
+Initial three-template allocation was `65/45/58` over 168 records; largest share 38.69% exceeded the preregistered 34% maximum. No threshold was relaxed. No specification, oracle, state, gold action, or relation criterion changed. Remediation added a fourth genuinely distinct **non-normative observation paraphrase family**, producing final `41/38/39/50` distribution and 29.76% maximum share. Generator version advanced to `2.0.1`.
+
+## 2026-08-14 — Gate C infrastructure incident preserved
+
+Run `31791651373` exposed `ModuleNotFoundError: scripts` in the Gate-C audit wrapper after remediated benchmark regeneration had succeeded. This was classified as infrastructure, not a scientific benchmark failure. The wrapper was made path-independent; no benchmark threshold, normative spec, oracle, or gold label changed.
+
+## 2026-08-14 — Final Gate C benchmark evidence
+
+Final benchmark `benchmark_v2` contains 168 unique source states / opaque IDs. Action distribution is ACT 16, ASK 50, IGNORE 15, NOTIFY 38, SUGGEST 16, WAIT 33. Natural exhaustive distribution remains separately reported and was not represented as natural benchmark prevalence.
+
+Audit results:
+
+- manual gold: 0;
+- LLM gold: 0;
+- oracle mismatch: 0;
+- exact candidate duplicates: 0;
+- structural/source-state duplicates: 0;
+- forbidden candidate metadata: 0;
+- direct action-label token leakage: 0;
+- candidate/private forbidden overlap: 0;
+- split-family leakage: 0;
+- all six actions covered;
+- every reachable selected non-fallback rule covered;
+- every hard prohibition covered with trigger evidence and one action-changing counterfactual;
+- generic counterfactual families 8 / violations 0;
+- prohibition counterfactual families 8 / violations 0;
+- temporal sequences 8 / violations 0;
+- hard-prohibition safety violations 0;
+- deterministic regeneration PASS.
+
+Split counts: development 91, validation 33, public deterministic holdout 44. The holdout is not Gate-F independent evidence.
+
+Artifact hashes are frozen in `gate_c/freeze_v2.json`.
+
+## 2026-08-14 — Final Gate C CI and verdict
+
+Passing source commit before final documentation: `6653424a3e90b4b67c792bc9e0a15762d3d6966e`.
+
+GitHub Actions run `31791713759` completed successfully on Python 3.10, 3.11, and 3.12. Each matrix job passed the formal Gate-C audit/decision, Gate-B regression, Protocol-v1 negative-evidence preservation, deterministic double regeneration, and the complete **73-test** pytest suite.
+
+Final machine verdict:
+
+```text
+GATE C — PASS
+READY FOR GATE D
+DO NOT START GATE D
+```
+
+Protocol-v2 evidence-weighted completion is now **48%**: 10% scope + 20% formal specification + 15% oracle/benchmark validity + 3% reproducibility. Independent reproduction remains incomplete; Gates D–H remain unexecuted.
