@@ -21,7 +21,6 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt
 
-      # Protocol v1 remains executable historical evidence. It is not the primary gate.
       - name: Preserve Protocol-v1 deterministic artifacts
         run: |
           python scripts/generate_development_v1.py
@@ -33,7 +32,6 @@ jobs:
           test ! -e annotations/raw/annotator_a_v1.csv
           test ! -e annotations/raw/annotator_b_v1.csv
 
-      # Protocol v2 Gate B remains a frozen upstream dependency.
       - name: Verify Gate-B upstream ancestry and normative immutability
         run: |
           git merge-base --is-ancestor 89e00052d68b2862269daf2adc8b31ebb1ae592c HEAD
@@ -66,7 +64,6 @@ jobs:
           PY
           test "$(PYTHONPATH=src python scripts/decide_gate_b_v2.py --evidence /tmp/gate_b_v2.json)" = "GATE B — PASS"
 
-      # Protocol v2 Gate C: oracle/benchmark validity only. These diagnostics are not Gate-D baselines.
       - name: Deterministically regenerate Gate-C benchmark twice
         run: |
           rm -rf /tmp/gate-c-a /tmp/gate-c-b data/benchmark_v2
@@ -92,6 +89,30 @@ jobs:
           PY
           test "$(PYTHONPATH=src python scripts/decide_gate_c.py --evidence reports/gate_c_report.json)" = "GATE C — PASS"
 
+      - name: Run Gate-D baselines and integrity controls twice
+        run: |
+          rm -rf gate_d/predictions reports/gate_d_report.json /tmp/gate-d-second
+          PYTHONPATH=src python scripts/run_gate_d_v2.py --benchmark-root data/benchmark_v2 --output reports/gate_d_report.json --prediction-dir gate_d/predictions
+          mkdir -p /tmp/gate-d-second
+          PYTHONPATH=src python scripts/run_gate_d_v2.py --benchmark-root data/benchmark_v2 --output /tmp/gate-d-second/report.json --prediction-dir /tmp/gate-d-second/predictions
+          diff -u reports/gate_d_report.json /tmp/gate-d-second/report.json
+          diff -ru gate_d/predictions /tmp/gate-d-second/predictions
+      - name: Assert Gate-D preregistered integrity criteria
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/gate_d_report.json').read_text())
+          assert report['gate_verdict'] == 'GATE D — PASS'
+          assert report['baseline_source_boundary_violations'] == []
+          assert all(report['failure_path_tests'].values())
+          assert all(report['deterministic_prediction_match'].values())
+          assert all(report['prediction_coverage'].values())
+          assert all(report['evaluation_recomputation_match'].values())
+          assert all(report['criteria'].values())
+          assert report['controls']['row_order_shuffle_identical'] is True
+          PY
+
       - name: Run complete regression and failure-path suite
         run: python -m pytest -q
 
@@ -101,12 +122,14 @@ jobs:
           PYTHONPATH=src python scripts/validate_dataset.py data/development/development_v1.jsonl --require-raw-context
           PYTHONPATH=src python scripts/audit_development_v1.py data/development/development_v1.jsonl data/development/development_v1.meta.jsonl
 
-      - name: Upload Gate-C evidence
+      - name: Upload Gate-D evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gate-c-evidence-py${{ matrix.python-version }}
+          name: gate-d-evidence-py${{ matrix.python-version }}
           path: |
             data/benchmark_v2/
             reports/gate_c_report.json
+            reports/gate_d_report.json
+            gate_d/predictions/
           if-no-files-found: warn
