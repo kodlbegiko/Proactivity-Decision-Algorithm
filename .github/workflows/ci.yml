@@ -38,7 +38,13 @@ jobs:
           PYTHONPATH=src python scripts/validate_development_v2.py
       - name: Exhaustively validate Protocol-v2 Gate B
         run: |
-          PYTHONPATH=src python scripts/audit_spec_v2.py --output /tmp/gate_b_v2.json > /tmp/gate_b_v2_stdout.json
+          set +e
+          PYTHONPATH=src python scripts/audit_spec_v2.py --output /tmp/gate_b_v2.json
+          audit_status=$?
+          set -e
+          echo "audit_exit_code=${audit_status}"
+          cat /tmp/gate_b_v2.json
+          test ${audit_status} -eq 0
           grep -q '"raw_state_combinations": 62208' /tmp/gate_b_v2.json
           grep -q '"valid_state_combinations": 41472' /tmp/gate_b_v2.json
           grep -q '"gate_verdict": "GATE B — PASS"' /tmp/gate_b_v2.json
