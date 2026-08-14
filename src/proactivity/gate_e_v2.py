@@ -3,18 +3,79 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 import numpy as np
 from sklearn.metrics import f1_score
 
 from .candidate_v2 import ACTIONS, CANDIDATE_FACTORIES, SEED, extract_visible_semantic_factors, make_candidate
-from .gate_d_v2 import _metrics, _relation_diagnostics, load_dataset, scan_baseline_source, stable_json_bytes
+from .gate_d_v2 import _metrics, _relation_diagnostics, scan_baseline_source, stable_json_bytes
 
 FROZEN_BASELINE_NAME = "B5_transparent_heuristic"
 FROZEN_BASELINE_MACRO_F1 = 0.21452991452991452
 MIN_MACRO_DELTA = 0.05
 BOOTSTRAP_SAMPLES = 10_000
+_SCENARIO_ID = re.compile(r'"scenario_id"\s*:\s*"([^"]+)"')
+
+
+def _scenario_id_without_parsing_payload(line: str) -> str:
+    match = _SCENARIO_ID.search(line)
+    if not match:
+        raise ValueError("benchmark JSONL row has no scenario_id")
+    return match.group(1)
+
+
+def _load_gate_e_dataset(root: Path):
+    split_rows = [json.loads(line) for line in (root / "splits.jsonl").read_text().splitlines() if line.strip()]
+    split_by_id = {row["scenario_id"]: row["split"] for row in split_rows}
+    allowed_ids = {sid for sid, split in split_by_id.items() if split in {"development", "validation"}}
+    protected_ids = {sid for sid, split in split_by_id.items() if split == "protected_test"}
+
+    candidate_by_id = {}
+    skipped_candidate_protected = 0
+    for line in (root / "candidate.jsonl").read_text().splitlines():
+        if not line.strip():
+            continue
+        sid = _scenario_id_without_parsing_payload(line)
+        if sid in protected_ids:
+            skipped_candidate_protected += 1
+            continue
+        if sid in allowed_ids:
+            candidate_by_id[sid] = json.loads(line)
+
+    evaluator_by_id = {}
+    skipped_private_protected = 0
+    for line in (root / "private.jsonl").read_text().splitlines():
+        if not line.strip():
+            continue
+        sid = _scenario_id_without_parsing_payload(line)
+        if sid in protected_ids:
+            skipped_private_protected += 1
+            continue
+        if sid in allowed_ids:
+            evaluator_by_id[sid] = json.loads(line)
+
+    if set(candidate_by_id) != allowed_ids or set(evaluator_by_id) != allowed_ids:
+        raise ValueError("Gate-E development/validation row sets are incomplete")
+
+    relations_all = json.loads((root / "relations.json").read_text())["relations"]
+    relations = [relation for relation in relations_all if set(relation["scenario_ids"]).issubset(allowed_ids)]
+
+    def subset(name: str):
+        ids = sorted(sid for sid, split in split_by_id.items() if split == name)
+        records = [{"domain": candidate_by_id[sid]["domain"], "observation": candidate_by_id[sid]["observation"]} for sid in ids]
+        labels = [evaluator_by_id[sid]["oracle_action"] for sid in ids]
+        return ids, records, labels
+
+    isolation = {
+        "protected_split_count": len(protected_ids),
+        "protected_candidate_rows_json_parsed": 0,
+        "protected_private_rows_json_parsed": 0,
+        "protected_candidate_rows_skipped_by_id": skipped_candidate_protected,
+        "protected_private_rows_skipped_by_id": skipped_private_protected,
+    }
+    return evaluator_by_id, relations, subset, isolation
 
 
 def _canonical_predict(model, ids, records):
@@ -69,7 +130,7 @@ def _source_sha(path: Path):
 
 
 def run_gate_e(benchmark_root: Path, candidate_source: Path, frozen_baseline_path: Path) -> dict:
-    _, evaluator_by_id, _, relations, subset = load_dataset(benchmark_root)
+    evaluator_by_id, relations, subset, isolation = _load_gate_e_dataset(benchmark_root)
     dev_ids, dev_records, dev_labels = subset("development")
     val_ids, val_records, val_labels = subset("validation")
     baseline_predictions = _load_frozen_baseline(frozen_baseline_path, val_ids)
@@ -118,7 +179,7 @@ def run_gate_e(benchmark_root: Path, candidate_source: Path, frozen_baseline_pat
         "candidate_source_sha256": _source_sha(candidate_source),
         "candidate_source_boundary_violations": source_violations,
         "split_counts": {"development": len(dev_ids), "validation": len(val_ids)},
-        "protected_test_access": "NOT_ACCESSED_BY_GATE_E_EVALUATOR",
+        "protected_test_isolation": isolation,
         "gate_f_protected_data": "NOT_GENERATED",
         "frozen_baseline": {"name": FROZEN_BASELINE_NAME, "macro_f1": FROZEN_BASELINE_MACRO_F1, "prediction_sha256": hashlib.sha256(stable_json_bytes([{"scenario_id": sid, "action": action} for sid, action in zip(val_ids, baseline_predictions)])).hexdigest()},
         "semantic_factor_unknown_counts_on_validation": semantic_unknown,
@@ -131,6 +192,7 @@ def run_gate_e(benchmark_root: Path, candidate_source: Path, frozen_baseline_pat
         "criteria": {
             "exact_preregistered_search_budget": len(results) == 6,
             "candidate_source_boundary_violations_zero": len(source_violations) == 0,
+            "protected_rows_not_parsed": isolation["protected_candidate_rows_json_parsed"] == 0 and isolation["protected_private_rows_json_parsed"] == 0,
             "selected_candidate_exists": selected is not None,
             "selected_macro_f1_delta_at_least_0_05": selected_delta is not None and selected_delta >= MIN_MACRO_DELTA,
             "paired_bootstrap_completed": bootstrap is not None and bootstrap["samples"] == BOOTSTRAP_SAMPLES,
@@ -139,5 +201,5 @@ def run_gate_e(benchmark_root: Path, candidate_source: Path, frozen_baseline_pat
             "selected_deterministic": selected is not None and deterministic[selected],
             "selected_valid_action_rate_100pct": selected is not None and results[selected]["valid_action_rate"] == 1.0,
         },
-        "gate_verdict": "GATE E — PASS" if selected_pass else "GATE E — FAIL",
+        "gate_verdict": "GATE E — PASS" if selected_pass and isolation["protected_candidate_rows_json_parsed"] == 0 and isolation["protected_private_rows_json_parsed"] == 0 else "GATE E — FAIL",
     }
