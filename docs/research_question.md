@@ -1,38 +1,51 @@
-# Research Question and Scope
+# Research Question and Scope — Protocol v2
 
 ## Core decision problem
 
-At time `t`, let `X_t` represent observable user/task/event context. A policy outputs one action:
+Let `S_t` be an explicit validated structured state at time `t`. A frozen specification and deterministic oracle map `S_t` to one discrete intervention-control mode:
 
 `D_t ∈ {IGNORE, WAIT, SUGGEST, NOTIFY, ASK, ACT}`.
 
-The objective is to maximize useful intervention while controlling false interruption, missed critical events, premature intervention, redundant notification, low-confidence intervention, and unsafe autonomy.
+The six modes are not assumed to form a universal scalar order.
 
 ## Primary research question
 
-Under what conditions should a personal AI proactively intervene, which intervention class should it choose, and can a lightweight/model-agnostic policy improve the usefulness–interruption trade-off over preregistered simple baselines under protected, cross-domain evaluation?
+Can a deterministic, auditable proactivity decision layer map explicitly represented state concerning permission, timing, information sufficiency, intervention need, risk, reversibility, action side effects, and execution conditions to a policy-compliant intervention mode while satisfying a frozen formal specification and remaining consistent under counterfactual and temporal changes?
 
-## Formal research questions
+## Gate-oriented research questions
 
-1. Can deterministic/lightweight policies outperform simple heuristics?
-2. Which context variables contribute most to decision quality?
-3. How should benefit, urgency, confidence, interruption cost, delay cost, and risk be traded off?
-4. Does performance generalize across domains?
-5. What is lost when individual signals are removed?
-6. Can usefulness improve without materially increasing false interruptions?
-7. Does added complexity provide practical benefit?
-8. Is the policy calibrated under uncertainty/missing context?
-9. When is `WAIT` preferable to immediate intervention?
-10. When must `ACT` be prohibited even if expected benefit is high?
+1. Can the finite specification be made deterministic, exhaustive, contradiction-free, traceable, and fail-closed? — Gate B.
+2. Can a machine-grounded benchmark derived only from frozen state + specification + oracle be validated without hidden answer leakage or circular evaluation? — Gate C.
+3. How do simple preregistered baselines perform against the frozen policy? — Gate D.
+4. Does a PDA candidate improve exact compliance and asymmetric safety metrics over those baselines? — Gate E.
+5. Does the improvement survive a protected/OOD evaluation? — Gate F.
+6. Does behavior remain safe under adversarial, missing, contradictory, counterfactual, temporal, and distribution shifts? — Gate G.
+7. Which state dimensions and mechanisms are causally useful, and can the full result be independently reproduced without claim inflation? — Gate H.
 
 ## In scope
 
-Intervention necessity/timing, class selection, uncertainty/abstention, interruption/delay costs, permission/action risk, redundancy/acknowledgement/history, cross-domain and longitudinal evaluation.
+- explicit intervention-control state;
+- silence versus deferred intervention;
+- notification versus authorization/information requests;
+- permission-sensitive autonomous action;
+- risk, reversibility, information sufficiency, side-effect scope, and timing;
+- deterministic oracle and rule traces;
+- counterfactual and temporal specification tests;
+- machine-grounded development/protected benchmarks;
+- later cross-domain and OOD policy evaluation.
 
-## Out of scope
+## Out of scope for the primary Protocol-v2 claim
 
-Full personal assistant implementation, generalized memory/PSE replacement, speech/vision/ambient sensing, production OS integration, production autonomous action execution, and online personalization in stage 1.
+- human preference alignment;
+- universal correctness or desirability of the specification;
+- user satisfaction/trust/comfort;
+- psychological or social validity;
+- full personal-assistant implementation;
+- production autonomous execution;
+- speech/vision/ambient sensing;
+- generalized memory/PSE replacement;
+- online personalization in the current stage.
 
 ## Novelty constraint
 
-The project must not claim novelty merely from the word “proactive.” Current work already contains proactive dialogue benchmarks, proactive personal-assistant benchmarks, timing-aware task-scheduling agents, real-user proactive-agent datasets, and active-user simulation. Any contribution must be demonstrated at the level of decision formulation, action taxonomy, cost-sensitive evaluation, protected methodology, or empirical findings.
+The project must not claim novelty merely from the terms “proactive,” “permission,” “constraints,” or “formal specification.” Prior work already covers constrained policy optimization, shielding/action filtering, proactive intervention timing, ask-versus-context-extrapolation trade-offs, and permission/capability separation. The current position remains `PARTIAL NOVELTY ONLY`; any contribution must be supported at the level of the integrated decision formulation, evaluation design, evidence, and empirical findings.
