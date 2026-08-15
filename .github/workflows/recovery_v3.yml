@@ -40,10 +40,11 @@ jobs:
           assert freeze['scientific_terminal_sha'] == '23d183086368d0921c9af2f6c326d4c97214f267'
           assert freeze['leakage_audit'] == 'NONE'
           PY
-      - name: Gate-F non-access and candidate-boundary guards
+      - name: Gate-F non-access, source-boundary, and freeze guards
         run: |
           python scripts/validate_recovery_gate_f_isolation.py
           python scripts/validate_candidate_boundary_v3.py
+          python scripts/validate_candidate_freeze_v3.py
       - name: Generate DEVELOPMENT_ONLY stress suite and verify determinism
         shell: bash
         run: |
@@ -83,7 +84,7 @@ jobs:
           assert r['recovery_v3_extractor']['ood']['micro_factor_accuracy'] >= 0.90
           PY
       - name: Historical regressions and recovery tests
-        run: pytest -q
+        run: PYTHONPATH=. pytest -q
       - name: Upload machine-generated recovery evidence
         uses: actions/upload-artifact@v4
         with:
@@ -160,7 +161,7 @@ jobs:
           PY
           python scripts/validate_candidate_boundary_v3.py
           python scripts/validate_recovery_gate_f_isolation.py
-          pytest -q
+          PYTHONPATH=. pytest -q
       - name: Commit immutable Candidate-v3 source and development evidence
         if: steps.existing.outputs.frozen == 'false'
         id: source_freeze
@@ -198,6 +199,7 @@ jobs:
           terminal={'decision':'RECOVERY DEVELOPMENT PASS — CANDIDATE V3 FROZEN','selected_candidate':'V3A_factor_tree','candidate_source_freeze_commit':os.environ['SOURCE_FREEZE_SHA'],'gate_f':'FAIL','gate_f_retired_protected_records_accessed_by_development':0,'fresh_confirmatory_evaluation':'NOT EXECUTED','gate_g':'NOT EXECUTED','gate_h':'NOT EXECUTED','exact_next_step':'Design a fresh preregistered confirmatory evaluation using a completely new protected set generated only after Candidate v3 freeze.'}
           Path('reports/recovery_v3/terminal_report.json').write_text(json.dumps(terminal,indent=2,sort_keys=True)+'\n')
           PY
+          python scripts/validate_candidate_freeze_v3.py
       - name: Commit freeze manifest without changing Candidate v3
         if: steps.existing.outputs.frozen == 'false'
         env:
