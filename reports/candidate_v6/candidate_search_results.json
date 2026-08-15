@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "V6-B": {"accuracy": 0.9972222222, "macro_f1": 0.9972220293, "forbidden_act": 0, "invalid_action": 0, "exact_structured_state_accuracy": 0.9722222222, "act_critical_factor_macro_accuracy": 0.9976190476, "false_certainty": 0.0, "qualified": true},
+    "V6-C": {"accuracy": 0.8555555556, "macro_f1": 0.8569668885, "forbidden_act": 3, "invalid_action": 0, "exact_structured_state_accuracy": 0.4583333333, "act_critical_factor_macro_accuracy": 0.9531746032, "false_certainty": 0.0020833333, "qualified": false},
+    "V6-D": {"accuracy": 0.9944444444, "macro_f1": 0.9944440586, "forbidden_act": 1, "invalid_action": 0, "exact_structured_state_accuracy": 0.9722222222, "act_critical_factor_macro_accuracy": 0.9972222222, "false_certainty": 0.0, "qualified": false}
+  },
+  "qualified": ["V6-B"],
+  "selected": "V6-B",
+  "selection_reason": "Only V6-B satisfied every preregistered validation qualification criterion."
+}

@@ -1,0 +1,44 @@
+{
+  "candidate": "PDA-Candidate-v6",
+  "terminal": "CANDIDATE_V6 DEVELOPMENT FAIL — NO CANDIDATE QUALIFIED",
+  "selected_architecture": "V6-B factor-specific word n-gram semantic classifiers",
+  "validation": {
+    "n": 360,
+    "accuracy": 0.9972222222,
+    "macro_f1": 0.9972220293,
+    "per_action_recall": {"IGNORE": 0.9833333333, "WAIT": 1.0, "SUGGEST": 1.0, "NOTIFY": 1.0, "ASK": 1.0, "ACT": 1.0},
+    "max_prediction_share": 0.1694444444,
+    "forbidden_act": 0,
+    "invalid_action": 0,
+    "exact_structured_state_accuracy": 0.9722222222,
+    "act_critical_factor_macro_accuracy": 0.9976190476,
+    "false_certainty": 0.0
+  },
+  "holdouts": {
+    "dev_ood": {"n": 420, "accuracy": 0.9976190476, "macro_f1": 0.9976189261, "forbidden_act": 1, "status": "FAIL"},
+    "lexical": {"n": 240, "macro_f1": 0.9958326822, "forbidden_act": 0, "status": "PASS"},
+    "rendering": {"n": 240, "macro_f1": 0.9958326822, "forbidden_act": 0, "status": "PASS"},
+    "compositional": {"n": 240, "macro_f1": 1.0, "forbidden_act": 0, "status": "PASS"},
+    "counterfactual": {"pairs": 180, "exact_pair": 0.9777777778, "directional_accuracy": 0.9777777778, "forbidden_act": 4, "status": "FAIL"},
+    "invariance": {"pairs": 180, "consistency": 0.9944444444, "exact_both_correct": 0.9944444444, "status": "PASS"},
+    "uncertainty": {"n": 180, "false_certainty": 0.0, "status": "PASS"}
+  },
+  "protected": {
+    "generator_created": false,
+    "preregistration_created": false,
+    "seed_generated": false,
+    "dataset_generated": false,
+    "scoring_executed": false,
+    "rerun": false
+  },
+  "integrity": {
+    "historical_protected_individual_evidence_accessed": false,
+    "historical_protected_evidence_used_for_development": false,
+    "historical_protected_error_analysis": false,
+    "candidate_modified_after_holdout": false,
+    "leakage_detected": false,
+    "formal_freeze_manifest_materialized_after_holdout": true
+  },
+  "claim_boundary": "Development-safe synthetic evidence only. No fresh protected generalization claim is authorized.",
+  "next_critical_path": "Candidate-v7 must be a fresh lineage. Candidate-v6 may not be rescued, retuned, or rerun for qualification."
+}

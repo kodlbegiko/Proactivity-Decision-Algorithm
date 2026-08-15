@@ -1,0 +1,26 @@
+{
+  "candidate": "PDA-Candidate-v6",
+  "contract_version": "1.0.0",
+  "authority": "PDA-SPEC-v2",
+  "meta_status_values": ["UNKNOWN", "AMBIGUOUS", "CONTRADICTED", "INSUFFICIENT_EVIDENCE"],
+  "act_critical_factors": ["permission", "information", "need", "side_effect", "risk", "reversibility", "execution_possible"],
+  "factors": {
+    "permission": {"valid_values": ["not_required", "missing", "granted"], "act_critical": true},
+    "information": {"valid_values": ["sufficient", "insufficient", "contradictory"], "act_critical": true},
+    "urgency": {"valid_values": ["none", "normal", "high", "expired"], "act_critical": false},
+    "need": {"valid_values": ["none", "optional", "material"], "act_critical": true},
+    "side_effect": {"valid_values": ["none", "local", "external"], "act_critical": true},
+    "risk": {"valid_values": ["low", "medium", "high"], "act_critical": true},
+    "reversibility": {"valid_values": ["reversible", "irreversible"], "act_critical": true},
+    "deferral_available": {"valid_values": [false, true], "act_critical": false},
+    "execution_possible": {"valid_values": [false, true], "act_critical": true},
+    "clarification_possible": {"valid_values": [false, true], "act_critical": false},
+    "acknowledged": {"valid_values": [false, true], "act_critical": false},
+    "completed": {"valid_values": [false, true], "act_critical": false}
+  },
+  "evidence_object": ["factor", "value", "status", "supporting_spans", "contradicting_spans", "confidence", "source_sentence_ids"],
+  "unknown_semantics": "No sufficiently supported value may be asserted.",
+  "contradiction_semantics": "Conflicting evidence remains unresolved unless explicit supersession is detected.",
+  "confidence_semantics": "Model posterior is an uncertainty signal, not normative truth.",
+  "conservative_projection": "Use fail-closed non-ACT defaults. Any UNKNOWN or AMBIGUOUS ACT-critical factor vetoes ACT."
+}

@@ -1,0 +1,21 @@
+{
+  "candidate": "PDA-Candidate-v6",
+  "selected_architecture": "V6-B factor-specific word n-gram semantic classifiers",
+  "configuration": {
+    "vectorizer": "word TF-IDF ngram_range=(1,2), min_df=2, max_features=18000",
+    "classifier": "LogisticRegression(max_iter=500,C=4.0,class_weight=balanced,random_state=17)",
+    "unknown_threshold": 0.50,
+    "direct_action_head": false
+  },
+  "executed_local_source_sha256": "9f68277b48fcf1f2331a77919cbea70897315bfd78bf886c85b1c820781bb634",
+  "executed_local_policy_sha256": "b5ddfa496db9d1ac6d0679c0469feeb70a48e15cb77dcb8799013d59c473b7bc",
+  "executed_local_representation_contract_sha256": "4f5d06bd208bd16f3a94a8915b92bfb9dc0ecbfe2465d13d3197fdfdc09714bf",
+  "development_generator_sha256": "5c93c06cdd4117559311188120a4a774efb082f289a2a2681fef2253998d46b7",
+  "metrics_sha256": "828c8c2b29eca0f05cd2031c1f239cebe79a6a4ed370de9aa42d317192586058",
+  "serialized_model_sha256": "f3bac3364c66bb5cbcb84f0d227374ba4b5cf70a4a31b2267062d9060cfb0be0",
+  "formal_pre_holdout_freeze_commit": null,
+  "manifest_materialized_after_holdout": true,
+  "candidate_semantics_modified_after_holdout": false,
+  "protected_authorized": false,
+  "note": "The formal freeze manifest chronology was imperfect and is preserved. Independently, mandatory DEV-OOD and counterfactual forbidden-ACT gates failed, so protected progression is prohibited and no rescue is attempted."
+}
