@@ -7,6 +7,7 @@ on:
     paths:
       - 'src/proactivity/confirmatory_v3_generator.py'
       - 'src/proactivity/confirmatory_v3_score.py'
+      - 'src/proactivity/confirmatory_v3_score_retry.py'
       - '.github/workflows/candidate_v3_confirmatory.yml'
   workflow_dispatch:
 
@@ -37,7 +38,7 @@ jobs:
       - name: Run one-shot protected confirmatory evaluation
         env:
           PYTHONPATH: src
-        run: python -m proactivity.confirmatory_v3_score
+        run: python -m proactivity.confirmatory_v3_score_retry
 
       - name: Show terminal evidence
         if: always()
@@ -58,7 +59,10 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/candidate_v3_confirmatory results/candidate_v3_confirmatory docs/candidate_v3_confirmatory_terminal_report.md 2>/dev/null || true
+          if [ -d data/candidate_v3_confirmatory ]; then
+            git add data/candidate_v3_confirmatory
+          fi
+          git add results/candidate_v3_confirmatory docs/candidate_v3_confirmatory_terminal_report.md
           if ! git diff --cached --quiet; then
             git commit -m 'record Candidate v3 fresh confirmatory terminal evidence [skip ci]'
             git push origin HEAD:research/proactivity-candidate-v3-confirmatory
