@@ -6,7 +6,7 @@
   "base_gate_d_terminal_head": "cbb73cde89ac74f194c19d52e14379223ddc8c8a",
   "preregistration_commit": "da6f205f4c1aff001b9f24b4782a44a94e885acd",
   "candidate_source_freeze_commit": "554da731c962cdbf2ebd63cb65149f393e05b617",
-  "candidate_source_git_blob_sha": "c6aa955f5c58600f0aedf8cfc0347ec8657dde62",
+  "candidate_source_git_blob_sha": "c6aa955c704218b3f4355edc78ccd91f0962092b",
   "candidate_source_sha256": "78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b",
   "evaluator_added_after_source_freeze_commit": "c3c814c6020d0fb9b47a0bf71b6d80b67202c1d9",
   "protected_parse_isolation_fix_before_formal_scoring_commit": "8ad2411b5db48cfe180bb500c996a7557abbda9b",
@@ -16,7 +16,13 @@
   "terminal_regression_verification_sha": "2f19671371e2bd81ee14ecd6819a2945155f0e86",
   "terminal_regression_verification_run_id": 31806809694,
   "administrative_closeout_sha": "42997ef6c55c511d7e7f985883c9e6ae538ff8ed",
-  "administrative_closeout_sha_semantics": "substantive Gate-E documentation/status closeout; this manifest-only finalizer records that immutable anchor and is not itself recursively recorded",
+  "administrative_closeout_sha_semantics": "substantive Gate-E documentation/status closeout; later manifest-only metadata commits do not replace the scientific or administrative anchor",
+  "metadata_correction": {
+    "field": "candidate_source_git_blob_sha",
+    "reason": "the earlier manifest carried an incorrect blob identifier; direct fetch of src/proactivity/candidate_v2.py at both the source-freeze commit and current HEAD returned the same Git blob c6aa955c704218b3f4355edc78ccd91f0962092b",
+    "candidate_source_changed": false,
+    "candidate_source_sha256_changed": false
+  },
   "dependency": "scikit-learn==1.7.1",
   "training_data_canonical_sha256": "b8da80425c8d51a6faad730d5907ead23b5c954335907f7a5a93d876d451f77e",
   "training_rows": 91,
