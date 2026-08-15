@@ -11,6 +11,7 @@ on:
       - 'src/proactivity/candidate_v4.py'
       - 'src/proactivity/recovery_v4_data.py'
       - 'scripts/run_recovery_v4.py'
+      - 'scripts/materialize_recovery_v4_data.py'
       - 'tests/test_candidate_v4.py'
       - 'preregistration/recovery_v4.md'
       - '.github/workflows/candidate_v4_recovery.yml'
@@ -54,12 +55,17 @@ jobs:
       - name: Candidate-v4 unit and property tests
         run: python -m pytest tests/test_candidate_v4.py -q
 
+      - name: Materialize development-safe datasets
+        run: python scripts/materialize_recovery_v4_data.py --output-dir data/candidate_v4_development_ci
+
       - name: Run preregistered bounded search and qualification
         run: python scripts/run_recovery_v4.py --assert-pass --output-dir results/candidate_v4_recovery_ci
 
-      - name: Upload development evidence
+      - name: Upload development evidence and datasets
         uses: actions/upload-artifact@v4
         with:
           name: candidate-v4-recovery-py${{ matrix.python-version }}
-          path: results/candidate_v4_recovery_ci/
+          path: |
+            results/candidate_v4_recovery_ci/
+            data/candidate_v4_development_ci/
           if-no-files-found: error
