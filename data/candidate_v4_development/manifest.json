@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mission": "Candidate-v4 Independent Generalization Recovery",
+  "seed": 20260815,
+  "generator_source_sha256": "392cf8ad840d2992ba6f6b56153ce11737a14328581134314b064b415f6e9b05",
+  "qualification_execution_commit": "dbd688cc2ec7856627ab732b9d357625269ea7f7",
+  "ci_run_id": 31885502180,
+  "deterministic_regeneration": true,
+  "matrix_byte_identical": true,
+  "logical_payload_manifest": {
+    "split_sizes": {
+      "train": 576,
+      "validation": 36,
+      "ood": 36,
+      "lexical_holdout": 24,
+      "rendering_holdout": 24,
+      "compositional_holdout": 24
+    },
+    "split_hashes": {
+      "train": "893c160aa54657d0572edf9e06213170c7521666dde6201d241f9e18e17f49f7",
+      "validation": "831792ed595ea034a52421b9d76c08da705ca5074616a33ac0055b197effabd9",
+      "ood": "579558aed7825b7f212a6eae0d9b7e1a17f7f6843e2e6a4be0a96719fc66ba03",
+      "lexical_holdout": "726d1fa78c487bbf06222e22a97bdf53e76f1f5157c87886f0cbe493229e0eaa",
+      "rendering_holdout": "c3cf3d31333f4920d0b037d25705157e54ab194fe9849db9d8c79a99659cb216",
+      "compositional_holdout": "f0e1dfb51fdef9f3a6b02c04e4341022d9353a0a4f519029a87712fccb5bb6d9"
+    },
+    "counterfactual_pairs": 18,
+    "counterfactual_sha256": "96dabf33e892bafc75431414848e69ac0e7c64248b0b75031e0defdda04bc56d",
+    "invariance_pairs": 24,
+    "invariance_sha256": "d6a60d2c6f762a93e662dfd919847a36dea004defb92b0aa3a2987d6044f3b63",
+    "factor_supervision_sha256": "3ffaf01533641d3eb21cbc28a521d6248af8a9122f841b264b4d640d7e39e094"
+  },
+  "materialized_jsonl_sha256": {
+    "train.jsonl": "6ee1a90672c73214ce6008602c43b73d07ec0f061212bce114955477729cca5f",
+    "validation.jsonl": "2d7af9e765d6bc9019aecd0a534d789c30cf4b68355d655a8bef61e0f9e6833a",
+    "ood.jsonl": "f24fb0184dd2ad1136635fcc890660079f729424309c214b2ddbffa908d1bad9",
+    "lexical_holdout.jsonl": "d067155e5f2b3d24ae61f9d31d45054d00eb4c0208d942265d7f47d288c59e6e",
+    "rendering_holdout.jsonl": "0f628e95610729fda546e30205b465cd6f41a120178c662003e476f198831369",
+    "compositional_holdout.jsonl": "2ffb7a5b2a34a4120b9f754be20a77989d4b2aaeb84c4a5542f1d29f67619654",
+    "counterfactual_pairs.jsonl": "ff1330fe18c80fb763255893148a3ec1ed8db70ac1a6bca640bd115ea2f7a1e9",
+    "invariance_pairs.jsonl": "10e6d2c25fb450ea0b9c116d6683c85a73dbe24ba64df7092f14d5a49913f232",
+    "manifest.json": "724572efb5a74952a1dfac265ccbdc1545bc338aaa2f669f77cd6754a408c549"
+  },
+  "artifact_storage": {
+    "python_3_10": {
+      "artifact_id": 9247150117,
+      "artifact_digest": "sha256:2c27713a752ae4cbac6a412af1b5eabceebd7e60f2be8cbd34666073d7ab258e"
+    },
+    "python_3_11": {
+      "artifact_id": 9247148407,
+      "artifact_digest": "sha256:857ac1f32f92335ace080e7d588ba46ed47c32e67a48ce87376a2a5b0546e7f2"
+    },
+    "python_3_12": {
+      "artifact_id": 9247148524,
+      "artifact_digest": "sha256:3c1cc3be1643cca07a2eebf489bcaa7dceeecc9048cc6d92f3e7c13a59ce5d76"
+    }
+  }
+}
