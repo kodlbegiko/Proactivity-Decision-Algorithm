@@ -1,0 +1,22 @@
+{
+  "base_commit": "370aac305c14c4ddc2fa2f782cbb3f0fdde4f630",
+  "candidate_source_sha256": "d6e2d6809723cd1eb6bce41f9be7ec11137458da36a4e1cf7448dc906354a12b",
+  "candidate_v3_protected_access": 0,
+  "candidate_v4_development_corpus_reused": false,
+  "candidate_v4_protected_access": 0,
+  "dataset_manifest_sha256": "71eeaf4bc5f622200b0fd70eb7d69d0eda4643111f234b98d9d3c11996318141",
+  "evaluator_source_sha256": "968bb36846e8add105b853b119b2d18cdccd43ac8c6f242f2ee9fd3c2b4bf43a",
+  "model_identity": {
+    "huggingface_hub": "0.36.2",
+    "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "resolved_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "scikit_learn": "1.7.1",
+    "sentence_transformers": "5.1.0",
+    "torch": "2.13.0+cu130",
+    "transformers": "4.57.6"
+  },
+  "preregistration_commit": "d064d8cf66e2354d38e0b0b69ba5bffd6ff386ef",
+  "spec_sha256": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+}

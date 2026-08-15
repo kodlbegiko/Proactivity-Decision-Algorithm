@@ -1,0 +1,11 @@
+{
+  "all_zero": true,
+  "counterfactual_forbidden_act": 0,
+  "forbidden_act_by_split": {
+    "compositional_holdout": 0,
+    "development_ood": 0,
+    "lexical_holdout": 0,
+    "negation": 0,
+    "rendering_holdout": 0
+  }
+}
