@@ -24,7 +24,7 @@ FIELDS = (
     "acknowledged",
     "completed",
 )
-VALUE: dict[str, tuple[Any, ...]] = {
+VALUES: dict[str, tuple[Any, ...]] = {
     "permission": ("not_required", "missing", "granted"),
     "information": ("sufficient", "insufficient", "contradictory"),
     "urgency": ("none", "normal", "high", "expired"),
