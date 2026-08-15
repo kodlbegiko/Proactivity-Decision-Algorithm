@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "repository": "kodlbegiko/Proactivity-Decision-Algorithm",
+  "branch": "research/candidate-v5-generalization-recovery",
+  "base_commit": "370aac305c14c4ddc2fa2f782cbb3f0fdde4f630",
+  "candidate_v4": {
+    "terminal_artifact": "gate_recovery_v4/fresh_confirmatory_terminal.json",
+    "terminal_state": "FRESH CONFIRMATORY FAIL — CANDIDATE V4 LINEAGE TERMINATED",
+    "protected_leakage": "NONE_DETECTED",
+    "forbidden_act": 0,
+    "invalid_action": 0
+  },
+  "candidate_v3": {
+    "confirmatory_branch": "research/proactivity-candidate-v3-confirmatory",
+    "terminal_commit": "2a9e2f0841ef145a5b27ddd2ed8a866dba7ec4f4",
+    "administrative_terminal_evidence_verified": true
+  },
+  "preexisting_parallel_candidate_v5_branch": "research/candidate-v5-semantic-generalization",
+  "parallel_branch_reused": false,
+  "integrity_incident": {
+    "id": "IR-V5-001",
+    "phase": "historical_lineage_audit",
+    "cause": "GitHub fetch_commit returned individual Candidate-v3 confirmatory rows while verifying terminal commit metadata",
+    "historical_protected_individual_rows_exposed": true,
+    "used_for_development": false,
+    "candidate_v5_development_started_after_incident": false,
+    "contained": true,
+    "recoverable_within_same_execution_context": false
+  },
+  "candidate_v5": {
+    "development_started": false,
+    "development_data_generated": false,
+    "architecture_implemented": false,
+    "architecture_selected": false,
+    "candidate_frozen": false,
+    "protected_seed_generated": false,
+    "protected_dataset_generated": false,
+    "protected_evaluation_executed": false
+  },
+  "research_integrity": "FAIL",
+  "terminal_state": "FRESH CONFIRMATORY INVALID — EVALUATION INTEGRITY FAILURE"
+}
