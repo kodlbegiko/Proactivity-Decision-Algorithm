@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "mission": "Candidate-v4 Independent Generalization Recovery",
+  "terminal_state": "RECOVERY DEVELOPMENT PASS — CANDIDATE V4 FROZEN",
+  "historical_state": {
+    "gate_a": "PASS",
+    "gate_b": "PASS",
+    "gate_c": "PASS",
+    "gate_d": "PASS",
+    "gate_e": "PASS",
+    "historical_gate_f": "FAIL",
+    "recovery_v3_development": "PASS",
+    "candidate_v3": "FROZEN",
+    "candidate_v3_fresh_confirmatory": "FAIL",
+    "candidate_v3_lineage": "TERMINATED",
+    "gate_g": "NOT EXECUTED",
+    "gate_h": "NOT EXECUTED"
+  },
+  "base_commit": "0fd05b6ac9e3f451ed710f2f37ee845dedad1df7",
+  "preregistration_commit": "c1942470cfea1fe3678e5143da0c1ba8f9ed1aa4",
+  "candidate_source_commit": "daf0def6bc06633f3e743a83b2792fc5c4a2d3a8",
+  "qualification_execution_commit": "dbd688cc2ec7856627ab732b9d357625269ea7f7",
+  "qualification_ci_run_id": 31885502180,
+  "qualification_ci_conclusion": "success",
+  "candidate_v3_confirmatory_records_accessed": 0,
+  "protected_evidence_quarantine": "PASS",
+  "selected_candidate": "V4B_atom_state_machine_a65",
+  "eligible_candidates": [
+    "V4B_atom_state_machine_a65",
+    "V4B_atom_state_machine_a55",
+    "V4C_hybrid_guarded_c6_a55",
+    "V4C_hybrid_guarded_c4_a55"
+  ],
+  "source_sha256": {
+    "candidate_v4.py": "66a5a899b7c1c5eea102e96f649db89cce2e9c8a38c8d755a25dddcf6abe492e",
+    "recovery_v4_data.py": "392cf8ad840d2992ba6f6b56153ce11737a14328581134314b064b415f6e9b05",
+    "run_recovery_v4.py": "a9871a3a633741b8991c3b4c1db12e0ff7f20ac5d113d0764fac6f5fd8dfbced"
+  },
+  "selected_metrics": {
+    "validation": {
+      "n": 36,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 0.9861111111111112,
+      "parser_unknown_factor_rate": 0.006944444444444444,
+      "max_prediction_class_share": 0.16666666666666666,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "collapse": false,
+      "all_six_action_recalls": 1.0
+    },
+    "ood": {
+      "n": 36,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 1.0,
+      "parser_unknown_factor_rate": 0.0,
+      "max_prediction_class_share": 0.16666666666666666,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "collapse": false,
+      "all_six_action_recalls": 1.0
+    },
+    "lexical_holdout": {
+      "n": 24,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 1.0,
+      "parser_unknown_factor_rate": 0.0,
+      "max_prediction_class_share": 0.16666666666666666,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "collapse": false,
+      "all_six_action_recalls": 1.0
+    },
+    "rendering_holdout": {
+      "n": 24,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 0.9756944444444444,
+      "parser_unknown_factor_rate": 0.024305555555555556,
+      "max_prediction_class_share": 0.16666666666666666,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "collapse": false,
+      "all_six_action_recalls": 1.0
+    },
+    "compositional_holdout": {
+      "n": 24,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 1.0,
+      "parser_unknown_factor_rate": 0.0,
+      "max_prediction_class_share": 0.16666666666666666,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "collapse": false,
+      "all_six_action_recalls": 1.0
+    },
+    "counterfactual": {
+      "pairs": 18,
+      "exact_pair_rate": 1.0,
+      "forbidden_act": 0,
+      "rows_sha256": "4e84c7d2ed4ed9e7f3a4c9b6f70a2bc9b6ffa0c084b954eccca01e50d082014b"
+    },
+    "invariance": {
+      "pairs": 24,
+      "prediction_consistency": 1.0,
+      "exact_both_rate": 1.0,
+      "rows_sha256": "d854d7cbd37e13930a14185f247e792207297e974928ef6d82304d7be871639c"
+    }
+  },
+  "reproducibility": {
+    "python_versions": ["3.10.20", "3.11.15", "3.12.13"],
+    "scikit_learn": "1.7.1",
+    "normalized_results_sha256": "594be2c6ecd2ed5f928d4c70d776358d7ae14e15814850ed7a274cce84db56f1",
+    "normalized_results_identical_across_matrix": true,
+    "materialized_datasets_byte_identical_across_matrix": true,
+    "deterministic_regeneration": true
+  },
+  "claim_boundary": "Development qualification on preregistered development-safe synthetic distributions only. This does not establish real-world, open-vocabulary, ecological, protected-confirmatory, Gate-G, or Gate-H generalization."
+}
