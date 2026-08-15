@@ -1,5 +1,6 @@
 from __future__ import annotations
 import argparse
+import ast
 import hashlib
 from pathlib import Path
 
@@ -32,15 +33,27 @@ GENERATOR_FILES = (
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def imported_modules(text: str) -> set[str]:
+    tree = ast.parse(text)
+    modules: set[str] = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            modules.update(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module:
+            modules.add(node.module)
+    return modules
+
 def scan(root: Path) -> dict[str, object]:
     errors: list[str] = []
     hashes: dict[str, str] = {}
+    texts: dict[Path, str] = {}
     for rel in STRICT_FILES:
         path = root / rel
         if not path.exists():
             errors.append(f"missing required file: {rel}")
             continue
         text = path.read_text(encoding="utf-8")
+        texts[rel] = text
         hashes[str(rel)] = sha256(path)
         for token in FORBIDDEN_PROTECTED_TOKENS:
             if token in text:
@@ -49,18 +62,20 @@ def scan(root: Path) -> dict[str, object]:
             if token in text:
                 errors.append(f"Candidate-v4 development reuse token in {rel}: {token}")
     for rel in GENERATOR_FILES:
-        path = root / rel
-        if not path.exists():
+        text = texts.get(rel)
+        if text is None:
             continue
-        text = path.read_text(encoding="utf-8")
-        if "candidate_v4" in text:
-            errors.append(f"Candidate-v4 implementation reference forbidden in generator/candidate file: {rel}")
-    evaluator = root / "src/proactivity/candidate_v5_evaluate.py"
-    if evaluator.exists():
-        text = evaluator.read_text(encoding="utf-8")
-        allowed = "from proactivity.candidate_v4 import make_candidate as make_v4"
-        if "candidate_v4" in text and allowed not in text:
-            errors.append("unexpected Candidate-v4 reference in evaluator")
+        modules = imported_modules(text)
+        for module in modules:
+            if module.endswith("candidate_v4") or module.endswith("recovery_v4_data"):
+                errors.append(f"forbidden previous-lineage implementation import in {rel}: {module}")
+    evaluator_rel = Path("src/proactivity/candidate_v5_evaluate.py")
+    text = texts.get(evaluator_rel)
+    if text is not None:
+        modules = imported_modules(text)
+        prior = [m for m in modules if m.endswith("candidate_v4")]
+        if prior not in ([], ["proactivity.candidate_v4"]):
+            errors.append(f"unexpected Candidate-v4 evaluator import: {prior}")
     prereg = root / "preregistration/candidate_v5_development.md"
     if not prereg.exists():
         errors.append("missing Candidate-v5 preregistration")
