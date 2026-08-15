@@ -141,3 +141,24 @@ Selected candidate: `C5_semantic_factor_linear`. Validation macro-F1 `0.69365079
 C1–C3 each produced five forbidden ACT predictions and failed all-six-action-recall eligibility; C4 and C6 passed eligibility but scored below C5. Protected candidate/private payload rows parsed by Gate E: zero. Gate-F protected data remains not generated.
 
 Gate-E formal-source verdict: `GATE E — PASS`. Evidence-weighted Protocol-v2 completion is **78%** once the terminal freeze HEAD itself completes regression CI.
+
+## 2026-08-15 — Gate E terminal closeout
+
+The previously pending terminal-freeze condition was rechecked against live GitHub state rather than README status text. Candidate branch verification HEAD `2f19671371e2bd81ee14ecd6819a2945155f0e86` completed GitHub Actions run `31806809694` successfully on Python 3.10, 3.11, and 3.12. All required jobs executed Gate-E chronology and candidate-source immutability checks, repeated formal Gate-E evaluation, terminal criteria, upstream regressions, Protocol-v1 negative-evidence preservation, and evidence upload.
+
+The scientific Gate-E result remains anchored to `fc030269e347142d5a9ad730499d189647ccded7` / run `31804595710`; the later verification and documentation commits are administrative/reproducibility evidence and are not relabeled as the scientific scoring commit.
+
+Diff audit from candidate-source freeze `554da731c962cdbf2ebd63cb65149f393e05b617` through verification HEAD showed no modification to `src/proactivity/candidate_v2.py`. `SCIENTIFIC_SOURCE_IMMUTABLE = YES`.
+
+Formal CI artifacts were downloaded and byte-compared across Python 3.10/3.11/3.12. Identical hashes were confirmed for:
+
+- Gate-E report: `d3bdb01ea4e37f763ae8c973b86ee6600cf1c774bc62bf82e22aff746f86702f`;
+- C5 prediction: `2b31c30d417c86c8c3e346d3b35579668b5852a289ffb9c6e15bf9fbec5c556d`;
+- Gate-E preregistration: `75d2864b82cb48d1c77a9d3992c30de792e99c0b4167ef5fb5daf143ffaf5b84`;
+- candidate source: `78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b`.
+
+Gate-E protected candidate/private payload rows parsed remained zero and Gate-F protected data had not been generated at the time of this decision. Protocol-v1 BLOCKED evidence and Gate-C/Gate-D/Gate-E negative results remain preserved.
+
+Decision: `GATE E — PASS`. Evidence-weighted Protocol-v2 completion remains **78%**. This supports only the bounded validation claim under the controlled synthetic representation; it does not support protected/OOD generalization, robustness, human preference alignment, deployment safety, or real-world autonomy claims.
+
+Exact next gate: Gate F protected/OOD confirmatory evaluation, beginning with preregistration on a new branch from the final Gate-E administrative closeout state. The frozen Candidate must not be modified.

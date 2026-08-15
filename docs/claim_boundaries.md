@@ -2,7 +2,7 @@
 
 ## Supported now
 
-With Gates B, C, D, and formal-source Gate E passed, current evidence supports narrowly scoped claims that:
+With Gates B, C, D, and terminal Gate E passed, current evidence supports narrowly scoped claims that:
 
 - the frozen `PDA-SPEC-v2` is deterministically executable over its bounded valid state space;
 - the Gate-C benchmark is reproducibly generated from generator-known state plus the frozen oracle;
@@ -11,7 +11,7 @@ With Gates B, C, D, and formal-source Gate E passed, current evidence supports n
 - Gate D provides a deterministic, leakage-controlled B0–B5 comparison suite and freezes `B5_transparent_heuristic` as the strongest honest raw-context validation baseline at macro-F1 `0.21452991452991452`;
 - under the frozen validation split and controlled synthetic raw-observation representation, the preregistered selected `C5_semantic_factor_linear` candidate achieved macro-F1 `0.6936507936507935`, delta `+0.479120879120879` over B5, 100% valid actions, zero forbidden ACT, and non-zero recall for all six actions;
 - the preregistered 10,000-resample paired bootstrap produced a positive macro-F1 delta interval `[0.269140495727183, 0.6969364243570899]`, with fraction delta > 0 equal to `1.0`;
-- the formal Gate-E results were byte-identical across Python 3.10/3.11/3.12 and the candidate source was frozen before formal validation.
+- the formal Gate-E results were byte-identical across Python 3.10/3.11/3.12, the candidate source was frozen before formal validation, and later terminal regression verification confirmed that the candidate source remained immutable.
 
 Gate-D PASS remains an **integrity** result. Gate-E PASS is a **validation** result under the controlled synthetic representation. Neither establishes universal desirability or real-world generalization.
 
@@ -19,7 +19,7 @@ Gate-D PASS remains an **integrity** result. Gate-E PASS is a **validation** res
 
 Current evidence does **not** establish:
 
-- independent protected/OOD generalization;
+- protected/OOD generalization;
 - robustness or adversarial resilience;
 - production readiness or proven safety;
 - real-world contextual understanding or ecological validity beyond the modeled/synthetic conditions;
@@ -41,6 +41,8 @@ Track A uses structured state and supports mechanistic diagnostics. Track B uses
 ## Protected-set boundary
 
 The Gate-C `protected_test` partition is deterministic and publicly regenerable. It is not independent Gate-F protected evidence. During Gate E, protected candidate/private payload rows were skipped without JSON parsing. Protected-validation credit remains zero until a new chronological/process-isolated Gate-F confirmatory set is generated after the Gate-E candidate freeze and evaluated once under preregistered criteria.
+
+If Gate F later uses a same-agent candidate-blind generator after candidate freeze, its independence classification must be reported honestly as process-isolated/same-agent generation rather than external or human-independent validation.
 
 ## Historical human validation
 

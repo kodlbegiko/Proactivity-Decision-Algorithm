@@ -32,12 +32,12 @@ Gate A — PASS (narrowed)
 Gate B — PASS
 Gate C — PASS
 Gate D — PASS
-Gate E — FORMAL-SOURCE PASS; TERMINAL FREEZE CI PENDING
+Gate E — PASS
 Gate F — NOT EXECUTED
 Gate G — NOT EXECUTED
 Gate H — NOT EXECUTED
-EVIDENCE-WEIGHTED COMPLETION: 78% AFTER TERMINAL GATE-E FREEZE CI
-DO NOT START GATE F BEFORE TERMINAL FREEZE CI
+EVIDENCE-WEIGHTED COMPLETION: 78%
+READY FOR GATE F AFTER GATE-E ADMINISTRATIVE CLOSEOUT METADATA IS FROZEN
 DO NOT MERGE OR RELEASE
 ```
 
@@ -45,9 +45,11 @@ Gate C is isolated on `research/proactivity-benchmark-v2` and Draft PR #8. It fr
 
 Gate D is isolated on `research/proactivity-baselines-v2` and Draft PR #10. Formal implementation commit `6377d31eaa57f162df68c4c3f89c7b6cb7e0206c` passed GitHub Actions run `31801340084` on Python 3.10, 3.11, and 3.12. Terminal freeze HEAD `cbb73cde89ac74f194c19d52e14379223ddc8c8a` also passed full matrix regression. The strongest honest raw-context baseline is B5 transparent heuristic with validation macro-F1 `0.21452991452991452`.
 
-Gate E is isolated on `research/proactivity-candidate-v2` and Draft PR #12. Preregistration was frozen at `da6f205f4c1aff001b9f24b4782a44a94e885acd`; candidate source was frozen before formal validation at `554da731c962cdbf2ebd63cb65149f393e05b617` with SHA-256 `78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b`. Formal run `31804595710` passed on Python 3.10, 3.11, and 3.12 with byte-identical reports/predictions. Selected `C5_semantic_factor_linear` achieved validation macro-F1 `0.6936507936507935` versus B5 `0.21452991452991452` (delta `+0.479120879120879`), zero forbidden ACT and non-zero recall across all six actions. Paired-bootstrap delta 95% interval: `[0.269140495727183, 0.6969364243570899]`.
+Gate E is isolated on `research/proactivity-candidate-v2` and Draft PR #12. Preregistration was frozen at `da6f205f4c1aff001b9f24b4782a44a94e885acd`; candidate source was frozen before formal validation at `554da731c962cdbf2ebd63cb65149f393e05b617` with SHA-256 `78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b`. Formal scientific evaluation SHA `fc030269e347142d5a9ad730499d189647ccded7` passed run `31804595710` on Python 3.10, 3.11, and 3.12 with byte-identical reports/predictions. Selected `C5_semantic_factor_linear` achieved validation macro-F1 `0.6936507936507935` versus B5 `0.21452991452991452` (delta `+0.479120879120879`), zero forbidden ACT and non-zero recall across all six actions. Paired-bootstrap delta 95% interval: `[0.269140495727183, 0.6969364243570899]`.
 
-Gate-E protected candidate/private payload rows parsed = 0; Gate-F protected/OOD data is not generated yet. Gate-E formal-source PASS is a **validation** result under a controlled synthetic representation. It is not OOD/real-world proof, and Gate F must not start until the Gate-E evidence/documentation freeze HEAD itself passes full regression CI.
+The later Gate-E evidence/documentation verification HEAD `2f19671371e2bd81ee14ecd6819a2945155f0e86` passed full GitHub Actions run `31806809694` on Python 3.10, 3.11, and 3.12, including Gate-E chronology, candidate-source immutability, repeated formal evaluation, terminal criteria, upstream regressions, Protocol-v1 negative-evidence preservation, and evidence upload. This closes the previously pending terminal-freeze-CI condition without changing the scientific candidate or formal Gate-E result.
+
+Gate-E protected candidate/private payload rows parsed = 0; Gate-F protected/OOD data has not yet been generated. Gate E is a **validation** result under a controlled synthetic representation. It is not OOD/real-world proof. Gate F, if executed, is a one-shot preregistered protected/OOD confirmatory evaluation of the already frozen candidate.
 
 The Gate-C candidate-facing context track is synthetic and deterministically rendered from generator-known structured state. Passing Gates C–E establishes measurement/comparison/validation evidence **within this modeled benchmark design**; it does not establish real-world contextual understanding.
 
