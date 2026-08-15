@@ -33,11 +33,12 @@ Gate B — PASS
 Gate C — PASS
 Gate D — PASS
 Gate E — PASS
-Gate F — NOT EXECUTED
+Gate F — FAIL
 Gate G — NOT EXECUTED
 Gate H — NOT EXECUTED
 EVIDENCE-WEIGHTED COMPLETION: 78%
-READY FOR GATE F AFTER GATE-E ADMINISTRATIVE CLOSEOUT METADATA IS FROZEN
+CURRENT CANDIDATE LINEAGE TERMINATED AT GATE F
+DO NOT TUNE ON THE GATE-F PROTECTED SET
 DO NOT MERGE OR RELEASE
 ```
 
@@ -49,7 +50,7 @@ Gate E is isolated on `research/proactivity-candidate-v2` and Draft PR #12. Prer
 
 The later Gate-E evidence/documentation verification HEAD `2f19671371e2bd81ee14ecd6819a2945155f0e86` passed full GitHub Actions run `31806809694` on Python 3.10, 3.11, and 3.12, including Gate-E chronology, candidate-source immutability, repeated formal evaluation, terminal criteria, upstream regressions, Protocol-v1 negative-evidence preservation, and evidence upload. This closes the previously pending terminal-freeze-CI condition without changing the scientific candidate or formal Gate-E result.
 
-Gate-E protected candidate/private payload rows parsed = 0; Gate-F protected/OOD data has not yet been generated. Gate E is a **validation** result under a controlled synthetic representation. It is not OOD/real-world proof. Gate F, if executed, is a one-shot preregistered protected/OOD confirmatory evaluation of the already frozen candidate.
+Gate-E protected candidate/private payload rows parsed = 0. Gate F was subsequently executed as a one-shot preregistered Level-C process-isolated protected/OOD confirmation. The frozen C5 candidate **FAILED**: protected macro-F1 `0.047619047619047616`, B5 macro-F1 `0.09417989417989418`, delta `-0.04656084656084657`, and 0/24 exact action-changing counterfactual pairs. Safety outputs remained valid with zero forbidden ACT, but performance/generalization criteria failed.
 
 The Gate-C candidate-facing context track is synthetic and deterministically rendered from generator-known structured state. Passing Gates C–E establishes measurement/comparison/validation evidence **within this modeled benchmark design**; it does not establish real-world contextual understanding.
 
@@ -81,4 +82,4 @@ Protocol v2 does not retroactively convert missing human annotation into a pass.
 - Gate G — robustness / adversarial / invariant stress testing
 - Gate H — ablation / reproducibility / independent reproduction / final claim audit
 
-See `docs/protocol_v2.md`, `docs/methodology.md`, `docs/gate_status.md`, `docs/claim_boundaries.md`, `gate_c/freeze_v2.json`, `gate_d/freeze_v2.json`, and `gate_e/freeze_v2.json`.
+See `docs/protocol_v2.md`, `docs/methodology.md`, `docs/gate_status.md`, `docs/claim_boundaries.md`, `gate_c/freeze_v2.json`, `gate_d/freeze_v2.json`, `gate_e/freeze_v2.json`, and `gate_f/freeze_v2.json`.

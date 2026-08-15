@@ -1,0 +1,91 @@
+{
+  "administrative_closeout_sha": "dcbee10f3bed21af79cb18c4080b763a76ec6c85",
+  "baseline_prediction_sha256": "1309a610f3293781b6eeb524f4b74233f197a080616f730f71fa57fd9f66fd7f",
+  "bootstrap_sha256": "87d44b6b6bfd0de580fd041d1969765bd831ecadc0fb992279f8c15d668b1f1e",
+  "branch": "research/proactivity-protected-v2",
+  "candidate": "C5_semantic_factor_linear",
+  "candidate_immutable": true,
+  "candidate_source_freeze_commit": "554da731c962cdbf2ebd63cb65149f393e05b617",
+  "candidate_source_sha256": "78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b",
+  "evidence_weighted_completion": 78,
+  "failed_criteria": [
+    "all_six_nonzero_recall",
+    "bootstrap_lower_bound_positive",
+    "delta_vs_b5_at_least_0_20",
+    "macro_f1_at_least_0_50"
+  ],
+  "formal_evidence_freeze_commit": "d7703fbb616da6cd05c759f2a746f52ace233b54",
+  "formal_scoring_occurred": true,
+  "gate": "F",
+  "gate_e_scientific_terminal_sha": "fc030269e347142d5a9ad730499d189647ccded7",
+  "gate_f_preregistration_commit": "7c445c4928dcb09c7b3864fec0ada0aef4570d1c",
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "generation_workflow_commit": "bbae8269c3850a87f9207edef427c9bdad9e6026",
+  "generation_workflow_run_id": 31880132838,
+  "generator_manifest_commit": "21e729e93888716f71be67f9253cc191066343d8",
+  "generator_sha256": "f9bd6eb12ab5c76720bc5c02af0ba001334047b42e7f4f0db3ba617537961fd0",
+  "generator_source_commit": "eeb509ef4d8cbd24d4a9ab6c228634ca0b9a98fa",
+  "independence_classification": "LEVEL C — same orchestration lineage; frozen candidate-blind process-isolated generation; not external/human-independent",
+  "leakage_audit": "NONE",
+  "merge": false,
+  "metrics": {
+    "accuracy": 0.16666666666666666,
+    "all_six_nonzero_recall": false,
+    "b5_macro_f1": 0.09417989417989418,
+    "delta_vs_b5": -0.04656084656084657,
+    "forbidden_act_count": 0,
+    "invalid_action_count": 0,
+    "macro_f1": 0.047619047619047616,
+    "valid_action_rate": 1.0,
+    "weighted_f1": 0.04761904761904761
+  },
+  "negative_evidence": {
+    "candidate_prediction_distribution": {
+      "ACT": 0,
+      "ASK": 0,
+      "IGNORE": 120,
+      "NOTIFY": 0,
+      "SUGGEST": 0,
+      "WAIT": 0
+    },
+    "counterfactual_exact_pair_count": 0,
+    "counterfactual_exact_pair_rate": 0.0,
+    "counterfactual_pair_count": 24
+  },
+  "paired_bootstrap": {
+    "delta_mean": -0.04567911215218821,
+    "delta_p2_5": -0.08583374363752445,
+    "delta_p50": -0.0454276351321299,
+    "delta_p97_5": -0.006802939152846802,
+    "fraction_delta_gt_zero": 0.0104,
+    "samples": 10000,
+    "seed": 2026081501
+  },
+  "passed_criteria": [
+    "candidate_source_hash_match",
+    "forbidden_act_zero",
+    "invalid_action_count_zero",
+    "protected_hashes_match",
+    "valid_action_rate_100pct"
+  ],
+  "prediction_sha256": "5785a180a4c5c2d01b7a94ee7c511263894f89267f910faf69090e4e560940d9",
+  "protected_data_freeze_commit": "7132bb17978310ad8003e834c8f012253e445b04",
+  "protected_inputs_sha256": "8817cef5026a2e118d3f850653cd400a06316584510922c89c94fed79a16b971",
+  "protected_labels_sha256": "21f6b4ba7843f3d90f269944a3a675ba7428edf1baece5ac6472e2196133c332",
+  "protected_private_sha256": "fb9f819dd9020951ec4145efafa5e78088cadee1ad3c07b4c734a88dd6b7c9a5",
+  "protected_set_immutable": true,
+  "protected_set_size": 120,
+  "protocol": "PDA Protocol v2",
+  "python_matrix": {
+    "3.10": "SUCCESS",
+    "3.11": "SUCCESS",
+    "3.12": "SUCCESS"
+  },
+  "release": false,
+  "report_sha256": "d49cbdab7d43a190b9e278657906d95a2bd29d5b0db4dbd9e39b1031ba8c0b3f",
+  "scientific_terminal_run_id": 31880421048,
+  "scientific_terminal_sha": "23d183086368d0921c9af2f6c326d4c97214f267",
+  "scorer_sha256": "2605023f30e6185316cb0e7ea674606061a2d81d4fca02c4dc8bd6d5e3ca2869",
+  "status": "FAIL"
+}

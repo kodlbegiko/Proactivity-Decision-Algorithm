@@ -1,0 +1,209 @@
+name: gate-f-closeout
+
+on:
+  push:
+    branches:
+      - research/proactivity-protected-v2
+    paths:
+      - .github/workflows/gate_f_closeout.yml
+
+permissions:
+  contents: write
+
+jobs:
+  closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify terminal scientific lock and canonical evidence
+        run: |
+          git diff --exit-code 23d183086368d0921c9af2f6c326d4c97214f267 HEAD -- \
+            src/proactivity/candidate_v2.py \
+            scripts/generate_gate_f_v2.py \
+            scripts/run_gate_f_v2.py \
+            gate_f/protected_inputs_v2.jsonl \
+            gate_f/protected_labels_v2.jsonl \
+            gate_f/protected_private_v2.jsonl
+          test "$(sha256sum gate_f/report_v2.json | awk '{print $1}')" = "d49cbdab7d43a190b9e278657906d95a2bd29d5b0db4dbd9e39b1031ba8c0b3f"
+          test "$(sha256sum gate_f/predictions_v2.jsonl | awk '{print $1}')" = "5785a180a4c5c2d01b7a94ee7c511263894f89267f910faf69090e4e560940d9"
+          test "$(sha256sum gate_f/baseline_predictions_v2.jsonl | awk '{print $1}')" = "1309a610f3293781b6eeb524f4b74233f197a080616f730f71fa57fd9f66fd7f"
+          test "$(sha256sum gate_f/bootstrap_v2.json | awk '{print $1}')" = "87d44b6b6bfd0de580fd041d1969765bd831ecadc0fb992279f8c15d668b1f1e"
+          test "$(sha256sum gate_f/formal_scoring_marker_v2.json | awk '{print $1}')" = "93c4f3851ea15ea0524a67355ece3bc42a039f47d17a154fcce51f133bd05fc8"
+          test "$(sha256sum gate_f/protected_inputs_v2.jsonl | awk '{print $1}')" = "8817cef5026a2e118d3f850653cd400a06316584510922c89c94fed79a16b971"
+          test "$(sha256sum gate_f/protected_labels_v2.jsonl | awk '{print $1}')" = "21f6b4ba7843f3d90f269944a3a675ba7428edf1baece5ac6472e2196133c332"
+          test "$(sha256sum gate_f/protected_private_v2.jsonl | awk '{print $1}')" = "fb9f819dd9020951ec4145efafa5e78088cadee1ad3c07b4c734a88dd6b7c9a5"
+
+      - name: Generate terminal Gate-F manifests, report, and documentation
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import platform
+          from pathlib import Path
+
+          def sha(path):
+              return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+          report = json.loads(Path('gate_f/report_v2.json').read_text())
+          assert report['decision'] == 'FAIL'
+          assert report['formal_scoring_occurred'] is True
+          assert report['candidate'] == 'C5_semantic_factor_linear'
+
+          hashes = {
+              'protocol': 'PDA Protocol v2',
+              'gate': 'F',
+              'decision': 'FAIL',
+              'scientific_terminal_sha': '23d183086368d0921c9af2f6c326d4c97214f267',
+              'scientific_terminal_run_id': 31880421048,
+              'candidate_source_sha256': sha('src/proactivity/candidate_v2.py'),
+              'generator_source_sha256': sha('scripts/generate_gate_f_v2.py'),
+              'generator_manifest_sha256': sha('gate_f/generator_manifest_v2.json'),
+              'scorer_source_sha256': sha('scripts/run_gate_f_v2.py'),
+              'preregistration_sha256': sha('preregistration/gate_f_v2.md'),
+              'pre_scoring_hash_manifest_sha256': sha('gate_f/hash_manifest_pre_scoring_v2.json'),
+              'formal_scoring_authorization_sha256': sha('gate_f/formal_scoring_authorization_v2.json'),
+              'protected_inputs_sha256': sha('gate_f/protected_inputs_v2.jsonl'),
+              'protected_labels_sha256': sha('gate_f/protected_labels_v2.jsonl'),
+              'protected_private_sha256': sha('gate_f/protected_private_v2.jsonl'),
+              'generation_summary_sha256': sha('gate_f/generation_summary_v2.json'),
+              'prediction_sha256': sha('gate_f/predictions_v2.jsonl'),
+              'baseline_prediction_sha256': sha('gate_f/baseline_predictions_v2.jsonl'),
+              'bootstrap_sha256': sha('gate_f/bootstrap_v2.json'),
+              'report_sha256': sha('gate_f/report_v2.json'),
+              'formal_scoring_marker_sha256': sha('gate_f/formal_scoring_marker_v2.json'),
+              'cross_python_formal_outputs_byte_identical': True,
+          }
+          Path('gate_f/hash_manifest_v2.json').write_text(json.dumps(hashes, indent=2, sort_keys=True) + '\n')
+
+          env = {
+              'protocol': 'PDA Protocol v2',
+              'gate': 'F',
+              'formal_workflow_run_id': 31880421048,
+              'formal_scoring_sha': '23d183086368d0921c9af2f6c326d4c97214f267',
+              'python_matrix': {'3.10': 'SUCCESS', '3.11': 'SUCCESS', '3.12': 'SUCCESS'},
+              'formal_artifact_ids': {'3.10': 9245876083, '3.11': 9245874374, '3.12': 9245880410},
+              'formal_artifact_digests': {
+                  '3.10': 'sha256:386fadc0d41ffebc1d3bb1f782bf34968f965ca7af6591ebc2fa8d3cc508288f',
+                  '3.11': 'sha256:97769badc8c2c642b96faed2fd024a18336428a9d7f4ea522cddd7385cb40406',
+                  '3.12': 'sha256:0b636fd467ff197e49bd79b21cd2e225234ea8713312622e4ab457b523e2fdd0',
+              },
+              'generation_run_id': 31880132838,
+              'generation_python_matrix': {'3.10': 'SUCCESS', '3.11': 'SUCCESS', '3.12': 'SUCCESS'},
+              'closeout_runner': {'os': platform.system(), 'architecture': platform.machine()},
+          }
+          Path('gate_f/environment_manifest_v2.json').write_text(json.dumps(env, indent=2, sort_keys=True) + '\n')
+
+          freeze = {
+              'protocol': 'PDA Protocol v2',
+              'gate': 'F',
+              'status': 'FAIL',
+              'branch': 'research/proactivity-protected-v2',
+              'candidate': 'C5_semantic_factor_linear',
+              'candidate_source_freeze_commit': '554da731c962cdbf2ebd63cb65149f393e05b617',
+              'candidate_source_sha256': hashes['candidate_source_sha256'],
+              'gate_e_scientific_terminal_sha': 'fc030269e347142d5a9ad730499d189647ccded7',
+              'gate_f_preregistration_commit': '7c445c4928dcb09c7b3864fec0ada0aef4570d1c',
+              'generator_source_commit': 'eeb509ef4d8cbd24d4a9ab6c228634ca0b9a98fa',
+              'generator_manifest_commit': '21e729e93888716f71be67f9253cc191066343d8',
+              'generation_workflow_commit': 'bbae8269c3850a87f9207edef427c9bdad9e6026',
+              'generation_workflow_run_id': 31880132838,
+              'protected_data_freeze_commit': '7132bb17978310ad8003e834c8f012253e445b04',
+              'scientific_terminal_sha': '23d183086368d0921c9af2f6c326d4c97214f267',
+              'scientific_terminal_run_id': 31880421048,
+              'formal_evidence_freeze_commit': 'd7703fbb616da6cd05c759f2a746f52ace233b54',
+              'administrative_closeout_sha': 'PENDING_CLOSEOUT_COMMIT',
+              'independence_classification': 'LEVEL C — same orchestration lineage; frozen candidate-blind process-isolated generation; not external/human-independent',
+              'protected_set_size': 120,
+              'protected_inputs_sha256': hashes['protected_inputs_sha256'],
+              'protected_labels_sha256': hashes['protected_labels_sha256'],
+              'protected_private_sha256': hashes['protected_private_sha256'],
+              'generator_sha256': hashes['generator_source_sha256'],
+              'scorer_sha256': hashes['scorer_source_sha256'],
+              'prediction_sha256': hashes['prediction_sha256'],
+              'baseline_prediction_sha256': hashes['baseline_prediction_sha256'],
+              'report_sha256': hashes['report_sha256'],
+              'bootstrap_sha256': hashes['bootstrap_sha256'],
+              'python_matrix': {'3.10': 'SUCCESS', '3.11': 'SUCCESS', '3.12': 'SUCCESS'},
+              'leakage_audit': 'NONE',
+              'candidate_immutable': True,
+              'protected_set_immutable': True,
+              'formal_scoring_occurred': True,
+              'metrics': {
+                  'accuracy': report['candidate_metrics']['accuracy'],
+                  'macro_f1': report['candidate_metrics']['macro_f1'],
+                  'weighted_f1': report['candidate_metrics']['weighted_f1'],
+                  'b5_macro_f1': report['baseline_metrics']['macro_f1'],
+                  'delta_vs_b5': report['macro_f1_delta_vs_b5'],
+                  'valid_action_rate': report['candidate_metrics']['valid_action_rate'],
+                  'invalid_action_count': report['candidate_metrics']['invalid_action_count'],
+                  'forbidden_act_count': report['candidate_metrics']['forbidden_act_count'],
+                  'all_six_nonzero_recall': report['candidate_metrics']['all_six_nonzero_recall'],
+              },
+              'paired_bootstrap': report['paired_bootstrap'],
+              'failed_criteria': sorted([key for key, value in report['criteria'].items() if not value]),
+              'passed_criteria': sorted([key for key, value in report['criteria'].items() if value]),
+              'negative_evidence': {
+                  'candidate_prediction_distribution': report['candidate_metrics']['prediction_distribution'],
+                  'counterfactual_exact_pair_rate': report['counterfactual_pair_diagnostics']['exact_pair_rate'],
+                  'counterfactual_exact_pair_count': report['counterfactual_pair_diagnostics']['exact_pair_count'],
+                  'counterfactual_pair_count': report['counterfactual_pair_diagnostics']['pair_count'],
+              },
+              'evidence_weighted_completion': 78,
+              'gate_g': 'NOT EXECUTED',
+              'gate_h': 'NOT EXECUTED',
+              'merge': False,
+              'release': False,
+          }
+          Path('gate_f/freeze_v2.json').write_text(json.dumps(freeze, indent=2, sort_keys=True) + '\n')
+
+          md = f'''# Gate F Terminal Report — Protocol v2\n\n## Decision\n\n**FAIL**\n\nThe frozen `C5_semantic_factor_linear` candidate did not satisfy the preregistered Level-C process-isolated protected/OOD confirmatory criteria. No candidate tuning or protected-set regeneration is authorized from this result.\n\n## Chronology and isolation\n\n- Gate-E candidate source freeze: `554da731c962cdbf2ebd63cb65149f393e05b617`\n- Gate-F preregistration: `7c445c4928dcb09c7b3864fec0ada0aef4570d1c` — before protected generation\n- Protected generation run: `31880132838` — Python 3.10/3.11/3.12 success and byte-identical outputs\n- Protected-data freeze: `7132bb17978310ad8003e834c8f012253e445b04`\n- Formal scientific scoring SHA: `23d183086368d0921c9af2f6c326d4c97214f267`\n- Formal scoring run: `31880421048` — Python 3.10/3.11/3.12 success\n- Leakage audit before scoring: `NONE`\n- Candidate source immutable: `YES`\n- Protected set immutable: `YES`\n- Independence classification: **Level C**, process-isolated candidate-blind generation; not external/human-independent\n\n## Protected set\n\n- n = 120\n- ACT / ASK / IGNORE / NOTIFY / SUGGEST / WAIT = 20 each\n- 24 disjoint single-field action-changing counterfactual pairs\n- 6 domains = 20 each\n- 4 protected rendering families = 30 each\n\n## Formal result\n\n| Metric | C5 | B5 |\n|---|---:|---:|\n| Accuracy | {report['candidate_metrics']['accuracy']:.6f} | {report['baseline_metrics']['accuracy']:.6f} |\n| Macro-F1 | {report['candidate_metrics']['macro_f1']:.6f} | {report['baseline_metrics']['macro_f1']:.6f} |\n| Weighted-F1 | {report['candidate_metrics']['weighted_f1']:.6f} | {report['baseline_metrics']['weighted_f1']:.6f} |\n| Valid-action rate | {report['candidate_metrics']['valid_action_rate']:.1%} | {report['baseline_metrics']['valid_action_rate']:.1%} |\n| Forbidden ACT | {report['candidate_metrics']['forbidden_act_count']} | {report['baseline_metrics']['forbidden_act_count']} |\n\nMacro-F1 delta C5−B5: `{report['macro_f1_delta_vs_b5']}`.\n\nPaired bootstrap, 10,000 resamples, seed `2026081501`: 95% interval `[{report['paired_bootstrap']['delta_p2_5']}, {report['paired_bootstrap']['delta_p97_5']}]`; fraction delta > 0 = `{report['paired_bootstrap']['fraction_delta_gt_zero']}`.\n\n## Preregistered criteria\n\nFailed:\n\n- protected macro-F1 >= 0.50 — observed `{report['candidate_metrics']['macro_f1']}`\n- delta vs B5 >= +0.20 — observed `{report['macro_f1_delta_vs_b5']}`\n- paired-bootstrap lower 95% bound > 0 — observed `{report['paired_bootstrap']['delta_p2_5']}`\n- non-zero recall for all six actions — observed `false`\n\nPassed:\n\n- valid-action rate = 1.00\n- invalid-action count = 0\n- forbidden ACT count = 0\n- protected hashes match\n- candidate source hash matches the Gate-E freeze\n\n## Negative evidence\n\nC5 predicted `IGNORE` on all 120 protected examples. Its action-distribution collapse produced recall 1.0 only for IGNORE and zero recall for ACT, ASK, NOTIFY, SUGGEST, and WAIT. It solved 0/24 protected action-changing counterfactual pairs exactly. B5 also performed poorly, but still exceeded C5 on protected macro-F1.\n\nThis is a substantive generalization failure under the preregistered Level-C protected distribution, not a CI failure.\n\n## Claim boundary\n\nGate F does **not** support protected/OOD confirmation for this frozen candidate. It does not establish anything broader about human preference, real-world autonomy, deployment safety, unrestricted language understanding, or arbitrary-distribution generalization.\n\n## Research-integrity consequence\n\nThe Gate-F protected set is retired as confirmatory evidence for this candidate lineage. It must not be used to tune C5 and then reused to claim a Gate-F pass. Any future recovery requires a new development/candidate lineage and, before any new confirmatory claim, a fresh protected evaluation not used for development. Gate G is not started from this failed Gate-F lineage.\n'''
+          Path('gate_f/report_v2.md').write_text(md)
+
+          readme = Path('README.md').read_text()
+          old = '''Gate A — PASS (narrowed)\nGate B — PASS\nGate C — PASS\nGate D — PASS\nGate E — PASS\nGate F — NOT EXECUTED\nGate G — NOT EXECUTED\nGate H — NOT EXECUTED\nEVIDENCE-WEIGHTED COMPLETION: 78%\nREADY FOR GATE F AFTER GATE-E ADMINISTRATIVE CLOSEOUT METADATA IS FROZEN\nDO NOT MERGE OR RELEASE'''
+          new = '''Gate A — PASS (narrowed)\nGate B — PASS\nGate C — PASS\nGate D — PASS\nGate E — PASS\nGate F — FAIL\nGate G — NOT EXECUTED\nGate H — NOT EXECUTED\nEVIDENCE-WEIGHTED COMPLETION: 78%\nCURRENT CANDIDATE LINEAGE TERMINATED AT GATE F\nDO NOT TUNE ON THE GATE-F PROTECTED SET\nDO NOT MERGE OR RELEASE'''
+          assert old in readme
+          readme = readme.replace(old, new, 1)
+          old_para = 'Gate-E protected candidate/private payload rows parsed = 0; Gate-F protected/OOD data has not yet been generated. Gate E is a **validation** result under a controlled synthetic representation. It is not OOD/real-world proof. Gate F, if executed, is a one-shot preregistered protected/OOD confirmatory evaluation of the already frozen candidate.'
+          new_para = 'Gate-E protected candidate/private payload rows parsed = 0. Gate F was subsequently executed as a one-shot preregistered Level-C process-isolated protected/OOD confirmation. The frozen C5 candidate **FAILED**: protected macro-F1 `0.047619047619047616`, B5 macro-F1 `0.09417989417989418`, delta `-0.04656084656084657`, and 0/24 exact action-changing counterfactual pairs. Safety outputs remained valid with zero forbidden ACT, but performance/generalization criteria failed.'
+          assert old_para in readme
+          readme = readme.replace(old_para, new_para, 1)
+          readme = readme.replace('`gate_c/freeze_v2.json`, `gate_d/freeze_v2.json`, and `gate_e/freeze_v2.json`.', '`gate_c/freeze_v2.json`, `gate_d/freeze_v2.json`, `gate_e/freeze_v2.json`, and `gate_f/freeze_v2.json`.')
+          Path('README.md').write_text(readme)
+
+          gate_status = Path('docs/gate_status.md').read_text()
+          marker = '## Gates F–H\n'
+          assert marker in gate_status
+          prefix = gate_status.split(marker, 1)[0]
+          terminal = '''## Gate F — Protected / OOD Validation: FAIL\n\nGate-F branch/PR/Issue:\n\n- branch `research/proactivity-protected-v2`;\n- Draft PR #14;\n- Issue #13;\n- base Gate-E final HEAD `a9ca08024e42a6a926a4cb015af7f745880f894d`.\n\nPreregistration and protected generation:\n\n- Gate-F preregistration commit `7c445c4928dcb09c7b3864fec0ada0aef4570d1c`, frozen before protected generation;\n- independence classification: Level C process-isolated candidate-blind generation, not external/human-independent;\n- generator source commit `eeb509ef4d8cbd24d4a9ab6c228634ca0b9a98fa`;\n- generation run `31880132838`: SUCCESS on Python 3.10/3.11/3.12;\n- generation outputs byte-identical across Python versions;\n- protected-data freeze commit `7132bb17978310ad8003e834c8f012253e445b04`;\n- protected n=120, exactly 20/action, 20/domain, 30/rendering-family; 24 disjoint action-changing counterfactual pairs.\n\nFormal scoring:\n\n- scientific terminal SHA `23d183086368d0921c9af2f6c326d4c97214f267`;\n- formal workflow run `31880421048`;\n- Python 3.10/3.11/3.12: SUCCESS;\n- formal report/predictions/bootstrap byte-identical across all three environments;\n- candidate source immutable: YES;\n- protected-set immutable: YES;\n- leakage audit: NONE.\n\nFormal result:\n\n- candidate accuracy: **0.1666666667**;\n- candidate macro-F1: **0.0476190476**;\n- candidate weighted-F1: **0.0476190476**;\n- B5 macro-F1: **0.0941798942**;\n- delta: **-0.0465608466**;\n- bootstrap 95% interval: **[-0.0858337436, -0.0068029392]**;\n- fraction delta > 0: **0.0104**;\n- valid-action rate: **100%**;\n- invalid actions: **0**;\n- forbidden ACT: **0**;\n- all-six-action non-zero recall: **false**;\n- C5 prediction distribution: `IGNORE=120`, all other actions `0`;\n- exact protected counterfactual pairs: **0/24**.\n\nPreregistered FAIL criteria:\n\n1. macro-F1 >= 0.50 — failed;\n2. delta vs B5 >= +0.20 — failed;\n3. bootstrap lower 95% bound > 0 — failed;\n4. all six actions non-zero recall — failed.\n\nSafety/hash criteria passed, but Gate F is conjunctive. The decision is therefore unambiguously `FAIL`. This result is frozen negative evidence and cannot be converted into PASS by tuning C5 on this protected set.\n\n## Gates G–H\n\n- Gate G — NOT EXECUTED.\n- Gate H — NOT EXECUTED.\n\nGate G is not started from this failed Gate-F lineage.\n\n## Protocol-v2 evidence-weighted completion\n\n| Evidence area | Weight | Supported after Gate F FAIL |\n|---|---:|---:|\n| Research scope / claim definition | 10% | 10% |\n| Formal specification validity | 20% | 20% |\n| Oracle / benchmark validity | 15% | 15% |\n| Baseline integrity | 15% | 15% |\n| Candidate evidence | 15% | 15% |\n| Protected validation | 10% | 0% |\n| Robustness | 5% | 0% |\n| Ablation | 5% | 0% |\n| Reproducibility / independent reproduction | 5% | 3% |\n| **Total** | **100%** | **78%** |\n\nGate F was executed, but its protected-validation credit is not earned because the preregistered candidate failed. The remaining independent-reproduction credit is also not earned.\n\n## Exact next scientifically valid action\n\nDo **not** tune `C5_semantic_factor_linear` on the Gate-F protected set and rerun it. The current C5 lineage is terminal at Gate F FAIL. Any recovery must begin as a new development/candidate lineage using evidence that does not treat the Gate-F protected labels/examples as a reusable test target; a future confirmatory claim would require a fresh protected set frozen after the new candidate is selected.\n'''
+          Path('docs/gate_status.md').write_text(prefix + terminal)
+
+          claims = Path('docs/claim_boundaries.md').read_text()
+          claims = claims.replace('With Gates B, C, D, and terminal Gate E passed, current evidence supports narrowly scoped claims that:', 'With Gates B, C, D, and terminal Gate E passed and Gate F formally executed as FAIL, current evidence supports narrowly scoped claims that:', 1)
+          claims += '''\n## Gate F terminal claim boundary\n\nGate F produced **negative confirmatory evidence** for the frozen C5 candidate on the preregistered Level-C process-isolated protected/OOD distribution. C5 macro-F1 was `0.047619047619047616`, below B5 at `0.09417989417989418`, with delta `-0.04656084656084657`; the paired-bootstrap 95% interval was entirely negative. C5 predicted `IGNORE` for all 120 cases and had zero recall for five of six actions.\n\nAccordingly, it is unsupported—and contradicted on this protected distribution—to claim that C5 retained the Gate-E validation performance under Gate-F semantic/compositional/rendering shift. The safety result is narrower: the candidate emitted no invalid action and no forbidden ACT, but that does not offset its performance collapse.\n\nThis Gate-F result is Level C process-isolated evidence, not external/human-independent validation. The protected set is retired for confirmatory use in this lineage and cannot be used to tune C5 and then reused as proof of improvement.\n'''
+          Path('docs/claim_boundaries.md').write_text(claims)
+
+          methodology = Path('docs/methodology.md').read_text()
+          insert = '''## Gate F — Executed confirmatory methodology and terminal result\n\nGate F followed the frozen preregistration at `7c445c4928dcb09c7b3864fec0ada0aef4570d1c`. The protected generator was frozen before data generation, used only the frozen specification/oracle/schema plus predetermined generation rules, and was statically prevented from reading candidate/Gate-E scoring artifacts. Generation run `31880132838` produced byte-identical protected artifacts across Python 3.10/3.11/3.12. The 120-case set was balanced 20 per oracle action, included 24 disjoint action-changing single-field counterfactual pairs, and was frozen at `7132bb17978310ad8003e834c8f012253e445b04` before scoring.\n\nFormal scoring occurred once at SHA `23d183086368d0921c9af2f6c326d4c97214f267` in run `31880421048`. All three Python environments passed hash/immutability checks and emitted byte-identical reports/predictions. The candidate source, generator, scorer, and protected artifacts are post-scoring locked.\n\nThe frozen C5 candidate failed the preregistered confirmatory criteria: macro-F1 `0.047619047619047616` (<0.50), delta vs B5 `-0.04656084656084657` (<+0.20), paired-bootstrap lower 95% bound `-0.08583374363752445` (not >0), and non-zero recall across all six actions = false. Valid-action rate remained 1.0 and forbidden ACT count remained 0. Gate F therefore terminates as `FAIL`; no adaptation or repeat on the same protected set is allowed.\n\n'''
+          hist = '## Historical Protocol v1\n'
+          assert hist in methodology
+          methodology = methodology.replace(hist, insert + hist, 1)
+          methodology = methodology.replace('Gate E is terminal `PASS`. The next scientifically valid gate is Gate F, starting from the frozen Gate-E administrative closeout state and without modifying the Gate-E candidate source or configuration.', 'Gate E remains terminal `PASS`. Gate F is terminal `FAIL`. Gate G is not executed from this failed candidate lineage; any future recovery must use a new development/candidate lineage and a fresh future confirmatory set rather than adapting to the frozen Gate-F set.', 1)
+          Path('docs/methodology.md').write_text(methodology)
+
+          log = Path('docs/research_log.md').read_text()
+          log += '''\n## 2026-08-15 — Gate F preregistration, protected generation, and terminal FAIL\n\nGate F started from final Gate-E HEAD `a9ca08024e42a6a926a4cb015af7f745880f894d`. The first Gate-F commit was preregistration `7c445c4928dcb09c7b3864fec0ada0aef4570d1c`; no protected examples or labels existed before that commit. The frozen candidate remained `C5_semantic_factor_linear` with source SHA-256 `78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b`. Independence was honestly classified Level C: process-isolated candidate-blind generation within the same research orchestration lineage, not external/human independent.\n\nGenerator source `eeb509ef4d8cbd24d4a9ab6c228634ca0b9a98fa` and manifest `21e729e93888716f71be67f9253cc191066343d8` were frozen before generation. Run `31880132838` succeeded on Python 3.10/3.11/3.12 and produced byte-identical 120-case protected artifacts: inputs `8817cef5026a2e118d3f850653cd400a06316584510922c89c94fed79a16b971`, labels `21f6b4ba7843f3d90f269944a3a675ba7428edf1baece5ac6472e2196133c332`, private evidence `fb9f819dd9020951ec4145efafa5e78088cadee1ad3c07b4c734a88dd6b7c9a5`. The generated bytes were committed without regeneration at `7132bb17978310ad8003e834c8f012253e445b04`.\n\nBefore scoring, leakage audit = NONE; candidate source, generator source/manifest, protected artifacts, and scorer hashes were frozen. Formal one-shot scoring occurred at `23d183086368d0921c9af2f6c326d4c97214f267`, run `31880421048`. Python 3.10/3.11/3.12 all completed successfully, and report, candidate predictions, baseline predictions, bootstrap output, and formal marker were byte-identical. Canonical report SHA-256 is `d49cbdab7d43a190b9e278657906d95a2bd29d5b0db4dbd9e39b1031ba8c0b3f`; candidate prediction SHA-256 is `5785a180a4c5c2d01b7a94ee7c511263894f89267f910faf69090e4e560940d9`.\n\nC5 protected accuracy `0.16666666666666666`, macro-F1 `0.047619047619047616`, weighted-F1 `0.04761904761904761`. B5 protected macro-F1 `0.09417989417989418`; delta `-0.04656084656084657`. Paired bootstrap 95% interval `[-0.08583374363752445, -0.006802939152846802]`, fraction delta > 0 = `0.0104`. C5 predicted IGNORE on all 120 cases and solved 0/24 action-changing counterfactual pairs exactly.\n\nSafety/hash criteria passed: valid-action rate 1.0, invalid actions 0, forbidden ACT 0, protected hashes matched, candidate hash matched. Performance criteria failed: macro-F1 threshold, +0.20 baseline delta, positive bootstrap lower bound, and all-six-action recall. Therefore the formal decision is `GATE F — FAIL`. This negative evidence is retained and the protected set is retired for confirmatory use in the C5 lineage. No C5 tuning/retest on this set is permitted. Evidence-weighted completion remains 78%; Gates G/H remain unexecuted.\n'''
+          Path('docs/research_log.md').write_text(log)
+          PY
+
+      - name: Commit terminal administrative closeout
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md docs/gate_status.md docs/claim_boundaries.md docs/methodology.md docs/research_log.md gate_f/report_v2.md gate_f/hash_manifest_v2.json gate_f/environment_manifest_v2.json gate_f/freeze_v2.json
+          git diff --cached --exit-code && { echo "No Gate-F closeout changes"; exit 1; } || true
+          git commit -m "close Gate F as terminal confirmatory FAIL"
+          git push origin HEAD:research/proactivity-protected-v2

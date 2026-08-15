@@ -138,6 +138,14 @@ Gate F is confirmatory rather than developmental. Its generator may use only pre
 
 Before any protected data are generated, Gate F must freeze its research question, one-candidate identity, protected-generation process, set size, semantic/OOD transformation families, metrics, comparator, statistical method, safety criteria, acceptance thresholds, stopping rule, and independence classification. After the protected inputs/labels and hashes are frozen, there is one formal confirmatory scoring execution. Performance failure is a valid terminal result and does not authorize candidate tuning or protected-set regeneration.
 
+## Gate F — Executed confirmatory methodology and terminal result
+
+Gate F followed the frozen preregistration at `7c445c4928dcb09c7b3864fec0ada0aef4570d1c`. The protected generator was frozen before data generation, used only the frozen specification/oracle/schema plus predetermined generation rules, and was statically prevented from reading candidate/Gate-E scoring artifacts. Generation run `31880132838` produced byte-identical protected artifacts across Python 3.10/3.11/3.12. The 120-case set was balanced 20 per oracle action, included 24 disjoint action-changing single-field counterfactual pairs, and was frozen at `7132bb17978310ad8003e834c8f012253e445b04` before scoring.
+
+Formal scoring occurred once at SHA `23d183086368d0921c9af2f6c326d4c97214f267` in run `31880421048`. All three Python environments passed hash/immutability checks and emitted byte-identical reports/predictions. The candidate source, generator, scorer, and protected artifacts are post-scoring locked.
+
+The frozen C5 candidate failed the preregistered confirmatory criteria: macro-F1 `0.047619047619047616` (<0.50), delta vs B5 `-0.04656084656084657` (<+0.20), paired-bootstrap lower 95% bound `-0.08583374363752445` (not >0), and non-zero recall across all six actions = false. Valid-action rate remained 1.0 and forbidden ACT count remained 0. Gate F therefore terminates as `FAIL`; no adaptation or repeat on the same protected set is allowed.
+
 ## Historical Protocol v1
 
 Protocol v1 remains `GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION`; its 25% historical completion and missing human-label evidence are not rewritten by Protocol v2.
@@ -153,4 +161,4 @@ Gate F: protected/OOD validation.
 Gate G: robustness/adversarial/invariant stress testing.  
 Gate H: ablation/reproducibility/independent reproduction/final claim audit.
 
-Gate E is terminal `PASS`. The next scientifically valid gate is Gate F, starting from the frozen Gate-E administrative closeout state and without modifying the Gate-E candidate source or configuration.
+Gate E remains terminal `PASS`. Gate F is terminal `FAIL`. Gate G is not executed from this failed candidate lineage; any future recovery must use a new development/candidate lineage and a fresh future confirmatory set rather than adapting to the frozen Gate-F set.

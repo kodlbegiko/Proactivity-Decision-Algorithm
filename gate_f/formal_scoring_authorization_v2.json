@@ -1,0 +1,26 @@
+{
+  "authorization_basis": "Preregistration frozen before protected generation; candidate source immutable; protected generation matrix and byte-identity checks passed; protected data frozen; pre-score hashes and leakage audit frozen.",
+  "authorized": true,
+  "candidate": "C5_semantic_factor_linear",
+  "candidate_source_sha256": "78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b",
+  "expected_python_matrix": [
+    "3.10",
+    "3.11",
+    "3.12"
+  ],
+  "formal_scoring_is_one_shot": true,
+  "gate": "F",
+  "post_scoring_lock": [
+    "src/proactivity/candidate_v2.py",
+    "scripts/generate_gate_f_v2.py",
+    "gate_f/protected_inputs_v2.jsonl",
+    "gate_f/protected_labels_v2.jsonl",
+    "gate_f/protected_private_v2.jsonl",
+    "scripts/run_gate_f_v2.py"
+  ],
+  "preregistration_commit": "7c445c4928dcb09c7b3864fec0ada0aef4570d1c",
+  "protected_data_freeze_commit": "7132bb17978310ad8003e834c8f012253e445b04",
+  "protocol": "PDA Protocol v2",
+  "scorer_source_sha256": "2605023f30e6185316cb0e7ea674606061a2d81d4fca02c4dc8bd6d5e3ca2869",
+  "valid_retry_rule": "Infrastructure retry only if no valid candidate prediction artifact was produced. A performance FAIL may not be rerun after tuning or protected-set adaptation."
+}

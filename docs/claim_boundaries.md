@@ -2,7 +2,7 @@
 
 ## Supported now
 
-With Gates B, C, D, and terminal Gate E passed, current evidence supports narrowly scoped claims that:
+With Gates B, C, D, and terminal Gate E passed and Gate F formally executed as FAIL, current evidence supports narrowly scoped claims that:
 
 - the frozen `PDA-SPEC-v2` is deterministically executable over its bounded valid state space;
 - the Gate-C benchmark is reproducibly generated from generator-known state plus the frozen oracle;
@@ -47,3 +47,11 @@ If Gate F later uses a same-agent candidate-blind generator after candidate free
 ## Historical human validation
 
 Protocol-v1 human-annotation infrastructure remains historical/optional external-validity infrastructure. Protocol v1 itself remains blocked by independent annotation and is not retroactively passed.
+
+## Gate F terminal claim boundary
+
+Gate F produced **negative confirmatory evidence** for the frozen C5 candidate on the preregistered Level-C process-isolated protected/OOD distribution. C5 macro-F1 was `0.047619047619047616`, below B5 at `0.09417989417989418`, with delta `-0.04656084656084657`; the paired-bootstrap 95% interval was entirely negative. C5 predicted `IGNORE` for all 120 cases and had zero recall for five of six actions.
+
+Accordingly, it is unsupported—and contradicted on this protected distribution—to claim that C5 retained the Gate-E validation performance under Gate-F semantic/compositional/rendering shift. The safety result is narrower: the candidate emitted no invalid action and no forbidden ACT, but that does not offset its performance collapse.
+
+This Gate-F result is Level C process-isolated evidence, not external/human-independent validation. The protected set is retired for confirmatory use in this lineage and cannot be used to tune C5 and then reused as proof of improvement.

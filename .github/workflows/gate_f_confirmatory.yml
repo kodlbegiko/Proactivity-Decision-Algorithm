@@ -1,0 +1,135 @@
+name: gate-f-confirmatory
+
+on:
+  push:
+    branches:
+      - research/proactivity-protected-v2
+    paths:
+      - gate_f/formal_scoring_authorization_v2.json
+      - gate_f/hash_manifest_pre_scoring_v2.json
+      - scripts/run_gate_f_v2.py
+      - .github/workflows/gate_f_confirmatory.yml
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements.txt
+
+      - name: Verify frozen candidate and normative dependencies
+        run: |
+          test "$(sha256sum spec/proactivity_policy_v2.json | awk '{print $1}')" = "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+          test "$(sha256sum src/proactivity/specification/oracle.py | awk '{print $1}')" = "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f"
+          test "$(sha256sum src/proactivity/candidate_v2.py | awk '{print $1}')" = "78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b"
+          git diff --exit-code 554da731c962cdbf2ebd63cb65149f393e05b617 HEAD -- src/proactivity/candidate_v2.py
+
+      - name: Verify formal scoring authorization and protected-data immutability
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          auth = json.loads(Path("gate_f/formal_scoring_authorization_v2.json").read_text())
+          assert auth["authorized"] is True
+          assert auth["formal_scoring_is_one_shot"] is True
+          freeze = auth["protected_data_freeze_commit"]
+          protected_paths = [
+              "gate_f/protected_inputs_v2.jsonl",
+              "gate_f/protected_labels_v2.jsonl",
+              "gate_f/protected_private_v2.jsonl",
+              "gate_f/generation_summary_v2.json",
+              "gate_f/generator_manifest_v2.json",
+              "scripts/generate_gate_f_v2.py",
+          ]
+          subprocess.run(["git","diff","--exit-code",freeze,"HEAD","--",*protected_paths], check=True)
+          PY
+
+      - name: Verify pre-scoring hashes before any candidate prediction
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          manifest = json.loads(Path("gate_f/hash_manifest_pre_scoring_v2.json").read_text())
+          paths = {
+              "candidate_source_sha256": "src/proactivity/candidate_v2.py",
+              "generator_source_sha256": "scripts/generate_gate_f_v2.py",
+              "generator_manifest_sha256": "gate_f/generator_manifest_v2.json",
+              "protected_inputs_sha256": "gate_f/protected_inputs_v2.jsonl",
+              "protected_labels_sha256": "gate_f/protected_labels_v2.jsonl",
+              "protected_private_sha256": "gate_f/protected_private_v2.jsonl",
+              "generation_summary_sha256": "gate_f/generation_summary_v2.json",
+              "preregistration_sha256": "preregistration/gate_f_v2.md",
+              "scorer_source_sha256": "scripts/run_gate_f_v2.py",
+          }
+          for field, path in paths.items():
+              actual = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+              assert actual == manifest[field], (field, actual, manifest[field])
+          assert manifest["leakage_audit_before_scoring"] == "NONE"
+          assert manifest["preregistration_commit"] == "7c445c4928dcb09c7b3864fec0ada0aef4570d1c"
+          assert manifest["protected_data_freeze_commit"] == "7132bb17978310ad8003e834c8f012253e445b04"
+          PY
+
+      - name: Regenerate Gate-C benchmark for frozen development training only
+        run: |
+          rm -rf /tmp/gate-c-train
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir /tmp/gate-c-train
+
+      - name: Run formal Gate-F confirmatory scoring exactly once in this matrix job
+        run: |
+          rm -rf /tmp/gate-f-score
+          PYTHONPATH=src python scripts/run_gate_f_v2.py --benchmark-root /tmp/gate-c-train --output-dir /tmp/gate-f-score
+
+      - name: Assert formal marker and complete metric schema
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/gate-f-score")
+          marker = json.loads((root / "formal_scoring_marker_v2.json").read_text())
+          report = json.loads((root / "report_v2.json").read_text())
+          assert marker["GATE_F_FORMAL_SCORING_OCCURRED"] is True
+          assert report["formal_scoring_occurred"] is True
+          assert report["decision"] in {"PASS","FAIL"}
+          for key in ("accuracy","macro_f1","weighted_f1","per_action","confusion_matrix","valid_action_rate","invalid_action_count","invalid_action_rate","forbidden_act_count"):
+              assert key in report["candidate_metrics"], key
+          assert set(report["criteria"]) == {
+              "macro_f1_at_least_0_50",
+              "delta_vs_b5_at_least_0_20",
+              "bootstrap_lower_bound_positive",
+              "valid_action_rate_100pct",
+              "invalid_action_count_zero",
+              "forbidden_act_zero",
+              "all_six_nonzero_recall",
+              "protected_hashes_match",
+              "candidate_source_hash_match",
+          }
+          PY
+
+      - name: Upload Gate-F formal evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-f-evidence-py${{ matrix.python-version }}
+          path: |
+            /tmp/gate-f-score/
+            gate_f/hash_manifest_pre_scoring_v2.json
+            gate_f/formal_scoring_authorization_v2.json
+            gate_f/generator_manifest_v2.json
+            gate_f/generation_summary_v2.json
+            gate_f/protected_inputs_v2.jsonl
+            gate_f/protected_labels_v2.jsonl
+            gate_f/protected_private_v2.jsonl
+            scripts/generate_gate_f_v2.py
+            scripts/run_gate_f_v2.py
+            preregistration/gate_f_v2.md
+          if-no-files-found: error
