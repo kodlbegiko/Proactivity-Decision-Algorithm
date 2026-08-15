@@ -84,7 +84,10 @@ jobs:
           assert r['recovery_v3_extractor']['ood']['micro_factor_accuracy'] >= 0.90
           PY
       - name: Historical regressions and recovery tests
-        run: PYTHONPATH=. pytest -q
+        run: |
+          python scripts/generate_development_v1.py
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir data/benchmark_v2
+          PYTHONPATH=. pytest -q
       - name: Upload machine-generated recovery evidence
         uses: actions/upload-artifact@v4
         with:
@@ -161,6 +164,8 @@ jobs:
           PY
           python scripts/validate_candidate_boundary_v3.py
           python scripts/validate_recovery_gate_f_isolation.py
+          python scripts/generate_development_v1.py
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir data/benchmark_v2
           PYTHONPATH=. pytest -q
       - name: Commit immutable Candidate-v3 source and development evidence
         if: steps.existing.outputs.frozen == 'false'
