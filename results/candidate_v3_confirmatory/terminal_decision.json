@@ -1,0 +1,30 @@
+{
+  "candidate": "V3A_factor_tree",
+  "candidate_source_freeze_commit": "d032ba787e5fe509253801befc898a2377b8149f",
+  "candidate_source_sha256": "280494c9b0530bc2ce4ea624c32d37a7aa22dc6b0da034bd95d594bf2890ff1b",
+  "criteria": {
+    "all_six_action_recall_gt_0": false,
+    "candidate_source_identity_frozen": true,
+    "candidate_visible_fields_only_domain_observation": true,
+    "counterfactual_exact_pair_ge_0_70": false,
+    "counterfactual_exactly_120_valid_pairs": true,
+    "forbidden_act_count_eq_0": true,
+    "invalid_action_count_eq_0": true,
+    "invariance_exactly_120_valid_pairs": true,
+    "invariance_prediction_consistency_ge_0_90": true,
+    "main_exactly_600_and_100_per_action": true,
+    "main_macro_f1_ge_0_50": false,
+    "max_predicted_action_share_le_0_50": false,
+    "no_candidate_tuning_or_postfreeze_change": true,
+    "no_historical_protected_access": true,
+    "sealed_hashes_match": true,
+    "valid_action_rate_eq_1_00": true
+  },
+  "formal_scoring_occurred": true,
+  "fresh_confirmatory": "FAIL",
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "historical_gate_f": "FAIL",
+  "preregistration_commit": "866aa741aa28e28cc93d04c6619e463885e393b0",
+  "terminal_state": "FRESH CONFIRMATORY FAIL — CANDIDATE_V3_LINEAGE_TERMINATED"
+}

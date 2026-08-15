@@ -1,0 +1,11 @@
+{
+  "algorithm": "sha256",
+  "candidate_source_sha256": "280494c9b0530bc2ce4ea624c32d37a7aa22dc6b0da034bd95d594bf2890ff1b",
+  "files": {
+    "metrics.json": "5c35aecaa899f5f6e349f45f71f5d0b0b1d18a7addf9fd76b4a940bf7a9d2198",
+    "predictions.jsonl": "df02222b72b1001d48b5eefb4582e00e398d0b6250bb1c604f961bd3403fa8bc",
+    "terminal_decision.json": "552c8232cb27604afd648be6a0a5191641b82c84e26b46db6bfa2ab55063fb33"
+  },
+  "scorer_source_sha256": "02880f690e7ebcf0be0b6ab4016777031da9c41046bb89cb790864defac1b52e",
+  "training_sha256": "e33a8f3af59bbeb47ad4e2109e56b28ddbfef704539279f1c9f532020d7189d4"
+}
