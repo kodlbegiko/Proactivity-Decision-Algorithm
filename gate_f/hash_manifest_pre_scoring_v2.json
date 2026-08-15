@@ -1,0 +1,43 @@
+{
+  "candidate": "C5_semantic_factor_linear",
+  "candidate_source_freeze_commit": "554da731c962cdbf2ebd63cb65149f393e05b617",
+  "candidate_source_sha256": "78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b",
+  "formal_scoring_occurred": false,
+  "gate": "F",
+  "gate_e_final_head": "a9ca08024e42a6a926a4cb015af7f745880f894d",
+  "gate_e_scientific_terminal_sha": "fc030269e347142d5a9ad730499d189647ccded7",
+  "generation_cross_python_byte_identical": true,
+  "generation_python_matrix": {
+    "3.10": "SUCCESS",
+    "3.11": "SUCCESS",
+    "3.12": "SUCCESS"
+  },
+  "generation_summary_sha256": "c5b325075d67a4c7fb81cff63d228dbe33df1e3dcfaf9b0873320385efb4725b",
+  "generation_workflow_commit": "bbae8269c3850a87f9207edef427c9bdad9e6026",
+  "generation_workflow_run_id": 31880132838,
+  "generator_manifest_commit": "21e729e93888716f71be67f9253cc191066343d8",
+  "generator_manifest_sha256": "2a20eb881c229f36b910c687ef093257b26b6bd92e43fb33beabcd276152986d",
+  "generator_source_commit": "eeb509ef4d8cbd24d4a9ab6c228634ca0b9a98fa",
+  "generator_source_sha256": "f9bd6eb12ab5c76720bc5c02af0ba001334047b42e7f4f0db3ba617537961fd0",
+  "independence_classification": "LEVEL C — same orchestration lineage; frozen candidate-blind process-isolated generation; not external/human-independent",
+  "leakage_audit_before_scoring": "NONE",
+  "leakage_audit_evidence": {
+    "candidate_or_candidate_development_used_protected_labels": false,
+    "candidate_source_changed_after_freeze": false,
+    "generator_source_changed_after_valid_generation": false,
+    "notes": "Git compare shows candidate_v2.py absent from all changes after its freeze; after valid generation the generator source/manifest remained unchanged and only administrative freeze workflow plus generated protected artifacts were added before the protected-data freeze commit.",
+    "protected_data_modified_after_freeze": false
+  },
+  "oracle_source_sha256": "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f",
+  "preregistration_commit": "7c445c4928dcb09c7b3864fec0ada0aef4570d1c",
+  "preregistration_sha256": "d2d83a2743654957b86478fac3a7347f851482824183b6ad6098c8fb9508c810",
+  "protected_data_freeze_commit": "7132bb17978310ad8003e834c8f012253e445b04",
+  "protected_inputs_sha256": "8817cef5026a2e118d3f850653cd400a06316584510922c89c94fed79a16b971",
+  "protected_labels_sha256": "21f6b4ba7843f3d90f269944a3a675ba7428edf1baece5ac6472e2196133c332",
+  "protected_private_sha256": "fb9f819dd9020951ec4145efafa5e78088cadee1ad3c07b4c734a88dd6b7c9a5",
+  "protected_set_size": 120,
+  "protocol": "PDA Protocol v2",
+  "scorer_source_sha256": "2605023f30e6185316cb0e7ea674606061a2d81d4fca02c4dc8bd6d5e3ca2869",
+  "spec_sha256": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4",
+  "status": "FROZEN_BEFORE_FORMAL_SCORING"
+}
