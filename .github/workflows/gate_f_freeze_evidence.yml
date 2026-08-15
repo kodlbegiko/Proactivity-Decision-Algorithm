@@ -1,0 +1,90 @@
+name: gate-f-freeze-evidence
+
+on:
+  push:
+    branches:
+      - research/proactivity-protected-v2
+    paths:
+      - .github/workflows/gate_f_freeze_evidence.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download Python 3.10 formal evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: gate-f-evidence-py3.10
+          path: /tmp/e310
+          run-id: 31880421048
+          github-token: ${{ github.token }}
+
+      - name: Download Python 3.11 formal evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: gate-f-evidence-py3.11
+          path: /tmp/e311
+          run-id: 31880421048
+          github-token: ${{ github.token }}
+
+      - name: Download Python 3.12 formal evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: gate-f-evidence-py3.12
+          path: /tmp/e312
+          run-id: 31880421048
+          github-token: ${{ github.token }}
+
+      - name: Verify cross-version byte identity and frozen formal hashes
+        run: |
+          for file in report_v2.json predictions_v2.jsonl baseline_predictions_v2.jsonl bootstrap_v2.json formal_scoring_marker_v2.json; do
+            cmp "/tmp/e310/tmp/gate-f-score/$file" "/tmp/e311/tmp/gate-f-score/$file"
+            cmp "/tmp/e310/tmp/gate-f-score/$file" "/tmp/e312/tmp/gate-f-score/$file"
+          done
+          test "$(sha256sum /tmp/e310/tmp/gate-f-score/report_v2.json | awk '{print $1}')" = "d49cbdab7d43a190b9e278657906d95a2bd29d5b0db4dbd9e39b1031ba8c0b3f"
+          test "$(sha256sum /tmp/e310/tmp/gate-f-score/predictions_v2.jsonl | awk '{print $1}')" = "5785a180a4c5c2d01b7a94ee7c511263894f89267f910faf69090e4e560940d9"
+          test "$(sha256sum /tmp/e310/tmp/gate-f-score/baseline_predictions_v2.jsonl | awk '{print $1}')" = "1309a610f3293781b6eeb524f4b74233f197a080616f730f71fa57fd9f66fd7f"
+          test "$(sha256sum /tmp/e310/tmp/gate-f-score/bootstrap_v2.json | awk '{print $1}')" = "87d44b6b6bfd0de580fd041d1969765bd831ecadc0fb992279f8c15d668b1f1e"
+          test "$(sha256sum /tmp/e310/tmp/gate-f-score/formal_scoring_marker_v2.json | awk '{print $1}')" = "93c4f3851ea15ea0524a67355ece3bc42a039f47d17a154fcce51f133bd05fc8"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('/tmp/e310/tmp/gate-f-score/report_v2.json').read_text())
+          assert report['decision'] == 'FAIL'
+          assert report['formal_scoring_occurred'] is True
+          assert report['candidate_metrics']['macro_f1'] == 0.047619047619047616
+          assert report['baseline_metrics']['macro_f1'] == 0.09417989417989418
+          assert report['macro_f1_delta_vs_b5'] == -0.04656084656084657
+          PY
+
+      - name: Verify post-scoring scientific lock before committing evidence
+        run: |
+          git diff --exit-code 23d183086368d0921c9af2f6c326d4c97214f267 HEAD -- \
+            src/proactivity/candidate_v2.py \
+            scripts/generate_gate_f_v2.py \
+            scripts/run_gate_f_v2.py \
+            gate_f/protected_inputs_v2.jsonl \
+            gate_f/protected_labels_v2.jsonl \
+            gate_f/protected_private_v2.jsonl
+
+      - name: Freeze canonical formal evidence without re-scoring
+        run: |
+          cp /tmp/e310/tmp/gate-f-score/report_v2.json gate_f/report_v2.json
+          cp /tmp/e310/tmp/gate-f-score/predictions_v2.jsonl gate_f/predictions_v2.jsonl
+          cp /tmp/e310/tmp/gate-f-score/baseline_predictions_v2.jsonl gate_f/baseline_predictions_v2.jsonl
+          cp /tmp/e310/tmp/gate-f-score/bootstrap_v2.json gate_f/bootstrap_v2.json
+          cp /tmp/e310/tmp/gate-f-score/formal_scoring_marker_v2.json gate_f/formal_scoring_marker_v2.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add gate_f/report_v2.json gate_f/predictions_v2.jsonl gate_f/baseline_predictions_v2.jsonl gate_f/bootstrap_v2.json gate_f/formal_scoring_marker_v2.json
+          git diff --cached --exit-code && { echo "No Gate-F evidence to freeze"; exit 1; } || true
+          git commit -m "freeze Gate F formal FAIL evidence from run 31880421048"
+          git push origin HEAD:research/proactivity-protected-v2
