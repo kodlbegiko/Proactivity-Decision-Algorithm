@@ -1,0 +1,312 @@
+{
+  "c5_retrained_on_recovery_development": {
+    "ood": {
+      "macro_f1": 0.1688984516365469,
+      "max_prediction_share": 0.6111111111111112,
+      "prediction_distribution": {
+        "ACT": 41,
+        "IGNORE": 132,
+        "NOTIFY": 18,
+        "SUGGEST": 12,
+        "WAIT": 13
+      }
+    },
+    "validation": {
+      "macro_f1": 0.19797567175018152,
+      "max_prediction_share": 0.5740740740740741,
+      "prediction_distribution": {
+        "ACT": 16,
+        "ASK": 16,
+        "IGNORE": 62,
+        "NOTIFY": 4,
+        "SUGGEST": 9,
+        "WAIT": 1
+      }
+    }
+  },
+  "development_status": "DEVELOPMENT_ONLY",
+  "findings": {
+    "NOT_ESTABLISHED": [
+      "The exact fraction of historical Gate-F error attributable to extraction versus downstream classification is not established.",
+      "No protected Gate-F phrase, per-example error, label, prediction, or rendering family was inspected, so the exact protected lexical trigger is intentionally unknown."
+    ],
+    "SUPPORTED_HYPOTHESIS": [
+      "Representation extraction brittleness is a major plausible contributor to the historical Gate-F complete-IGNORE generalization failure.",
+      "The recovery tree result suggests downstream classification can remain discriminative when factor observability is restored on development-safe shifts."
+    ],
+    "VERIFIED": [
+      "Frozen C5 semantic extraction is exact-substring/phrase-list dependent and falls back to unknown for unmatched factor evidence.",
+      "On the recovery DEVELOPMENT_ONLY stress suite, frozen C5 extraction has substantially higher unknown/default rate and lower factor accuracy than the recovery parser.",
+      "A C5 SemanticFactorLinear model trained only on recovery development data loses action discrimination when those factor representations default/collapse on shifted renderings."
+    ]
+  },
+  "gate_f_records_accessed": 0,
+  "old_c5_extractor": {
+    "ood": {
+      "by_factor": {
+        "acknowledged": {
+          "accuracy": 0.5,
+          "default_unknown_rate": 0.5,
+          "macro_f1": 0.4444444444444444
+        },
+        "clarification_possible": {
+          "accuracy": 0.1111111111111111,
+          "default_unknown_rate": 0.75,
+          "macro_f1": 0.10666666666666667
+        },
+        "completed": {
+          "accuracy": 0.25,
+          "default_unknown_rate": 0.75,
+          "macro_f1": 0.26666666666666666
+        },
+        "deferral_available": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "execution_possible": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "information": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "need": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "permission": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "reversibility": {
+          "accuracy": 0.38425925925925924,
+          "default_unknown_rate": 0.6157407407407407,
+          "macro_f1": 0.35555555555555557
+        },
+        "risk": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "side_effect": {
+          "accuracy": 0.06481481481481481,
+          "default_unknown_rate": 0.9351851851851852,
+          "macro_f1": 0.1
+        },
+        "urgency": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        }
+      },
+      "micro_factor_accuracy": 0.1091820987654321,
+      "overall_unknown_rate": 0.8792438271604939
+    },
+    "validation": {
+      "by_factor": {
+        "acknowledged": {
+          "accuracy": 0.5,
+          "default_unknown_rate": 0.5,
+          "macro_f1": 0.4444444444444444
+        },
+        "clarification_possible": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "completed": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "deferral_available": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "execution_possible": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "information": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "need": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "permission": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        },
+        "reversibility": {
+          "accuracy": 0.7129629629629629,
+          "default_unknown_rate": 0.28703703703703703,
+          "macro_f1": 0.5555555555555555
+        },
+        "risk": {
+          "accuracy": 0.5,
+          "default_unknown_rate": 0.5,
+          "macro_f1": 0.5
+        },
+        "side_effect": {
+          "accuracy": 0.06481481481481481,
+          "default_unknown_rate": 0.9351851851851852,
+          "macro_f1": 0.16666666666666666
+        },
+        "urgency": {
+          "accuracy": 0.0,
+          "default_unknown_rate": 1.0,
+          "macro_f1": 0.0
+        }
+      },
+      "micro_factor_accuracy": 0.14814814814814814,
+      "overall_unknown_rate": 0.8518518518518519
+    }
+  },
+  "recovery_v3_extractor": {
+    "ood": {
+      "by_factor": {
+        "acknowledged": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "clarification_possible": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "completed": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "deferral_available": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "execution_possible": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "information": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "need": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "permission": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "reversibility": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "risk": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "side_effect": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "urgency": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        }
+      },
+      "micro_factor_accuracy": 1.0,
+      "overall_unknown_rate": 0.0
+    },
+    "validation": {
+      "by_factor": {
+        "acknowledged": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "clarification_possible": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "completed": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "deferral_available": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "execution_possible": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "information": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "need": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "permission": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "reversibility": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "risk": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "side_effect": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        },
+        "urgency": {
+          "accuracy": 1.0,
+          "default_unknown_rate": 0.0,
+          "macro_f1": 1.0
+        }
+      },
+      "micro_factor_accuracy": 1.0,
+      "overall_unknown_rate": 0.0
+    }
+  }
+}

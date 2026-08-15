@@ -1,0 +1,3319 @@
+{
+  "b5": {
+    "ood": {
+      "accuracy": 0.16203703703703703,
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          36,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          33,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          31,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          31,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          33,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          34,
+          2
+        ]
+      ],
+      "macro_f1": 0.059354226020892686,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "SUGGEST": {
+          "f1": 0.28205128205128205,
+          "precision": 0.16666666666666666,
+          "recall": 0.9166666666666666
+        },
+        "WAIT": {
+          "f1": 0.07407407407407407,
+          "precision": 0.1111111111111111,
+          "recall": 0.05555555555555555
+        }
+      },
+      "prediction_distribution": {
+        "SUGGEST": 198,
+        "WAIT": 18
+      },
+      "weighted_f1": 0.05935422602089268
+    },
+    "validation": {
+      "accuracy": 0.16666666666666666,
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          0
+        ]
+      ],
+      "macro_f1": 0.047619047619047616,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "SUGGEST": {
+          "f1": 0.2857142857142857,
+          "precision": 0.16666666666666666,
+          "recall": 1.0
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "prediction_distribution": {
+        "SUGGEST": 108
+      },
+      "weighted_f1": 0.047619047619047616
+    }
+  },
+  "candidate_budget": 8,
+  "candidates": [
+    {
+      "criteria": {
+        "collapse_guard": true,
+        "counterfactual": true,
+        "invariance": true,
+        "ood_delta_b5": true,
+        "ood_macro_f1": true,
+        "safety": false,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": true
+      },
+      "eligible": false,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3A_factor_linear_c1",
+      "ood": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.46892034954848727,
+            "p10": 0.07159174854225053,
+            "p50": 0.37367107616588546,
+            "p90": 1.0152846331377006
+          },
+          "margin": {
+            "mean": 0.7184611296457745,
+            "p10": 0.27997691657304447,
+            "p50": 0.8411919889197685,
+            "p90": 0.9805726678390579
+          },
+          "max_probability": {
+            "mean": 0.8367509337234295,
+            "p10": 0.5984226902639352,
+            "p50": 0.9118294238993498,
+            "p90": 0.989336847171726
+          }
+        },
+        "metrics": {
+          "accuracy": 0.7962962962962963,
+          "confusion_matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              20,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              8,
+              0,
+              28,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              8,
+              0,
+              8,
+              0,
+              20
+            ]
+          ],
+          "macro_f1": 0.7989282669589576,
+          "per_action": {
+            "ACT": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.47058823529411764,
+              "precision": 0.5,
+              "recall": 0.4444444444444444
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.6086956521739131,
+              "precision": 0.5,
+              "recall": 0.7777777777777778
+            },
+            "SUGGEST": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.7142857142857143,
+              "precision": 1.0,
+              "recall": 0.5555555555555556
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 36,
+            "ASK": 32,
+            "IGNORE": 36,
+            "NOTIFY": 56,
+            "SUGGEST": 36,
+            "WAIT": 20
+          },
+          "weighted_f1": 0.7989282669589576
+        },
+        "safety": {
+          "forbidden_act": 0,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.25925925925925924,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 0.9074074074074074,
+        "counterfactual_exact_pair": 0.7037037037037037,
+        "counterfactual_single_side": 0.8518518518518519,
+        "invariance_consistency": 1.0
+      },
+      "validation": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.5248424872122356,
+            "p10": 0.13614723064043807,
+            "p50": 0.4287525031407669,
+            "p90": 1.0322922248622972
+          },
+          "margin": {
+            "mean": 0.6871527153544085,
+            "p10": 0.2165017151709504,
+            "p50": 0.8118971073301262,
+            "p90": 0.9566916181072695
+          },
+          "max_probability": {
+            "mean": 0.8156789798198854,
+            "p10": 0.5629832577801454,
+            "p50": 0.8938699021298889,
+            "p90": 0.9744913002968333
+          }
+        },
+        "metrics": {
+          "accuracy": 0.8703703703703703,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              12,
+              0,
+              2,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              0,
+              14,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4,
+              0,
+              14
+            ]
+          ],
+          "macro_f1": 0.8683952528379772,
+          "per_action": {
+            "ACT": {
+              "f1": 0.9,
+              "precision": 0.8181818181818182,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.75,
+              "precision": 0.8571428571428571,
+              "recall": 0.6666666666666666
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.7368421052631579,
+              "precision": 0.7,
+              "recall": 0.7777777777777778
+            },
+            "SUGGEST": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.8235294117647058,
+              "precision": 0.875,
+              "recall": 0.7777777777777778
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 22,
+            "ASK": 14,
+            "IGNORE": 18,
+            "NOTIFY": 20,
+            "SUGGEST": 18,
+            "WAIT": 16
+          },
+          "weighted_f1": 0.8683952528379772
+        },
+        "safety": {
+          "forbidden_act": 4,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.2037037037037037,
+          "valid_action_rate": 1.0
+        }
+      }
+    },
+    {
+      "criteria": {
+        "collapse_guard": true,
+        "counterfactual": false,
+        "invariance": true,
+        "ood_delta_b5": true,
+        "ood_macro_f1": true,
+        "safety": false,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": true
+      },
+      "eligible": false,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3A_factor_linear_c4",
+      "ood": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.2892514132838019,
+            "p10": 0.008473235808311809,
+            "p50": 0.16187680939602678,
+            "p90": 0.6888414357377597
+          },
+          "margin": {
+            "mean": 0.820975956984327,
+            "p10": 0.4681415695195473,
+            "p50": 0.9299188090958819,
+            "p90": 0.9978351800426623
+          },
+          "max_probability": {
+            "mean": 0.9003326511044718,
+            "p10": 0.6888161054337852,
+            "p50": 0.9647585524974568,
+            "p90": 0.9989175869232384
+          }
+        },
+        "metrics": {
+          "accuracy": 0.7777777777777778,
+          "confusion_matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              20,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              8,
+              0,
+              24,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              8,
+              0,
+              8,
+              0,
+              20
+            ]
+          ],
+          "macro_f1": 0.7804515745692217,
+          "per_action": {
+            "ACT": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.47058823529411764,
+              "precision": 0.5,
+              "recall": 0.4444444444444444
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.5454545454545454,
+              "precision": 0.46153846153846156,
+              "recall": 0.6666666666666666
+            },
+            "SUGGEST": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.6666666666666666,
+              "precision": 0.8333333333333334,
+              "recall": 0.5555555555555556
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 36,
+            "ASK": 32,
+            "IGNORE": 36,
+            "NOTIFY": 52,
+            "SUGGEST": 36,
+            "WAIT": 24
+          },
+          "weighted_f1": 0.7804515745692215
+        },
+        "safety": {
+          "forbidden_act": 0,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.24074074074074073,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 0.9259259259259259,
+        "counterfactual_exact_pair": 0.6851851851851852,
+        "counterfactual_single_side": 0.8425925925925926,
+        "invariance_consistency": 1.0
+      },
+      "validation": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.32928852646260254,
+            "p10": 0.02832488954388273,
+            "p50": 0.17930806179726538,
+            "p90": 0.8830726957257525
+          },
+          "margin": {
+            "mean": 0.7841647028936843,
+            "p10": 0.2695358811449583,
+            "p50": 0.9308716102469963,
+            "p90": 0.9931182418357033
+          },
+          "max_probability": {
+            "mean": 0.8781458967461608,
+            "p10": 0.6016604339221457,
+            "p50": 0.9608702773578528,
+            "p90": 0.9959778008608273
+          }
+        },
+        "metrics": {
+          "accuracy": 0.8703703703703703,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              12,
+              0,
+              0,
+              2,
+              4
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              0,
+              14,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4,
+              0,
+              14
+            ]
+          ],
+          "macro_f1": 0.8667153996101363,
+          "per_action": {
+            "ACT": {
+              "f1": 0.9473684210526315,
+              "precision": 0.9,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.75,
+              "precision": 0.8571428571428571,
+              "recall": 0.6666666666666666
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.7777777777777778,
+              "precision": 0.7777777777777778,
+              "recall": 0.7777777777777778
+            },
+            "SUGGEST": {
+              "f1": 0.9473684210526315,
+              "precision": 0.9,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.7777777777777778,
+              "precision": 0.7777777777777778,
+              "recall": 0.7777777777777778
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 20,
+            "ASK": 14,
+            "IGNORE": 18,
+            "NOTIFY": 18,
+            "SUGGEST": 20,
+            "WAIT": 18
+          },
+          "weighted_f1": 0.8667153996101364
+        },
+        "safety": {
+          "forbidden_act": 2,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.18518518518518517,
+          "valid_action_rate": 1.0
+        }
+      }
+    },
+    {
+      "criteria": {
+        "collapse_guard": true,
+        "counterfactual": true,
+        "invariance": true,
+        "ood_delta_b5": true,
+        "ood_macro_f1": true,
+        "safety": true,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": true
+      },
+      "eligible": true,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3A_factor_tree",
+      "ood": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.0,
+            "p10": -0.0,
+            "p50": -0.0,
+            "p90": -0.0
+          },
+          "margin": {
+            "mean": 1.0,
+            "p10": 1.0,
+            "p50": 1.0,
+            "p90": 1.0
+          },
+          "max_probability": {
+            "mean": 1.0,
+            "p10": 1.0,
+            "p50": 1.0,
+            "p90": 1.0
+          }
+        },
+        "metrics": {
+          "accuracy": 0.9444444444444444,
+          "confusion_matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              32,
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              36,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              32,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              4,
+              0,
+              32
+            ]
+          ],
+          "macro_f1": 0.9453044375644994,
+          "per_action": {
+            "ACT": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.9411764705882353,
+              "precision": 1.0,
+              "recall": 0.8888888888888888
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.9473684210526315,
+              "precision": 0.9,
+              "recall": 1.0
+            },
+            "SUGGEST": {
+              "f1": 0.9411764705882353,
+              "precision": 1.0,
+              "recall": 0.8888888888888888
+            },
+            "WAIT": {
+              "f1": 0.8421052631578947,
+              "precision": 0.8,
+              "recall": 0.8888888888888888
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 36,
+            "ASK": 32,
+            "IGNORE": 36,
+            "NOTIFY": 40,
+            "SUGGEST": 32,
+            "WAIT": 40
+          },
+          "weighted_f1": 0.9453044375644994
+        },
+        "safety": {
+          "forbidden_act": 0,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.18518518518518517,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 1.0,
+        "counterfactual_exact_pair": 0.9444444444444444,
+        "counterfactual_single_side": 0.9722222222222222,
+        "invariance_consistency": 1.0
+      },
+      "validation": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.0,
+            "p10": -0.0,
+            "p50": -0.0,
+            "p90": 0.0
+          },
+          "margin": {
+            "mean": 1.0,
+            "p10": 1.0,
+            "p50": 1.0,
+            "p90": 1.0
+          },
+          "max_probability": {
+            "mean": 1.0,
+            "p10": 1.0,
+            "p50": 1.0,
+            "p90": 1.0
+          }
+        },
+        "metrics": {
+          "accuracy": 0.9814814814814815,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              18,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              18,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              0,
+              0,
+              16
+            ]
+          ],
+          "macro_f1": 0.9814241486068113,
+          "per_action": {
+            "ACT": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.9473684210526315,
+              "precision": 0.9,
+              "recall": 1.0
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "SUGGEST": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.9411764705882353,
+              "precision": 1.0,
+              "recall": 0.8888888888888888
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 18,
+            "ASK": 20,
+            "IGNORE": 18,
+            "NOTIFY": 18,
+            "SUGGEST": 18,
+            "WAIT": 16
+          },
+          "weighted_f1": 0.9814241486068112
+        },
+        "safety": {
+          "forbidden_act": 0,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.18518518518518517,
+          "valid_action_rate": 1.0
+        }
+      }
+    },
+    {
+      "criteria": {
+        "collapse_guard": true,
+        "counterfactual": false,
+        "invariance": false,
+        "ood_delta_b5": true,
+        "ood_macro_f1": false,
+        "safety": false,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": false
+      },
+      "eligible": false,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3C_text_lr_c1",
+      "ood": {
+        "confidence": {
+          "entropy": {
+            "mean": 1.1330823282575104,
+            "p10": 0.5479195092479738,
+            "p50": 1.2011446959735061,
+            "p90": 1.57547102508277
+          },
+          "margin": {
+            "mean": 0.371356740175034,
+            "p10": 0.05356625266046339,
+            "p50": 0.28843613200337676,
+            "p90": 0.7690603372753203
+          },
+          "max_probability": {
+            "mean": 0.578833773650676,
+            "p10": 0.3400959417362426,
+            "p50": 0.5299568506948216,
+            "p90": 0.8642527370958214
+          }
+        },
+        "metrics": {
+          "accuracy": 0.42592592592592593,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              9,
+              15,
+              7,
+              0,
+              3
+            ],
+            [
+              0,
+              0,
+              21,
+              0,
+              1,
+              14
+            ],
+            [
+              1,
+              3,
+              16,
+              14,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              7,
+              14,
+              3,
+              0,
+              12
+            ]
+          ],
+          "macro_f1": 0.4571034295273512,
+          "per_action": {
+            "ACT": {
+              "f1": 0.631578947368421,
+              "precision": 0.8571428571428571,
+              "recall": 0.5
+            },
+            "ASK": {
+              "f1": 0.32727272727272727,
+              "precision": 0.47368421052631576,
+              "recall": 0.25
+            },
+            "IGNORE": {
+              "f1": 0.30434782608695654,
+              "precision": 0.20588235294117646,
+              "recall": 0.5833333333333334
+            },
+            "NOTIFY": {
+              "f1": 0.4666666666666667,
+              "precision": 0.5833333333333334,
+              "recall": 0.3888888888888889
+            },
+            "SUGGEST": {
+              "f1": 0.6545454545454545,
+              "precision": 0.9473684210526315,
+              "recall": 0.5
+            },
+            "WAIT": {
+              "f1": 0.3582089552238806,
+              "precision": 0.3870967741935484,
+              "recall": 0.3333333333333333
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 21,
+            "ASK": 19,
+            "IGNORE": 102,
+            "NOTIFY": 24,
+            "SUGGEST": 19,
+            "WAIT": 31
+          },
+          "weighted_f1": 0.4571034295273511
+        },
+        "safety": {
+          "forbidden_act": 3,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.4722222222222222,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 0.35185185185185186,
+        "counterfactual_exact_pair": 0.0,
+        "counterfactual_single_side": 0.3055555555555556,
+        "invariance_consistency": 0.8888888888888888
+      },
+      "validation": {
+        "confidence": {
+          "entropy": {
+            "mean": 1.183799242451061,
+            "p10": 0.6208193850969981,
+            "p50": 1.2679616686507797,
+            "p90": 1.578659680945125
+          },
+          "margin": {
+            "mean": 0.36692617777304504,
+            "p10": 0.028623589831604266,
+            "p50": 0.28991017306358813,
+            "p90": 0.7497585387094678
+          },
+          "max_probability": {
+            "mean": 0.5592345753708718,
+            "p10": 0.3173594211202447,
+            "p50": 0.4849320087222515,
+            "p90": 0.8372114088511206
+          }
+        },
+        "metrics": {
+          "accuracy": 0.4351851851851852,
+          "confusion_matrix": [
+            [
+              9,
+              0,
+              9,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              3,
+              7,
+              1,
+              1,
+              5
+            ],
+            [
+              0,
+              0,
+              11,
+              0,
+              1,
+              6
+            ],
+            [
+              1,
+              2,
+              8,
+              6,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              9,
+              0,
+              9,
+              0
+            ],
+            [
+              1,
+              1,
+              6,
+              0,
+              1,
+              9
+            ]
+          ],
+          "macro_f1": 0.4525113122171946,
+          "per_action": {
+            "ACT": {
+              "f1": 0.6,
+              "precision": 0.75,
+              "recall": 0.5
+            },
+            "ASK": {
+              "f1": 0.25,
+              "precision": 0.5,
+              "recall": 0.16666666666666666
+            },
+            "IGNORE": {
+              "f1": 0.3235294117647059,
+              "precision": 0.22,
+              "recall": 0.6111111111111112
+            },
+            "NOTIFY": {
+              "f1": 0.48,
+              "precision": 0.8571428571428571,
+              "recall": 0.3333333333333333
+            },
+            "SUGGEST": {
+              "f1": 0.6,
+              "precision": 0.75,
+              "recall": 0.5
+            },
+            "WAIT": {
+              "f1": 0.46153846153846156,
+              "precision": 0.42857142857142855,
+              "recall": 0.5
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 12,
+            "ASK": 6,
+            "IGNORE": 50,
+            "NOTIFY": 7,
+            "SUGGEST": 12,
+            "WAIT": 21
+          },
+          "weighted_f1": 0.45251131221719454
+        },
+        "safety": {
+          "forbidden_act": 3,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.46296296296296297,
+          "valid_action_rate": 1.0
+        }
+      }
+    },
+    {
+      "criteria": {
+        "collapse_guard": false,
+        "counterfactual": false,
+        "invariance": false,
+        "ood_delta_b5": true,
+        "ood_macro_f1": false,
+        "safety": false,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": false
+      },
+      "eligible": false,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3C_text_lr_c4",
+      "ood": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.714093018706119,
+            "p10": 0.06553364537814371,
+            "p50": 0.7978443153089463,
+            "p90": 1.3314747174633486
+          },
+          "margin": {
+            "mean": 0.5595246718728681,
+            "p10": 0.11077724197408775,
+            "p50": 0.5098289973583477,
+            "p90": 0.9797450768632161
+          },
+          "max_probability": {
+            "mean": 0.7302875062713395,
+            "p10": 0.4467168225670609,
+            "p50": 0.7108326664492174,
+            "p90": 0.9890199381835549
+          }
+        },
+        "metrics": {
+          "accuracy": 0.44907407407407407,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              9,
+              17,
+              7,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              22,
+              0,
+              1,
+              13
+            ],
+            [
+              0,
+              2,
+              18,
+              16,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              6,
+              14,
+              2,
+              0,
+              14
+            ]
+          ],
+          "macro_f1": 0.4844679517564609,
+          "per_action": {
+            "ACT": {
+              "f1": 0.6428571428571429,
+              "precision": 0.9,
+              "recall": 0.5
+            },
+            "ASK": {
+              "f1": 0.33962264150943394,
+              "precision": 0.5294117647058824,
+              "recall": 0.25
+            },
+            "IGNORE": {
+              "f1": 0.3076923076923077,
+              "precision": 0.205607476635514,
+              "recall": 0.6111111111111112
+            },
+            "NOTIFY": {
+              "f1": 0.5245901639344263,
+              "precision": 0.64,
+              "recall": 0.4444444444444444
+            },
+            "SUGGEST": {
+              "f1": 0.6545454545454545,
+              "precision": 0.9473684210526315,
+              "recall": 0.5
+            },
+            "WAIT": {
+              "f1": 0.4375,
+              "precision": 0.5,
+              "recall": 0.3888888888888889
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 20,
+            "ASK": 17,
+            "IGNORE": 107,
+            "NOTIFY": 25,
+            "SUGGEST": 19,
+            "WAIT": 28
+          },
+          "weighted_f1": 0.48446795175646085
+        },
+        "safety": {
+          "forbidden_act": 2,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.49537037037037035,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 0.35185185185185186,
+        "counterfactual_exact_pair": 0.0,
+        "counterfactual_single_side": 0.3148148148148148,
+        "invariance_consistency": 0.8888888888888888
+      },
+      "validation": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.7614305000833012,
+            "p10": 0.08147021136397277,
+            "p50": 0.8458231076197587,
+            "p90": 1.338760178277067
+          },
+          "margin": {
+            "mean": 0.5547771818350358,
+            "p10": 0.08339898650331282,
+            "p50": 0.5394185825967969,
+            "p90": 0.9800696213276131
+          },
+          "max_probability": {
+            "mean": 0.7169293029793204,
+            "p10": 0.4511825788829513,
+            "p50": 0.6877296771726479,
+            "p90": 0.9866505380828573
+          }
+        },
+        "metrics": {
+          "accuracy": 0.49074074074074076,
+          "confusion_matrix": [
+            [
+              9,
+              0,
+              9,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              6,
+              8,
+              1,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              13,
+              0,
+              0,
+              5
+            ],
+            [
+              1,
+              1,
+              9,
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              9,
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              1,
+              8,
+              0,
+              0,
+              9
+            ]
+          ],
+          "macro_f1": 0.5280199063160523,
+          "per_action": {
+            "ACT": {
+              "f1": 0.6206896551724138,
+              "precision": 0.8181818181818182,
+              "recall": 0.5
+            },
+            "ASK": {
+              "f1": 0.46153846153846156,
+              "precision": 0.75,
+              "recall": 0.3333333333333333
+            },
+            "IGNORE": {
+              "f1": 0.35135135135135137,
+              "precision": 0.23214285714285715,
+              "recall": 0.7222222222222222
+            },
+            "NOTIFY": {
+              "f1": 0.5384615384615384,
+              "precision": 0.875,
+              "recall": 0.3888888888888889
+            },
+            "SUGGEST": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "recall": 0.5
+            },
+            "WAIT": {
+              "f1": 0.5294117647058824,
+              "precision": 0.5625,
+              "recall": 0.5
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 11,
+            "ASK": 8,
+            "IGNORE": 56,
+            "NOTIFY": 8,
+            "SUGGEST": 9,
+            "WAIT": 16
+          },
+          "weighted_f1": 0.5280199063160524
+        },
+        "safety": {
+          "forbidden_act": 2,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.5185185185185185,
+          "valid_action_rate": 1.0
+        }
+      }
+    },
+    {
+      "criteria": {
+        "collapse_guard": false,
+        "counterfactual": false,
+        "invariance": false,
+        "ood_delta_b5": true,
+        "ood_macro_f1": false,
+        "safety": false,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": false
+      },
+      "eligible": false,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3C_text_svc",
+      "ood": {
+        "confidence": null,
+        "metrics": {
+          "accuracy": 0.4537037037037037,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              9,
+              17,
+              7,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              22,
+              0,
+              0,
+              14
+            ],
+            [
+              0,
+              1,
+              18,
+              17,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              3,
+              16,
+              3,
+              0,
+              14
+            ]
+          ],
+          "macro_f1": 0.49179513243552647,
+          "per_action": {
+            "ACT": {
+              "f1": 0.6428571428571429,
+              "precision": 0.9,
+              "recall": 0.5
+            },
+            "ASK": {
+              "f1": 0.3673469387755102,
+              "precision": 0.6923076923076923,
+              "recall": 0.25
+            },
+            "IGNORE": {
+              "f1": 0.30344827586206896,
+              "precision": 0.2018348623853211,
+              "recall": 0.6111111111111112
+            },
+            "NOTIFY": {
+              "f1": 0.5396825396825397,
+              "precision": 0.6296296296296297,
+              "recall": 0.4722222222222222
+            },
+            "SUGGEST": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "recall": 0.5
+            },
+            "WAIT": {
+              "f1": 0.4307692307692308,
+              "precision": 0.4827586206896552,
+              "recall": 0.3888888888888889
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 20,
+            "ASK": 13,
+            "IGNORE": 109,
+            "NOTIFY": 27,
+            "SUGGEST": 18,
+            "WAIT": 29
+          },
+          "weighted_f1": 0.4917951324355265
+        },
+        "safety": {
+          "forbidden_act": 2,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.5046296296296297,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 0.3888888888888889,
+        "counterfactual_exact_pair": 0.0,
+        "counterfactual_single_side": 0.2962962962962963,
+        "invariance_consistency": 0.8888888888888888
+      },
+      "validation": {
+        "confidence": null,
+        "metrics": {
+          "accuracy": 0.46296296296296297,
+          "confusion_matrix": [
+            [
+              9,
+              0,
+              9,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              9,
+              2,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              12,
+              0,
+              0,
+              6
+            ],
+            [
+              1,
+              1,
+              9,
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              9,
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              1,
+              8,
+              0,
+              0,
+              9
+            ]
+          ],
+          "macro_f1": 0.49630303538349513,
+          "per_action": {
+            "ACT": {
+              "f1": 0.6206896551724138,
+              "precision": 0.8181818181818182,
+              "recall": 0.5
+            },
+            "ASK": {
+              "f1": 0.3333333333333333,
+              "precision": 0.6666666666666666,
+              "recall": 0.2222222222222222
+            },
+            "IGNORE": {
+              "f1": 0.32432432432432434,
+              "precision": 0.21428571428571427,
+              "recall": 0.6666666666666666
+            },
+            "NOTIFY": {
+              "f1": 0.5185185185185185,
+              "precision": 0.7777777777777778,
+              "recall": 0.3888888888888889
+            },
+            "SUGGEST": {
+              "f1": 0.6666666666666666,
+              "precision": 1.0,
+              "recall": 0.5
+            },
+            "WAIT": {
+              "f1": 0.5142857142857142,
+              "precision": 0.5294117647058824,
+              "recall": 0.5
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 11,
+            "ASK": 6,
+            "IGNORE": 56,
+            "NOTIFY": 9,
+            "SUGGEST": 9,
+            "WAIT": 17
+          },
+          "weighted_f1": 0.4963030353834952
+        },
+        "safety": {
+          "forbidden_act": 2,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.5185185185185185,
+          "valid_action_rate": 1.0
+        }
+      }
+    },
+    {
+      "criteria": {
+        "collapse_guard": true,
+        "counterfactual": true,
+        "invariance": true,
+        "ood_delta_b5": true,
+        "ood_macro_f1": true,
+        "safety": false,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": true
+      },
+      "eligible": false,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3D_hybrid_c1",
+      "ood": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.4853991226235688,
+            "p10": 0.07953206564339266,
+            "p50": 0.4005967249995156,
+            "p90": 1.015571808832044
+          },
+          "margin": {
+            "mean": 0.7106650019942743,
+            "p10": 0.24791804626322458,
+            "p50": 0.8225730512440141,
+            "p90": 0.9753641388406523
+          },
+          "max_probability": {
+            "mean": 0.8315793938173125,
+            "p10": 0.5863123672930464,
+            "p50": 0.9010099655887964,
+            "p90": 0.9858040530345927
+          }
+        },
+        "metrics": {
+          "accuracy": 0.8009259259259259,
+          "confusion_matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              20,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              8,
+              0,
+              28,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              7,
+              0,
+              8,
+              0,
+              21
+            ]
+          ],
+          "macro_f1": 0.8038582829559298,
+          "per_action": {
+            "ACT": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.47761194029850745,
+              "precision": 0.5161290322580645,
+              "recall": 0.4444444444444444
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.6086956521739131,
+              "precision": 0.5,
+              "recall": 0.7777777777777778
+            },
+            "SUGGEST": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.7368421052631579,
+              "precision": 1.0,
+              "recall": 0.5833333333333334
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 36,
+            "ASK": 31,
+            "IGNORE": 36,
+            "NOTIFY": 56,
+            "SUGGEST": 36,
+            "WAIT": 21
+          },
+          "weighted_f1": 0.8038582829559296
+        },
+        "safety": {
+          "forbidden_act": 0,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.25925925925925924,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 0.9814814814814815,
+        "counterfactual_exact_pair": 0.7962962962962963,
+        "counterfactual_single_side": 0.8981481481481481,
+        "invariance_consistency": 1.0
+      },
+      "validation": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.5389293923055125,
+            "p10": 0.14284034317152325,
+            "p50": 0.4356170932827339,
+            "p90": 1.031678431005765
+          },
+          "margin": {
+            "mean": 0.6835003281015634,
+            "p10": 0.2604201482446511,
+            "p50": 0.7938221766017248,
+            "p90": 0.9558523328155603
+          },
+          "max_probability": {
+            "mean": 0.8126480800884502,
+            "p10": 0.5814847104749904,
+            "p50": 0.8799762711959309,
+            "p90": 0.9746640327390319
+          }
+        },
+        "metrics": {
+          "accuracy": 0.8703703703703703,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              12,
+              0,
+              1,
+              1,
+              3
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              0,
+              14,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4,
+              0,
+              14
+            ]
+          ],
+          "macro_f1": 0.8671344421344421,
+          "per_action": {
+            "ACT": {
+              "f1": 0.9230769230769231,
+              "precision": 0.8571428571428571,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.75,
+              "precision": 0.8571428571428571,
+              "recall": 0.6666666666666666
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.7567567567567568,
+              "precision": 0.7368421052631579,
+              "recall": 0.7777777777777778
+            },
+            "SUGGEST": {
+              "f1": 0.972972972972973,
+              "precision": 0.9473684210526315,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.8,
+              "precision": 0.8235294117647058,
+              "recall": 0.7777777777777778
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 21,
+            "ASK": 14,
+            "IGNORE": 18,
+            "NOTIFY": 19,
+            "SUGGEST": 19,
+            "WAIT": 17
+          },
+          "weighted_f1": 0.8671344421344421
+        },
+        "safety": {
+          "forbidden_act": 3,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.19444444444444445,
+          "valid_action_rate": 1.0
+        }
+      }
+    },
+    {
+      "criteria": {
+        "collapse_guard": true,
+        "counterfactual": true,
+        "invariance": true,
+        "ood_delta_b5": true,
+        "ood_macro_f1": true,
+        "safety": false,
+        "six_action_recall": true,
+        "validation_delta_b5": true,
+        "validation_macro_f1": true
+      },
+      "eligible": false,
+      "factor_diagnostics_shared_parser": {
+        "ood": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        },
+        "validation": {
+          "acknowledged": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "clarification_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "completed": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "deferral_available": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "execution_possible": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "information": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "need": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "permission": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "reversibility": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "risk": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "side_effect": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          },
+          "urgency": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "missing_default_rate": 0.0
+          }
+        }
+      },
+      "name": "V3D_hybrid_c4",
+      "ood": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.3071175090004238,
+            "p10": 0.012336259995400563,
+            "p50": 0.18846567380021362,
+            "p90": 0.7601469743840702
+          },
+          "margin": {
+            "mean": 0.7982683001329712,
+            "p10": 0.3520694933180535,
+            "p50": 0.9255160229630492,
+            "p90": 0.9975944343852975
+          },
+          "max_probability": {
+            "mean": 0.8883885174886522,
+            "p10": 0.6530607957031498,
+            "p50": 0.9588572225635394,
+            "p90": 0.9985282242566192
+          }
+        },
+        "metrics": {
+          "accuracy": 0.7962962962962963,
+          "confusion_matrix": [
+            [
+              36,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              16,
+              0,
+              20,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              8,
+              0,
+              27,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              36,
+              0
+            ],
+            [
+              0,
+              7,
+              0,
+              8,
+              0,
+              21
+            ]
+          ],
+          "macro_f1": 0.799192744123264,
+          "per_action": {
+            "ACT": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.47761194029850745,
+              "precision": 0.5161290322580645,
+              "recall": 0.4444444444444444
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.5934065934065934,
+              "precision": 0.4909090909090909,
+              "recall": 0.75
+            },
+            "SUGGEST": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.7241379310344828,
+              "precision": 0.9545454545454546,
+              "recall": 0.5833333333333334
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 36,
+            "ASK": 31,
+            "IGNORE": 36,
+            "NOTIFY": 55,
+            "SUGGEST": 36,
+            "WAIT": 22
+          },
+          "weighted_f1": 0.7991927441232639
+        },
+        "safety": {
+          "forbidden_act": 0,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.25462962962962965,
+          "valid_action_rate": 1.0
+        }
+      },
+      "relations": {
+        "counterfactual_direction_sensitivity": 0.9814814814814815,
+        "counterfactual_exact_pair": 0.7777777777777778,
+        "counterfactual_single_side": 0.8888888888888888,
+        "invariance_consistency": 0.9814814814814815
+      },
+      "validation": {
+        "confidence": {
+          "entropy": {
+            "mean": 0.3396611342205024,
+            "p10": 0.027229794145416448,
+            "p50": 0.22471969269880754,
+            "p90": 0.8252688874200094
+          },
+          "margin": {
+            "mean": 0.7810088247104539,
+            "p10": 0.35635827833531386,
+            "p50": 0.9091661254896928,
+            "p90": 0.9931725488696115
+          },
+          "max_probability": {
+            "mean": 0.8761796762898398,
+            "p10": 0.6202000942764246,
+            "p50": 0.9512072149812105,
+            "p90": 0.9963120152568237
+          }
+        },
+        "metrics": {
+          "accuracy": 0.8888888888888888,
+          "confusion_matrix": [
+            [
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              14,
+              0,
+              0,
+              2,
+              2
+            ],
+            [
+              0,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              0,
+              14,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              18,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4,
+              0,
+              14
+            ]
+          ],
+          "macro_f1": 0.8865955739020754,
+          "per_action": {
+            "ACT": {
+              "f1": 0.9473684210526315,
+              "precision": 0.9,
+              "recall": 1.0
+            },
+            "ASK": {
+              "f1": 0.8235294117647058,
+              "precision": 0.875,
+              "recall": 0.7777777777777778
+            },
+            "IGNORE": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "NOTIFY": {
+              "f1": 0.7777777777777778,
+              "precision": 0.7777777777777778,
+              "recall": 0.7777777777777778
+            },
+            "SUGGEST": {
+              "f1": 0.9473684210526315,
+              "precision": 0.9,
+              "recall": 1.0
+            },
+            "WAIT": {
+              "f1": 0.8235294117647058,
+              "precision": 0.875,
+              "recall": 0.7777777777777778
+            }
+          },
+          "prediction_distribution": {
+            "ACT": 20,
+            "ASK": 16,
+            "IGNORE": 18,
+            "NOTIFY": 18,
+            "SUGGEST": 20,
+            "WAIT": 16
+          },
+          "weighted_f1": 0.8865955739020754
+        },
+        "safety": {
+          "forbidden_act": 2,
+          "ground_truth_max_share": 0.16666666666666666,
+          "invalid_actions": 0,
+          "max_prediction_share": 0.18518518518518517,
+          "valid_action_rate": 1.0
+        }
+      }
+    }
+  ],
+  "candidates_executed": 8,
+  "decision": "RECOVERY DEVELOPMENT PASS \u2014 CANDIDATE V3 ELIGIBLE FOR FREEZE",
+  "fresh_confirmatory_evaluation": "NOT EXECUTED",
+  "gate_f": "FAIL",
+  "gate_f_retired_protected_records_accessed_by_development": 0,
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "preregistration_commit": "393491528f2e226987beff580f75f1f8c630aaf3",
+  "selected_candidate": "V3A_factor_tree"
+}
