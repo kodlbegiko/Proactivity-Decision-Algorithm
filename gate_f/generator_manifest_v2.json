@@ -1,0 +1,98 @@
+{
+  "candidate_blind": true,
+  "candidate_reference": {
+    "candidate": "C5_semantic_factor_linear",
+    "generator_runtime_may_read_candidate_source": false,
+    "source_freeze_commit": "554da731c962cdbf2ebd63cb65149f393e05b617",
+    "source_sha256": "78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b"
+  },
+  "frozen_upstream": {
+    "oracle_source_sha256": "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f",
+    "policy_id": "PDA-SPEC-v2",
+    "schema_version": "2.0.0",
+    "spec_sha256": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+  },
+  "gate": "F",
+  "gate_e_base_head": "a9ca08024e42a6a926a4cb015af7f745880f894d",
+  "gate_f_preregistration_commit": "7c445c4928dcb09c7b3864fec0ada0aef4570d1c",
+  "generator": {
+    "allowed_runtime_sources": [
+      "spec/proactivity_policy_v2.json",
+      "src/proactivity/specification/",
+      "gate_f/generator_manifest_v2.json"
+    ],
+    "forbidden_runtime_sources": [
+      "src/proactivity/candidate_v2.py",
+      "gate_e/",
+      "reports/gate_e_report.json",
+      "candidate predictions or candidate-specific failure evidence"
+    ],
+    "path": "scripts/generate_gate_f_v2.py",
+    "seed": 20260815,
+    "source_sha256": "f9bd6eb12ab5c76720bc5c02af0ba001334047b42e7f4f0db3ba617537961fd0"
+  },
+  "generator_source_sha256": "f9bd6eb12ab5c76720bc5c02af0ba001334047b42e7f4f0db3ba617537961fd0",
+  "independence_classification": {
+    "description": "same research orchestration lineage; frozen candidate-blind generator process executed after candidate freeze",
+    "external_or_human_independent": false,
+    "level": "C"
+  },
+  "merge": false,
+  "predefined_data_quality_rejection_criteria": [
+    "valid state universe is not exactly 41472",
+    "output total is not exactly 120",
+    "any action count differs from 20",
+    "any domain count differs from 20",
+    "any rendering-family count differs from 30",
+    "fewer than 24 disjoint action-changing counterfactual pairs",
+    "counterfactual pairs cover fewer than 8 distinct state fields",
+    "duplicate protected structured states or scenario IDs",
+    "candidate-facing observation contains an explicit intervention-action answer token",
+    "oracle returns invalid result for a selected valid state",
+    "generator source/upstream frozen hashes do not match manifest"
+  ],
+  "protected_design": {
+    "actions": [
+      "ACT",
+      "ASK",
+      "IGNORE",
+      "NOTIFY",
+      "SUGGEST",
+      "WAIT"
+    ],
+    "candidate_facing_fields": [
+      "scenario_id",
+      "domain",
+      "observation"
+    ],
+    "counterfactual": {
+      "minimum_disjoint_action_changing_pairs": 24,
+      "minimum_distinct_fields": 8
+    },
+    "domains": [
+      "study",
+      "work",
+      "scheduling",
+      "communication",
+      "travel",
+      "device"
+    ],
+    "explicit_action_answer_tokens_forbidden": true,
+    "label_source": "frozen deterministic oracle only",
+    "per_action": 20,
+    "per_domain": 20,
+    "per_rendering_family": 30,
+    "rendering_families": 4,
+    "target_n": 120,
+    "valid_state_universe_expected": 41472
+  },
+  "protocol": "PDA Protocol v2",
+  "regeneration_rule": "No regeneration or generator modification after a valid protected generation artifact exists. Infrastructure retry is allowed only before a valid protected artifact exists.",
+  "release": false,
+  "selection_order": {
+    "fill_selection": "candidate-independent boundary/composition stress priority then seed-bound SHA-256 ordering",
+    "pair_selection": "deterministic state-key ordering with preregistered field-coverage-first then fill",
+    "result_dependent_regeneration": false
+  },
+  "status": "FROZEN_BEFORE_PROTECTED_GENERATION"
+}
