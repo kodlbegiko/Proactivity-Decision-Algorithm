@@ -1,0 +1,31 @@
+{
+  "closeout_runner": {
+    "architecture": "x86_64",
+    "os": "Linux"
+  },
+  "formal_artifact_digests": {
+    "3.10": "sha256:386fadc0d41ffebc1d3bb1f782bf34968f965ca7af6591ebc2fa8d3cc508288f",
+    "3.11": "sha256:97769badc8c2c642b96faed2fd024a18336428a9d7f4ea522cddd7385cb40406",
+    "3.12": "sha256:0b636fd467ff197e49bd79b21cd2e225234ea8713312622e4ab457b523e2fdd0"
+  },
+  "formal_artifact_ids": {
+    "3.10": 9245876083,
+    "3.11": 9245874374,
+    "3.12": 9245880410
+  },
+  "formal_scoring_sha": "23d183086368d0921c9af2f6c326d4c97214f267",
+  "formal_workflow_run_id": 31880421048,
+  "gate": "F",
+  "generation_python_matrix": {
+    "3.10": "SUCCESS",
+    "3.11": "SUCCESS",
+    "3.12": "SUCCESS"
+  },
+  "generation_run_id": 31880132838,
+  "protocol": "PDA Protocol v2",
+  "python_matrix": {
+    "3.10": "SUCCESS",
+    "3.11": "SUCCESS",
+    "3.12": "SUCCESS"
+  }
+}

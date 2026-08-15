@@ -189,15 +189,70 @@ The formal CI artifacts were independently byte-compared across Python 3.10/3.11
 
 `SCIENTIFIC_SOURCE_IMMUTABLE = YES`. `PROTECTED_GATE_F_DATA_SEEN = false`. Gate E therefore satisfies the terminal scientific and reproducibility conditions. Administrative metadata is recorded separately so documentation commits are not misrepresented as the scientific-evaluation SHA.
 
-## Gates F–H
+## Gate F — Protected / OOD Validation: FAIL
 
-**NOT EXECUTED at the Gate-E terminal decision.**
+Gate-F branch/PR/Issue:
 
-No Gate-F protected/OOD result, Gate-G robustness claim, Gate-H ablation/independent clean reproduction result, merge, or release is implied by Gate-E PASS.
+- branch `research/proactivity-protected-v2`;
+- Draft PR #14;
+- Issue #13;
+- base Gate-E final HEAD `a9ca08024e42a6a926a4cb015af7f745880f894d`.
+
+Preregistration and protected generation:
+
+- Gate-F preregistration commit `7c445c4928dcb09c7b3864fec0ada0aef4570d1c`, frozen before protected generation;
+- independence classification: Level C process-isolated candidate-blind generation, not external/human-independent;
+- generator source commit `eeb509ef4d8cbd24d4a9ab6c228634ca0b9a98fa`;
+- generation run `31880132838`: SUCCESS on Python 3.10/3.11/3.12;
+- generation outputs byte-identical across Python versions;
+- protected-data freeze commit `7132bb17978310ad8003e834c8f012253e445b04`;
+- protected n=120, exactly 20/action, 20/domain, 30/rendering-family; 24 disjoint action-changing counterfactual pairs.
+
+Formal scoring:
+
+- scientific terminal SHA `23d183086368d0921c9af2f6c326d4c97214f267`;
+- formal workflow run `31880421048`;
+- Python 3.10/3.11/3.12: SUCCESS;
+- formal report/predictions/bootstrap byte-identical across all three environments;
+- candidate source immutable: YES;
+- protected-set immutable: YES;
+- leakage audit: NONE.
+
+Formal result:
+
+- candidate accuracy: **0.1666666667**;
+- candidate macro-F1: **0.0476190476**;
+- candidate weighted-F1: **0.0476190476**;
+- B5 macro-F1: **0.0941798942**;
+- delta: **-0.0465608466**;
+- bootstrap 95% interval: **[-0.0858337436, -0.0068029392]**;
+- fraction delta > 0: **0.0104**;
+- valid-action rate: **100%**;
+- invalid actions: **0**;
+- forbidden ACT: **0**;
+- all-six-action non-zero recall: **false**;
+- C5 prediction distribution: `IGNORE=120`, all other actions `0`;
+- exact protected counterfactual pairs: **0/24**.
+
+Preregistered FAIL criteria:
+
+1. macro-F1 >= 0.50 — failed;
+2. delta vs B5 >= +0.20 — failed;
+3. bootstrap lower 95% bound > 0 — failed;
+4. all six actions non-zero recall — failed.
+
+Safety/hash criteria passed, but Gate F is conjunctive. The decision is therefore unambiguously `FAIL`. This result is frozen negative evidence and cannot be converted into PASS by tuning C5 on this protected set.
+
+## Gates G–H
+
+- Gate G — NOT EXECUTED.
+- Gate H — NOT EXECUTED.
+
+Gate G is not started from this failed Gate-F lineage.
 
 ## Protocol-v2 evidence-weighted completion
 
-| Evidence area | Weight | Supported after terminal Gate E |
+| Evidence area | Weight | Supported after Gate F FAIL |
 |---|---:|---:|
 | Research scope / claim definition | 10% | 10% |
 | Formal specification validity | 20% | 20% |
@@ -210,8 +265,8 @@ No Gate-F protected/OOD result, Gate-G robustness claim, Gate-H ablation/indepen
 | Reproducibility / independent reproduction | 5% | 3% |
 | **Total** | **100%** | **78%** |
 
-The remaining 2/5 reproducibility credit is withheld because independent clean-environment reproduction/audit has not been performed.
+Gate F was executed, but its protected-validation credit is not earned because the preregistered candidate failed. The remaining independent-reproduction credit is also not earned.
 
 ## Exact next scientifically valid action
 
-`Gate F — Protected / OOD Validation`, beginning with preregistration on a new Gate-F branch based on the final Gate-E administrative closeout state. The Gate-E candidate source/config remains frozen and may not be modified during Gate F.
+Do **not** tune `C5_semantic_factor_linear` on the Gate-F protected set and rerun it. The current C5 lineage is terminal at Gate F FAIL. Any recovery must begin as a new development/candidate lineage using evidence that does not treat the Gate-F protected labels/examples as a reusable test target; a future confirmatory claim would require a fresh protected set frozen after the new candidate is selected.
