@@ -154,3 +154,19 @@ Gate G: robustness/adversarial/invariant stress testing.
 Gate H: ablation/reproducibility/independent reproduction/final claim audit.
 
 Gate E is terminal `PASS`. The next scientifically valid gate is Gate F, starting from the frozen Gate-E administrative closeout state and without modifying the Gate-E candidate source or configuration.
+
+## Protocol v2 Recovery — Candidate v3 terminal status
+
+- Gate A — PASS
+- Gate B — PASS
+- Gate C — PASS
+- Gate D — PASS
+- Gate E — PASS
+- Gate F — FAIL (C5 lineage terminated; immutable historical confirmatory evidence)
+- Recovery-v3 Development — PASS
+- Candidate v3 — FROZEN (`V3A_factor_tree`)
+- Fresh Confirmatory Evaluation — NOT EXECUTED
+- Gate G — NOT EXECUTED
+- Gate H — NOT EXECUTED
+
+Recovery development used zero retired Gate-F protected records. Development success does not repair or rewrite Gate F. The next legitimate scientific step is a separately preregistered fresh confirmatory evaluation using a completely new protected set generated only after this freeze.

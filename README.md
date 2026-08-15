@@ -82,3 +82,19 @@ Protocol v2 does not retroactively convert missing human annotation into a pass.
 - Gate H — ablation / reproducibility / independent reproduction / final claim audit
 
 See `docs/protocol_v2.md`, `docs/methodology.md`, `docs/gate_status.md`, `docs/claim_boundaries.md`, `gate_c/freeze_v2.json`, `gate_d/freeze_v2.json`, and `gate_e/freeze_v2.json`.
+
+## Protocol v2 Recovery — Candidate v3 terminal status
+
+- Gate A — PASS
+- Gate B — PASS
+- Gate C — PASS
+- Gate D — PASS
+- Gate E — PASS
+- Gate F — FAIL (C5 lineage terminated; immutable historical confirmatory evidence)
+- Recovery-v3 Development — PASS
+- Candidate v3 — FROZEN (`V3A_factor_tree`)
+- Fresh Confirmatory Evaluation — NOT EXECUTED
+- Gate G — NOT EXECUTED
+- Gate H — NOT EXECUTED
+
+Recovery development used zero retired Gate-F protected records. Development success does not repair or rewrite Gate F. The next legitimate scientific step is a separately preregistered fresh confirmatory evaluation using a completely new protected set generated only after this freeze.

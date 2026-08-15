@@ -215,3 +215,19 @@ The remaining 2/5 reproducibility credit is withheld because independent clean-e
 ## Exact next scientifically valid action
 
 `Gate F — Protected / OOD Validation`, beginning with preregistration on a new Gate-F branch based on the final Gate-E administrative closeout state. The Gate-E candidate source/config remains frozen and may not be modified during Gate F.
+
+## Protocol v2 Recovery — Candidate v3 terminal status
+
+- Gate A — PASS
+- Gate B — PASS
+- Gate C — PASS
+- Gate D — PASS
+- Gate E — PASS
+- Gate F — FAIL (C5 lineage terminated; immutable historical confirmatory evidence)
+- Recovery-v3 Development — PASS
+- Candidate v3 — FROZEN (`V3A_factor_tree`)
+- Fresh Confirmatory Evaluation — NOT EXECUTED
+- Gate G — NOT EXECUTED
+- Gate H — NOT EXECUTED
+
+Recovery development used zero retired Gate-F protected records. Development success does not repair or rewrite Gate F. The next legitimate scientific step is a separately preregistered fresh confirmatory evaluation using a completely new protected set generated only after this freeze.
