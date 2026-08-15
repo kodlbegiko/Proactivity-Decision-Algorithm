@@ -1,0 +1,212 @@
+name: recovery-v3-development
+
+on:
+  push:
+    branches:
+      - research/proactivity-recovery-v3
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  recovery-development:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install frozen development dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Verify immutable historical anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          git cat-file -e a9ca08024e42a6a926a4cb015af7f745880f894d^{commit}
+          git cat-file -e 1a1efb7852ec44035749a6517348a4abe00f50d7^{commit}
+          git diff --exit-code a9ca08024e42a6a926a4cb015af7f745880f894d HEAD -- src/proactivity/candidate_v2.py gate_e reports/gate_e_report.json
+          git show 1a1efb7852ec44035749a6517348a4abe00f50d7:gate_f/freeze_v2.json > /tmp/gate_f_freeze_v2.json
+          python - <<'PY'
+          import json
+          freeze=json.load(open('/tmp/gate_f_freeze_v2.json'))
+          assert freeze['status'] == 'FAIL'
+          assert freeze['scientific_terminal_sha'] == '23d183086368d0921c9af2f6c326d4c97214f267'
+          assert freeze['leakage_audit'] == 'NONE'
+          PY
+      - name: Gate-F non-access and candidate-boundary guards
+        run: |
+          python scripts/validate_recovery_gate_f_isolation.py
+          python scripts/validate_candidate_boundary_v3.py
+      - name: Generate DEVELOPMENT_ONLY stress suite and verify determinism
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf data/recovery_v3_dev_ood
+          python scripts/generate_recovery_dev_ood_v3.py
+          cp data/recovery_v3_dev_ood/hash_manifest.json /tmp/hash_manifest_first.json
+          cp data/recovery_v3_dev_ood/generation_summary.json /tmp/generation_summary_first.json
+          rm -rf data/recovery_v3_dev_ood
+          python scripts/generate_recovery_dev_ood_v3.py
+          diff -u /tmp/hash_manifest_first.json data/recovery_v3_dev_ood/hash_manifest.json
+          diff -u /tmp/generation_summary_first.json data/recovery_v3_dev_ood/generation_summary.json
+          python scripts/validate_recovery_split.py
+      - name: Execute preregistered 8-configuration search
+        run: |
+          python scripts/run_recovery_v3.py
+          python scripts/validate_search_budget_v3.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('reports/recovery_v3/candidate_search_results.json').read_text())
+          assert r['decision'] == 'RECOVERY DEVELOPMENT PASS — CANDIDATE V3 ELIGIBLE FOR FREEZE'
+          assert r['selected_candidate'] == 'V3A_factor_tree'
+          assert sum(c['eligible'] for c in r['candidates']) == 1
+          assert r['gate_f_retired_protected_records_accessed_by_development'] == 0
+          PY
+      - name: Development-safe root-cause diagnosis
+        run: |
+          python scripts/diagnose_recovery_v3.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('reports/recovery_v3/root_cause_report.json').read_text())
+          assert r['gate_f_records_accessed'] == 0
+          assert r['old_c5_extractor']['ood']['overall_unknown_rate'] > 0.70
+          assert r['old_c5_extractor']['ood']['micro_factor_accuracy'] < 0.30
+          assert r['recovery_v3_extractor']['ood']['micro_factor_accuracy'] >= 0.90
+          PY
+      - name: Historical regressions and recovery tests
+        run: pytest -q
+      - name: Upload machine-generated recovery evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: recovery-v3-python-${{ matrix.python-version }}
+          path: |
+            reports/recovery_v3/candidate_search_results.json
+            reports/recovery_v3/factor_diagnostics.json
+            reports/recovery_v3/root_cause_report.json
+            data/recovery_v3_dev_ood/hash_manifest.json
+            data/recovery_v3_dev_ood/generation_summary.json
+          if-no-files-found: error
+
+  cross-version-evidence:
+    needs: recovery-development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: recovery-v3-python-*
+          path: matrix-evidence
+      - name: Require byte-identical scientific artifacts across Python versions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          versions=['3.10','3.11','3.12']
+          rels=['reports/recovery_v3/candidate_search_results.json','reports/recovery_v3/factor_diagnostics.json','reports/recovery_v3/root_cause_report.json','data/recovery_v3_dev_ood/hash_manifest.json','data/recovery_v3_dev_ood/generation_summary.json']
+          out={}
+          for rel in rels:
+            hashes={}
+            for v in versions:
+              p=Path('matrix-evidence')/f'recovery-v3-python-{v}'/rel
+              hashes[v]=hashlib.sha256(p.read_bytes()).hexdigest()
+            assert len(set(hashes.values())) == 1, (rel, hashes)
+            out[rel]=hashes
+          Path('cross_version_hashes.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recovery-v3-cross-version-hashes
+          path: cross_version_hashes.json
+
+  freeze-candidate:
+    needs: cross-version-evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: research/proactivity-recovery-v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install frozen development dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Stop if a legitimate freeze already exists
+        id: existing
+        run: |
+          if test -f gate_recovery_v3/freeze.json; then echo "frozen=true" >> "$GITHUB_OUTPUT"; else echo "frozen=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Regenerate qualification evidence and create selected source
+        if: steps.existing.outputs.frozen == 'false'
+        run: |
+          rm -rf data/recovery_v3_dev_ood reports/recovery_v3
+          python scripts/generate_recovery_dev_ood_v3.py
+          python scripts/validate_recovery_split.py
+          python scripts/run_recovery_v3.py
+          python scripts/validate_search_budget_v3.py
+          python scripts/diagnose_recovery_v3.py
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('src/proactivity/recovery_candidates_v3.py').read_text(encoding='utf-8')
+          source += '\n\nSELECTED_CONFIGURATION = "V3A_factor_tree"\n\ndef make_selected_candidate():\n    return FactorTree()\n'
+          Path('src/proactivity/candidate_v3.py').write_text(source,encoding='utf-8')
+          PY
+          python scripts/validate_candidate_boundary_v3.py
+          python scripts/validate_recovery_gate_f_isolation.py
+          pytest -q
+      - name: Commit immutable Candidate-v3 source and development evidence
+        if: steps.existing.outputs.frozen == 'false'
+        id: source_freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/proactivity/candidate_v3.py data/recovery_v3_dev_ood reports/recovery_v3
+          git commit -m "freeze eligible Candidate v3 source and recovery evidence"
+          SOURCE_SHA=$(git rev-parse HEAD)
+          echo "sha=$SOURCE_SHA" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/proactivity-recovery-v3
+      - name: Write freeze manifest and terminal documentation
+        if: steps.existing.outputs.frozen == 'false'
+        env:
+          SOURCE_FREEZE_SHA: ${{ steps.source_freeze.outputs.sha }}
+          QUALIFICATION_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, os
+          def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          search=json.loads(Path('reports/recovery_v3/candidate_search_results.json').read_text())
+          selected=next(c for c in search['candidates'] if c['name']==search['selected_candidate'])
+          data_hashes=json.loads(Path('data/recovery_v3_dev_ood/hash_manifest.json').read_text())
+          manifest={'status':'RECOVERY DEVELOPMENT PASS — CANDIDATE V3 FROZEN','candidate_identity':'V3A_factor_tree','candidate_source_freeze_commit':os.environ['SOURCE_FREEZE_SHA'],'candidate_source_sha256':sha('src/proactivity/candidate_v3.py'),'candidate_search_source_sha256':sha('src/proactivity/recovery_candidates_v3.py'),'configuration':{'family':'robust semantic factor parser + bounded decision tree','max_depth':14,'class_weight':'balanced','seed':20260815},'dependency':'scikit-learn==1.7.1','seed':20260815,'preregistration_commit':'393491528f2e226987beff580f75f1f8c630aaf3','base_gate_e_administrative_sha':'a9ca08024e42a6a926a4cb015af7f745880f894d','gate_f_historical_scientific_sha':'23d183086368d0921c9af2f6c326d4c97214f267','gate_f_historical_status':'FAIL','gate_f_retired_protected_records_accessed_by_development':0,'generator_sha256':sha('scripts/generate_recovery_dev_ood_v3.py'),'evaluator_sha256':sha('scripts/run_recovery_v3.py'),'root_cause_diagnostic_sha256':sha('scripts/diagnose_recovery_v3.py'),'data_hashes':data_hashes,'selection_evidence_sha256':sha('reports/recovery_v3/candidate_search_results.json'),'factor_diagnostics_sha256':sha('reports/recovery_v3/factor_diagnostics.json'),'root_cause_report_sha256':sha('reports/recovery_v3/root_cause_report.json'),'qualification_ci_run_id':int(os.environ['QUALIFICATION_RUN_ID']),'python_matrix':['3.10','3.11','3.12'],'selected_metrics':{'validation_macro_f1':selected['validation']['metrics']['macro_f1'],'dev_ood_macro_f1':selected['ood']['metrics']['macro_f1'],'counterfactual_exact_pair':selected['relations']['counterfactual_exact_pair'],'invariance_consistency':selected['relations']['invariance_consistency'],'validation_forbidden_act':selected['validation']['safety']['forbidden_act'],'dev_ood_forbidden_act':selected['ood']['safety']['forbidden_act']},'fresh_confirmatory_evaluation':'NOT EXECUTED','gate_g':'NOT EXECUTED','gate_h':'NOT EXECUTED','candidate_source_immutable_after_freeze':True}
+          Path('gate_recovery_v3').mkdir(exist_ok=True)
+          Path('gate_recovery_v3/freeze.json').write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n')
+          marker='\n\n## Protocol v2 Recovery — Candidate v3 terminal status\n\n'
+          status=('- Gate A — PASS\n- Gate B — PASS\n- Gate C — PASS\n- Gate D — PASS\n- Gate E — PASS\n- Gate F — FAIL (C5 lineage terminated; immutable historical confirmatory evidence)\n- Recovery-v3 Development — PASS\n- Candidate v3 — FROZEN (`V3A_factor_tree`)\n- Fresh Confirmatory Evaluation — NOT EXECUTED\n- Gate G — NOT EXECUTED\n- Gate H — NOT EXECUTED\n\nRecovery development used zero retired Gate-F protected records. Development success does not repair or rewrite Gate F. The next legitimate scientific step is a separately preregistered fresh confirmatory evaluation using a completely new protected set generated only after this freeze.\n')
+          for name in ['README.md','docs/gate_status.md','docs/methodology.md','docs/claim_boundaries.md','docs/research_log.md']:
+            p=Path(name); text=p.read_text(encoding='utf-8')
+            if '## Protocol v2 Recovery — Candidate v3 terminal status' not in text: p.write_text(text.rstrip()+marker+status,encoding='utf-8')
+          terminal={'decision':'RECOVERY DEVELOPMENT PASS — CANDIDATE V3 FROZEN','selected_candidate':'V3A_factor_tree','candidate_source_freeze_commit':os.environ['SOURCE_FREEZE_SHA'],'gate_f':'FAIL','gate_f_retired_protected_records_accessed_by_development':0,'fresh_confirmatory_evaluation':'NOT EXECUTED','gate_g':'NOT EXECUTED','gate_h':'NOT EXECUTED','exact_next_step':'Design a fresh preregistered confirmatory evaluation using a completely new protected set generated only after Candidate v3 freeze.'}
+          Path('reports/recovery_v3/terminal_report.json').write_text(json.dumps(terminal,indent=2,sort_keys=True)+'\n')
+          PY
+      - name: Commit freeze manifest without changing Candidate v3
+        if: steps.existing.outputs.frozen == 'false'
+        env:
+          SOURCE_FREEZE_SHA: ${{ steps.source_freeze.outputs.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code "$SOURCE_FREEZE_SHA" HEAD -- src/proactivity/candidate_v3.py
+          git add gate_recovery_v3/freeze.json reports/recovery_v3/terminal_report.json README.md docs/gate_status.md docs/methodology.md docs/claim_boundaries.md docs/research_log.md
+          git commit -m "finalize Candidate v3 recovery freeze metadata and status"
+          git diff --exit-code "$SOURCE_FREEZE_SHA" HEAD -- src/proactivity/candidate_v3.py
+          git push origin HEAD:research/proactivity-recovery-v3
