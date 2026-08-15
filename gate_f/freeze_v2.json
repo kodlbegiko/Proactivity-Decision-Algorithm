@@ -1,5 +1,5 @@
 {
-  "administrative_closeout_sha": "PENDING_CLOSEOUT_COMMIT",
+  "administrative_closeout_sha": "dcbee10f3bed21af79cb18c4080b763a76ec6c85",
   "baseline_prediction_sha256": "1309a610f3293781b6eeb524f4b74233f197a080616f730f71fa57fd9f66fd7f",
   "bootstrap_sha256": "87d44b6b6bfd0de580fd041d1969765bd831ecadc0fb992279f8c15d668b1f1e",
   "branch": "research/proactivity-protected-v2",
@@ -26,7 +26,7 @@
   "generator_manifest_commit": "21e729e93888716f71be67f9253cc191066343d8",
   "generator_sha256": "f9bd6eb12ab5c76720bc5c02af0ba001334047b42e7f4f0db3ba617537961fd0",
   "generator_source_commit": "eeb509ef4d8cbd24d4a9ab6c228634ca0b9a98fa",
-  "independence_classification": "LEVEL C \u2014 same orchestration lineage; frozen candidate-blind process-isolated generation; not external/human-independent",
+  "independence_classification": "LEVEL C — same orchestration lineage; frozen candidate-blind process-isolated generation; not external/human-independent",
   "leakage_audit": "NONE",
   "merge": false,
   "metrics": {

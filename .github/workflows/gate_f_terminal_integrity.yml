@@ -1,0 +1,118 @@
+name: gate-f-terminal-integrity
+
+on:
+  push:
+    branches:
+      - research/proactivity-protected-v2
+    paths:
+      - gate_f/**
+      - docs/**
+      - README.md
+      - .github/workflows/gate_f_terminal_integrity.yml
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Verify post-scoring scientific locks
+        run: |
+          git diff --exit-code 23d183086368d0921c9af2f6c326d4c97214f267 HEAD -- \
+            src/proactivity/candidate_v2.py \
+            scripts/generate_gate_f_v2.py \
+            scripts/run_gate_f_v2.py \
+            gate_f/protected_inputs_v2.jsonl \
+            gate_f/protected_labels_v2.jsonl \
+            gate_f/protected_private_v2.jsonl
+
+      - name: Verify frozen hashes and terminal decision
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          freeze = json.loads(Path('gate_f/freeze_v2.json').read_text())
+          hashes = json.loads(Path('gate_f/hash_manifest_v2.json').read_text())
+          report = json.loads(Path('gate_f/report_v2.json').read_text())
+          marker = json.loads(Path('gate_f/formal_scoring_marker_v2.json').read_text())
+          assert freeze['status'] == 'FAIL'
+          assert freeze['scientific_terminal_sha'] == '23d183086368d0921c9af2f6c326d4c97214f267'
+          assert freeze['scientific_terminal_run_id'] == 31880421048
+          assert freeze['administrative_closeout_sha'] == 'dcbee10f3bed21af79cb18c4080b763a76ec6c85'
+          assert freeze['leakage_audit'] == 'NONE'
+          assert freeze['candidate_immutable'] is True
+          assert freeze['protected_set_immutable'] is True
+          assert freeze['gate_g'] == 'NOT EXECUTED'
+          assert freeze['gate_h'] == 'NOT EXECUTED'
+          assert marker['GATE_F_FORMAL_SCORING_OCCURRED'] is True
+          assert report['decision'] == 'FAIL'
+          assert report['criteria']['macro_f1_at_least_0_50'] is False
+          assert report['criteria']['delta_vs_b5_at_least_0_20'] is False
+          assert report['criteria']['bootstrap_lower_bound_positive'] is False
+          assert report['criteria']['all_six_nonzero_recall'] is False
+          paths = {
+              'candidate_source_sha256': 'src/proactivity/candidate_v2.py',
+              'generator_source_sha256': 'scripts/generate_gate_f_v2.py',
+              'scorer_source_sha256': 'scripts/run_gate_f_v2.py',
+              'protected_inputs_sha256': 'gate_f/protected_inputs_v2.jsonl',
+              'protected_labels_sha256': 'gate_f/protected_labels_v2.jsonl',
+              'protected_private_sha256': 'gate_f/protected_private_v2.jsonl',
+              'generation_summary_sha256': 'gate_f/generation_summary_v2.json',
+              'prediction_sha256': 'gate_f/predictions_v2.jsonl',
+              'baseline_prediction_sha256': 'gate_f/baseline_predictions_v2.jsonl',
+              'bootstrap_sha256': 'gate_f/bootstrap_v2.json',
+              'report_sha256': 'gate_f/report_v2.json',
+              'formal_scoring_marker_sha256': 'gate_f/formal_scoring_marker_v2.json',
+          }
+          for field, path in paths.items():
+              actual = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+              assert actual == hashes[field], (field, actual, hashes[field])
+          assert freeze['candidate_source_sha256'] == hashes['candidate_source_sha256']
+          assert freeze['protected_inputs_sha256'] == hashes['protected_inputs_sha256']
+          assert freeze['protected_labels_sha256'] == hashes['protected_labels_sha256']
+          assert freeze['protected_private_sha256'] == hashes['protected_private_sha256']
+          assert freeze['prediction_sha256'] == hashes['prediction_sha256']
+          assert freeze['report_sha256'] == hashes['report_sha256']
+          PY
+
+      - name: Verify status and claim documentation
+        run: |
+          grep -F "Gate F — FAIL" README.md
+          grep -F "Gate F — Protected / OOD Validation: FAIL" docs/gate_status.md
+          grep -F "Gate F terminal claim boundary" docs/claim_boundaries.md
+          grep -F "Gate F — Executed confirmatory methodology and terminal result" docs/methodology.md
+          grep -F "Gate F preregistration, protected generation, and terminal FAIL" docs/research_log.md
+          grep -F "Gate G — NOT EXECUTED" docs/gate_status.md
+          grep -F "Gate H — NOT EXECUTED" docs/gate_status.md
+          test -s gate_f/report_v2.md
+          test -s gate_f/environment_manifest_v2.json
+
+      - name: Claim audit — reject unsupported terminal overclaims
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          current = '\n'.join(Path(p).read_text(encoding='utf-8').lower() for p in [
+              'README.md', 'docs/gate_status.md', 'docs/claim_boundaries.md',
+              'docs/methodology.md', 'gate_f/report_v2.md'
+          ])
+          forbidden = [
+              'gate f — pass',
+              'gate f: pass',
+              'proven real-world',
+              'production ready',
+              'deployment ready',
+              'human-level proactive',
+              'independent human validation',
+          ]
+          findings = [phrase for phrase in forbidden if phrase in current]
+          assert findings == [], findings
+          PY
