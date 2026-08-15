@@ -47,3 +47,19 @@ If Gate F later uses a same-agent candidate-blind generator after candidate free
 ## Historical human validation
 
 Protocol-v1 human-annotation infrastructure remains historical/optional external-validity infrastructure. Protocol v1 itself remains blocked by independent annotation and is not retroactively passed.
+
+## Protocol v2 Recovery — Candidate v3 terminal status
+
+- Gate A — PASS
+- Gate B — PASS
+- Gate C — PASS
+- Gate D — PASS
+- Gate E — PASS
+- Gate F — FAIL (C5 lineage terminated; immutable historical confirmatory evidence)
+- Recovery-v3 Development — PASS
+- Candidate v3 — FROZEN (`V3A_factor_tree`)
+- Fresh Confirmatory Evaluation — NOT EXECUTED
+- Gate G — NOT EXECUTED
+- Gate H — NOT EXECUTED
+
+Recovery development used zero retired Gate-F protected records. Development success does not repair or rewrite Gate F. The next legitimate scientific step is a separately preregistered fresh confirmatory evaluation using a completely new protected set generated only after this freeze.

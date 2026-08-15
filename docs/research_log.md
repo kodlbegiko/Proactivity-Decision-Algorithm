@@ -162,3 +162,19 @@ Gate-E protected candidate/private payload rows parsed remained zero and Gate-F 
 Decision: `GATE E — PASS`. Evidence-weighted Protocol-v2 completion remains **78%**. This supports only the bounded validation claim under the controlled synthetic representation; it does not support protected/OOD generalization, robustness, human preference alignment, deployment safety, or real-world autonomy claims.
 
 Exact next gate: Gate F protected/OOD confirmatory evaluation, beginning with preregistration on a new branch from the final Gate-E administrative closeout state. The frozen Candidate must not be modified.
+
+## Protocol v2 Recovery — Candidate v3 terminal status
+
+- Gate A — PASS
+- Gate B — PASS
+- Gate C — PASS
+- Gate D — PASS
+- Gate E — PASS
+- Gate F — FAIL (C5 lineage terminated; immutable historical confirmatory evidence)
+- Recovery-v3 Development — PASS
+- Candidate v3 — FROZEN (`V3A_factor_tree`)
+- Fresh Confirmatory Evaluation — NOT EXECUTED
+- Gate G — NOT EXECUTED
+- Gate H — NOT EXECUTED
+
+Recovery development used zero retired Gate-F protected records. Development success does not repair or rewrite Gate F. The next legitimate scientific step is a separately preregistered fresh confirmatory evaluation using a completely new protected set generated only after this freeze.
