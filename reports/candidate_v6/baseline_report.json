@@ -1,0 +1,10 @@
+{
+  "B0_majority": {"accuracy": 0.1666666667, "macro_f1": 0.0476190476},
+  "B1_lexical_heuristic": {"accuracy": 0.3194444444, "macro_f1": 0.3068600123},
+  "B2_word_tfidf_direct_action": {"accuracy": 0.8666666667, "macro_f1": 0.8647496188},
+  "B3_word_char_strong_direct_action": {"accuracy": 0.8666666667, "macro_f1": 0.8647165391},
+  "B4_direct_semantic_embedding": "OPTIONAL_BASELINE_NOT_AVAILABLE: no pinned local embedding model in runtime; no paid/API dependency introduced.",
+  "B5_transparent_structured_factor_heuristic": "Covered only as development diagnostics; not promoted as strongest baseline.",
+  "B6_candidate_v4": "NOT_EXECUTED: frozen implementation artifact was not on the explicit historical allow-list; quarantine preserved.",
+  "note": "Baseline results are development/validation-only and are not protected evidence. Candidate superiority over a baseline cannot override an absolute safety-gate failure."
+}
