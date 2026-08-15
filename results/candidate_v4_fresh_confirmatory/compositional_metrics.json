@@ -1,0 +1,53 @@
+{
+  "accuracy": 0.15833333333333333,
+  "invalid_action": 0,
+  "macro_f1": 0.08072916666666667,
+  "max_prediction_class_share": 0.9,
+  "per_action": {
+    "ACT": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 20
+    },
+    "ASK": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 20
+    },
+    "IGNORE": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 20
+    },
+    "NOTIFY": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 20
+    },
+    "SUGGEST": {
+      "f1": 0.25,
+      "precision": 0.3333333333333333,
+      "recall": 0.2,
+      "support": 20
+    },
+    "WAIT": {
+      "f1": 0.23437500000000003,
+      "precision": 0.1388888888888889,
+      "recall": 0.75,
+      "support": 20
+    }
+  },
+  "prediction_distribution": {
+    "ACT": 0,
+    "ASK": 0,
+    "IGNORE": 0,
+    "NOTIFY": 0,
+    "SUGGEST": 12,
+    "WAIT": 108
+  },
+  "records": 120
+}

@@ -1,0 +1,5 @@
+{
+  "exact_pair_correctness": 0.1,
+  "pairs": 60,
+  "prediction_consistency": 0.8166666666666667
+}

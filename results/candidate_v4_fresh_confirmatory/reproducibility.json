@@ -1,0 +1,45 @@
+{
+  "candidate_name": "V4B_atom_state_machine_a65",
+  "candidate_source_sha256_actual": "66a5a899b7c1c5eea102e96f649db89cce2e9c8a38c8d755a25dddcf6abe492e",
+  "candidate_source_sha256_expected": "66a5a899b7c1c5eea102e96f649db89cce2e9c8a38c8d755a25dddcf6abe492e",
+  "integrity_errors": [],
+  "preregistration_commit": "f8a085808fa21cb852c068f0d10a890ce7dd81a3",
+  "protected_manifest": {
+    "candidate_imported": false,
+    "evaluation": "candidate_v4_fresh_confirmatory",
+    "files": {
+      "compositional_stress.jsonl": {
+        "records": 120,
+        "sha256": "1e008065f93a3a67e698e373b4c84de7ec0f7833382a205f6926c01faf24ff4c"
+      },
+      "counterfactual.jsonl": {
+        "records": 120,
+        "sha256": "2fbb4606915faa42b1f610cba71d9d14c077f3491e4c576c18940173388ab609"
+      },
+      "invariance.jsonl": {
+        "records": 120,
+        "sha256": "729ad348dbc96f1092c624efe92c8150832c0976622b94536d4478b5441f66ef"
+      },
+      "lexical_stress.jsonl": {
+        "records": 120,
+        "sha256": "69515ea1b6a87623699e95014a7ccab321f2746d90685094320568ed0c2ab1df"
+      },
+      "main.jsonl": {
+        "records": 600,
+        "sha256": "d86ad9a563a18c28ce2adcbc6b82684fd240914d5178cb489860a3a6b5cd9be2"
+      }
+    },
+    "generator_module": "proactivity.candidate_v4_confirmatory_generator",
+    "main_action_counts": {
+      "ACT": 100,
+      "ASK": 100,
+      "IGNORE": 100,
+      "NOTIFY": 100,
+      "SUGGEST": 100,
+      "WAIT": 100
+    },
+    "preregistration_commit": "f8a085808fa21cb852c068f0d10a890ce7dd81a3",
+    "schema_version": 1,
+    "seed": 202608151
+  }
+}
