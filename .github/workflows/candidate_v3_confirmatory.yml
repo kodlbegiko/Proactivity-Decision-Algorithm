@@ -1,0 +1,69 @@
+name: Candidate v3 fresh confirmatory evaluation
+
+on:
+  push:
+    branches:
+      - research/proactivity-candidate-v3-confirmatory
+    paths:
+      - 'src/proactivity/confirmatory_v3_generator.py'
+      - 'src/proactivity/confirmatory_v3_score.py'
+      - 'src/proactivity/confirmatory_v3_score_retry.py'
+      - '.github/workflows/candidate_v3_confirmatory.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  confirmatory:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run one-shot protected confirmatory evaluation
+        env:
+          PYTHONPATH: src
+        run: python -m proactivity.confirmatory_v3_score_retry
+
+      - name: Show terminal evidence
+        if: always()
+        run: |
+          if [ -f results/candidate_v3_confirmatory/terminal_decision.json ]; then
+            cat results/candidate_v3_confirmatory/terminal_decision.json
+          fi
+          if [ -f docs/candidate_v3_confirmatory_terminal_report.md ]; then
+            cat docs/candidate_v3_confirmatory_terminal_report.md
+          fi
+
+      - name: Commit immutable confirmatory evidence
+        if: always()
+        run: |
+          if [ ! -f results/candidate_v3_confirmatory/terminal_decision.json ]; then
+            echo 'No terminal decision artifact was produced.' >&2
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -d data/candidate_v3_confirmatory ]; then
+            git add data/candidate_v3_confirmatory
+          fi
+          git add results/candidate_v3_confirmatory docs/candidate_v3_confirmatory_terminal_report.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'record Candidate v3 fresh confirmatory terminal evidence [skip ci]'
+            git push origin HEAD:research/proactivity-candidate-v3-confirmatory
+          fi
