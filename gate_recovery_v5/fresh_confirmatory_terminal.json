@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "repository": "kodlbegiko/Proactivity-Decision-Algorithm",
+  "branch": "research/candidate-v5-generalization-recovery",
+  "base_commit": "370aac305c14c4ddc2fa2f782cbb3f0fdde4f630",
+  "integrity_incident_id": "IR-V5-001",
+  "historical_protected_individual_examples_accessed": true,
+  "historical_protected_used_for_development": false,
+  "candidate_v5_development_started": false,
+  "candidate_v5_candidate_frozen": false,
+  "candidate_v5_protected_generated": false,
+  "candidate_v5_protected_evaluation_executed": false,
+  "rerun": false,
+  "leakage_status": "EXECUTION_CONTEXT_CONTAMINATED_BY_UNINTENDED_HISTORICAL_PROTECTED_OVERFETCH",
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "terminal_state": "FRESH CONFIRMATORY INVALID — EVALUATION INTEGRITY FAILURE"
+}
