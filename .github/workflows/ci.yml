@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -132,4 +136,43 @@ jobs:
             reports/gate_c_report.json
             reports/gate_d_report.json
             gate_d/predictions/
+          if-no-files-found: warn
+
+      - name: Verify Gate-E chronology and candidate-source immutability
+        run: |
+          git merge-base --is-ancestor cbb73cde89ac74f194c19d52e14379223ddc8c8a HEAD
+          git merge-base --is-ancestor 554da731c962cdbf2ebd63cb65149f393e05b617 HEAD
+          git diff --exit-code 554da731c962cdbf2ebd63cb65149f393e05b617 HEAD -- src/proactivity/candidate_v2.py
+      - name: Run formal Gate-E evaluation twice
+        run: |
+          rm -rf gate_e/predictions reports/gate_e_report.json /tmp/gate-e-second
+          PYTHONPATH=src python scripts/run_gate_e_v2.py --benchmark-root data/benchmark_v2 --output reports/gate_e_report.json --prediction-dir gate_e/predictions
+          mkdir -p /tmp/gate-e-second
+          PYTHONPATH=src python scripts/run_gate_e_v2.py --benchmark-root data/benchmark_v2 --output /tmp/gate-e-second/report.json --prediction-dir /tmp/gate-e-second/predictions
+          diff -u reports/gate_e_report.json /tmp/gate-e-second/report.json
+          diff -ru gate_e/predictions /tmp/gate-e-second/predictions
+      - name: Assert Gate-E preregistered terminal criteria
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/gate_e_report.json').read_text())
+          assert report['gate_verdict'] == 'GATE E — PASS'
+          assert report['candidate_source_boundary_violations'] == []
+          assert report['search_budget'] == 6
+          assert report['gate_f_protected_data'] == 'NOT_GENERATED'
+          assert report['protected_test_isolation']['protected_candidate_rows_json_parsed'] == 0
+          assert report['protected_test_isolation']['protected_private_rows_json_parsed'] == 0
+          assert all(report['criteria'].values())
+          PY
+      - name: Upload Gate-E evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-e-evidence-py${{ matrix.python-version }}
+          path: |
+            reports/gate_e_report.json
+            gate_e/predictions/
+            preregistration/gate_e_v2.md
+            src/proactivity/candidate_v2.py
           if-no-files-found: warn

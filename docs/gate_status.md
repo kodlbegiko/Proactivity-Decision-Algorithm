@@ -1,4 +1,4 @@
-# Gate Status — 2026-08-14 — Protocol v2
+# Gate Status — 2026-08-15 — Protocol v2
 
 ## Historical Protocol v1
 
@@ -141,29 +141,77 @@ Negative baseline results are preserved: B1 made one forbidden-ACT prediction an
 
 Freeze commit `3352fbe98da3f681cd34f81b6cf66a13b2b1cdd3` correctly froze the experiment artifacts but over-compressed existing documentation. Diff audit detected that this violated the documentation-preservation rule. The fix restored the Gate-C documents and applied only Gate-D additions/necessary status changes. Scientific artifacts, benchmark, oracle, criteria, scores, and source commit were unchanged.
 
-## Gates E–H
+### Gate E — PDA Candidate Evidence: PASS
 
-**NOT EXECUTED.**
+Gate-E branch/PR/Issue:
 
-No PDA candidate result, independent protected/OOD result, robustness claim, ablation result, independent clean reproduction result, merge, or release has been executed yet.
+- branch `research/proactivity-candidate-v2`;
+- Draft PR #12 stacked on `research/proactivity-baselines-v2`;
+- Issue #11;
+- exact Gate-D terminal base `cbb73cde89ac74f194c19d52e14379223ddc8c8a`.
+
+Preregistration / chronology:
+
+- preregistration commit `da6f205f4c1aff001b9f24b4782a44a94e885acd`;
+- candidate source freeze commit `554da731c962cdbf2ebd63cb65149f393e05b617`;
+- candidate source SHA-256 `78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b`;
+- evaluator added after source freeze at `c3c814c6020d0fb9b47a0bf71b6d80b67202c1d9`;
+- protected-payload isolation fix before formal scoring at `8ad2411b5db48cfe180bb500c996a7557abbda9b`;
+- formal scientific evaluation / CI-enable commit `fc030269e347142d5a9ad730499d189647ccded7`.
+
+The pre-scoring isolation audit found that the initial Gate-E evaluator would parse the complete private JSONL before subsetting. Before any formal validation score was produced, the loader was replaced with split-first isolation that recognizes protected rows only by scenario ID and skips their candidate/private payloads without JSON parsing. Candidate source, search budget, thresholds, baseline comparator, and scientific criteria were unchanged.
+
+Formal Gate-E run `31804595710` succeeded on Python 3.10, 3.11, and 3.12. Every matrix job re-ran upstream Gates B–D, complete 79-test regression, Protocol-v1 negative-evidence validators, candidate-source immutability, two formal Gate-E evaluations, terminal criteria, and evidence upload. The full Gate-E report SHA-256 was byte-identical across environments: `d3bdb01ea4e37f763ae8c973b86ee6600cf1c774bc62bf82e22aff746f86702f`.
+
+Selected candidate: `C5_semantic_factor_linear`.
+
+- validation accuracy: **0.6666666667**;
+- validation macro-F1: **0.6936507937**;
+- validation weighted F1: **0.6779220779**;
+- frozen B5 macro-F1: **0.2145299145**;
+- macro-F1 delta: **+0.4791208791**;
+- valid-action rate: **100%**;
+- forbidden ACT: **0**;
+- all six actions non-zero recall: **true**;
+- validation prediction SHA-256: `2b31c30d417c86c8c3e346d3b35579668b5852a289ffb9c6e15bf9fbec5c556d`.
+
+Paired bootstrap, 10,000 samples, seed `20260814`: mean delta `0.4721225669`, 95% interval `[0.2691404957, 0.6969364244]`, fraction delta > 0 = `1.0`.
+
+Negative candidate evidence is retained: C1–C3 each produced five forbidden ACT predictions and failed the all-six-action-recall eligibility rule; C4 and C6 were eligible but scored below C5. Protected candidate/private payload rows parsed in Gate E = 0. Gate-F protected/OOD data was **NOT GENERATED** during Gate E.
+
+#### Gate-E terminal verification
+
+The scientific result is anchored to `scientific_terminal_sha = fc030269e347142d5a9ad730499d189647ccded7` and formal run `31804595710`. Subsequent commits did not modify `src/proactivity/candidate_v2.py`; compare/audit and CI enforce that boundary.
+
+The later evidence/documentation verification HEAD `2f19671371e2bd81ee14ecd6819a2945155f0e86` completed full GitHub Actions run `31806809694` successfully on Python 3.10, 3.11, and 3.12. Each job passed Gate-E chronology and candidate-source immutability, repeated Gate-E evaluation, terminal criteria, upstream regressions, Protocol-v1 negative-evidence preservation, and evidence upload.
+
+The formal CI artifacts were independently byte-compared across Python 3.10/3.11/3.12: Gate-E report SHA-256 `d3bdb01ea4e37f763ae8c973b86ee6600cf1c774bc62bf82e22aff746f86702f`, C5 prediction SHA-256 `2b31c30d417c86c8c3e346d3b35579668b5852a289ffb9c6e15bf9fbec5c556d`, preregistration SHA-256 `75d2864b82cb48d1c77a9d3992c30de792e99c0b4167ef5fb5daf143ffaf5b84`, and candidate source SHA-256 `78d4cbdf6190cd8d87927d4efbce63ef29e3dacb902c44c1b3d5004a290aae5b` were identical in all three artifacts.
+
+`SCIENTIFIC_SOURCE_IMMUTABLE = YES`. `PROTECTED_GATE_F_DATA_SEEN = false`. Gate E therefore satisfies the terminal scientific and reproducibility conditions. Administrative metadata is recorded separately so documentation commits are not misrepresented as the scientific-evaluation SHA.
+
+## Gates F–H
+
+**NOT EXECUTED at the Gate-E terminal decision.**
+
+No Gate-F protected/OOD result, Gate-G robustness claim, Gate-H ablation/independent clean reproduction result, merge, or release is implied by Gate-E PASS.
 
 ## Protocol-v2 evidence-weighted completion
 
-| Evidence area | Weight | Supported now |
+| Evidence area | Weight | Supported after terminal Gate E |
 |---|---:|---:|
 | Research scope / claim definition | 10% | 10% |
 | Formal specification validity | 20% | 20% |
 | Oracle / benchmark validity | 15% | 15% |
 | Baseline integrity | 15% | 15% |
-| Candidate evidence | 15% | 0% |
+| Candidate evidence | 15% | 15% |
 | Protected validation | 10% | 0% |
 | Robustness | 5% | 0% |
 | Ablation | 5% | 0% |
 | Reproducibility / independent reproduction | 5% | 3% |
-| **Total** | **100%** | **63%** |
+| **Total** | **100%** | **78%** |
 
 The remaining 2/5 reproducibility credit is withheld because independent clean-environment reproduction/audit has not been performed.
 
 ## Exact next scientifically valid action
 
-`Gate E — PDA Candidate Evidence`
+`Gate F — Protected / OOD Validation`, beginning with preregistration on a new Gate-F branch based on the final Gate-E administrative closeout state. The Gate-E candidate source/config remains frozen and may not be modified during Gate F.

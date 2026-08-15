@@ -118,6 +118,26 @@ Formal Gate-D implementation commit `6377d31eaa57f162df68c4c3f89c7b6cb7e0206c` p
 
 Preregistration amendment D-001 changed only the scikit-learn version pin to `1.7.1` before formal scoring so the predeclared Python 3.10/3.11/3.12 matrix remained executable. Scientific criteria and model definitions did not change.
 
+## Gate E — Candidate Evidence
+
+Gate E uses development for training, validation for bounded preregistered selection, and excludes Gate-C `protected_test` payloads from fitting, feature engineering, scoring, selection, and debugging. Gate-F protected/OOD data remains ungenerated until the selected candidate is frozen.
+
+The search budget was frozen at six configurations before formal evaluation. The selected raw-context candidate is `C5_semantic_factor_linear`: candidate-visible observation text is mapped by an independently implemented extractor into 12 visible semantic factors—permission, information, timing, intervention need, side-effect scope, risk, reversibility, deferral, execution possibility, clarification possibility, acknowledgement, and completion—then encoded with `DictVectorizer` and classified by balanced logistic regression (`C=1.0`, `max_iter=3000`, `random_state=20260814`). It does not import/call the reference oracle or read hidden structured state/private benchmark data at runtime.
+
+Chronology is machine-auditable: preregistration `da6f205f4c1aff001b9f24b4782a44a94e885acd` -> candidate-source freeze `554da731c962cdbf2ebd63cb65149f393e05b617` -> evaluator addition `c3c814c6020d0fb9b47a0bf71b6d80b67202c1d9` -> protected-payload isolation fix `8ad2411b5db48cfe180bb500c996a7557abbda9b` before scoring -> formal scientific evaluation / CI enable `fc030269e347142d5a9ad730499d189647ccded7`. CI verifies `candidate_v2.py` remains unchanged from the source-freeze commit.
+
+Formal run `31804595710` succeeded across Python 3.10/3.11/3.12 with byte-identical reports and predictions. Selected validation macro-F1 is `0.6936507936507935`, versus frozen B5 `0.21452991452991452`, for delta `+0.479120879120879`. Valid-action rate is 100%, forbidden ACT is 0, and all six actions have non-zero recall. The preregistered 10,000-sample paired bootstrap produced a delta 95% interval `[0.269140495727183, 0.6969364243570899]` and fraction delta > 0 of `1.0`.
+
+The later evidence/documentation verification HEAD `2f19671371e2bd81ee14ecd6819a2945155f0e86` passed full regression run `31806809694` on Python 3.10, 3.11, and 3.12. The candidate source remained unchanged after its freeze; all Gate-E formal artifacts remained reproducible. Therefore Gate E is terminal `PASS`.
+
+These are **validation** results under the controlled synthetic representation. They do not establish independent protected/OOD generalization. Gate F must generate a new chronological/process-isolated confirmatory set only after the selected candidate source/config is frozen and evaluate it once under preregistered criteria.
+
+## Gate F methodology boundary
+
+Gate F is confirmatory rather than developmental. Its generator may use only preregistered frozen specification/oracle/schema/domain constraints and predefined generation rules; it must not inspect candidate source, candidate predictions, Gate-E confusion/failure examples, coefficients, thresholds, or candidate-specific errors. The protected expected decisions must come from generator-known state through the frozen oracle, never from the candidate itself.
+
+Before any protected data are generated, Gate F must freeze its research question, one-candidate identity, protected-generation process, set size, semantic/OOD transformation families, metrics, comparator, statistical method, safety criteria, acceptance thresholds, stopping rule, and independence classification. After the protected inputs/labels and hashes are frozen, there is one formal confirmatory scoring execution. Performance failure is a valid terminal result and does not authorize candidate tuning or protected-set regeneration.
+
 ## Historical Protocol v1
 
 Protocol v1 remains `GATE B — BLOCKED_BY_INDEPENDENT_ANNOTATION`; its 25% historical completion and missing human-label evidence are not rewritten by Protocol v2.
@@ -133,4 +153,4 @@ Gate F: protected/OOD validation.
 Gate G: robustness/adversarial/invariant stress testing.  
 Gate H: ablation/reproducibility/independent reproduction/final claim audit.
 
-Gate D has passed at the scientific-source/evidence level. The next scientifically valid gate is Gate E after the Gate-D terminal freeze HEAD completes regression CI.
+Gate E is terminal `PASS`. The next scientifically valid gate is Gate F, starting from the frozen Gate-E administrative closeout state and without modifying the Gate-E candidate source or configuration.
