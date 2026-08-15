@@ -115,7 +115,12 @@ VALUE_CUES: dict[str, dict[object, tuple[str, ...]]] = {
     },
 }
 
-_NEGATIVE_WORDS = re.compile(r"\b(no|not|cannot|without|absent|unavailable|impossible|unfinished|unresolved|incomplete)\b")
+# Negative forms receive an explicit scoring bonus so phrases such as
+# "deferral lacks a concrete trigger" cannot be misread as positive merely
+# because the positive lexical tail "concrete trigger" is also present.
+_NEGATIVE_WORDS = re.compile(
+    r"\b(no|not|cannot|without|absent|unavailable|impossible|unfinished|unresolved|incomplete|lacks|missing|pending|outstanding|unacknowledged|blocked)\b"
+)
 _NEGATIVE_ZH = ("沒有", "無法", "尚未", "不可", "不足", "矛盾", "衝突")
 
 
