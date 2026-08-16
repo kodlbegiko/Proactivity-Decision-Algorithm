@@ -1,0 +1,9 @@
+{
+  "lineage": "GG-V11-RQ2-20260816",
+  "oracle": "gate_g_v11_rq2.protocol_oracle",
+  "normative_source": "spec/proactivity_policy_v2.json",
+  "policy_id": "PDA-SPEC-v2",
+  "candidate_imported": false,
+  "candidate_predictions_used_for_labels": false,
+  "labels_adapted_to_candidate_behavior": false
+}

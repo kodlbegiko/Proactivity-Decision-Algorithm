@@ -1,0 +1,11 @@
+{
+  "lineage": "GG-V11-RQ2-20260816",
+  "candidate_sha": "3cdf4c9432b13f6ae003fa475a794e7491495d00",
+  "candidate_freeze_sha": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
+  "previous_gate_g_terminal_state": "GATE G INVALID — EVALUATION INTEGRITY FAILURE",
+  "previous_gate_g_pr": 29,
+  "previous_gate_g_used_as_scientific_evidence": false,
+  "formal_trial_started": false,
+  "scientific_freeze_established": false,
+  "row_level_human_inspection_permitted": false
+}

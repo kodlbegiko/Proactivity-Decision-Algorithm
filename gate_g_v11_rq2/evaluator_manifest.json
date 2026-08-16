@@ -1,0 +1,10 @@
+{
+  "lineage": "GG-V11-RQ2-20260816",
+  "evaluator": "gate_g_v11_rq2.metrics.compute_metrics",
+  "candidate_adapter": "gate_g_v11_rq2.candidate_adapter.CandidateV11Adapter",
+  "candidate_public_state_field": "policy_state",
+  "critical_factors": ["permission", "information", "need", "side_effect", "risk", "reversibility", "execution_possible", "completed"],
+  "row_level_human_inspection": false,
+  "post_result_threshold_changes_permitted": false,
+  "post_formal_evaluator_repairs_permitted": false
+}

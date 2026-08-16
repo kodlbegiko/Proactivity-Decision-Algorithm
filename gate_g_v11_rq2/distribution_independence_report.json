@@ -1,0 +1,12 @@
+{
+  "lineage": "GG-V11-RQ2-20260816",
+  "exact_prompt_overlap": "0 by construction / independent namespace proof",
+  "lexical_template_overlap": "N/A — intentionally not measured under information-isolation policy",
+  "previous_gate_g_rows_inspected": false,
+  "historical_protected_rows_inspected": false,
+  "historical_development_rows_inspected": false,
+  "fresh_seed_range": "82101-82116",
+  "previous_gate_g_seed_range_reused": false,
+  "candidate_predictions_influenced_generation": false,
+  "independence_basis": ["fresh GG-V11-RQ2-20260816 namespace", "fresh seeds 82101-82116", "generator imports no Candidate or historical benchmark generator", "gold oracle depends only on PDA-SPEC-v2", "no row-level historical data was manually inspected"]
+}

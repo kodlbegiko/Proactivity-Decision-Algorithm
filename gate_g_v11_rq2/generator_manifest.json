@@ -1,0 +1,12 @@
+{
+  "lineage": "GG-V11-RQ2-20260816",
+  "generator": "gate_g_v11_rq2.generator",
+  "generator_version": "GG-V11-RQ2-20260816-v1",
+  "total_cases": 13540,
+  "fresh_namespace": "Independent external-validity requalification docket GG-V11-RQ2-20260816",
+  "candidate_imported": false,
+  "previous_gate_g_generator_imported": false,
+  "benchmark_v11_generator_imported": false,
+  "historical_rows_inspected": false,
+  "distribution_adapted_to_candidate_predictions": false
+}
