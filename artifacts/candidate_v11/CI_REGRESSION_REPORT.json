@@ -1,0 +1,14 @@
+{
+  "tested_head_commit": "12100d026e91f1c0a8e24732533830010f338534",
+  "workflow": "candidate-v11-ci",
+  "workflow_run_id": 31927121423,
+  "job_id": 95116322562,
+  "runtime_materialization": "PASS",
+  "deterministic_fixture_preparation": "PASS",
+  "full_repository_pytest": "PASS",
+  "candidate_v11_frozen_check": "PASS",
+  "infrastructure_retries_preserved": ["INFRASTRUCTURE_RETRY_001", "INFRASTRUCTURE_RETRY_002"],
+  "candidate_mutation_during_retries": false,
+  "scientific_parameters_changed_during_retries": false,
+  "result": "PASS"
+}
