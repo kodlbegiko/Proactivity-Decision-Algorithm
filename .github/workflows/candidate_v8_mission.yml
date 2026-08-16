@@ -1,0 +1,17 @@
+name: candidate-v8-mission
+on: workflow_dispatch
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Guard candidate-v7 immutability
+        run: git diff --exit-code 83e41d91d264dd7074ea31d61571f14eaa6b09e3 -- candidate_v7/ gate_recovery_v7/ reports/candidate_v7/
+      - name: Candidate-v8 tests
+        run: python -m pytest -q tests/test_candidate_v8.py
+      - name: Development architecture search
+        run: python -m candidate_v8.development
+      - name: Integrity boundary
+        run: echo 'Post-freeze holdouts and protected evaluation are gated by immutable freeze/protocol artifacts; no formal-holdout tuning.'
