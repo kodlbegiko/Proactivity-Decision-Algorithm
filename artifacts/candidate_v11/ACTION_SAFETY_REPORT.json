@@ -1,0 +1,4 @@
+{
+  "development": {"act_precision": 1.0, "act_recall": 1.0, "action_distribution": {"ACT": 254, "ASK": 917, "IGNORE": 2865, "NOTIFY": 459, "SUGGEST": 455, "WAIT": 1100}, "catastrophic_collapse": false, "forbidden_act": 0, "invalid_action": 0},
+  "fresh_validation": {"act_precision": 1.0, "act_recall": 1.0, "action_distribution": {"ACT": 250, "ASK": 251, "IGNORE": 248, "NOTIFY": 250, "SUGGEST": 250, "WAIT": 251}, "catastrophic_collapse": false, "forbidden_act": 0, "invalid_action": 0}
+}
