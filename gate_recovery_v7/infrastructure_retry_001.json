@@ -1,0 +1,23 @@
+{
+  "retry_id": "infrastructure_retry_001",
+  "failed_run": 31922948036,
+  "failure_phase": "Stage A source unit tests before dataset generation",
+  "failure_classification": "non-scientific implementation/runtime defect",
+  "dataset_existed": false,
+  "validation_score_existed": false,
+  "qualification_holdout_score_existed": false,
+  "root_cause": "A regex intended to recognize information=insufficient used an optional negation group, so the positive phrase 'Information is sufficient' also matched the insufficient value before the sufficient pattern was evaluated.",
+  "repair_scope": [
+    "Replace only the erroneous insufficient-information regex semantics from optional negation to explicit 'not sufficient|insufficient'.",
+    "Load the narrow repair as frozen Candidate-v7 source before any Candidate-v7 parser use."
+  ],
+  "scientific_configuration_modified": false,
+  "architecture_family_modified": false,
+  "threshold_modified": false,
+  "dataset_size_modified": false,
+  "seed_modified": false,
+  "holdout_used_for_repair": false,
+  "protected_example_used_for_repair": false,
+  "scientific_evaluation_evidence_observed": false,
+  "retry_scientifically_legal": true
+}
