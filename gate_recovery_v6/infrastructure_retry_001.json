@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "retry_id": "candidate-v6-infrastructure-retry-001",
+  "failed_run_id": 31921057391,
+  "failed_source_freeze_commit": "edbabc160053579ad497688b479e4576abeeec23",
+  "failure_phase": "pre-data source integrity audit",
+  "scientific_evidence_observed": false,
+  "candidate_v6_dataset_generated": false,
+  "architecture_search_executed": false,
+  "qualification_holdout_executed": false,
+  "protected_evidence_accessed": false,
+  "root_cause": "The research-integrity script scanned its own forbidden-path declarations and falsely treated those declarations as evidence access.",
+  "repair_scope": "Exclude only the integrity auditor itself from forbidden path-literal self-scanning while retaining AST import checks and path-literal checks for Candidate-v6 decision/data/evaluation source.",
+  "preregistration_modified": false,
+  "scientific_criteria_modified": false,
+  "acceptance_thresholds_modified": false,
+  "architecture_budget_modified": false,
+  "holdout_information_used_for_repair": false,
+  "repair_commit": "047f189f5dde9466c8d4814b039657ecb4db9142",
+  "classification": "PERMITTED_INFRASTRUCTURE_RETRY"
+}
