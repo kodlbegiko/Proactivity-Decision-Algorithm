@@ -1,0 +1,10 @@
+{
+  "authorized": true,
+  "authorization_scope": "single preregistered Gate G execution plus deterministic reproducibility replay",
+  "gate_g_preregistration_sha": "cb222aefc1eb957a571667d0421d44fcc7fef7d3",
+  "evaluator_freeze_sha": "cb222aefc1eb957a571667d0421d44fcc7fef7d3",
+  "candidate_sha": "3cdf4c9432b13f6ae003fa475a794e7491495d00",
+  "candidate_freeze_sha": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
+  "individual_failed_rows_inspection_authorized": false,
+  "protected_rows_inspection_authorized": false
+}
