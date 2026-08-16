@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "lineage": "candidate-v7",
+  "semantic_states": ["SUPPORTED", "UNKNOWN", "AMBIGUOUS", "CONTRADICTED", "INSUFFICIENT_EVIDENCE"],
+  "critical_factors": ["permission", "information", "need", "risk", "reversibility", "execution_possible", "side_effect"],
+  "act_rule": "positive_evidence_conjunction",
+  "unknown_behavior": "conservative_projection_and_ACT_veto",
+  "contradiction_behavior": "ACT_veto",
+  "ood_behavior": "ACT_veto_above_0.15",
+  "confidence_semantics": "deterministic evidence-support score, not a population probability",
+  "negative_evidence_behavior": "record_and_veto_if_unresolved",
+  "policy": "PDA-SPEC-v2 frozen oracle"
+}
