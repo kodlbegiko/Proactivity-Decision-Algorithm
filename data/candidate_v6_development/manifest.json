@@ -1,0 +1,151 @@
+{
+  "action_counts": {
+    "compositional_holdout": {
+      "ACT": 100,
+      "ASK": 100,
+      "IGNORE": 100,
+      "NOTIFY": 100,
+      "SUGGEST": 100,
+      "WAIT": 100
+    },
+    "counterfactual": {
+      "ACT": 39,
+      "ASK": 90,
+      "IGNORE": 35,
+      "NOTIFY": 75,
+      "SUGGEST": 38,
+      "WAIT": 83
+    },
+    "development_ood": {
+      "ACT": 150,
+      "ASK": 150,
+      "IGNORE": 150,
+      "NOTIFY": 150,
+      "SUGGEST": 150,
+      "WAIT": 150
+    },
+    "invariance": {
+      "ACT": 60,
+      "ASK": 60,
+      "IGNORE": 60,
+      "NOTIFY": 60,
+      "SUGGEST": 60,
+      "WAIT": 60
+    },
+    "lexical_holdout": {
+      "ACT": 100,
+      "ASK": 100,
+      "IGNORE": 100,
+      "NOTIFY": 100,
+      "SUGGEST": 100,
+      "WAIT": 100
+    },
+    "negation": {
+      "ACT": 60,
+      "ASK": 60,
+      "IGNORE": 60,
+      "NOTIFY": 60,
+      "SUGGEST": 60,
+      "WAIT": 60
+    },
+    "rendering_holdout": {
+      "ACT": 100,
+      "ASK": 100,
+      "IGNORE": 100,
+      "NOTIFY": 100,
+      "SUGGEST": 100,
+      "WAIT": 100
+    },
+    "train": {
+      "ACT": 600,
+      "ASK": 600,
+      "IGNORE": 600,
+      "NOTIFY": 600,
+      "SUGGEST": 600,
+      "WAIT": 600
+    },
+    "validation": {
+      "ACT": 150,
+      "ASK": 150,
+      "IGNORE": 150,
+      "NOTIFY": 150,
+      "SUGGEST": 150,
+      "WAIT": 150
+    }
+  },
+  "candidate": "Candidate-v6",
+  "candidate_v3_protected_access": 0,
+  "candidate_v4_protected_access": 0,
+  "candidate_v5_holdout_reuse": false,
+  "counts": {
+    "compositional_holdout": 600,
+    "counterfactual": 360,
+    "development_ood": 900,
+    "invariance": 360,
+    "lexical_holdout": 600,
+    "negation": 360,
+    "rendering_holdout": 600,
+    "train": 3600,
+    "validation": 900
+  },
+  "families": {
+    "compositional_holdout": [
+      "conditional_statements",
+      "contrast_clauses",
+      "reported_speech",
+      "distractors"
+    ],
+    "development_ood": [
+      "implication",
+      "consequence_description",
+      "passive_voice",
+      "reported_speech"
+    ],
+    "lexical_holdout": [
+      "direct_declarative",
+      "compact_notes"
+    ],
+    "negation": [
+      "explicit_negation",
+      "double_negation"
+    ],
+    "rendering_holdout": [
+      "long_form_narrative",
+      "contrast_clauses",
+      "temporal_clauses"
+    ],
+    "train": [
+      "direct_declarative",
+      "conversational_dialogue",
+      "email_issue_tracker",
+      "compact_notes",
+      "distractors"
+    ],
+    "validation": [
+      "direct_declarative",
+      "conversational_dialogue",
+      "email_issue_tracker",
+      "compact_notes",
+      "distractors"
+    ]
+  },
+  "lexical_partition": {
+    "lexical_holdout": "LEXICAL_HOLDOUT",
+    "train_validation": "BASE"
+  },
+  "schema_version": 1,
+  "seed": 20260816,
+  "sha256": {
+    "compositional_holdout.jsonl": "80cc2a621c897da885225254ba11c9264d07d84b08a170bbbf7a7132c8cc944a",
+    "counterfactual.jsonl": "96365b7171c6252fa701b940522ecd81267d9f0ae95fb45094491513335e38c6",
+    "development_ood.jsonl": "474ffe414fddf28f9f9d06ec706fc1a816255fd0bbcd720dfcf4d5e65fd6b4fb",
+    "invariance.jsonl": "e3f3a215b3c8a57b4ada2c190a239920a1349bf22a394715db3f258f2ab2e4e0",
+    "lexical_holdout.jsonl": "5ea0c80f05c8ea9f94721a4043c177d12a233fd6def328f880c6a0b9011a4cc2",
+    "negation.jsonl": "82f65bd2e25bd95e1169a9d03cdcc66f030b8f158d07a6465fddba278b139686",
+    "rendering_holdout.jsonl": "af9b48708d75371c24e19837c3f58eafa226dcb32c99a65b5e22cf37eab026bc",
+    "train.jsonl": "d4a9fa83fdc095e83a9532356de24916954ffbfb04b8f04d3cd26efd863f13c4",
+    "validation.jsonl": "067f450d38ead2b6bb2d893d3d33c24e254cd85afd2b497b16081de95665ce3d"
+  },
+  "source_commit": "1ce0d267138d07805ddc3337f871e6fddc24e9f9",
+  "spec_sha256": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+}
