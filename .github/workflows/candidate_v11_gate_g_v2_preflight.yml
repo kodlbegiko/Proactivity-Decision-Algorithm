@@ -1,0 +1,38 @@
+name: Candidate-v11 Gate G v2 Preflight
+
+on:
+  push:
+    branches:
+      - research/candidate-v11-gate-g-v2-independent-requalification
+  pull_request:
+    branches:
+      - research/candidate-v11-semantic-abstraction-contradiction-reasoning
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    name: preflight-py${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Materialize deterministic repository fixtures
+        run: |
+          PYTHONPATH=.:src python -m benchmark_v11.run_qualification --generate-only
+          PYTHONPATH=.:src python -m benchmark_v11.run_holdouts --generate-only
+      - name: Full repository tests
+        run: PYTHONPATH=.:src pytest -q
+      - name: Gate G v2 interface/freeze preflight
+        run: PYTHONPATH=.:src python -m gate_g_v11_rq2.preflight
