@@ -1,0 +1,21 @@
+{
+  "incident_id": "pre_metric_ci_002",
+  "classification": "pre-metric repository-environment failure",
+  "authorization_commit": "abbdaad8e17a5fde0259c594e0a5571eae579367",
+  "workflow_run_id": 31929172696,
+  "matrix": {
+    "python_3_10": {"dependency_install": "PASS_PARTIAL", "compile": "PASS", "pytest": "FAIL_COLLECTION_ENVIRONMENT", "evaluation": "SKIPPED", "audit": "SKIPPED"},
+    "python_3_11": {"dependency_install": "PASS_PARTIAL", "compile": "PASS", "pytest": "FAIL_COLLECTION_ENVIRONMENT", "evaluation": "SKIPPED", "audit": "SKIPPED"},
+    "python_3_12": {"dependency_install": "PASS_PARTIAL", "compile": "PASS", "pytest": "FAIL_COLLECTION_ENVIRONMENT", "evaluation": "SKIPPED", "audit": "SKIPPED"}
+  },
+  "root_cause": "The Gate G workflow installed only pytest and invoked the pytest console entry point. Full repository collection requires the repository's requirements.txt installation (-e ., scikit-learn/numpy transitively) and repository import roots.",
+  "observed_collection_errors": ["scripts import unavailable", "candidate/benchmark top-level imports unavailable", "numpy unavailable", "sklearn unavailable", "gate_g_v11 import unavailable"],
+  "performance_metrics_persisted": false,
+  "gate_g_candidate_predictions_generated": false,
+  "individual_gate_g_rows_inspected": false,
+  "protected_rows_inspected": false,
+  "scientific_terminal_state_reached": false,
+  "allowed_repair": "install requirements.txt and execute tests/evaluation with explicit repository PYTHONPATH",
+  "scientific_components_changed": false,
+  "repair_commit": "408da2a4ad7bf37e38893a93b230c516f544b43c"
+}

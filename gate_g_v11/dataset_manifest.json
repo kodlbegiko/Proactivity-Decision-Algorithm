@@ -1,0 +1,10 @@
+{
+  "status": "INVALID_NOT_PERSISTED",
+  "candidate_sha": "3cdf4c9432b13f6ae003fa475a794e7491495d00",
+  "candidate_freeze_sha": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
+  "gate_g_preregistration_sha": "097536fc88815b1dbe85dff7230c99091223b373",
+  "workflow_run_id": 31929531234,
+  "reason": "Frozen evaluator crashed during G1 immediately after candidate prediction invocation and before dataset/report fingerprint persistence.",
+  "dataset_altered_after_evaluation": false,
+  "suite_dataset_hashes": {"G1": null, "G2": null, "G3": null, "G4": null, "G5": null, "G6": null, "G7": null, "G8": null, "G9": null, "G10": null, "G11": null, "G12": null, "G13": null, "G14": null, "G15": null, "G16": null}
+}

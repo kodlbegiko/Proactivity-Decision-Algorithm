@@ -1,0 +1,9 @@
+{
+  "status": "NOT_EXECUTED",
+  "reason": "The first frozen Gate G execution crashed before any suite metric was persisted; CI skipped the independent audit and no deterministic replay result was produced.",
+  "workflow_run_id": 31929531234,
+  "dataset_hashes_identical": null,
+  "prediction_hashes_identical": null,
+  "metric_hashes_identical": null,
+  "terminal_decision_identical": null
+}

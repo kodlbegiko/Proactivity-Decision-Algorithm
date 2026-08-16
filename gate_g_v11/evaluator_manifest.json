@@ -1,0 +1,40 @@
+{
+  "evaluator_id": "candidate-v11-gate-g-independent-v1",
+  "implementation_commit": "39328e6b1112671b4e7314c225cc2d588bde4d97",
+  "architecture_under_test": "V11-A",
+  "candidate_terminal_sha": "3cdf4c9432b13f6ae003fa475a794e7491495d00",
+  "candidate_freeze_sha": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
+  "candidate_source_git_blobs": {
+    "candidate_v11/model.py": "77553f7821113b48a2ffcd368ca23195853f8fb0",
+    "candidate_v11/evidence.py": "9f5338e0317bdababc8fbd6c2ebf3e499ac4ce42"
+  },
+  "generator_source_git_blobs": {
+    "gate_g_v11/semantic_cases.py": "2e437fec982848bc0200068a3f8ca62d73d69f7f",
+    "gate_g_v11/independent_generator.py": "51a004093842914046c23cc3e3cae242e5485cf2",
+    "gate_g_v11/discourse_generator.py": "dbbb2cf316b9055d49fffc0faeae7bca821ded06",
+    "gate_g_v11/adversarial_generator.py": "c2eab754f99b8b8c7b9ed367c68e7e87040fbdf1",
+    "gate_g_v11/counterfactual_generator.py": "4cf293e6b2fb6deeeca402fcab58638df596e656"
+  },
+  "evaluator_source_git_blobs": {
+    "gate_g_v11/evaluator.py": "4593536d5b026fb8ef6e622df06ad541f8c9d7ca",
+    "gate_g_v11/metrics.py": "7f1dbe94f8697e49a59c8f574e76ab25855b5f8c",
+    "gate_g_v11/protocol.py": "95acd9b5198904c41266159b4d624927d87384d5",
+    "gate_g_v11/protocol_oracle.py": "13099a24d6c52ad730d91457244bbbf8f73445b3",
+    "gate_g_v11/integrity.py": "46127824b606bcdd35f400a2cbed50aeb007c498",
+    "gate_g_v11/hashes.py": "bd85f631124febebb22aebf253aa0894b4974672",
+    "gate_g_v11/run_gate_g.py": "337b706e73d61f572b8b2c12f7ed00614140ca74",
+    "gate_g_v11/audit_gate_g.py": "3eb5dee6a89d67356341b6bcdc1b6aca298050db"
+  },
+  "spec_git_blob": "e34345bf76179d2c989d9da2effaa013792925fe",
+  "ci_workflow_git_blob": "cb1b3faa7d075ab15dc994500df343cae3209dff",
+  "pre_metric_infrastructure_incidents": [
+    "gate_g_v11/incidents/pre_metric_ci_001.json",
+    "gate_g_v11/incidents/pre_metric_ci_002.json",
+    "gate_g_v11/incidents/pre_metric_ci_003.json"
+  ],
+  "latest_pre_metric_repair_commit": "7b9ce1411ad6ea8f0902120f47c5b052825c6735",
+  "benchmark_v11_generator_dependency": false,
+  "gold_source": "spec/proactivity_policy_v2.json via gate_g_v11/protocol_oracle.py",
+  "candidate_output_used_for_generation": false,
+  "individual_rows_persisted": false
+}

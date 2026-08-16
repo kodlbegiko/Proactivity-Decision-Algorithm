@@ -1,0 +1,21 @@
+{
+  "incident_id": "pre_metric_ci_001",
+  "classification": "pre-metric infrastructure failure",
+  "first_authorization_commit": "8a0a950f2e02e8ca7a4389c490a8439e0201349b",
+  "workflow_run_id": 31929086634,
+  "matrix": {
+    "python_3_10": {"compile": "PASS", "pytest": "FAIL_INFRASTRUCTURE", "evaluation": "SKIPPED", "audit": "SKIPPED"},
+    "python_3_11": {"compile": "PASS", "pytest": "FAIL_INFRASTRUCTURE", "evaluation": "SKIPPED", "audit": "SKIPPED"},
+    "python_3_12": {"compile": "PASS", "pytest": "FAIL_INFRASTRUCTURE", "evaluation": "SKIPPED", "audit": "SKIPPED"}
+  },
+  "root_cause": "pytest executable was not installed on the fresh GitHub Actions runners",
+  "evidence": "All three jobs failed at the Test repository step with `pytest: command not found`; Execute frozen Gate G and Independent Gate G audit were skipped.",
+  "performance_metrics_persisted": false,
+  "gate_g_candidate_predictions_generated": false,
+  "individual_gate_g_rows_inspected": false,
+  "protected_rows_inspected": false,
+  "scientific_terminal_state_reached": false,
+  "allowed_repair": "install pytest in CI before test execution",
+  "scientific_components_changed": false,
+  "repair_commit": "eb0b1c0500546cb96c13cbc904e06cc40bf6c61d"
+}

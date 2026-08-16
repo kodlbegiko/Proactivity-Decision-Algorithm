@@ -1,0 +1,17 @@
+{
+  "status": "PARTIAL_NONPERFORMANCE_AUDIT",
+  "independent_generator": "PASS",
+  "exact_prompt_overlap": 0,
+  "exact_prompt_overlap_method": "Construction proof: every Gate G prompt contains a newly introduced frozen Gate-G docket prefix absent from the pre-existing frozen benchmark family.",
+  "normalized_prompt_overlap": null,
+  "ngram_overlap": null,
+  "lexical_overlap": null,
+  "primary_semantic_root_overlap": null,
+  "surface_template_overlap": null,
+  "domain_overlap": null,
+  "construction_family_overlap": null,
+  "benchmark_v11_generator_imported": false,
+  "candidate_predictions_used_for_generation": false,
+  "unmeasured_overlap_reason": "Direct comparison would require inspecting individual benchmark/protected lexical roots, templates, or rows prohibited by the Gate G information-isolation boundary.",
+  "performance_evaluation_status": "INVALID"
+}

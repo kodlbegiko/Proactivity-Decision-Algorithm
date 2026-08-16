@@ -1,0 +1,7 @@
+{
+  "status": "INVALID",
+  "metrics": null,
+  "failed_checks": ["evaluation_integrity_failure", "frozen_evaluator_interface_contract_failure"],
+  "suite_gates": {"G1": "NOT_EVALUATED", "G2": "NOT_EVALUATED", "G3": "NOT_EVALUATED", "G4": "NOT_EVALUATED", "G5": "NOT_EVALUATED", "G6": "NOT_EVALUATED", "G7": "NOT_EVALUATED", "G8": "NOT_EVALUATED", "G9": "NOT_EVALUATED", "G10": "NOT_EVALUATED", "G11": "NOT_EVALUATED", "G12": "NOT_EVALUATED", "G13": "NOT_EVALUATED", "G14": "NOT_EVALUATED", "G15": "NOT_EVALUATED", "G16": "NOT_EVALUATED"},
+  "terminal_state": "GATE G INVALID — EVALUATION INTEGRITY FAILURE"
+}

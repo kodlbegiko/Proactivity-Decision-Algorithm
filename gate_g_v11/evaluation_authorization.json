@@ -1,0 +1,17 @@
+{
+  "authorized": true,
+  "authorization_revision": 4,
+  "authorization_scope": "single preregistered Gate G execution plus deterministic reproducibility replay",
+  "gate_g_preregistration_sha": "097536fc88815b1dbe85dff7230c99091223b373",
+  "evaluator_freeze_sha": "097536fc88815b1dbe85dff7230c99091223b373",
+  "superseded_authorization_commit": "89f4191d0cb87768db59e446305bcf42c70ff073",
+  "pre_metric_incidents": [
+    "gate_g_v11/incidents/pre_metric_ci_001.json",
+    "gate_g_v11/incidents/pre_metric_ci_002.json",
+    "gate_g_v11/incidents/pre_metric_ci_003.json"
+  ],
+  "candidate_sha": "3cdf4c9432b13f6ae003fa475a794e7491495d00",
+  "candidate_freeze_sha": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
+  "individual_failed_rows_inspection_authorized": false,
+  "protected_rows_inspection_authorized": false
+}

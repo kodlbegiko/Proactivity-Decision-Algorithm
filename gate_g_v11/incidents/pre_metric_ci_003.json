@@ -1,0 +1,26 @@
+{
+  "incident_id": "pre_metric_ci_003",
+  "classification": "pre-metric deterministic regression-fixture preparation failure",
+  "authorization_commit": "89f4191d0cb87768db59e446305bcf42c70ff073",
+  "workflow_run_id": 31929252475,
+  "matrix": {
+    "python_3_10": {"dependencies": "PASS", "compile": "PASS", "pytest": "FAIL_REGRESSION_FIXTURES", "evaluation": "SKIPPED", "audit": "SKIPPED"},
+    "python_3_11": {"dependencies": "PASS", "compile": "PASS", "pytest": "FAIL_REGRESSION_FIXTURES", "evaluation": "SKIPPED", "audit": "SKIPPED"},
+    "python_3_12": {"dependencies": "PASS", "compile": "PASS", "pytest": "FAIL_REGRESSION_FIXTURES", "evaluation": "SKIPPED", "audit": "SKIPPED", "pytest_summary": "259 passed, 5 failed"}
+  },
+  "root_cause": "The full repository regression suite expects deterministic generated fixtures that are not committed in a fresh checkout. The Gate G workflow had not yet run the repository's deterministic development/benchmark generators before pytest.",
+  "observed_missing_fixtures": [
+    "data/development/development_v1.jsonl",
+    "data/development/development_v1.meta.jsonl",
+    "data/benchmark_v2/candidate.jsonl"
+  ],
+  "gate_g_test_failure_observed": false,
+  "performance_metrics_persisted": false,
+  "gate_g_candidate_predictions_generated": false,
+  "individual_gate_g_rows_inspected": false,
+  "protected_rows_inspected": false,
+  "scientific_terminal_state_reached": false,
+  "allowed_repair": "run the repository's deterministic regression fixture generators before pytest",
+  "scientific_components_changed": false,
+  "repair_commit": "7b9ce1411ad6ea8f0902120f47c5b052825c6735"
+}

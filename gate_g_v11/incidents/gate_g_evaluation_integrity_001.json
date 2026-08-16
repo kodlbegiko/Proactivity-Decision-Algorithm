@@ -1,0 +1,31 @@
+{
+  "incident_id": "gate_g_evaluation_integrity_001",
+  "classification": "scientific evaluation integrity failure",
+  "authorization_commit": "3727bc05e50a2056ed93c14d6ed2756116bd1acb",
+  "gate_g_preregistration_sha": "097536fc88815b1dbe85dff7230c99091223b373",
+  "workflow_run_id": 31929531234,
+  "matrix": {
+    "python_3_10": {"repository_tests": "PASS", "gate_g_execution": "FAIL", "audit": "SKIPPED", "terminal_persist_step": "SKIPPED"},
+    "python_3_11": {"repository_tests": "PASS", "gate_g_execution": "FAIL", "audit": "SKIPPED", "terminal_persist_step": "SKIPPED"},
+    "python_3_12": {"repository_tests": "PASS", "gate_g_execution": "FAIL", "audit": "SKIPPED", "terminal_persist_step": "SKIPPED"}
+  },
+  "root_cause": "The frozen Gate G evaluator expected Prediction.state. CandidateArchitecture.predict() returned a Prediction object without a state attribute, causing AttributeError in gate_g_v11/evaluator.py line 30 immediately after candidate prediction invocation.",
+  "exception": "AttributeError: 'Prediction' object has no attribute 'state'",
+  "candidate_prediction_invocation_occurred": true,
+  "individual_candidate_prediction_value_inspected": false,
+  "performance_metrics_persisted": false,
+  "suite_metrics_persisted": false,
+  "aggregate_metrics_persisted": false,
+  "reproducibility_executed": false,
+  "independent_audit_executed": false,
+  "candidate_modified": false,
+  "generator_modified_after_authorization": false,
+  "oracle_modified_after_authorization": false,
+  "thresholds_modified_after_authorization": false,
+  "seeds_modified_after_authorization": false,
+  "sample_sizes_modified_after_authorization": false,
+  "individual_gate_g_failed_rows_inspected": false,
+  "protected_rows_inspected": false,
+  "disposition": "Do not patch and rescue this already-started evaluation lineage. Preserve the failed frozen execution as INVALID.",
+  "terminal_state": "GATE G INVALID — EVALUATION INTEGRITY FAILURE"
+}
