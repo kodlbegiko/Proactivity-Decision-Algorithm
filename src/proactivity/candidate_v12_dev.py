@@ -101,3 +101,41 @@ def invariance_metrics(a,seed=993,n=220):
 def development_summary():
     arches=[ArchitectureA(),ArchitectureB(),ArchitectureC()]; selection=[{"architecture":a.name,**evaluate(a,make_records(12001,600))} for a in arches]; w=ArchitectureC(); runs=[evaluate(w,make_records(s,320)) for s in (13001,13002,13003,13004,13005)]; pooled=evaluate(w,sum((make_records(s,320) for s in (13001,13002,13003,13004,13005)),[])); stress=evaluate(w,make_records(14001,600,True)); f=[x["macro_f1"] for x in runs]
     return {"selection":selection,"pooled":pooled,"unknown":unknown_metrics(w),"counterfactual":counterfactual_metrics(w),"invariance":invariance_metrics(w),"stress":stress,"robustness":{"mean":statistics.mean(f),"median":statistics.median(f),"minimum":min(f),"maximum":max(f),"standard_deviation":statistics.pstdev(f)}}
+
+def _operator_case(r, kind):
+    s=sample_state(r)
+    if kind=="negation":
+        f=r.choice(("permission","information","need","reversibility","execution_possible"))
+        if f=="permission":
+            s["side_effect"]="external"; s["permission"]="missing"; phrase="approval was not granted"
+        elif f=="information": s[f]="insufficient"; phrase="information is not sufficient"
+        elif f=="need": s[f]="none"; phrase="action is not required"
+        elif f=="reversibility": s[f]="irreversible"; phrase="change is not reversible"
+        else: s[f]=False; phrase="execution is not possible"
+        if s["side_effect"]=="none": s["permission"]="not_required"
+        elif s["permission"]=="not_required": s["permission"]="missing"
+        q=[]
+        for k in FIELD_ORDER: q.append(phrase if k==f else r.choice(P[k][s[k]]))
+        r.shuffle(q); return ". ".join(q)+".",s
+    if kind=="temporal":
+        f=r.choice(("information","urgency","need","risk","reversibility","deferral_available","execution_possible","clarification_possible","acknowledged","completed"))
+        cur=s[f]; old=r.choice([v for v in DOMAINS[f] if v!=cur]); oldp=r.choice(P[f][old]); curp=r.choice(P[f][cur])
+        q=[r.choice(P[k][s[k]]) for k in FIELD_ORDER if k!=f]; r.shuffle(q)
+        return f"Previously, {oldp}; but now {curp}. "+". ".join(q)+".",s
+    s["side_effect"]="none"; s["permission"]="not_required"
+    q=[r.choice(P[k][s[k]]) for k in FIELD_ORDER if k!="permission"]; r.shuffle(q)
+    return ". ".join(q)+".",s
+
+def targeted_accuracy(a,kind,seed=16001,n=180):
+    r=random.Random(seed+{"negation":1,"temporal":2,"ontology":3}[kind]); ok=0
+    for _ in range(n):
+        text,s=_operator_case(r,kind); ok+=a.parse(text).state==s
+    return ok/n
+
+def mechanistic_diagnostics():
+    full=ArchitectureC()
+    return {
+      "negation":{"full":targeted_accuracy(full,"negation"),"ablated":targeted_accuracy(ArchitectureC(operators=False),"negation")},
+      "temporal":{"full":targeted_accuracy(full,"temporal"),"ablated":targeted_accuracy(ArchitectureC(temporal=False),"temporal")},
+      "ontology":{"full":targeted_accuracy(full,"ontology"),"ablated":targeted_accuracy(ArchitectureC(joint_constraints=False),"ontology")},
+    }
