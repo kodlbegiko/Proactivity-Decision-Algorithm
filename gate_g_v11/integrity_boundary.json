@@ -1,0 +1,37 @@
+{
+  "boundary_version": "1.0",
+  "allowed_access": {
+    "PDA_SPEC_v2": true,
+    "candidate_public_api_interface": true,
+    "candidate_frozen_source_for_interface_compatibility": true,
+    "candidate_v10_aggregate_terminal_findings": false,
+    "candidate_v11_aggregate_qualification_result": true,
+    "H1_H16_aggregate_results": true,
+    "protected_aggregate_result": true,
+    "candidate_v11_freeze_metadata": true,
+    "preregistration_documents": true,
+    "source_hashes": true,
+    "CI_evidence": true
+  },
+  "prohibited_access_observed": {
+    "candidate_v11_development_individual_prompts": false,
+    "candidate_v11_development_individual_labels": false,
+    "candidate_v11_development_individual_predictions": false,
+    "H1_H16_individual_examples": false,
+    "H1_H16_failed_or_correct_rows": false,
+    "protected_individual_examples": false,
+    "protected_individual_predictions": false,
+    "protected_row_ids": false,
+    "protected_lexical_roots": false,
+    "protected_surface_templates": false,
+    "protected_exact_grammatical_structures": false,
+    "internal_error_clusters_from_protected_or_holdout_examples": false,
+    "candidate_v10_individual_failures": false
+  },
+  "benchmark_v11_generator_imported": false,
+  "individual_gate_g_failed_rows_may_be_inspected": false,
+  "notes": [
+    "Candidate-v11 frozen source was read only to identify the black-box API/interface and verify frozen source identity.",
+    "Gate G generator and gold oracle were authored from PDA-SPEC-v2, not from candidate predictions or benchmark-v11 generation helpers."
+  ]
+}
