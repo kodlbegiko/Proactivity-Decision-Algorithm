@@ -1,0 +1,250 @@
+{
+  "configurations_evaluated": 12,
+  "holdouts_loaded": false,
+  "results": [
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7A-01",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7A",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7A-02",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7A",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7A-03",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7A",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7A-04",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7A",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "act_critical_factor_accuracy": 0.5828571428571429,
+      "config": "V7B-01",
+      "critical_unknown_rate": 0.6553571428571429,
+      "exact_latent_state_reconstruction": 0.005,
+      "family": "V7B",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 0.6373611111111112,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 0.336875,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.2815972222222222,
+        "negation_scope_accuracy": 0.336875,
+        "proposition_polarity_accuracy": 0.3148611111111111,
+        "temporal_interpretation_accuracy": 0.336875
+      },
+      "validation_accuracy": 0.285,
+      "validation_macro_f1": 0.18578576502530583
+    },
+    {
+      "act_critical_factor_accuracy": 0.43666666666666665,
+      "config": "V7B-02",
+      "critical_unknown_rate": 0.8422619047619048,
+      "exact_latent_state_reconstruction": 0.0,
+      "family": "V7B",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 0.5303472222222222,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 0.18409722222222222,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.1426388888888889,
+        "negation_scope_accuracy": 0.18409722222222222,
+        "proposition_polarity_accuracy": 0.18409722222222222,
+        "temporal_interpretation_accuracy": 0.18409722222222222
+      },
+      "validation_accuracy": 0.22583333333333333,
+      "validation_macro_f1": 0.11081276380524303
+    },
+    {
+      "act_critical_factor_accuracy": 0.43666666666666665,
+      "config": "V7B-03",
+      "critical_unknown_rate": 0.8644047619047619,
+      "exact_latent_state_reconstruction": 0.0,
+      "family": "V7B",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 0.5103472222222222,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 0.13409722222222223,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.10972222222222222,
+        "negation_scope_accuracy": 0.13409722222222223,
+        "proposition_polarity_accuracy": 0.13409722222222223,
+        "temporal_interpretation_accuracy": 0.13409722222222223
+      },
+      "validation_accuracy": 0.22583333333333333,
+      "validation_macro_f1": 0.11081276380524303
+    },
+    {
+      "act_critical_factor_accuracy": 0.4058333333333333,
+      "config": "V7B-04",
+      "critical_unknown_rate": 0.9198809523809524,
+      "exact_latent_state_reconstruction": 0.0,
+      "family": "V7B",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 0.4679861111111111,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 0.057291666666666664,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.057291666666666664,
+        "negation_scope_accuracy": 0.057291666666666664,
+        "proposition_polarity_accuracy": 0.057291666666666664,
+        "temporal_interpretation_accuracy": 0.057291666666666664
+      },
+      "validation_accuracy": 0.16666666666666666,
+      "validation_macro_f1": 0.047619047619047616
+    },
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7C-01",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7C",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7C-02",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7C",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7C-03",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7C",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "act_critical_factor_accuracy": 1.0,
+      "config": "V7C-04",
+      "critical_unknown_rate": 0.0,
+      "exact_latent_state_reconstruction": 1.0,
+      "family": "V7C",
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "mean_factor_accuracy": 1.0,
+      "semantic": {
+        "factor_evidence_attribution_accuracy": 1.0,
+        "gold_propositions": 14400,
+        "modal_interpretation_accuracy": 0.7348611111111111,
+        "negation_scope_accuracy": 1.0,
+        "proposition_polarity_accuracy": 0.915,
+        "temporal_interpretation_accuracy": 1.0
+      },
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    }
+  ],
+  "search_budget_preregistered": 12,
+  "selected_config": "V7A-01",
+  "selected_family": "V7A",
+  "selection_source": "validation_only"
+}

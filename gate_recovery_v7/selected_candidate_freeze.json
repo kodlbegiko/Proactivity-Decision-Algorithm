@@ -1,0 +1,9 @@
+{
+  "architecture": "V7A",
+  "config": "V7A-01",
+  "dataset_freeze_commit": "bf069274a32b639feeddffb55203befa51721ff6",
+  "qualification_holdouts_observed": false,
+  "selection_source": "validation_only",
+  "source_commit": "a23d14a9438870314d67d60ce2deda1ebf5b899e",
+  "status": "SELECTED_CANDIDATE_FROZEN"
+}
