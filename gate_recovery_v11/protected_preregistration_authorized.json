@@ -1,0 +1,14 @@
+{
+  "candidate": "Candidate-v11",
+  "authorized": true,
+  "selected_architecture": "V11-A",
+  "candidate_freeze_commit": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
+  "formal_holdout_result_commit": "cd7c25a2bfc585b1ad403619a13a9d298ba752b3",
+  "protected_harness_commit": "7b32b2bc2c43b3184ac1d38952952522b30b8c1a",
+  "protected_preregistration_commit": "5df06b9e9734beb7fe17031395bf9be8209e6652",
+  "seed": 113001,
+  "n": 3600,
+  "materialized_before_preregistration": false,
+  "one_shot": true,
+  "post_result_tuning_allowed": false
+}
