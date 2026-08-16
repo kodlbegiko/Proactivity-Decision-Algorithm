@@ -3,7 +3,7 @@
   "candidate_v8_h1_individual_evidence_accessed": false,
   "candidate_v8_h1_individual_evidence_used_for_development": false,
   "candidate_v9_preregistered_before_results": true,
-  "candidate_frozen_before_holdouts": false,
+  "candidate_frozen_before_holdouts": true,
   "candidate_modified_after_holdout": false,
   "formal_holdout_rerun": false,
   "protected_evidence_used_for_development": false,
