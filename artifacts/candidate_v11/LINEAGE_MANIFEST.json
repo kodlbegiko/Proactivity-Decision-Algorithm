@@ -1,0 +1,10 @@
+{
+  "lineage_id": "Candidate-v11",
+  "branch": "research/candidate-v11-post-v7r-semantic-generalization",
+  "base_commit": "a247c8b9685a48984d7ca9063ba7576d771edb54",
+  "base_lineage": "V7R terminal requalification evidence",
+  "naming_reason": "Candidate-v8/v9/v10 identifiers are occupied by formal historical lineages; monotonic numbering selects v11.",
+  "forbidden_ancestry": ["Candidate-v8 code reuse", "Candidate-v9 code reuse", "Candidate-v10 code reuse", "Candidate-v7 disguised reuse"],
+  "protected_boundary": "V7R raw protected examples are legacy protected and unavailable for development.",
+  "status": "DEVELOPMENT"
+}

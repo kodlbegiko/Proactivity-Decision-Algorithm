@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "freeze_type": "candidate_v4_recovery_development_terminal_freeze",
+  "terminal_state": "RECOVERY DEVELOPMENT PASS — CANDIDATE V4 FROZEN",
+  "selected_candidate": "V4B_atom_state_machine_a65",
+  "selected_architecture": "clause segmentation -> factor-anchor routing -> value-cue reconstruction -> latent public-specification state -> Protocol-v2 deterministic state machine -> conservative ACT safety gate",
+  "act_confidence_floor": 0.65,
+  "candidate_source_commit": "daf0def6bc06633f3e743a83b2792fc5c4a2d3a8",
+  "candidate_source_path": "src/proactivity/candidate_v4.py",
+  "candidate_source_sha256": "66a5a899b7c1c5eea102e96f649db89cce2e9c8a38c8d755a25dddcf6abe492e",
+  "recovery_base_commit": "0fd05b6ac9e3f451ed710f2f37ee845dedad1df7",
+  "preregistration_commit": "c1942470cfea1fe3678e5143da0c1ba8f9ed1aa4",
+  "qualification_execution_commit": "dbd688cc2ec7856627ab732b9d357625269ea7f7",
+  "terminal_evidence_parent_commit": "629dda10c34544d1bb3aa6ba555fe5f54736edf6",
+  "qualification_ci": {
+    "run_id": 31885502180,
+    "conclusion": "success",
+    "python_matrix": ["3.10.20", "3.11.15", "3.12.13"],
+    "scikit_learn": "1.7.1",
+    "protected_evidence_quarantine": "PASS",
+    "unit_and_property_tests": "PASS",
+    "dataset_materialization": "PASS",
+    "bounded_search_and_qualification": "PASS",
+    "normalized_results_sha256": "594be2c6ecd2ed5f928d4c70d776358d7ae14e15814850ed7a274cce84db56f1",
+    "normalized_results_identical_across_matrix": true,
+    "materialized_datasets_byte_identical_across_matrix": true
+  },
+  "artifacts": {
+    "python_3_10": {
+      "artifact_id": 9247150117,
+      "digest": "sha256:2c27713a752ae4cbac6a412af1b5eabceebd7e60f2be8cbd34666073d7ab258e"
+    },
+    "python_3_11": {
+      "artifact_id": 9247148407,
+      "digest": "sha256:857ac1f32f92335ace080e7d588ba46ed47c32e67a48ce87376a2a5b0546e7f2"
+    },
+    "python_3_12": {
+      "artifact_id": 9247148524,
+      "digest": "sha256:3c1cc3be1643cca07a2eebf489bcaa7dceeecc9048cc6d92f3e7c13a59ce5d76"
+    }
+  },
+  "selected_metrics": {
+    "validation": {
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 0.9861111111111112,
+      "forbidden_act": 0,
+      "collapse": false
+    },
+    "development_ood": {
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 1.0,
+      "forbidden_act": 0,
+      "collapse": false
+    },
+    "lexical_holdout": {
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 1.0,
+      "forbidden_act": 0,
+      "collapse": false
+    },
+    "rendering_family_holdout": {
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 0.9756944444444444,
+      "forbidden_act": 0,
+      "collapse": false
+    },
+    "compositional_holdout": {
+      "macro_f1": 1.0,
+      "parser_exact_factor_accuracy": 1.0,
+      "forbidden_act": 0,
+      "collapse": false
+    },
+    "counterfactual_exact_pair_rate": 1.0,
+    "counterfactual_forbidden_act": 0,
+    "invariance_prediction_consistency": 1.0,
+    "invalid_action": 0,
+    "all_six_actions_nonzero_recall_on_every_split": true
+  },
+  "dataset_manifest_path": "data/candidate_v4_development/manifest.json",
+  "qualification_summary_path": "results/candidate_v4_recovery/qualification_summary.json",
+  "terminal_report_path": "docs/candidate_v4_recovery_development_report.md",
+  "historical_immutability": {
+    "historical_gate_f": "FAIL",
+    "candidate_v3_immutable_freeze_commit": "d032ba787e5fe509253801befc898a2377b8149f",
+    "candidate_v3_source_sha256": "280494c9b0530bc2ce4ea624c32d37a7aa22dc6b0da034bd95d594bf2890ff1b",
+    "candidate_v3_fresh_confirmatory_preregistration": "866aa741aa28e28cc93d04c6619e463885e393b0",
+    "candidate_v3_fresh_confirmatory_terminal_evidence_commit": "2a9e2f0841ef145a5b27ddd2ed8a866dba7ec4f4",
+    "candidate_v3_fresh_confirmatory": "FAIL",
+    "candidate_v3_lineage": "TERMINATED",
+    "historical_gate_f_scientific_terminal_sha": "23d183086368d0921c9af2f6c326d4c97214f267",
+    "candidate_v3_confirmatory_records_accessed": 0
+  },
+  "future_gate_state": {
+    "gate_g": "NOT EXECUTED",
+    "gate_h": "NOT EXECUTED",
+    "new_protected_confirmatory_evaluation": "NOT AUTHORIZED / NOT EXECUTED"
+  },
+  "claim_boundary": "This freeze establishes only preregistered Candidate-v4 development qualification on newly generated development-safe synthetic distributions. It does not establish real-world natural-language generalization, ecological validity, independent protected-confirmatory generalization, production readiness, Gate G, or Gate H.",
+  "immutability_rule": "After this freeze, Candidate-v4 source/configuration must not be modified and still be called the same frozen candidate. Any source/configuration change starts a new lineage or candidate identity."
+}

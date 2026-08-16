@@ -1,0 +1,8 @@
+{
+  "status": "VALIDATION_ONLY_SELECTION_EVIDENCE",
+  "exact_latent_state_reconstruction": 1.0,
+  "mean_factor_accuracy": 1.0,
+  "act_critical_factor_accuracy": 1.0,
+  "critical_unknown_rate": 0.0,
+  "qualification_latent_metrics": "NOT_EXECUTED"
+}

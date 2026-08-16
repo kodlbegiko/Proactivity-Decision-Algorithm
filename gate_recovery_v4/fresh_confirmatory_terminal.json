@@ -1,0 +1,40 @@
+{
+  "branch": "research/candidate-v4-fresh-confirmatory",
+  "candidate_source_sha256": "66a5a899b7c1c5eea102e96f649db89cce2e9c8a38c8d755a25dddcf6abe492e",
+  "candidate_v3_quarantine": "PASS",
+  "candidate_v4_development_leakage": "NONE_DETECTED",
+  "ci_run": 31888305268,
+  "collapse_detected": true,
+  "compositional_stress_macro_f1": 0.08072916666666667,
+  "counterfactual_exact_pair": 0.0,
+  "evaluation_commit": "d887d948118ebe0405bda0fd63c77262150c14e2",
+  "forbidden_act": 0,
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "invalid_action": 0,
+  "invariance_consistency": 0.8166666666666667,
+  "lexical_stress_macro_f1": 0.11339944063056191,
+  "main_accuracy": 0.17333333333333334,
+  "main_macro_f1": 0.08459414981154112,
+  "per_action_recall": {
+    "ACT": 0.0,
+    "ASK": 0.0,
+    "IGNORE": 0.0,
+    "NOTIFY": 0.0,
+    "SUGGEST": 0.19,
+    "WAIT": 0.85
+  },
+  "prediction_distribution": {
+    "ACT": 0,
+    "ASK": 0,
+    "IGNORE": 0,
+    "NOTIFY": 0,
+    "SUGGEST": 56,
+    "WAIT": 544
+  },
+  "preregistration_commit": "f8a085808fa21cb852c068f0d10a890ce7dd81a3",
+  "protected_dataset_freeze_commit": "d4b0950cc14100b263ec008a946d1e671f1ba141",
+  "protected_leakage": "NONE_DETECTED",
+  "schema_version": 1,
+  "terminal_state": "FRESH CONFIRMATORY FAIL \u2014 CANDIDATE V4 LINEAGE TERMINATED"
+}

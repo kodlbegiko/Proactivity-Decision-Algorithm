@@ -1,0 +1,68 @@
+{
+  "baseline_a_tfidf": {
+    "accuracy": 0.8677777777777778,
+    "macro_f1": 0.8656522919353641,
+    "per_action_recall": {
+      "ACT": 1.0,
+      "ASK": 0.6933333333333334,
+      "IGNORE": 0.8533333333333334,
+      "NOTIFY": 0.9466666666666667,
+      "SUGGEST": 0.96,
+      "WAIT": 0.7533333333333333
+    },
+    "prediction_distribution": {
+      "ACT": 172,
+      "ASK": 129,
+      "IGNORE": 128,
+      "NOTIFY": 173,
+      "SUGGEST": 153,
+      "WAIT": 145
+    }
+  },
+  "baseline_b_embedding_classifier": {
+    "accuracy": 0.7155555555555555,
+    "macro_f1": 0.692358601182041,
+    "per_action_recall": {
+      "ACT": 0.9733333333333334,
+      "ASK": 0.2866666666666667,
+      "IGNORE": 0.6933333333333334,
+      "NOTIFY": 0.8866666666666667,
+      "SUGGEST": 0.92,
+      "WAIT": 0.5333333333333333
+    },
+    "prediction_distribution": {
+      "ACT": 200,
+      "ASK": 65,
+      "IGNORE": 134,
+      "NOTIFY": 173,
+      "SUGGEST": 201,
+      "WAIT": 127
+    }
+  },
+  "baseline_c_semantic_prototype": {
+    "accuracy": 0.47888888888888886,
+    "macro_f1": 0.45731268679936693,
+    "per_action_recall": {
+      "ACT": 0.6933333333333334,
+      "ASK": 0.14666666666666667,
+      "IGNORE": 0.32,
+      "NOTIFY": 0.56,
+      "SUGGEST": 0.72,
+      "WAIT": 0.43333333333333335
+    },
+    "prediction_distribution": {
+      "ACT": 216,
+      "ASK": 78,
+      "IGNORE": 89,
+      "NOTIFY": 151,
+      "SUGGEST": 223,
+      "WAIT": 143
+    }
+  },
+  "candidate_v5_learned_artifacts_imported": false,
+  "embedding_model": {
+    "id": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+  },
+  "evaluation_split": "validation"
+}

@@ -1,0 +1,83 @@
+{
+  "act_critical_factor_accuracy": 0.7126735517406471,
+  "act_precision": 1.0,
+  "act_recall": 0.031746031746031744,
+  "all_scientific_criteria_pass": false,
+  "catastrophic_collapse": false,
+  "counterfactual_exact_pair": 0.0,
+  "counterfactual_pairs": 210,
+  "criteria": {
+    "act_critical_factor_accuracy": false,
+    "act_precision": true,
+    "act_recall": false,
+    "catastrophic_collapse": true,
+    "counterfactual_exact_pair": false,
+    "critical_unknown_rate": false,
+    "exact_latent_state_reconstruction": false,
+    "family:Compositional": false,
+    "family:Lexical": false,
+    "family:Mixed Adversarial": false,
+    "family:Negation": false,
+    "family:Rendering": false,
+    "family:Scope": false,
+    "family:Temporal": false,
+    "forbidden_act": true,
+    "fresh_ood_macro_f1": false,
+    "invalid_action": true,
+    "invariance_action_consistency": false,
+    "mean_factor_accuracy": false
+  },
+  "critical_unknown_rate": 0.3603036727993981,
+  "exact_latent_state_reconstruction": 0.011428571428571429,
+  "examples": 2100,
+  "false_unknown_rate": 0.37500998003992014,
+  "family_macro_f1": {
+    "Compositional": 0.28281804600089755,
+    "Lexical": 0.3067562336559988,
+    "Mixed Adversarial": 0.2945861778370437,
+    "Negation": 0.3181813529259703,
+    "Rendering": 0.29367817195399737,
+    "Scope": 0.3427975828959267,
+    "Temporal": 0.2555454915473055
+  },
+  "family_support": {
+    "Compositional": 335,
+    "Lexical": 335,
+    "Mixed Adversarial": 275,
+    "Negation": 275,
+    "Rendering": 335,
+    "Scope": 275,
+    "Temporal": 270
+  },
+  "forbidden_act": 0,
+  "fresh_ood_macro_f1": 0.30260615484108855,
+  "invalid_action": 0,
+  "invariance_action_consistency": 0.15,
+  "invariance_correct_consistency": 0.08333333333333333,
+  "invariance_groups": 60,
+  "legitimate_unknown_recall": 0.98,
+  "mean_factor_accuracy": 0.6806786427145709,
+  "prediction_action_distribution": {
+    "ACT": 10,
+    "ASK": 874,
+    "IGNORE": 710,
+    "NOTIFY": 77,
+    "SUGGEST": 118,
+    "WAIT": 311
+  },
+  "run_fresh_ood_macro_f1_distribution": {
+    "maximum": 0.3187523426573199,
+    "mean": 0.302353574397035,
+    "median": 0.3051274070881914,
+    "minimum": 0.2792363634590708,
+    "standard_deviation": 0.012827894644263342
+  },
+  "truth_action_distribution": {
+    "ACT": 315,
+    "ASK": 368,
+    "IGNORE": 376,
+    "NOTIFY": 339,
+    "SUGGEST": 333,
+    "WAIT": 369
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "holdouts_not_used_for_selection": true,
+  "manifest_sha256": "951cf59df3f4664d4f271365ea69b36b7af78ef63304d95d6f5289482e1d6f10",
+  "seeds_preregistered": true,
+  "sizes_preregistered": true,
+  "source_freeze_commit": "3441e89eb27f88363d91608791db39abced9a59f",
+  "status": "DATASET_FROZEN"
+}

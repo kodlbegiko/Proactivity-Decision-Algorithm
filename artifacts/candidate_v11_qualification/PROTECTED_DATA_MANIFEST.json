@@ -1,0 +1,149 @@
+{
+  "construction_attempt": 0,
+  "generator_dependency_boundary": {
+    "imports_benchmark_v11_generator": false,
+    "imports_candidate_v11": false,
+    "uses_protocol_v2_oracle_for_ground_truth": true,
+    "uses_protocol_v2_schema": true
+  },
+  "protocol": "V11Q-1",
+  "raw_data_committed_to_repository": false,
+  "runs": [
+    {
+      "action_distribution": {
+        "ACT": 63,
+        "ASK": 74,
+        "IGNORE": 76,
+        "NOTIFY": 66,
+        "SUGGEST": 65,
+        "WAIT": 76
+      },
+      "construction_attempt": 0,
+      "counterfactual_pairs": 42,
+      "examples": 420,
+      "family_distribution": {
+        "Compositional": 67,
+        "Lexical": 67,
+        "Mixed Adversarial": 55,
+        "Negation": 55,
+        "Rendering": 67,
+        "Scope": 55,
+        "Temporal": 54
+      },
+      "invariance_groups": 12,
+      "run_id": "Q1",
+      "runner_sha256": "a71c810d5a22877b24d5fe1ba81c0d925864a5747cab27cc81747f1be0fb5215",
+      "seed": 6101,
+      "truth_sha256": "9b804f83e8f7a35d423055eb40c82928265aafa84efc1f325be261171fb3a623"
+    },
+    {
+      "action_distribution": {
+        "ACT": 63,
+        "ASK": 72,
+        "IGNORE": 76,
+        "NOTIFY": 68,
+        "SUGGEST": 66,
+        "WAIT": 75
+      },
+      "construction_attempt": 0,
+      "counterfactual_pairs": 42,
+      "examples": 420,
+      "family_distribution": {
+        "Compositional": 67,
+        "Lexical": 67,
+        "Mixed Adversarial": 55,
+        "Negation": 55,
+        "Rendering": 67,
+        "Scope": 55,
+        "Temporal": 54
+      },
+      "invariance_groups": 12,
+      "run_id": "Q2",
+      "runner_sha256": "61de9369121a842b0804df0a46ffebfb6416491181baf8694e541c7823548a2d",
+      "seed": 6203,
+      "truth_sha256": "19a7a6a37526af1f4286468f32d95988423f2012174782562ce3d97a0ea5e5c5"
+    },
+    {
+      "action_distribution": {
+        "ACT": 63,
+        "ASK": 71,
+        "IGNORE": 71,
+        "NOTIFY": 69,
+        "SUGGEST": 69,
+        "WAIT": 77
+      },
+      "construction_attempt": 0,
+      "counterfactual_pairs": 42,
+      "examples": 420,
+      "family_distribution": {
+        "Compositional": 67,
+        "Lexical": 67,
+        "Mixed Adversarial": 55,
+        "Negation": 55,
+        "Rendering": 67,
+        "Scope": 55,
+        "Temporal": 54
+      },
+      "invariance_groups": 12,
+      "run_id": "Q3",
+      "runner_sha256": "65585a29156bc6bf657542f39a0b0e30845a8108c25a5d7379ee25c264be9537",
+      "seed": 6307,
+      "truth_sha256": "a8d3787d4bc15ad322a3317da5bdd92836d4acdf592bed17549c673e5256d964"
+    },
+    {
+      "action_distribution": {
+        "ACT": 63,
+        "ASK": 75,
+        "IGNORE": 80,
+        "NOTIFY": 68,
+        "SUGGEST": 66,
+        "WAIT": 68
+      },
+      "construction_attempt": 0,
+      "counterfactual_pairs": 42,
+      "examples": 420,
+      "family_distribution": {
+        "Compositional": 67,
+        "Lexical": 67,
+        "Mixed Adversarial": 55,
+        "Negation": 55,
+        "Rendering": 67,
+        "Scope": 55,
+        "Temporal": 54
+      },
+      "invariance_groups": 12,
+      "run_id": "Q4",
+      "runner_sha256": "195ae8864fd0b66dee375575ca79302f2f06d1afb529f1caf097d643a61bdce2",
+      "seed": 6413,
+      "truth_sha256": "9209dfe5d042c89c18a4164d0aa9accd49fee62d62e33ab82bf74b74683d52d5"
+    },
+    {
+      "action_distribution": {
+        "ACT": 63,
+        "ASK": 76,
+        "IGNORE": 73,
+        "NOTIFY": 68,
+        "SUGGEST": 67,
+        "WAIT": 73
+      },
+      "construction_attempt": 0,
+      "counterfactual_pairs": 42,
+      "examples": 420,
+      "family_distribution": {
+        "Compositional": 67,
+        "Lexical": 67,
+        "Mixed Adversarial": 55,
+        "Negation": 55,
+        "Rendering": 67,
+        "Scope": 55,
+        "Temporal": 54
+      },
+      "invariance_groups": 12,
+      "run_id": "Q5",
+      "runner_sha256": "291509c15d62803aa62244e15f327c443e64bd18d1e55cd7337e737b64be85e5",
+      "seed": 6521,
+      "truth_sha256": "d50df7501fbe32a3ac6ee837f02430516c33f0348caddc88b016a22f7df36112"
+    }
+  ],
+  "total_examples": 2100
+}

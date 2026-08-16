@@ -1,0 +1,13 @@
+{
+  "actual_protected_example_access": "NONE",
+  "candidate_hash_valid": true,
+  "candidate_mutation_detected": false,
+  "complete_preregistered_run_count": true,
+  "dataset_and_prediction_problems": [],
+  "legacy_exact_text_overlap_count": 0,
+  "preregistration_hash_valid": true,
+  "preregistration_violation": false,
+  "qualification_evidence_valid": true,
+  "research_integrity": "PASS",
+  "scorer_access_after_prediction_freeze": true
+}

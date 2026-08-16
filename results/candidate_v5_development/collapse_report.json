@@ -1,0 +1,50 @@
+{
+  "compositional_holdout": {
+    "action_disappearance": [
+      "ACT"
+    ],
+    "catastrophic_collapse": false,
+    "max_prediction_class_share": 0.6916666666666667,
+    "single_class_collapse": false,
+    "two_class_collapse": false
+  },
+  "development_ood": {
+    "action_disappearance": [
+      "ACT",
+      "SUGGEST"
+    ],
+    "catastrophic_collapse": false,
+    "max_prediction_class_share": 0.48,
+    "single_class_collapse": false,
+    "two_class_collapse": false
+  },
+  "lexical_holdout": {
+    "action_disappearance": [
+      "ACT"
+    ],
+    "catastrophic_collapse": false,
+    "max_prediction_class_share": 0.7472222222222222,
+    "single_class_collapse": false,
+    "two_class_collapse": false
+  },
+  "negation": {
+    "action_disappearance": [
+      "ACT",
+      "SUGGEST"
+    ],
+    "catastrophic_collapse": false,
+    "max_prediction_class_share": 0.4041666666666667,
+    "single_class_collapse": false,
+    "two_class_collapse": false
+  },
+  "rendering_holdout": {
+    "action_disappearance": [
+      "ACT",
+      "SUGGEST"
+    ],
+    "catastrophic_collapse": false,
+    "max_prediction_class_share": 0.475,
+    "single_class_collapse": false,
+    "two_class_collapse": false
+  }
+}

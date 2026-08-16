@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "candidate": "Candidate-v6",
+  "status": "SOURCE_REFROZEN_AFTER_PERMITTED_PRE_DATA_INFRASTRUCTURE_REPAIR",
+  "branch": "research/candidate-v6-structured-latent-reasoning",
+  "base_commit": "a4e73fb0f16694efbe75ace8c088075fe83c9303",
+  "preregistration_commit": "a077a6bf5e522e85c84820efbe3c9ae350d126bc",
+  "source_parent_commit": "031d8e3b8e955e6598d566183808e01a82cbc51b",
+  "previous_source_freeze_commit": "edbabc160053579ad497688b479e4576abeeec23",
+  "infrastructure_retry_record": "gate_recovery_v6/infrastructure_retry_001.json",
+  "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "architecture_search_budget": 22,
+  "candidate_v3_protected_access": 0,
+  "candidate_v4_protected_access": 0,
+  "candidate_v5_holdout_reuse": false,
+  "protected_leakage": "NONE_DETECTED",
+  "candidate_v6_dataset_generated_before_repair": false,
+  "architecture_search_executed_before_repair": false,
+  "holdouts_executed_before_repair": false,
+  "scientific_criteria_modified": false,
+  "gate_g": "NOT EXECUTED"
+}

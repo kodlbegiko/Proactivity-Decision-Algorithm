@@ -1,0 +1,27 @@
+{
+  "protocol": "PDA Protocol v2",
+  "gate": "D",
+  "gate_verdict": "GATE D — PASS",
+  "formal_source_commit": "6377d31eaa57f162df68c4c3f89c7b6cb7e0206c",
+  "formal_ci_run": 31801340084,
+  "canonical_ci_report_sha256": "af08e71950b28148a5f4d1a67a336d2ee8a43baf4ed7813600a54d6d25a80be9",
+  "cross_python_byte_identical": true,
+  "python_matrix": {"3.10":"SUCCESS","3.11":"SUCCESS","3.12":"SUCCESS"},
+  "split_counts": {"development":91,"validation":33},
+  "strongest_honest_raw_context_baseline": {"name":"B5_transparent_heuristic","macro_f1":0.21452991452991452,"accuracy":0.18181818181818182,"forbidden_act_count":0},
+  "baselines": {
+    "B0_majority":{"accuracy":0.3333333333333333,"macro_f1":0.08333333333333333,"weighted_f1":0.16666666666666666,"valid_action_rate":1.0,"act_prediction_count":0,"forbidden_act_count":0},
+    "B1_prior_sampled_random":{"accuracy":0.24242424242424243,"macro_f1":0.16619612271786185,"weighted_f1":0.2450250671594545,"valid_action_rate":1.0,"act_prediction_count":1,"forbidden_act_count":1},
+    "B2_domain_only":{"accuracy":0.30303030303030304,"macro_f1":0.11969111969111969,"weighted_f1":0.20475020475020475,"valid_action_rate":1.0,"act_prediction_count":0,"forbidden_act_count":0},
+    "B3_simple_lexical":{"accuracy":0.12121212121212122,"macro_f1":0.10714285714285714,"weighted_f1":0.12842712842712842,"valid_action_rate":1.0,"act_prediction_count":7,"forbidden_act_count":5},
+    "B4_strong_classical_text":{"accuracy":0.3333333333333333,"macro_f1":0.15620915032679739,"weighted_f1":0.255377302436126,"valid_action_rate":1.0,"act_prediction_count":0,"forbidden_act_count":0},
+    "B5_transparent_heuristic":{"accuracy":0.18181818181818182,"macro_f1":0.21452991452991452,"weighted_f1":0.1693861693861694,"valid_action_rate":1.0,"act_prediction_count":0,"forbidden_act_count":0}
+  },
+  "controls": {"domain_ablation_macro_f1":0.16025641025641027,"label_permutation_macro_f1":0.09393939393939395,"observation_shuffle_macro_f1":0.13362128068010423,"row_order_shuffle_identical":true,"token_shuffle_macro_f1":0.12169312169312169},
+  "criteria": {"all_required_baselines":true,"all_deterministic":true,"all_prediction_coverage":true,"all_valid_actions":true,"source_boundary_violations_zero":true,"all_failure_path_tests":true,"hash_mismatch_zero":true,"evaluation_recomputation_match":true,"row_order_shuffle_identical":true},
+  "failure_path_tests": {"clean_baseline_passes":true,"oracle_import_fails":true,"private_read_fails":true,"structured_read_fails":true,"hardcoded_id_fails":true,"forbidden_metadata_fails":true},
+  "prediction_sha256": {"B0_majority":"f8ec7791d95e72eb519dd6cfab315748418fc3368636ca7b766f20e5dd5fe3bf","B1_prior_sampled_random":"937b177f6fbd920163c8d2fa07d07c68922a6cb8b783b5a742883fd336b02594","B2_domain_only":"a371959681b57ba86320eae09558b43fcf54094702f039bd7bd60c20187ca59a","B3_simple_lexical":"fb6b1568721cd8ab914d842120e654aa598933dccef4aba83768d8d95fca88b0","B4_strong_classical_text":"4128b050fafc19c5855a64c53d6d4911deeab07876d70c7c21d31d0bc5611dad","B5_transparent_heuristic":"553e22b4c08d8e1120dd4db24a2fb34f509b35fdb4749d3e96c3ab2e85cebee3"},
+  "benchmark_sha256": {"candidate.jsonl":"7e9826fe4f0b59aa92556048bf45abc44e525644dc27fca3425c140350b1e587","private.jsonl":"9d15c5a2f4454f049c7f60ee26f7247efc583b718c115e59293a8c95c3985ae8","relations.json":"8cf4d939378185accb4b5506620c626fa83d566114140ba692ffd085dbc8bd66","splits.jsonl":"9b9ffdfad6ca0561d2142723053c3582a748e5fefc60b37e5e82762dd1544a27","structured.jsonl":"a1533cd6289fd8a97b2c92c26d3f78172c32ebf4203cb47e0f9ccdad7e7f149e"},
+  "notes": ["Gate D evaluates baseline integrity, not candidate quality.","Unsafe predictions by weak baselines are reported evidence and do not constitute a Gate-D integrity failure.","The canonical full CI report remains archived in all three workflow artifacts; this repository report is its frozen decision summary."],
+  "next_gate": "Gate E — PDA Candidate Evidence"
+}

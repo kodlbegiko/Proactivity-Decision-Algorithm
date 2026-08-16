@@ -1,0 +1,126 @@
+{
+  "ood": {
+    "acknowledged": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "clarification_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "completed": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "deferral_available": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "execution_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "information": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "need": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "permission": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "reversibility": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "risk": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "side_effect": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "urgency": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    }
+  },
+  "validation": {
+    "acknowledged": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "clarification_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "completed": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "deferral_available": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "execution_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "information": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "need": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "permission": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "reversibility": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "risk": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "side_effect": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    },
+    "urgency": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "missing_default_rate": 0.0
+    }
+  }
+}

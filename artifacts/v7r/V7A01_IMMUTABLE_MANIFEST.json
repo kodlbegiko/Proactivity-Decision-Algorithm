@@ -1,0 +1,52 @@
+{
+  "architecture": "V7A",
+  "candidate": "Candidate-v7",
+  "candidate_identifier": "V7A-01",
+  "candidate_mutation_detected": false,
+  "candidate_revision": "v7-proposition-logic-r1",
+  "configuration": {
+    "confidence_floor": 0.52,
+    "conflict_margin": 0.08,
+    "family": "V7A",
+    "id": "V7A-01",
+    "token_threshold": 0.44
+  },
+  "configuration_expected": {
+    "confidence_floor": 0.52,
+    "conflict_margin": 0.08,
+    "family": "V7A",
+    "id": "V7A-01",
+    "token_threshold": 0.44
+  },
+  "configuration_match": true,
+  "dependency_lock_hash": "47c0e0fa2785a21c7fafc9f5788ce21a800cd17044e785e1bcc3165205f49508",
+  "freeze_status": "IMMUTABLE",
+  "frozen_source_commit": "a23d14a9438870314d67d60ce2deda1ebf5b899e",
+  "machine_preregistration_match": true,
+  "preregistration_json_sha256": "d641c461de648b877959867cf081781c2f7061171f12bc9e8169556222453b94",
+  "preregistration_sha256": "c79ba213cff86067e2eb2c74acc6842f7eb8bdbab6f2968878ae472aa4800c11",
+  "qualification_branch": "research/candidate-v7-independent-requalification",
+  "qualification_implementation_commit": "ef9d092b6cb40c1bb92bd33352e73db116865d08",
+  "source_files": {
+    "spec/proactivity_policy_v2.json": {
+      "match": true,
+      "sha256_current": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4",
+      "sha256_frozen_source_commit": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+    },
+    "src/proactivity/candidate_v7.py": {
+      "match": true,
+      "sha256_current": "d332d2ccd806b5ea6382a18e11b2ba92a91f3916fdd84dba1b9d2d617853a7fe",
+      "sha256_frozen_source_commit": "d332d2ccd806b5ea6382a18e11b2ba92a91f3916fdd84dba1b9d2d617853a7fe"
+    },
+    "src/proactivity/specification/oracle.py": {
+      "match": true,
+      "sha256_current": "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f",
+      "sha256_frozen_source_commit": "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f"
+    },
+    "src/proactivity/specification/schema.py": {
+      "match": true,
+      "sha256_current": "360efdf29f8c3be1e08a5e2b1010bc0ea3768450c905407038e1cea3030f6e67",
+      "sha256_frozen_source_commit": "360efdf29f8c3be1e08a5e2b1010bc0ea3768450c905407038e1cea3030f6e67"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "architecture": "V7A",
+  "candidate_source_immutable_after_freeze": true,
+  "config": "V7A-01",
+  "selection_metrics": {
+    "act_critical_factor_accuracy": 1.0,
+    "config": "V7A-01",
+    "critical_unknown_rate": 0.0,
+    "exact_latent_state_reconstruction": 1.0,
+    "family": "V7A",
+    "forbidden_act": 0,
+    "invalid_action": 0,
+    "mean_factor_accuracy": 1.0,
+    "semantic": {
+      "factor_evidence_attribution_accuracy": 1.0,
+      "gold_propositions": 14400,
+      "modal_interpretation_accuracy": 0.7348611111111111,
+      "negation_scope_accuracy": 1.0,
+      "proposition_polarity_accuracy": 0.915,
+      "temporal_interpretation_accuracy": 1.0
+    },
+    "validation_accuracy": 1.0,
+    "validation_macro_f1": 1.0
+  },
+  "selection_source": "validation_only"
+}

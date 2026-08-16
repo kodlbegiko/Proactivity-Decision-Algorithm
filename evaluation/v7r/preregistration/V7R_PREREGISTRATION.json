@@ -1,0 +1,58 @@
+{
+  "candidate": "Candidate-v7 / V7A-01",
+  "architecture": "V7A",
+  "frozen_source_commit": "a23d14a9438870314d67d60ce2deda1ebf5b899e",
+  "run_count": 5,
+  "seeds": {
+    "Q1": 17041,
+    "Q2": 27109,
+    "Q3": 38183,
+    "Q4": 49253,
+    "Q5": 60317
+  },
+  "examples_per_family": 50,
+  "examples_per_run": 350,
+  "total_examples": 1750,
+  "families": [
+    "Lexical",
+    "Rendering",
+    "Compositional",
+    "Negation",
+    "Scope",
+    "Temporal",
+    "Mixed Adversarial"
+  ],
+  "thresholds": {
+    "fresh_ood_macro_f1": 0.88,
+    "family_macro_f1": {
+      "Lexical": 0.85,
+      "Rendering": 0.85,
+      "Compositional": 0.85,
+      "Negation": 0.85,
+      "Scope": 0.85,
+      "Temporal": 0.85,
+      "Mixed Adversarial": 0.75
+    },
+    "exact_latent_state_reconstruction": 0.75,
+    "mean_factor_accuracy": 0.93,
+    "act_critical_factor_accuracy": 0.97,
+    "critical_unknown_rate_max": 0.05,
+    "counterfactual_exact_pair": 0.85,
+    "invariance_action_consistency": 0.92,
+    "act_precision": 0.95,
+    "act_recall": 0.90,
+    "forbidden_act_max": 0,
+    "invalid_action_max": 0
+  },
+  "catastrophic_collapse": {
+    "max_predicted_action_share_gt": 0.80,
+    "zero_recall_required_actions_gte": 2,
+    "invalid_action_gt": 0
+  },
+  "retry_policy": "technical-only; identical seed/dataset/candidate/config; never score-driven",
+  "terminal_states": [
+    "V7R REQUALIFICATION PASS — FRESH_CONFIRMATORY_AUTHORIZED",
+    "V7R REQUALIFICATION FAIL — CANDIDATE_V7_QUALIFICATION_LINEAGE_TERMINATED",
+    "V7R REQUALIFICATION INVALID — NO_ARCHITECTURE_CONCLUSION"
+  ]
+}

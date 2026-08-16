@@ -1,0 +1,7 @@
+{
+  "status": "NOT_EXECUTED",
+  "reason": "Pre-qualification research-integrity gate failed after validation-only candidate selection. Qualification holdouts remained locked and were not evaluated.",
+  "qualification_holdout_accessed": false,
+  "qualification_run_count": 0,
+  "terminal_effect": "CANDIDATE V7 DEVELOPMENT INVALID — RESEARCH INTEGRITY OR EVALUATION FAILURE"
+}

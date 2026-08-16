@@ -1,0 +1,57 @@
+{
+  "protocol": "PDA Protocol v2",
+  "gate": "C",
+  "benchmark_version": "benchmark_v2",
+  "generator_version": "2.0.1",
+  "seed": 20260814,
+  "frozen_upstream": {
+    "branch": "research/proactivity-specification-v2",
+    "commit_sha": "89e00052d68b2862269daf2adc8b31ebb1ae592c",
+    "policy_id": "PDA-SPEC-v2",
+    "schema_version": "2.0.0",
+    "spec_sha256": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4",
+    "oracle_source_sha256": "11ec7557d4809b18e1c414d9a3b0eaf95ad93ac7f771da11ed0cf4c3043bed2f"
+  },
+  "tracks": {
+    "A": "mechanistic structured-state diagnostic track",
+    "B": "candidate-visible observation/context track"
+  },
+  "preregistered_criteria": {
+    "manual_gold_findings_max": 0,
+    "llm_gold_findings_max": 0,
+    "oracle_mismatch_findings_max": 0,
+    "forbidden_candidate_metadata_max": 0,
+    "exact_duplicate_candidate_records_max": 0,
+    "accidental_structural_duplicate_members_max": 0,
+    "split_family_leakage_max": 0,
+    "minimum_examples_per_selected_nonfallback_rule": 6,
+    "minimum_examples_per_action": 12,
+    "minimum_examples_per_hard_prohibition": 6,
+    "minimum_counterfactual_families": 8,
+    "minimum_temporal_sequences": 6,
+    "counterfactual_relation_violations_max": 0,
+    "temporal_relation_violations_max": 0,
+    "largest_observation_template_family_share_max": 0.34,
+    "candidate_private_forbidden_field_overlap_max": 0
+  },
+  "remediation_history": [
+    {
+      "from_generator_version": "2.0.0",
+      "trigger": "CI run 31791152951 failed Gate-C audit with TEMPLATE_DOMINANCE; initial three-family distribution was 65/45/58 over 168 records (largest share 0.3869047619)",
+      "change": "add a fourth genuinely distinct non-normative observation paraphrase family and retain deterministic relation-family-consistent allocation",
+      "normative_spec_changed": false,
+      "oracle_changed": false,
+      "gold_actions_changed": false,
+      "preregistered_criteria_changed": false
+    }
+  ],
+  "split_policy": {
+    "development": 0.6,
+    "validation": 0.2,
+    "protected_test": 0.2,
+    "group_aware": true,
+    "grouping_keys": ["counterfactual_family_id", "temporal_sequence_id", "state_family_id"],
+    "protected_test_use": "freeze only in Gate C; no candidate tuning/evaluation"
+  },
+  "claim_boundary": "Gate C validates measurement integrity under deterministic generated contexts. It does not establish human preference alignment, ecological validity, universal correctness, robustness, OOD generalization, or candidate quality."
+}

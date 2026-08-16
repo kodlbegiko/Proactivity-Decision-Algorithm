@@ -1,0 +1,552 @@
+{
+  "action": {
+    "accuracy": 0.23333333333333334,
+    "confusion_matrix": {
+      "labels": [
+        "ACT",
+        "ASK",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          14,
+          0,
+          46
+        ],
+        [
+          0,
+          4,
+          0,
+          9,
+          10,
+          35
+        ],
+        [
+          0,
+          2,
+          0,
+          5,
+          6,
+          45
+        ],
+        [
+          0,
+          1,
+          0,
+          39,
+          0,
+          17
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          60
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          10,
+          41
+        ]
+      ]
+    },
+    "forbidden_act": 0,
+    "invalid_action": 12,
+    "macro_f1": 0.16609768779829134,
+    "max_prediction_class_share": 0.6777777777777778,
+    "per_action_recall": {
+      "ACT": 0.0,
+      "ASK": 0.06666666666666667,
+      "IGNORE": 0.0,
+      "NOTIFY": 0.65,
+      "SUGGEST": 0.0,
+      "WAIT": 0.6833333333333333
+    },
+    "prediction_distribution": {
+      "ASK": 11,
+      "INVALID": 12,
+      "NOTIFY": 67,
+      "SUGGEST": 26,
+      "WAIT": 244
+    },
+    "top_two_prediction_class_share": 0.8638888888888889,
+    "zero_recall_actions": 3
+  },
+  "latent": {
+    "act_critical_factor_accuracy": 0.36984126984126986,
+    "critical_unknown_rate": 0.24325396825396825,
+    "exact_latent_state_reconstruction": 0.0,
+    "mean_factor_accuracy": 0.47222222222222215,
+    "mean_factor_macro_f1": 0.404780656863933,
+    "per_field": {
+      "acknowledged": {
+        "accuracy": 0.4861111111111111,
+        "brier_score": 0.29434484861463595,
+        "confusion_matrix": {
+          "labels": [
+            "false",
+            "true",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              175,
+              0,
+              0
+            ],
+            [
+              185,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.0,
+        "macro_f1": 0.32710280373831774,
+        "mean_confidence": 0.8664705818725957,
+        "unknown_rate": 0.0
+      },
+      "clarification_possible": {
+        "accuracy": 0.5055555555555555,
+        "brier_score": 0.33900306879921305,
+        "confusion_matrix": {
+          "labels": [
+            "false",
+            "true",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              182,
+              0,
+              0
+            ],
+            [
+              178,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.0,
+        "macro_f1": 0.33579335793357934,
+        "mean_confidence": 0.8864213763011827,
+        "unknown_rate": 0.0
+      },
+      "completed": {
+        "accuracy": 0.8611111111111112,
+        "brier_score": 0.12063074528277884,
+        "confusion_matrix": {
+          "labels": [
+            "false",
+            "true",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              310,
+              0,
+              0
+            ],
+            [
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.0,
+        "macro_f1": 0.4626865671641791,
+        "mean_confidence": 0.8630061919490496,
+        "unknown_rate": 0.0
+      },
+      "deferral_available": {
+        "accuracy": 0.525,
+        "brier_score": 0.10855703538332677,
+        "confusion_matrix": {
+          "labels": [
+            "false",
+            "true",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              189,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              171
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.25,
+        "macro_f1": 0.5,
+        "mean_confidence": 0.757190079241991,
+        "unknown_rate": 0.475
+      },
+      "execution_possible": {
+        "accuracy": 0.4,
+        "brier_score": 0.3255948010395469,
+        "confusion_matrix": {
+          "labels": [
+            "false",
+            "true",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              144,
+              0,
+              0
+            ],
+            [
+              175,
+              0,
+              41
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.11388888888888889,
+        "macro_f1": 0.31101511879049676,
+        "mean_confidence": 0.8038251536587874,
+        "unknown_rate": 0.11388888888888889
+      },
+      "information": {
+        "accuracy": 0.225,
+        "brier_score": 0.2793427889180994,
+        "confusion_matrix": {
+          "labels": [
+            "contradictory",
+            "insufficient",
+            "sufficient",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              81,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              52,
+              54
+            ],
+            [
+              0,
+              0,
+              0,
+              173
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.3972222222222222,
+        "macro_f1": 0.3333333333333333,
+        "mean_confidence": 0.8060236021876335,
+        "unknown_rate": 0.6305555555555555
+      },
+      "need": {
+        "accuracy": 0.8388888888888889,
+        "brier_score": 0.07806094487052806,
+        "confusion_matrix": {
+          "labels": [
+            "material",
+            "none",
+            "optional",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              183,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              58,
+              0
+            ],
+            [
+              0,
+              0,
+              119,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.0,
+        "macro_f1": 0.6013513513513513,
+        "mean_confidence": 0.9389660891559389,
+        "unknown_rate": 0.0
+      },
+      "permission": {
+        "accuracy": 0.35555555555555557,
+        "brier_score": 0.21980742427759103,
+        "confusion_matrix": {
+          "labels": [
+            "granted",
+            "missing",
+            "not_required",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              0,
+              134,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              98
+            ],
+            [
+              0,
+              0,
+              128,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.2722222222222222,
+        "macro_f1": 0.3333333333333333,
+        "mean_confidence": 0.906689030594296,
+        "unknown_rate": 0.2722222222222222
+      },
+      "reversibility": {
+        "accuracy": 0.4527777777777778,
+        "brier_score": 0.22942182328355,
+        "confusion_matrix": {
+          "labels": [
+            "irreversible",
+            "reversible",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              163,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              197
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.0,
+        "macro_f1": 0.5,
+        "mean_confidence": 0.871818232205179,
+        "unknown_rate": 0.5472222222222223
+      },
+      "risk": {
+        "accuracy": 0.0,
+        "brier_score": 0.3539283583987471,
+        "confusion_matrix": {
+          "labels": [
+            "high",
+            "low",
+            "medium",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              0,
+              47,
+              0,
+              50
+            ],
+            [
+              0,
+              0,
+              157,
+              0
+            ],
+            [
+              0,
+              106,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.1388888888888889,
+        "macro_f1": 0.0,
+        "mean_confidence": 0.8197687320411206,
+        "unknown_rate": 0.1388888888888889
+      },
+      "side_effect": {
+        "accuracy": 0.31666666666666665,
+        "brier_score": 0.2760667420672255,
+        "confusion_matrix": {
+          "labels": [
+            "external",
+            "local",
+            "none",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              62,
+              72,
+              0,
+              0
+            ],
+            [
+              174,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              52,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.0,
+        "macro_f1": 0.4450450450450451,
+        "mean_confidence": 0.8380874899526437,
+        "unknown_rate": 0.0
+      },
+      "urgency": {
+        "accuracy": 0.7,
+        "brier_score": 0.08030654045318096,
+        "confusion_matrix": {
+          "labels": [
+            "expired",
+            "high",
+            "none",
+            "normal",
+            "UNKNOWN"
+          ],
+          "matrix": [
+            [
+              91,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              34,
+              0,
+              2,
+              0,
+              72
+            ],
+            [
+              0,
+              0,
+              84,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              77,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "contradiction_rate": 0.10277777777777777,
+        "macro_f1": 0.7077069716775599,
+        "mean_confidence": 0.8211200327922901,
+        "unknown_rate": 0.2
+      }
+    }
+  },
+  "n": 360
+}

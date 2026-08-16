@@ -1,0 +1,18 @@
+{
+  "architecture": "Semantic Evidence Graph + weighted evidence aggregation",
+  "branch": "research/candidate-v11-post-v7r-semantic-generalization",
+  "candidate_id": "Candidate-v11B",
+  "counterfactual_exact_pair": 1.0,
+  "development_metrics": {"act_critical_factor_accuracy": 1.0, "act_precision": 1.0, "act_recall": 1.0, "action_distribution": {"ACT": 254, "ASK": 917, "IGNORE": 2865, "NOTIFY": 459, "SUGGEST": 455, "WAIT": 1100}, "catastrophic_collapse": false, "critical_unknown_rate": 0.0, "exact_latent_state_reconstruction": 0.9947107438016529, "family_macro_f1": {"Compositional": 0.9943233703788006, "Lexical": 1.0, "Mixed Adversarial": 0.9914978617678522, "Negation": 1.0, "Rendering": 1.0, "Scope": 0.9891167589337145, "Temporal": 1.0}, "forbidden_act": 0, "fresh_ood_macro_f1": 0.9964178842909323, "invalid_action": 0, "mean_factor_accuracy": 0.9995592286501377},
+  "immutable": true,
+  "invariance_action_consistency": 1.0,
+  "legitimate_unknown_recall": 1.0,
+  "lineage_id": "Candidate-v11",
+  "qualification_executed": false,
+  "selected_variant": "B",
+  "source_blobs": {"candidate_v11.py": "661df3bcc9b26cb7e47fc319a589c31f6fd6b922", "evaluation.py": "0430ce883045328b489b6d450d3c4dd2a1daa268", "generator.py": "e70fcb9216441aa4f205d60360e82187575383fd", "protocol_v2_spec": "e34345bf76179d2c989d9da2effaa013792925fe", "run_development.py": "859f93d4e5d7524ccbe2f812f790ac71bd78bbac"},
+  "source_commit": "a59ea722d9d9c3b8bc83fc0a36e33f708c996b21",
+  "thresholds": {"act_critical_accuracy": 0.97, "act_precision": 0.95, "counterfactual_exact_pair": 0.88, "critical_unknown_max": 0.05, "development_act_recall": 0.85, "exact_reconstruction": 0.8, "false_unknown_max": 0.08, "family_standard_floor": 0.88, "forbidden_act": 0, "fresh_ood_macro_f1": 0.88, "invalid_action": 0, "invariance_action_consistency": 0.95, "legitimate_unknown_recall": 0.95, "mean_factor_accuracy": 0.95, "mixed_adversarial_floor": 0.82},
+  "validation_false_unknown_rate": 0.0,
+  "validation_metrics": {"act_critical_factor_accuracy": 1.0, "act_precision": 1.0, "act_recall": 1.0, "action_distribution": {"ACT": 250, "ASK": 251, "IGNORE": 248, "NOTIFY": 250, "SUGGEST": 250, "WAIT": 251}, "catastrophic_collapse": false, "critical_unknown_rate": 0.0, "exact_latent_state_reconstruction": 0.9986666666666667, "family_macro_f1": {"Compositional": 0.9954946727549467, "Lexical": 1.0, "Mixed Adversarial": 0.994703656998739, "Negation": 1.0, "Rendering": 1.0, "Scope": 1.0, "Temporal": 1.0}, "forbidden_act": 0, "fresh_ood_macro_f1": 0.9986653199624845, "invalid_action": 0, "mean_factor_accuracy": 0.9998888888888889}
+}

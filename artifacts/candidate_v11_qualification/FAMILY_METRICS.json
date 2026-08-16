@@ -1,0 +1,67 @@
+{
+  "per_run": {
+    "Q1": {
+      "Compositional": 0.2358318276310932,
+      "Lexical": 0.34177449657325815,
+      "Mixed Adversarial": 0.3048821548821549,
+      "Negation": 0.2813426329555362,
+      "Rendering": 0.28063065465081144,
+      "Scope": 0.4297847108191936,
+      "Temporal": 0.19365079365079363
+    },
+    "Q2": {
+      "Compositional": 0.2724576879375641,
+      "Lexical": 0.26499954820637933,
+      "Mixed Adversarial": 0.3795622895622896,
+      "Negation": 0.3314393939393939,
+      "Rendering": 0.3295158058315953,
+      "Scope": 0.3054565260447613,
+      "Temporal": 0.31934629912571094
+    },
+    "Q3": {
+      "Compositional": 0.2506795621796945,
+      "Lexical": 0.2550887021475257,
+      "Mixed Adversarial": 0.2617767537122376,
+      "Negation": 0.3221450617283951,
+      "Rendering": 0.3123722768459611,
+      "Scope": 0.24053724053724057,
+      "Temporal": 0.24522417625865903
+    },
+    "Q4": {
+      "Compositional": 0.3014180264180264,
+      "Lexical": 0.3568565742583422,
+      "Mixed Adversarial": 0.27820817526699876,
+      "Negation": 0.35888577653283543,
+      "Rendering": 0.2086489465693309,
+      "Scope": 0.35422472264577526,
+      "Temporal": 0.24426662266952648
+    },
+    "Q5": {
+      "Compositional": 0.3119658119658119,
+      "Lexical": 0.28005050505050505,
+      "Mixed Adversarial": 0.250997150997151,
+      "Negation": 0.2647068511198946,
+      "Rendering": 0.3067147034252297,
+      "Scope": 0.3758141762452107,
+      "Temporal": 0.24273504273504273
+    }
+  },
+  "pooled": {
+    "Compositional": 0.28281804600089755,
+    "Lexical": 0.3067562336559988,
+    "Mixed Adversarial": 0.2945861778370437,
+    "Negation": 0.3181813529259703,
+    "Rendering": 0.29367817195399737,
+    "Scope": 0.3427975828959267,
+    "Temporal": 0.2555454915473055
+  },
+  "support": {
+    "Compositional": 335,
+    "Lexical": 335,
+    "Mixed Adversarial": 275,
+    "Negation": 275,
+    "Rendering": 335,
+    "Scope": 275,
+    "Temporal": 270
+  }
+}

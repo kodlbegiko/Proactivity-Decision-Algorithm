@@ -1,0 +1,121 @@
+{
+  "candidate_immutable": {
+    "candidate_checks": {
+      "src/proactivity/candidate_v11.py": {
+        "current_sha256": "cf763c2b613582962e062964ab5c4779ee2f4ba862aaa20ecd9f31df3b7767b8",
+        "expected_git_blob": "661df3bcc9b26cb7e47fc319a589c31f6fd6b922",
+        "expected_sha256": "cf763c2b613582962e062964ab5c4779ee2f4ba862aaa20ecd9f31df3b7767b8",
+        "freeze_git_blob": "661df3bcc9b26cb7e47fc319a589c31f6fd6b922",
+        "freeze_sha256": "cf763c2b613582962e062964ab5c4779ee2f4ba862aaa20ecd9f31df3b7767b8",
+        "pass": true
+      }
+    },
+    "development_terminal_commit": "fdfbf1662c0406637d3847635b25187b2f3c317b",
+    "ontology_hash_pass": true,
+    "pass": true,
+    "policy_hash_pass": true,
+    "source_freeze_commit": "a59ea722d9d9c3b8bc83fc0a36e33f708c996b21"
+  },
+  "candidate_v11_development_example_access_during_generation": "NONE",
+  "leakage": {
+    "development_inventory": {
+      "benchmark_v11_generator_literal_count": 86,
+      "candidate_v11_raw_dataset_present": false,
+      "scanned_jsonl_files": [
+        "data/development/pilot_v0.jsonl",
+        "data/recovery_v3_dev_ood/counterfactual_relations.jsonl",
+        "data/recovery_v3_dev_ood/invariance_relations.jsonl",
+        "data/recovery_v3_dev_ood/ood.jsonl",
+        "data/recovery_v3_dev_ood/ood_private.jsonl",
+        "data/recovery_v3_dev_ood/train.jsonl",
+        "data/recovery_v3_dev_ood/train_private.jsonl",
+        "data/recovery_v3_dev_ood/validation.jsonl",
+        "data/recovery_v3_dev_ood/validation_private.jsonl",
+        "data/candidate_v5_development/compositional_holdout.jsonl",
+        "data/candidate_v5_development/counterfactual.jsonl",
+        "data/candidate_v5_development/development_ood.jsonl",
+        "data/candidate_v5_development/invariance.jsonl",
+        "data/candidate_v5_development/lexical_holdout.jsonl",
+        "data/candidate_v5_development/negation.jsonl",
+        "data/candidate_v5_development/rendering_holdout.jsonl",
+        "data/candidate_v5_development/train.jsonl",
+        "data/candidate_v5_development/validation.jsonl",
+        "data/candidate_v6_development/compositional_holdout.jsonl",
+        "data/candidate_v6_development/counterfactual.jsonl",
+        "data/candidate_v6_development/development_ood.jsonl",
+        "data/candidate_v6_development/invariance.jsonl",
+        "data/candidate_v6_development/lexical_holdout.jsonl",
+        "data/candidate_v6_development/negation.jsonl",
+        "data/candidate_v6_development/rendering_holdout.jsonl",
+        "data/candidate_v6_development/train.jsonl",
+        "data/candidate_v6_development/validation.jsonl",
+        "data/candidate_v7_development/compositional_holdout.jsonl",
+        "data/candidate_v7_development/counterfactual.jsonl",
+        "data/candidate_v7_development/development_ood.jsonl",
+        "data/candidate_v7_development/invariance.jsonl",
+        "data/candidate_v7_development/lexical_holdout.jsonl",
+        "data/candidate_v7_development/negation_holdout.jsonl",
+        "data/candidate_v7_development/rendering_holdout.jsonl",
+        "data/candidate_v7_development/scope_holdout.jsonl",
+        "data/candidate_v7_development/temporal_holdout.jsonl",
+        "data/candidate_v7_development/train.jsonl",
+        "data/candidate_v7_development/validation.jsonl"
+      ],
+      "validation_raw_dataset_present": false
+    },
+    "exact_overlap_example_ids": [],
+    "exact_text_overlap": 0,
+    "high_lexical_similarity_indicators": 0,
+    "normalized_exact_overlap": 0,
+    "normalized_overlap_example_ids": [],
+    "pass": true,
+    "protected_examples_checked": 2100,
+    "semantic_duplicate_indicator": "heuristic_only_no_embedding_model",
+    "token_trigram_coverage_max": 0.3068181818181818,
+    "token_trigram_coverage_mean": 0.12698334669058825
+  },
+  "pass": true,
+  "preregistration": {
+    "authorization_commit": "243f2caaf405d9b27a533dce81f0cecf0aa00010",
+    "chronology_pass": true,
+    "expected_hashes": {
+      "V11Q_PREREGISTRATION.json": "86437e3a8498d04ca14b080436d449e3376f88dabab9d15f4bf6f6cf713a0436",
+      "V11Q_PREREGISTRATION.md": "c1f318ef30ac66d1cf28eb1e2e4fc2c18dff385b18a267c1182cc41cebd4aebd"
+    },
+    "hashes": {
+      "V11Q_PREREGISTRATION.json": "86437e3a8498d04ca14b080436d449e3376f88dabab9d15f4bf6f6cf713a0436",
+      "V11Q_PREREGISTRATION.md": "c1f318ef30ac66d1cf28eb1e2e4fc2c18dff385b18a267c1182cc41cebd4aebd"
+    },
+    "pass": true,
+    "preregistration_commit": "abad0007dd91ea8fd8dae887dddba8b159af8c28",
+    "score_driven_retry_forbidden": true,
+    "seeds_frozen": true
+  },
+  "research_integrity": "PASS",
+  "runner_isolation": {
+    "allowed_keys": [
+      "example_id",
+      "text"
+    ],
+    "examples_checked": 2100,
+    "pass": true,
+    "violations": []
+  },
+  "score_driven_retry_allowed": false,
+  "source_boundaries": {
+    "builder_imports_benchmark_v11_generator": false,
+    "builder_imports_candidate_v11": false,
+    "pass": true,
+    "runner_imports_candidate_v11": true,
+    "v7r_protected_path_references": []
+  },
+  "technical_retry_reasons": [
+    "corrupted_artifact",
+    "dependency_failure",
+    "deterministic_serialization_bug",
+    "machine_interruption",
+    "runner_crash",
+    "unavailable_infrastructure"
+  ],
+  "v7r_protected_raw_example_access_by_v11q": "NONE"
+}
