@@ -25,16 +25,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install test dependency
-        run: python -m pip install --disable-pip-version-check pytest
+      - name: Install repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
       - name: Compile Gate G
         run: python -m py_compile gate_g_v11/*.py
       - name: Test repository
-        run: pytest -q
+        run: PYTHONPATH=.:src python -m pytest -q
       - name: Execute frozen Gate G once plus deterministic replay
-        run: python -m gate_g_v11.run_gate_g
+        run: PYTHONPATH=.:src python -m gate_g_v11.run_gate_g
       - name: Independent Gate G audit
-        run: python gate_g_v11/audit_gate_g.py
+        run: PYTHONPATH=.:src python gate_g_v11/audit_gate_g.py
       - name: Persist terminal evidence from canonical Python 3.12 job
         if: matrix.python-version == '3.12'
         run: |
