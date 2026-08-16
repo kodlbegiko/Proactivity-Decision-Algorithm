@@ -1,0 +1,17 @@
+{
+  "status": "SOURCE_FROZEN_AFTER_INFRASTRUCTURE_RETRY",
+  "preregistration_commit": "520033a76a848262290dd1221f9fc79fcba08539",
+  "source_commit": "a23d14a9438870314d67d60ce2deda1ebf5b899e",
+  "supersedes_source_freeze_commit": "6888f39dc56eaa2b554a8cbc858f8ccff11120b3",
+  "infrastructure_retries": [
+    "gate_recovery_v7/infrastructure_retry_001.json",
+    "gate_recovery_v7/infrastructure_retry_002.json",
+    "gate_recovery_v7/infrastructure_retry_003.json"
+  ],
+  "candidate_revision": "v7-proposition-logic-r1",
+  "architecture_search_budget": 12,
+  "scientific_configuration_modified": false,
+  "qualification_thresholds_immutable": true,
+  "historical_protected_examples_quarantined": true,
+  "candidate_source_mutable": false
+}

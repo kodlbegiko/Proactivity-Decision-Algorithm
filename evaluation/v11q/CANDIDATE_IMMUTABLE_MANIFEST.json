@@ -1,0 +1,18 @@
+{
+  "candidate_blob_hashes": {
+    "src/proactivity/candidate_v11.py": {
+      "git_blob": "661df3bcc9b26cb7e47fc319a589c31f6fd6b922",
+      "sha256": "cf763c2b613582962e062964ab5c4779ee2f4ba862aaa20ecd9f31df3b7767b8"
+    }
+  },
+  "candidate_id": "Candidate-v11B",
+  "candidate_source_freeze_commit": "a59ea722d9d9c3b8bc83fc0a36e33f708c996b21",
+  "candidate_source_paths": [
+    "src/proactivity/candidate_v11.py"
+  ],
+  "development_terminal_commit": "fdfbf1662c0406637d3847635b25187b2f3c317b",
+  "evaluation_protocol_version": "V11Q-1",
+  "immutable": true,
+  "ontology_hash": "360efdf29f8c3be1e08a5e2b1010bc0ea3768450c905407038e1cea3030f6e67",
+  "policy_hash": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+}

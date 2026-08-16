@@ -1,0 +1,17 @@
+{
+  "decision": "INVALID",
+  "terminal_state": "CANDIDATE_V12 QUALIFICATION INVALID — EVALUATION_INTEGRITY_FAILURE",
+  "hard_stop_reason": "QUALIFICATION INVALID — FROZEN CANDIDATE IDENTITY MISMATCH",
+  "qualification_runs": 0,
+  "protected_examples": 0,
+  "frozen_candidate_identity": "FAIL",
+  "research_integrity": "FAIL",
+  "protected_leakage": "NONE",
+  "candidate_mutation": false,
+  "metrics": null,
+  "robustness": "NOT_EVALUATED",
+  "qualification_gates": "INVALID_BEFORE_EVALUATION",
+  "branch": "research/candidate-v12-independent-qualification",
+  "preregistration_commit": "c7b8e3ef57e28c09a3d4f0d74e58e767cf39cebd",
+  "next_scientifically_authorized_action": "Repair frozen identity metadata only and start a new independent qualification lineage; do not modify Candidate-v12."
+}

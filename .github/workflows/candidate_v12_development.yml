@@ -1,0 +1,143 @@
+name: Candidate v12 development CI
+
+on:
+  push:
+    branches:
+      - research/candidate-v12-semantic-state-architecture
+  pull_request:
+    branches:
+      - research/candidate-v11-independent-qualification
+
+jobs:
+  development-regression:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements.txt
+
+      - name: Verify fresh-lineage and V11Q isolation boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=8eb8bab27e00082879bfd7421353800f10ccf3c5
+          git merge-base --is-ancestor "$BASE" HEAD
+          git diff --quiet "$BASE" HEAD -- src/proactivity/candidate_v11.py evaluation/v11q benchmark_v11 artifacts/candidate_v11_qualification
+          git diff --quiet "$BASE" HEAD -- tests/test_v7r.py evaluation/v7r
+          test "$(git hash-object src/proactivity/candidate_v11.py)" = "661df3bcc9b26cb7e47fc319a589c31f6fd6b922"
+          test "$(git hash-object evaluation/v11q/protected_builder.py)" = "0ce52303aaf7da48814d0370826e4f8619eb06f0"
+          python - <<'PY'
+          from pathlib import Path
+          forbidden = (
+              'evaluation.v11q.protected_builder',
+              'evaluation/v11q/protected_builder',
+              'test_candidate_v11_qualification',
+              'PROTECTED_DATA_MANIFEST',
+          )
+          for path in (
+              Path('src/proactivity/candidate_v12.py'),
+              Path('src/proactivity/candidate_v12_dev.py'),
+              Path('src/proactivity/candidate_v12_frames.py'),
+              Path('src/proactivity/candidate_v12_advanced_dev.py'),
+              Path('src/proactivity/candidate_v12_final_dev.py'),
+              Path('src/proactivity/candidate_v12_final_v2.py'),
+              Path('scripts/run_candidate_v12_development.py'),
+          ):
+              text = path.read_text(encoding='utf-8')
+              assert not any(token in text for token in forbidden), path
+          PY
+
+      - name: Run Candidate-v12 focused final-v2 tests
+        run: python -m pytest -q tests/test_candidate_v12.py tests/test_candidate_v12_final_v2.py
+
+      - name: Assert Candidate-v12 controlled baseline floors
+        run: |
+          python - <<'PY'
+          from proactivity.candidate_v12_dev import development_summary, mechanistic_diagnostics
+          r = development_summary()
+          p = r['pooled']; u = r['unknown']; c = r['counterfactual']; i = r['invariance']; s = r['stress']; robust = r['robustness']; m = mechanistic_diagnostics()
+          assert p['macro_f1'] >= .93
+          assert p['exact_latent_state_reconstruction'] >= .85
+          assert p['mean_factor_accuracy'] >= .97
+          assert p['act_critical_factor_accuracy'] >= .985
+          assert u['critical_unknown_rate'] <= .03
+          assert u['false_unknown_rate'] <= .03
+          assert u['legitimate_unknown_recall'] >= .95
+          assert c['exact_pair_correctness'] >= .92
+          assert i['latent_state_invariance_consistency'] >= .97
+          assert i['action_invariance_consistency'] >= .97
+          assert p['act_precision'] >= .97
+          assert p['act_recall'] >= .95
+          assert p['forbidden_act'] == 0
+          assert p['invalid_action'] == 0
+          assert robust['minimum'] >= .93
+          assert s['macro_f1'] >= .93
+          assert s['forbidden_act'] == 0
+          assert s['invalid_action'] == 0
+          assert all(v['full'] >= .95 and v['full'] - v['ablated'] >= .20 for v in m.values())
+          PY
+
+      - name: Assert Candidate-v12 fresh final-v2 development floors
+        run: |
+          python - <<'PY'
+          from proactivity.candidate_v12_final_v2 import final_v2_summary
+          r = final_v2_summary()
+          h = r['holdout']; u = r['unknown']; c = r['counterfactual']; i = r['invariance']; s = r['stress']; m = r['mechanistic']
+          assert r['collision_audit']['pass'], r['collision_audit']
+          assert h['macro_f1'] >= .93
+          assert h['exact_latent_state_reconstruction'] >= .85
+          assert h['mean_factor_accuracy'] >= .97
+          assert h['act_critical_factor_accuracy'] >= .985
+          assert h['critical_unknown_rate'] <= .03
+          assert h['false_unknown_rate'] <= .03
+          assert u['critical_unknown_rate'] <= .03
+          assert u['false_unknown_rate'] <= .03
+          assert u['legitimate_unknown_recall'] >= .95
+          assert c['exact_pair_correctness'] >= .92
+          assert i['latent_state_invariance_consistency'] >= .97
+          assert i['action_invariance_consistency'] >= .97
+          assert h['act_precision'] >= .97
+          assert h['act_recall'] >= .95
+          assert h['forbidden_act'] == 0
+          assert h['invalid_action'] == 0
+          assert r['robustness']['minimum'] >= .93
+          assert s['macro_f1'] >= .93
+          assert s['exact_latent_state_reconstruction'] >= .85
+          assert s['forbidden_act'] == 0
+          assert s['invalid_action'] == 0
+          assert all(r['operators'].values()), r['operators']
+          assert r['state_to_action_sufficiency']['pass']
+          assert m['temporal']['full'] >= .95 and m['temporal']['delta'] >= .20
+          assert m['contradiction_safety']['full'] >= .95 and m['contradiction_safety']['delta'] >= .20
+          assert m['frame_composition']['delta_vs_c'] >= .25
+          PY
+
+      - name: Reproduce repository deterministic prerequisites
+        run: |
+          python scripts/generate_development_v1.py
+          sha256sum -c data/development/development_v1.sha256
+          python scripts/build_annotation_packets.py --validate-only
+          PYTHONPATH=src python scripts/generate_development_v2.py
+          sha256sum -c data/development/development_v2.sha256
+          PYTHONPATH=src python scripts/validate_development_v2.py
+          rm -rf data/benchmark_v2 gate_d/predictions reports/gate_c_report.json reports/gate_d_report.json
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir data/benchmark_v2
+          PYTHONPATH=src python scripts/run_gate_c_audit.py --output reports/gate_c_report.json
+          PYTHONPATH=src python scripts/run_gate_d_v2.py --benchmark-root data/benchmark_v2 --output reports/gate_d_report.json --prediction-dir gate_d/predictions
+
+      - name: Run repository regression excluding documented non-V12 boundaries
+        run: >-
+          python -m pytest -q
+          --ignore=tests/test_candidate_v11_qualification.py
+          --ignore=tests/test_v7r.py
+          --ignore=tests/test_candidate_v12_advanced.py
+          --ignore=tests/test_candidate_v12_final.py

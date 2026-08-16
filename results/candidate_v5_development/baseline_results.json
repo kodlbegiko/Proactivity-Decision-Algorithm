@@ -1,0 +1,1226 @@
+{
+  "candidate_v4_frozen_on_v5_data": {
+    "compositional_holdout": {
+      "accuracy": 0.15,
+      "action_disappearance": [
+        "ACT",
+        "ASK",
+        "IGNORE",
+        "NOTIFY"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 0.060458933009652625,
+      "max_prediction_class_share": 0.9305555555555556,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.1095890410958904,
+          "precision": 0.3076923076923077,
+          "recall": 0.06666666666666667,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.25316455696202533,
+          "precision": 0.14925373134328357,
+          "recall": 0.8333333333333334,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 0,
+        "ASK": 0,
+        "IGNORE": 0,
+        "NOTIFY": 12,
+        "SUGGEST": 13,
+        "WAIT": 335
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "development_ood": {
+      "accuracy": 0.15166666666666667,
+      "action_disappearance": [
+        "ACT",
+        "ASK",
+        "NOTIFY",
+        "SUGGEST"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 0.07585470085470085,
+      "max_prediction_class_share": 0.5266666666666666,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.22596153846153846,
+          "precision": 0.14873417721518986,
+          "recall": 0.47,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.22916666666666666,
+          "precision": 0.15492957746478872,
+          "recall": 0.44,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 0,
+        "ASK": 0,
+        "IGNORE": 316,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 284
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": true
+    },
+    "lexical_holdout": {
+      "accuracy": 0.17222222222222222,
+      "action_disappearance": [
+        "ACT",
+        "ASK",
+        "IGNORE",
+        "NOTIFY"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 0.08427736006683374,
+      "max_prediction_class_share": 0.9416666666666667,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.24,
+          "precision": 0.6,
+          "recall": 0.15,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.2656641604010025,
+          "precision": 0.15634218289085547,
+          "recall": 0.8833333333333333,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 0,
+        "ASK": 0,
+        "IGNORE": 0,
+        "NOTIFY": 6,
+        "SUGGEST": 15,
+        "WAIT": 339
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "rendering_holdout": {
+      "accuracy": 0.18055555555555555,
+      "action_disappearance": [
+        "ACT",
+        "ASK",
+        "NOTIFY",
+        "SUGGEST"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 0.08974200860950099,
+      "max_prediction_class_share": 0.5805555555555556,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.2825278810408922,
+          "precision": 0.18181818181818182,
+          "recall": 0.6333333333333333,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.2559241706161137,
+          "precision": 0.17880794701986755,
+          "recall": 0.45,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 0,
+        "ASK": 0,
+        "IGNORE": 209,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 151
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": true
+    },
+    "validation": {
+      "accuracy": 0.285,
+      "action_disappearance": [],
+      "catastrophic_collapse": false,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 0.27930589368351777,
+      "max_prediction_class_share": 0.535,
+      "per_action": {
+        "ACT": {
+          "f1": 0.019801980198019802,
+          "precision": 1.0,
+          "recall": 0.01,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.2601626016260163,
+          "precision": 0.6956521739130435,
+          "recall": 0.16,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.5072463768115942,
+          "precision": 0.9210526315789473,
+          "recall": 0.35,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.33587786259541985,
+          "precision": 0.7096774193548387,
+          "recall": 0.22,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.2867132867132867,
+          "precision": 0.22043010752688172,
+          "recall": 0.41,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.2660332541567696,
+          "precision": 0.17445482866043613,
+          "recall": 0.56,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 1,
+        "ASK": 23,
+        "IGNORE": 38,
+        "NOTIFY": 31,
+        "SUGGEST": 186,
+        "WAIT": 321
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    }
+  },
+  "char_tfidf_direct_action": {
+    "compositional_holdout": {
+      "accuracy": 0.16111111111111112,
+      "action_disappearance": [
+        "ACT",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 0.04681194511702986,
+      "max_prediction_class_share": 0.9805555555555555,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.28087167070217917,
+          "precision": 0.1643059490084986,
+          "recall": 0.9666666666666667,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 0,
+        "ASK": 353,
+        "IGNORE": 0,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 7
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": true
+    },
+    "development_ood": {
+      "accuracy": 0.14,
+      "action_disappearance": [
+        "IGNORE",
+        "SUGGEST"
+      ],
+      "catastrophic_collapse": false,
+      "forbidden_act": 1,
+      "invalid_action": 0,
+      "macro_f1": 0.08647272717695631,
+      "max_prediction_class_share": 0.5033333333333333,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0196078431372549,
+          "precision": 0.5,
+          "recall": 0.01,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.22284122562674094,
+          "precision": 0.15444015444015444,
+          "recall": 0.4,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.09230769230769231,
+          "precision": 0.2,
+          "recall": 0.06,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.18407960199004975,
+          "precision": 0.12251655629139073,
+          "recall": 0.37,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 2,
+        "ASK": 259,
+        "IGNORE": 7,
+        "NOTIFY": 30,
+        "SUGGEST": 0,
+        "WAIT": 302
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "lexical_holdout": {
+      "accuracy": 0.16666666666666666,
+      "action_disappearance": [
+        "ACT",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 0.04784688995215311,
+      "max_prediction_class_share": 0.9944444444444445,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.28708133971291866,
+          "precision": 0.16759776536312848,
+          "recall": 1.0,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 0,
+        "ASK": 358,
+        "IGNORE": 0,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 2
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": true
+    },
+    "rendering_holdout": {
+      "accuracy": 0.13333333333333333,
+      "action_disappearance": [
+        "ACT",
+        "SUGGEST"
+      ],
+      "catastrophic_collapse": false,
+      "forbidden_act": 2,
+      "invalid_action": 0,
+      "macro_f1": 0.08134884723120017,
+      "max_prediction_class_share": 0.5555555555555556,
+      "per_action": {
+        "ACT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.24,
+          "precision": 0.17142857142857143,
+          "recall": 0.4,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.029411764705882353,
+          "precision": 0.125,
+          "recall": 0.016666666666666666,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.05714285714285714,
+          "precision": 0.2,
+          "recall": 0.03333333333333333,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.16153846153846155,
+          "precision": 0.105,
+          "recall": 0.35,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 2,
+        "ASK": 140,
+        "IGNORE": 8,
+        "NOTIFY": 10,
+        "SUGGEST": 0,
+        "WAIT": 200
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "validation": {
+      "accuracy": 0.9566666666666667,
+      "action_disappearance": [],
+      "catastrophic_collapse": false,
+      "forbidden_act": 2,
+      "invalid_action": 0,
+      "macro_f1": 0.9564927057325456,
+      "max_prediction_class_share": 0.18,
+      "per_action": {
+        "ACT": {
+          "f1": 0.9900990099009901,
+          "precision": 0.9803921568627451,
+          "recall": 1.0,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.9641025641025641,
+          "precision": 0.9894736842105263,
+          "recall": 0.94,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.9417989417989417,
+          "precision": 1.0,
+          "recall": 0.89,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.9519230769230769,
+          "precision": 0.9166666666666666,
+          "recall": 0.99,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.975609756097561,
+          "precision": 0.9523809523809523,
+          "recall": 1.0,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.9154228855721394,
+          "precision": 0.9108910891089109,
+          "recall": 0.92,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 102,
+        "ASK": 95,
+        "IGNORE": 89,
+        "NOTIFY": 108,
+        "SUGGEST": 105,
+        "WAIT": 101
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    }
+  },
+  "majority": {
+    "compositional_holdout": {
+      "accuracy": 0.16666666666666666,
+      "action_disappearance": [
+        "ASK",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 223,
+      "invalid_action": 0,
+      "macro_f1": 0.047619047619047616,
+      "max_prediction_class_share": 1.0,
+      "per_action": {
+        "ACT": {
+          "f1": 0.2857142857142857,
+          "precision": 0.16666666666666666,
+          "recall": 1.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 360,
+        "ASK": 0,
+        "IGNORE": 0,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 0
+      },
+      "single_class_collapse": true,
+      "two_class_collapse": true
+    },
+    "development_ood": {
+      "accuracy": 0.16666666666666666,
+      "action_disappearance": [
+        "ASK",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 391,
+      "invalid_action": 0,
+      "macro_f1": 0.047619047619047616,
+      "max_prediction_class_share": 1.0,
+      "per_action": {
+        "ACT": {
+          "f1": 0.2857142857142857,
+          "precision": 0.16666666666666666,
+          "recall": 1.0,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 600,
+        "ASK": 0,
+        "IGNORE": 0,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 0
+      },
+      "single_class_collapse": true,
+      "two_class_collapse": true
+    },
+    "lexical_holdout": {
+      "accuracy": 0.16666666666666666,
+      "action_disappearance": [
+        "ASK",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 228,
+      "invalid_action": 0,
+      "macro_f1": 0.047619047619047616,
+      "max_prediction_class_share": 1.0,
+      "per_action": {
+        "ACT": {
+          "f1": 0.2857142857142857,
+          "precision": 0.16666666666666666,
+          "recall": 1.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 360,
+        "ASK": 0,
+        "IGNORE": 0,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 0
+      },
+      "single_class_collapse": true,
+      "two_class_collapse": true
+    },
+    "rendering_holdout": {
+      "accuracy": 0.16666666666666666,
+      "action_disappearance": [
+        "ASK",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 231,
+      "invalid_action": 0,
+      "macro_f1": 0.047619047619047616,
+      "max_prediction_class_share": 1.0,
+      "per_action": {
+        "ACT": {
+          "f1": 0.2857142857142857,
+          "precision": 0.16666666666666666,
+          "recall": 1.0,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 360,
+        "ASK": 0,
+        "IGNORE": 0,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 0
+      },
+      "single_class_collapse": true,
+      "two_class_collapse": true
+    },
+    "validation": {
+      "accuracy": 0.16666666666666666,
+      "action_disappearance": [
+        "ASK",
+        "IGNORE",
+        "NOTIFY",
+        "SUGGEST",
+        "WAIT"
+      ],
+      "catastrophic_collapse": true,
+      "forbidden_act": 397,
+      "invalid_action": 0,
+      "macro_f1": 0.047619047619047616,
+      "max_prediction_class_share": 1.0,
+      "per_action": {
+        "ACT": {
+          "f1": 0.2857142857142857,
+          "precision": 0.16666666666666666,
+          "recall": 1.0,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 600,
+        "ASK": 0,
+        "IGNORE": 0,
+        "NOTIFY": 0,
+        "SUGGEST": 0,
+        "WAIT": 0
+      },
+      "single_class_collapse": true,
+      "two_class_collapse": true
+    }
+  },
+  "semantic_embedding_direct_action": {
+    "compositional_holdout": {
+      "accuracy": 0.14444444444444443,
+      "action_disappearance": [
+        "IGNORE",
+        "SUGGEST"
+      ],
+      "catastrophic_collapse": false,
+      "forbidden_act": 43,
+      "invalid_action": 0,
+      "macro_f1": 0.09380690382876093,
+      "max_prediction_class_share": 0.725,
+      "per_action": {
+        "ACT": {
+          "f1": 0.08064516129032258,
+          "precision": 0.078125,
+          "recall": 0.08333333333333333,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.02666666666666667,
+          "precision": 0.06666666666666667,
+          "recall": 0.016666666666666666,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.225,
+          "precision": 0.45,
+          "recall": 0.15,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.23052959501557632,
+          "precision": 0.1417624521072797,
+          "recall": 0.6166666666666667,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 64,
+        "ASK": 15,
+        "IGNORE": 0,
+        "NOTIFY": 20,
+        "SUGGEST": 0,
+        "WAIT": 261
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "development_ood": {
+      "accuracy": 0.21166666666666667,
+      "action_disappearance": [],
+      "catastrophic_collapse": false,
+      "forbidden_act": 18,
+      "invalid_action": 0,
+      "macro_f1": 0.19905125555576855,
+      "max_prediction_class_share": 0.48,
+      "per_action": {
+        "ACT": {
+          "f1": 0.3380281690140845,
+          "precision": 0.5714285714285714,
+          "recall": 0.24,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.047619047619047616,
+          "precision": 0.11538461538461539,
+          "recall": 0.03,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.13333333333333333,
+          "precision": 0.15,
+          "recall": 0.12,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.20994475138121546,
+          "precision": 0.2345679012345679,
+          "recall": 0.19,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.20765027322404372,
+          "precision": 0.2289156626506024,
+          "recall": 0.19,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.25773195876288657,
+          "precision": 0.1736111111111111,
+          "recall": 0.5,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 42,
+        "ASK": 26,
+        "IGNORE": 80,
+        "NOTIFY": 81,
+        "SUGGEST": 83,
+        "WAIT": 288
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "lexical_holdout": {
+      "accuracy": 0.08611111111111111,
+      "action_disappearance": [
+        "IGNORE",
+        "SUGGEST"
+      ],
+      "catastrophic_collapse": false,
+      "forbidden_act": 41,
+      "invalid_action": 0,
+      "macro_f1": 0.05111074257851519,
+      "max_prediction_class_share": 0.6722222222222223,
+      "per_action": {
+        "ACT": {
+          "f1": 0.05,
+          "precision": 0.05,
+          "recall": 0.05,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.019801980198019802,
+          "precision": 0.024390243902439025,
+          "recall": 0.016666666666666666,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.07792207792207792,
+          "precision": 0.17647058823529413,
+          "recall": 0.05,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.15894039735099338,
+          "precision": 0.09917355371900827,
+          "recall": 0.4,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 60,
+        "ASK": 41,
+        "IGNORE": 0,
+        "NOTIFY": 17,
+        "SUGGEST": 0,
+        "WAIT": 242
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "rendering_holdout": {
+      "accuracy": 0.19444444444444445,
+      "action_disappearance": [
+        "SUGGEST"
+      ],
+      "catastrophic_collapse": false,
+      "forbidden_act": 6,
+      "invalid_action": 0,
+      "macro_f1": 0.16346296683690578,
+      "max_prediction_class_share": 0.35,
+      "per_action": {
+        "ACT": {
+          "f1": 0.16666666666666666,
+          "precision": 0.5,
+          "recall": 0.1,
+          "support": 60
+        },
+        "ASK": {
+          "f1": 0.22807017543859648,
+          "precision": 0.24074074074074073,
+          "recall": 0.21666666666666667,
+          "support": 60
+        },
+        "IGNORE": {
+          "f1": 0.0449438202247191,
+          "precision": 0.06896551724137931,
+          "recall": 0.03333333333333333,
+          "support": 60
+        },
+        "NOTIFY": {
+          "f1": 0.2937853107344633,
+          "precision": 0.2222222222222222,
+          "recall": 0.43333333333333335,
+          "support": 60
+        },
+        "SUGGEST": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 60
+        },
+        "WAIT": {
+          "f1": 0.24731182795698925,
+          "precision": 0.18253968253968253,
+          "recall": 0.38333333333333336,
+          "support": 60
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 12,
+        "ASK": 54,
+        "IGNORE": 29,
+        "NOTIFY": 117,
+        "SUGGEST": 22,
+        "WAIT": 126
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    },
+    "validation": {
+      "accuracy": 0.705,
+      "action_disappearance": [],
+      "catastrophic_collapse": false,
+      "forbidden_act": 20,
+      "invalid_action": 0,
+      "macro_f1": 0.7010610985458453,
+      "max_prediction_class_share": 0.215,
+      "per_action": {
+        "ACT": {
+          "f1": 0.8059701492537313,
+          "precision": 0.801980198019802,
+          "recall": 0.81,
+          "support": 100
+        },
+        "ASK": {
+          "f1": 0.7668393782383419,
+          "precision": 0.7956989247311828,
+          "recall": 0.74,
+          "support": 100
+        },
+        "IGNORE": {
+          "f1": 0.6153846153846154,
+          "precision": 0.631578947368421,
+          "recall": 0.6,
+          "support": 100
+        },
+        "NOTIFY": {
+          "f1": 0.7510917030567685,
+          "precision": 0.6666666666666666,
+          "recall": 0.86,
+          "support": 100
+        },
+        "SUGGEST": {
+          "f1": 0.6956521739130435,
+          "precision": 0.6728971962616822,
+          "recall": 0.72,
+          "support": 100
+        },
+        "WAIT": {
+          "f1": 0.5714285714285714,
+          "precision": 0.6666666666666666,
+          "recall": 0.5,
+          "support": 100
+        }
+      },
+      "prediction_distribution": {
+        "ACT": 101,
+        "ASK": 93,
+        "IGNORE": 95,
+        "NOTIFY": 129,
+        "SUGGEST": 107,
+        "WAIT": 75
+      },
+      "single_class_collapse": false,
+      "two_class_collapse": false
+    }
+  }
+}

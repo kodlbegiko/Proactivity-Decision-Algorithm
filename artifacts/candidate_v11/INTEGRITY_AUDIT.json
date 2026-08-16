@@ -1,0 +1,12 @@
+{
+  "best_run_selection": false,
+  "candidate_mutation_after_final_validation": false,
+  "candidate_v7_disguised_reuse": false,
+  "historical_lineage_rewrite": false,
+  "protected_labels_exposed_to_runner": false,
+  "qualification_executed": false,
+  "qualification_reason": "same development lineage is not treated as independent protected evaluator",
+  "research_integrity": "PASS",
+  "seed_replacement_after_score": false,
+  "v7r_protected_example_access": "NONE"
+}

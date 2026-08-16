@@ -1,0 +1,28 @@
+{
+  "status": "INVALID",
+  "hard_stop": "QUALIFICATION INVALID — FROZEN CANDIDATE IDENTITY MISMATCH",
+  "canonical_terminal_state": "CANDIDATE_V12 QUALIFICATION INVALID — EVALUATION_INTEGRITY_FAILURE",
+  "frozen_commit": "7fe5c915c8139888bc4925282d11b42a223cbf25",
+  "preregistration_commit": "c7b8e3ef57e28c09a3d4f0d74e58e767cf39cebd",
+  "identity_verification": {
+    "declared_blob_identities_resolve": false,
+    "declared_blob_404_count": 5,
+    "mismatch_count": 5,
+    "files": {
+      "src/proactivity/candidate_v12.py": {"declared":"64810128af5e07946972c0c2de75c6988931c8e3","actual_git_blob":"64894713bfd37a7ef4638c07a397c855879e365d"},
+      "src/proactivity/candidate_v12_frames.py": {"declared":"6243698ac62b74066696de7a6ff65e924ef44cbd","actual_git_blob":"624eb183884e4d6260a3b6572ba15bf950f5b04d"},
+      "src/proactivity/candidate_v12_final_v2.py": {"declared":"75252352388e326a71c7ddbb7002b4bab45ca98c","actual_git_blob":"75277226911ea281bf7eee7542bf666feddea300"},
+      "src/proactivity/specification/schema.py": {"declared":"28d7ab86922a4b40e030f2f21f42359d68beed30","actual_git_blob":"28d7aed6bbdcfb0dce79b8cd0c2db9d96cd32c82"},
+      "spec/proactivity_policy_v2.json": {"declared":"e343554b0d003b90d2179466654ffc3c6858e54a","actual_git_blob":"e34345bf76179d2c989d9da2effaa013792925fe"}
+    }
+  },
+  "candidate_modified": false,
+  "protected_examples_generated": 0,
+  "protected_seed_leakage": false,
+  "protected_raw_leakage": false,
+  "qualification_runs_executed": 0,
+  "performance_metrics_observed": false,
+  "scientific_failure": false,
+  "evaluation_integrity_failure": true,
+  "authorized_next_action": "Repair frozen identity metadata only, then start a fresh independent qualification lineage with a fresh preregistration and seed commitment."
+}

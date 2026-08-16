@@ -1,0 +1,446 @@
+{
+  "compositional_holdout": {
+    "acknowledged": {
+      "brier_score": 0.0020502856176163216,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9612573106090228,
+      "unknown_rate": 0.0
+    },
+    "clarification_possible": {
+      "brier_score": 0.13591780156631422,
+      "contradiction_rate": 0.37,
+      "mean_confidence": 0.9016505789756775,
+      "unknown_rate": 0.49166666666666664
+    },
+    "completed": {
+      "brier_score": 0.0018614261546492995,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9515003561476867,
+      "unknown_rate": 0.0
+    },
+    "deferral_available": {
+      "brier_score": 0.0028298612543420794,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9658178861935933,
+      "unknown_rate": 0.0
+    },
+    "execution_possible": {
+      "brier_score": 0.009406009429497021,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9540494888027509,
+      "unknown_rate": 0.0
+    },
+    "information": {
+      "brier_score": 0.00264418925379147,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9427043820917607,
+      "unknown_rate": 0.0
+    },
+    "need": {
+      "brier_score": 0.002450445295317948,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9607952990134557,
+      "unknown_rate": 0.0
+    },
+    "permission": {
+      "brier_score": 0.04398024411154847,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.944440249055624,
+      "unknown_rate": 0.0
+    },
+    "reversibility": {
+      "brier_score": 0.09590214291083063,
+      "contradiction_rate": 0.10833333333333334,
+      "mean_confidence": 0.95943845068415,
+      "unknown_rate": 0.21166666666666667
+    },
+    "risk": {
+      "brier_score": 0.10101408995872073,
+      "contradiction_rate": 0.14333333333333334,
+      "mean_confidence": 0.949811503837506,
+      "unknown_rate": 0.28
+    },
+    "side_effect": {
+      "brier_score": 0.006043044605886093,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9152076641221841,
+      "unknown_rate": 0.02666666666666667
+    },
+    "urgency": {
+      "brier_score": 0.001911855936121276,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9556649773816268,
+      "unknown_rate": 0.0
+    }
+  },
+  "development_ood": {
+    "acknowledged": {
+      "brier_score": 0.0024190496327426113,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9609138953685761,
+      "unknown_rate": 0.0
+    },
+    "clarification_possible": {
+      "brier_score": 0.12999489468831504,
+      "contradiction_rate": 0.37222222222222223,
+      "mean_confidence": 0.9184812430540721,
+      "unknown_rate": 0.37222222222222223
+    },
+    "completed": {
+      "brier_score": 0.0009605442501576608,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9626704633235932,
+      "unknown_rate": 0.0
+    },
+    "deferral_available": {
+      "brier_score": 0.006380791746542987,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9736147701077991,
+      "unknown_rate": 0.0
+    },
+    "execution_possible": {
+      "brier_score": 0.01178241232062565,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9604077207048735,
+      "unknown_rate": 0.0
+    },
+    "information": {
+      "brier_score": 0.0013061859313200591,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9521318828397327,
+      "unknown_rate": 0.0
+    },
+    "need": {
+      "brier_score": 0.0021368094010131853,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9663296421700054,
+      "unknown_rate": 0.0
+    },
+    "permission": {
+      "brier_score": 0.03757076316040751,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.956743217739794,
+      "unknown_rate": 0.0
+    },
+    "reversibility": {
+      "brier_score": 0.09319300635171099,
+      "contradiction_rate": 0.09333333333333334,
+      "mean_confidence": 0.9690105293856727,
+      "unknown_rate": 0.1922222222222222
+    },
+    "risk": {
+      "brier_score": 0.0977342467680284,
+      "contradiction_rate": 0.07222222222222222,
+      "mean_confidence": 0.9572895581523577,
+      "unknown_rate": 0.2677777777777778
+    },
+    "side_effect": {
+      "brier_score": 0.004361973058757057,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9199552117453681,
+      "unknown_rate": 0.016666666666666666
+    },
+    "urgency": {
+      "brier_score": 0.0008343423558611262,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9651100836528672,
+      "unknown_rate": 0.0
+    }
+  },
+  "lexical_holdout": {
+    "acknowledged": {
+      "brier_score": 0.06392453050471242,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9886657427251339,
+      "unknown_rate": 0.20833333333333334
+    },
+    "clarification_possible": {
+      "brier_score": 0.04043497808790741,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9856973543763161,
+      "unknown_rate": 0.24166666666666667
+    },
+    "completed": {
+      "brier_score": 0.013273804626246373,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9942056483030319,
+      "unknown_rate": 0.0
+    },
+    "deferral_available": {
+      "brier_score": 0.06538436929132804,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9837057407697042,
+      "unknown_rate": 0.0
+    },
+    "execution_possible": {
+      "brier_score": 0.01699252719772646,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9903429058194161,
+      "unknown_rate": 0.0
+    },
+    "information": {
+      "brier_score": 0.26181689511335376,
+      "contradiction_rate": 0.145,
+      "mean_confidence": 0.8090931337078412,
+      "unknown_rate": 0.25333333333333335
+    },
+    "need": {
+      "brier_score": 0.03429252478160321,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9037113777796427,
+      "unknown_rate": 0.32
+    },
+    "permission": {
+      "brier_score": 0.1584437133317332,
+      "contradiction_rate": 0.2733333333333333,
+      "mean_confidence": 0.7113122406353554,
+      "unknown_rate": 0.5316666666666666
+    },
+    "reversibility": {
+      "brier_score": 0.11876867473169048,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9950996266802152,
+      "unknown_rate": 0.18833333333333332
+    },
+    "risk": {
+      "brier_score": 0.09762976839951013,
+      "contradiction_rate": 0.13,
+      "mean_confidence": 0.9615282251437505,
+      "unknown_rate": 0.2866666666666667
+    },
+    "side_effect": {
+      "brier_score": 0.3355904869077395,
+      "contradiction_rate": 0.016666666666666666,
+      "mean_confidence": 0.8308281358083089,
+      "unknown_rate": 0.295
+    },
+    "urgency": {
+      "brier_score": 0.07916157878463748,
+      "contradiction_rate": 0.09166666666666666,
+      "mean_confidence": 0.7601998842755954,
+      "unknown_rate": 0.44
+    }
+  },
+  "negation": {
+    "acknowledged": {
+      "brier_score": 0.29434484861463595,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.8664705818725957,
+      "unknown_rate": 0.0
+    },
+    "clarification_possible": {
+      "brier_score": 0.33900306879921305,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.8864213763011827,
+      "unknown_rate": 0.0
+    },
+    "completed": {
+      "brier_score": 0.12063074528277884,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.8630061919490496,
+      "unknown_rate": 0.0
+    },
+    "deferral_available": {
+      "brier_score": 0.10855703538332677,
+      "contradiction_rate": 0.25,
+      "mean_confidence": 0.757190079241991,
+      "unknown_rate": 0.475
+    },
+    "execution_possible": {
+      "brier_score": 0.3255948010395469,
+      "contradiction_rate": 0.11388888888888889,
+      "mean_confidence": 0.8038251536587874,
+      "unknown_rate": 0.11388888888888889
+    },
+    "information": {
+      "brier_score": 0.2793427889180994,
+      "contradiction_rate": 0.3972222222222222,
+      "mean_confidence": 0.8060236021876335,
+      "unknown_rate": 0.6305555555555555
+    },
+    "need": {
+      "brier_score": 0.07806094487052806,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9389660891559389,
+      "unknown_rate": 0.0
+    },
+    "permission": {
+      "brier_score": 0.21980742427759103,
+      "contradiction_rate": 0.2722222222222222,
+      "mean_confidence": 0.906689030594296,
+      "unknown_rate": 0.2722222222222222
+    },
+    "reversibility": {
+      "brier_score": 0.22942182328355,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.871818232205179,
+      "unknown_rate": 0.5472222222222223
+    },
+    "risk": {
+      "brier_score": 0.3539283583987471,
+      "contradiction_rate": 0.1388888888888889,
+      "mean_confidence": 0.8197687320411206,
+      "unknown_rate": 0.1388888888888889
+    },
+    "side_effect": {
+      "brier_score": 0.2760667420672255,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.8380874899526437,
+      "unknown_rate": 0.0
+    },
+    "urgency": {
+      "brier_score": 0.08030654045318096,
+      "contradiction_rate": 0.10277777777777777,
+      "mean_confidence": 0.8211200327922901,
+      "unknown_rate": 0.2
+    }
+  },
+  "rendering_holdout": {
+    "acknowledged": {
+      "brier_score": 0.11237249008002625,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.839992834230264,
+      "unknown_rate": 0.0
+    },
+    "clarification_possible": {
+      "brier_score": 0.17997808291924136,
+      "contradiction_rate": 0.16,
+      "mean_confidence": 0.7996420206626257,
+      "unknown_rate": 0.3233333333333333
+    },
+    "completed": {
+      "brier_score": 0.12630683966629372,
+      "contradiction_rate": 0.03666666666666667,
+      "mean_confidence": 0.8486873762061199,
+      "unknown_rate": 0.12333333333333334
+    },
+    "deferral_available": {
+      "brier_score": 0.09662784673016583,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.879522462139527,
+      "unknown_rate": 0.013333333333333334
+    },
+    "execution_possible": {
+      "brier_score": 0.0958724435368566,
+      "contradiction_rate": 0.175,
+      "mean_confidence": 0.8466193674008051,
+      "unknown_rate": 0.24833333333333332
+    },
+    "information": {
+      "brier_score": 0.07447777732262355,
+      "contradiction_rate": 0.145,
+      "mean_confidence": 0.8436217222114404,
+      "unknown_rate": 0.24166666666666667
+    },
+    "need": {
+      "brier_score": 0.058853415608214735,
+      "contradiction_rate": 0.12833333333333333,
+      "mean_confidence": 0.8638365463167429,
+      "unknown_rate": 0.2633333333333333
+    },
+    "permission": {
+      "brier_score": 0.10578104595201278,
+      "contradiction_rate": 0.011666666666666667,
+      "mean_confidence": 0.8156167987113198,
+      "unknown_rate": 0.255
+    },
+    "reversibility": {
+      "brier_score": 0.16725979477641412,
+      "contradiction_rate": 0.155,
+      "mean_confidence": 0.8582348593572775,
+      "unknown_rate": 0.3283333333333333
+    },
+    "risk": {
+      "brier_score": 0.15382185551498448,
+      "contradiction_rate": 0.27166666666666667,
+      "mean_confidence": 0.8301627623041471,
+      "unknown_rate": 0.5283333333333333
+    },
+    "side_effect": {
+      "brier_score": 0.09135137313637105,
+      "contradiction_rate": 0.0016666666666666668,
+      "mean_confidence": 0.8296796198685964,
+      "unknown_rate": 0.03
+    },
+    "urgency": {
+      "brier_score": 0.07186689354749526,
+      "contradiction_rate": 0.03166666666666667,
+      "mean_confidence": 0.8519484698524078,
+      "unknown_rate": 0.135
+    }
+  },
+  "validation": {
+    "acknowledged": {
+      "brier_score": 0.003239485846570071,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9951715153455735,
+      "unknown_rate": 0.0
+    },
+    "clarification_possible": {
+      "brier_score": 0.13235839304925265,
+      "contradiction_rate": 0.44333333333333336,
+      "mean_confidence": 0.9549043389823701,
+      "unknown_rate": 0.44333333333333336
+    },
+    "completed": {
+      "brier_score": 0.00018570782956937968,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9935135947664578,
+      "unknown_rate": 0.0
+    },
+    "deferral_available": {
+      "brier_score": 0.01811310322713982,
+      "contradiction_rate": 0.09,
+      "mean_confidence": 0.9929225210348765,
+      "unknown_rate": 0.09
+    },
+    "execution_possible": {
+      "brier_score": 0.005856646602015141,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9925677779648039,
+      "unknown_rate": 0.0
+    },
+    "information": {
+      "brier_score": 0.0007074378592392844,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9740848495894008,
+      "unknown_rate": 0.0
+    },
+    "need": {
+      "brier_score": 0.0020607712213841327,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9874641520447202,
+      "unknown_rate": 0.0
+    },
+    "permission": {
+      "brier_score": 0.03261747670819452,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9794668916861217,
+      "unknown_rate": 0.0
+    },
+    "reversibility": {
+      "brier_score": 0.08017724816526449,
+      "contradiction_rate": 0.10666666666666667,
+      "mean_confidence": 0.9954825099309286,
+      "unknown_rate": 0.10666666666666667
+    },
+    "risk": {
+      "brier_score": 0.09311621652274955,
+      "contradiction_rate": 0.044444444444444446,
+      "mean_confidence": 0.9817412834035025,
+      "unknown_rate": 0.26555555555555554
+    },
+    "side_effect": {
+      "brier_score": 0.008861634913061736,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9283259915643268,
+      "unknown_rate": 0.025555555555555557
+    },
+    "urgency": {
+      "brier_score": 0.000236003803564081,
+      "contradiction_rate": 0.0,
+      "mean_confidence": 0.9916289377212525,
+      "unknown_rate": 0.0
+    }
+  }
+}

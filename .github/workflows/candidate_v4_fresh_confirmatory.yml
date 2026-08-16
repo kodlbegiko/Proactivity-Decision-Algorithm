@@ -1,0 +1,243 @@
+name: Candidate-v4 Fresh Protected Confirmatory
+
+on:
+  push:
+    branches:
+      - research/candidate-v4-fresh-confirmatory
+    paths:
+      - preregistration/candidate_v4_fresh_confirmatory.md
+      - src/proactivity/candidate_v4_confirmatory_generator.py
+      - src/proactivity/candidate_v4_confirmatory_evaluator.py
+      - .github/workflows/candidate_v4_fresh_confirmatory.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: candidate-v4-fresh-confirmatory
+  cancel-in-progress: false
+
+env:
+  BRANCH: research/candidate-v4-fresh-confirmatory
+  BASE_FREEZE: ffb79eefc9540026c806f8763f6026fb5035228b
+  PREREG: f8a085808fa21cb852c068f0d10a890ce7dd81a3
+  CANDIDATE_SHA256: 66a5a899b7c1c5eea102e96f649db89cce2e9c8a38c8d755a25dddcf6abe492e
+
+jobs:
+  authoritative:
+    name: Authoritative protected freeze and one-shot evaluation
+    runs-on: ubuntu-latest
+    outputs:
+      protected_freeze_sha: ${{ steps.final.outputs.protected_freeze_sha }}
+      evaluation_sha: ${{ steps.final.outputs.evaluation_sha }}
+      terminal_sha: ${{ steps.final.outputs.terminal_sha }}
+      terminal_state: ${{ steps.final.outputs.terminal_state }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install runtime dependencies
+        run: python -m pip install --disable-pip-version-check numpy scikit-learn
+
+      - name: Verify immutable chronology and quarantine boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "$BASE_FREEZE" HEAD
+          git merge-base --is-ancestor "$PREREG" HEAD
+          test "$(git rev-parse "$PREREG^")" = "$BASE_FREEZE"
+          test -z "$(git diff --name-only "$BASE_FREEZE"..HEAD -- src/proactivity/candidate_v4.py)"
+          test -z "$(git diff --name-only "$BASE_FREEZE"..HEAD -- data/candidate_v3_confirmatory results/candidate_v3_confirmatory docs/candidate_v3_confirmatory_terminal_report.md)"
+          test -z "$(git diff --name-only "$BASE_FREEZE"..HEAD -- data/candidate_v4_development)"
+          ACTUAL=$(sha256sum src/proactivity/candidate_v4.py | awk '{print $1}')
+          test "$ACTUAL" = "$CANDIDATE_SHA256"
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          p = Path('src/proactivity/candidate_v4_confirmatory_generator.py')
+          tree = ast.parse(p.read_text(encoding='utf-8'))
+          forbidden = {'proactivity.candidate_v4', 'proactivity.recovery_v4_data'}
+          bad = []
+          for node in ast.walk(tree):
+              if isinstance(node, ast.Import):
+                  bad.extend(a.name for a in node.names if a.name in forbidden)
+              elif isinstance(node, ast.ImportFrom):
+                  if node.module in forbidden:
+                      bad.append(node.module)
+          if bad:
+              raise SystemExit(f'forbidden generator imports: {bad}')
+          text = p.read_text(encoding='utf-8')
+          for forbidden_path in ('data/candidate_v3_confirmatory', 'results/candidate_v3_confirmatory', 'data/candidate_v4_development'):
+              if forbidden_path in text:
+                  raise SystemExit(f'forbidden protected/development path reference: {forbidden_path}')
+          PY
+
+      - name: Refuse accidental second authoritative execution
+        run: |
+          set -euo pipefail
+          if test -f results/candidate_v4_fresh_confirmatory/terminal_decision.json; then
+            echo 'Terminal evidence already exists. This run is verification-only; no second authoritative evaluation is allowed.'
+            echo 'verify_only=true' >> "$GITHUB_ENV"
+          else
+            echo 'verify_only=false' >> "$GITHUB_ENV"
+          fi
+
+      - name: Generate and freeze protected payload
+        if: env.verify_only == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e data/candidate_v4_fresh_confirmatory/manifest.json
+          PYTHONPATH=src python -m proactivity.candidate_v4_confirmatory_generator
+          PYTHONPATH=src python -m proactivity.candidate_v4_confirmatory_generator --verify
+          git config user.name 'candidate-v4-confirmatory-bot'
+          git config user.email 'candidate-v4-confirmatory-bot@users.noreply.github.com'
+          git add data/candidate_v4_fresh_confirmatory
+          git commit -m 'freeze Candidate-v4 fresh protected confirmatory dataset'
+          echo "PROTECTED_FREEZE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Execute frozen Candidate-v4 exactly once
+        if: env.verify_only == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          ACTUAL=$(sha256sum src/proactivity/candidate_v4.py | awk '{print $1}')
+          test "$ACTUAL" = "$CANDIDATE_SHA256"
+          PYTHONPATH=src python -m proactivity.candidate_v4_confirmatory_evaluator
+          git add results/candidate_v4_fresh_confirmatory docs/candidate_v4_fresh_confirmatory_terminal_report.md
+          git commit -m 'record Candidate-v4 one-shot protected confirmatory results'
+          echo "EVALUATION_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Commit terminal evidence
+        if: env.verify_only == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          export GITHUB_RUN_ID PROTECTED_FREEZE_SHA EVALUATION_SHA PREREG CANDIDATE_SHA256
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path('results/candidate_v4_fresh_confirmatory')
+          terminal = json.loads((root/'terminal_decision.json').read_text())
+          main = json.loads((root/'metrics.json').read_text())
+          cf = json.loads((root/'counterfactual_metrics.json').read_text())
+          inv = json.loads((root/'invariance_metrics.json').read_text())
+          lex = json.loads((root/'lexical_metrics.json').read_text())
+          comp = json.loads((root/'compositional_metrics.json').read_text())
+          safety = json.loads((root/'safety_report.json').read_text())
+          collapse = json.loads((root/'collapse_report.json').read_text())
+          evidence = {
+              'schema_version': 1,
+              'terminal_state': terminal['terminal_state'],
+              'branch': 'research/candidate-v4-fresh-confirmatory',
+              'preregistration_commit': os.environ['PREREG'],
+              'protected_dataset_freeze_commit': os.environ['PROTECTED_FREEZE_SHA'],
+              'candidate_source_sha256': os.environ['CANDIDATE_SHA256'],
+              'evaluation_commit': os.environ['EVALUATION_SHA'],
+              'ci_run': int(os.environ['GITHUB_RUN_ID']),
+              'main_accuracy': main['accuracy'],
+              'main_macro_f1': main['macro_f1'],
+              'prediction_distribution': main['prediction_distribution'],
+              'per_action_recall': {k:v['recall'] for k,v in main['per_action'].items()},
+              'counterfactual_exact_pair': cf['exact_pair_correctness'],
+              'invariance_consistency': inv['prediction_consistency'],
+              'lexical_stress_macro_f1': lex['macro_f1'],
+              'compositional_stress_macro_f1': comp['macro_f1'],
+              'forbidden_act': sum(v['forbidden_act'] for v in safety.values()),
+              'invalid_action': main['invalid_action'],
+              'collapse_detected': collapse['collapse_detected'],
+              'protected_leakage': terminal['protected_leakage'],
+              'candidate_v3_quarantine': terminal['candidate_v3_quarantine'],
+              'candidate_v4_development_leakage': terminal['candidate_v4_development_leakage'],
+              'gate_g': terminal['gate_g'],
+              'gate_h': terminal['gate_h'],
+          }
+          p = Path('gate_recovery_v4/fresh_confirmatory_terminal.json')
+          p.parent.mkdir(parents=True, exist_ok=True)
+          p.write_text(json.dumps(evidence, indent=2, sort_keys=True)+'\n')
+          PY
+          git add gate_recovery_v4/fresh_confirmatory_terminal.json
+          git commit -m 'freeze Candidate-v4 fresh confirmatory terminal evidence'
+          echo "TERMINAL_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:"$BRANCH"
+
+      - name: Verification-only rerun path
+        if: env.verify_only == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=src python -m proactivity.candidate_v4_confirmatory_generator --verify
+          PYTHONPATH=src python -m proactivity.candidate_v4_confirmatory_evaluator --verify-existing
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          e=json.loads(Path('gate_recovery_v4/fresh_confirmatory_terminal.json').read_text())
+          print(e['terminal_state'])
+          PY
+
+      - id: final
+        name: Export final chronology
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test "$verify_only" = 'true'; then
+            PROTECTED_FREEZE_SHA=$(python -c "import json;print(json.load(open('gate_recovery_v4/fresh_confirmatory_terminal.json'))['protected_dataset_freeze_commit'])")
+            EVALUATION_SHA=$(python -c "import json;print(json.load(open('gate_recovery_v4/fresh_confirmatory_terminal.json'))['evaluation_commit'])")
+            TERMINAL_SHA=$(git rev-parse HEAD)
+          fi
+          TERMINAL_STATE=$(python -c "import json;print(json.load(open('results/candidate_v4_fresh_confirmatory/terminal_decision.json'))['terminal_state'])")
+          echo "protected_freeze_sha=$PROTECTED_FREEZE_SHA" >> "$GITHUB_OUTPUT"
+          echo "evaluation_sha=$EVALUATION_SHA" >> "$GITHUB_OUTPUT"
+          echo "terminal_sha=$TERMINAL_SHA" >> "$GITHUB_OUTPUT"
+          echo "terminal_state=$TERMINAL_STATE" >> "$GITHUB_OUTPUT"
+
+  reproducibility:
+    name: Reproducibility Python ${{ matrix.python }}
+    needs: authoritative
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/candidate-v4-fresh-confirmatory
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install --disable-pip-version-check numpy scikit-learn
+      - name: Verify exact terminal commit and frozen source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin research/candidate-v4-fresh-confirmatory
+          git checkout --detach "${{ needs.authoritative.outputs.terminal_sha }}"
+          ACTUAL=$(sha256sum src/proactivity/candidate_v4.py | awk '{print $1}')
+          test "$ACTUAL" = "$CANDIDATE_SHA256"
+          git merge-base --is-ancestor "$PREREG" HEAD
+      - name: Verify deterministic protected payload
+        run: PYTHONPATH=src python -m proactivity.candidate_v4_confirmatory_generator --verify
+      - name: Verify byte-identical normalized result reproduction
+        run: PYTHONPATH=src python -m proactivity.candidate_v4_confirmatory_evaluator --verify-existing
+
+  terminal-summary:
+    name: Terminal summary
+    needs: [authoritative, reproducibility]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Terminal State: ${{ needs.authoritative.outputs.terminal_state }}"
+          echo "Protected Dataset Freeze Commit: ${{ needs.authoritative.outputs.protected_freeze_sha }}"
+          echo "Evaluation Commit: ${{ needs.authoritative.outputs.evaluation_sha }}"
+          echo "Terminal Evidence Commit: ${{ needs.authoritative.outputs.terminal_sha }}"

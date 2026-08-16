@@ -1,0 +1,28 @@
+{
+  "retry_id": "infrastructure_retry_003",
+  "failed_run": 31923088689,
+  "failure_phase": "Stage A complete dataset regeneration after all source tests passed",
+  "failure_classification": "pre-evaluation compositional-partition feasibility defect",
+  "complete_dataset_existed": false,
+  "partial_dataset_directory_created": true,
+  "validation_score_existed": false,
+  "qualification_holdout_score_existed": false,
+  "source_tests": "10/10 passed on Python 3.10, 3.11, and 3.12 before generator failure",
+  "root_cause": "The preregistered generator implementation used a deterministic signature bucket for compositional isolation. The selected signature==0 bucket contained no valid Protocol-v2 ACT formal state, so an action-balanced compositional holdout could not be generated. No natural-language holdout example or evaluation metric was inspected.",
+  "repair_scope": [
+    "Replace only the infeasible compositional partition implementation with a generator-known held-out conjunction: clarification_possible=true AND acknowledged=true AND deferral_available=true.",
+    "Train and validation exclude that conjunction; compositional_holdout includes it. Individual semantic primitives remain available outside the held-out conjunction.",
+    "Add a formal-state-only unit test using the frozen Protocol-v2 oracle to assert that the compositional partition contains at least one valid state for each of the six actions."
+  ],
+  "compositional_partition_implementation_modified": true,
+  "scientific_data_specification_modified": false,
+  "scientific_configuration_modified": false,
+  "architecture_family_modified": false,
+  "threshold_modified": false,
+  "dataset_size_modified": false,
+  "seed_modified": false,
+  "holdout_used_for_repair": false,
+  "protected_example_used_for_repair": false,
+  "scientific_evaluation_evidence_observed": false,
+  "retry_scientifically_legal": true
+}

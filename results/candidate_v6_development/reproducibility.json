@@ -1,0 +1,25 @@
+{
+  "dataset_byte_identity": true,
+  "deterministic_result_normalization": "canonical JSON/JSONL sort_keys + fixed seed",
+  "hash_manifest": [
+    "067f450d38ead2b6bb2d893d3d33c24e254cd85afd2b497b16081de95665ce3d  validation.jsonl",
+    "474ffe414fddf28f9f9d06ec706fc1a816255fd0bbcd720dfcf4d5e65fd6b4fb  development_ood.jsonl",
+    "5ea0c80f05c8ea9f94721a4043c177d12a233fd6def328f880c6a0b9011a4cc2  lexical_holdout.jsonl",
+    "80cc2a621c897da885225254ba11c9264d07d84b08a170bbbf7a7132c8cc944a  compositional_holdout.jsonl",
+    "82f65bd2e25bd95e1169a9d03cdcc66f030b8f158d07a6465fddba278b139686  negation.jsonl",
+    "8e359b3d6287111160c43e88c7fa0b14c04d07a6343390ee94d03d60ef9776f3  manifest.json",
+    "96365b7171c6252fa701b940522ecd81267d9f0ae95fb45094491513335e38c6  counterfactual.jsonl",
+    "af9b48708d75371c24e19837c3f58eafa226dcb32c99a65b5e22cf37eab026bc  rendering_holdout.jsonl",
+    "d4a9fa83fdc095e83a9532356de24916954ffbfb04b8f04d3cd26efd863f13c4  train.jsonl",
+    "e3f3a215b3c8a57b4ada2c190a239920a1349bf22a394715db3f258f2ab2e4e0  invariance.jsonl"
+  ],
+  "model_revision_identity": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "python_versions": [
+    "3.10",
+    "3.11",
+    "3.12"
+  ],
+  "quarantine": "PASS",
+  "source_identity": true,
+  "status": "PASS"
+}

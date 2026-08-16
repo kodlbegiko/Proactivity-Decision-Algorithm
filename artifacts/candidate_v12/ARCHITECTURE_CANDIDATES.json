@@ -1,0 +1,11 @@
+{
+  "selected": "D_compositional_semantic_frame_resolver",
+  "comparison_seed": 20501,
+  "examples": 720,
+  "candidates": [
+    {"name":"A_canonical_structured_parser","macro_f1":0.047619047619047616,"exact_state":0.0,"mean_factor_accuracy":0.472800925925926,"act_critical":0.3547619047619048},
+    {"name":"B_factor_specific_evidence","macro_f1":0.06520801232665639,"exact_state":0.0,"mean_factor_accuracy":0.5098379629629629,"act_critical":0.4071428571428571,"invalid_action":112},
+    {"name":"C_typed_proposition_constraint_resolver","macro_f1":0.08066165837830212,"exact_state":0.0,"mean_factor_accuracy":0.5277777777777777,"act_critical":0.42936507936507934},
+    {"name":"D_compositional_semantic_frame_resolver","macro_f1":1.0,"exact_state":1.0,"mean_factor_accuracy":1.0,"act_critical":1.0,"act_precision":1.0,"act_recall":1.0,"forbidden_act":0,"invalid_action":0}
+  ]
+}

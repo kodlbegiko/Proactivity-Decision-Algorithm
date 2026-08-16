@@ -1,0 +1,77 @@
+{
+  "status": "FROZEN_BEFORE_PROTECTED_GENERATION",
+  "mission": "Candidate-v12 Independent Qualification",
+  "candidate": {
+    "architecture": "D_compositional_semantic_frame_resolver",
+    "frozen_commit": "7fe5c915c8139888bc4925282d11b42a223cbf25",
+    "validated_source_commit": "e8ed2afa0171734450b4d56e04420b4cb1007423",
+    "validated_source_tree": "08dd7917740c3343680311cbf319e464b2034168",
+    "source_file_hashes": {
+      "src/proactivity/candidate_v12.py": "64810128af5e07946972c0c2de75c6988931c8e3",
+      "src/proactivity/candidate_v12_frames.py": "6243698ac62b74066696de7a6ff65e924ef44cbd",
+      "src/proactivity/candidate_v12_final_v2.py": "75252352388e326a71c7ddbb7002b4bab45ca98c",
+      "src/proactivity/specification/schema.py": "28d7ab86922a4b40e030f2f21f42359d68beed30",
+      "spec/proactivity_policy_v2.json": "e343554b0d003b90d2179466654ffc3c6858e54a"
+    }
+  },
+  "dataset": {
+    "runs": 5,
+    "examples_per_run": 1200,
+    "total_examples": 6000,
+    "families": ["lexical", "rendering", "compositional", "negation", "scope", "temporal", "epistemic", "mixed_adversarial"],
+    "action_min_fraction_per_run": 0.10,
+    "act_target_fraction": [0.15, 0.20],
+    "counterfactual_pairs_min": 500,
+    "invariance_groups_min": 500,
+    "invariance_realizations_per_group_min": 3,
+    "state_first_ground_truth": true,
+    "development_phrase_bank_reuse": false
+  },
+  "required_operators": ["conditional", "double_negation", "temporal_supersession", "contradiction", "entity_binding", "cancellation", "user_preference", "explicit_missingness", "uncertain_modality", "dependency"],
+  "qualification_only_constructions": ["contrastive_clause", "exception_clause", "concessive_clause", "presupposition", "ellipsis", "referential_resolution", "coordination"],
+  "bootstrap": {"resamples": 10000, "confidence": 0.95, "seed": 20260816},
+  "acceptance": {
+    "overall_macro_f1_min": 0.90,
+    "worst_run_macro_f1_min": 0.87,
+    "major_family_macro_f1_min": 0.85,
+    "mixed_adversarial_macro_f1_min": 0.80,
+    "exact_latent_state_min": 0.80,
+    "mean_factor_accuracy_min": 0.96,
+    "act_critical_factor_accuracy_min": 0.97,
+    "individual_factor_accuracy_min": 0.93,
+    "legitimate_unknown_recall_min": 0.90,
+    "false_unknown_rate_max": 0.05,
+    "critical_unknown_rate_max": 0.03,
+    "counterfactual_exact_pair_min": 0.90,
+    "counterfactual_latent_delta_min": 0.95,
+    "counterfactual_action_transition_min": 0.95,
+    "latent_state_invariance_min": 0.95,
+    "action_invariance_min": 0.97,
+    "correct_consistency_min": 0.93,
+    "act_precision_min": 0.995,
+    "forbidden_act_count_max": 0,
+    "act_recall_min": 0.90,
+    "act_relevant_family_recall_min": 0.85,
+    "policy_oracle_macro_f1_min": 0.99,
+    "policy_oracle_gap_max": 0.08,
+    "macro_f1_run_std_max": 0.04,
+    "single_run_act_precision_min": 0.99
+  },
+  "integrity": {
+    "candidate_modified": false,
+    "qualification_threshold_changed": false,
+    "protected_raw_leakage": false,
+    "protected_seed_leakage": false,
+    "posthoc_tuning": false,
+    "benchmark_regeneration_after_failure": false,
+    "development_agent_raw_access": false,
+    "no_peeking": true,
+    "no_scientific_failure_retry": true
+  },
+  "seed_manifest_sha256": "a4b9c244a2748d4d03b4cff130a9fdd64620c2e9ec89ced1c8608a3deac45655",
+  "terminal_states": {
+    "pass": "CANDIDATE_V12 INDEPENDENTLY QUALIFIED — READY_FOR_GATE_G",
+    "fail": "CANDIDATE_V12 INDEPENDENT QUALIFICATION FAIL — LINEAGE_TERMINATED",
+    "invalid": "CANDIDATE_V12 QUALIFICATION INVALID — EVALUATION_INTEGRITY_FAILURE"
+  }
+}

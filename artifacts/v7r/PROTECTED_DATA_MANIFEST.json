@@ -1,0 +1,144 @@
+{
+  "dataset_id": "V7R Fresh Protected OOD Dataset",
+  "generation_rule": "Protocol-v2 valid formal state -> independent semantic plan -> family-specific natural-language realization",
+  "realizations": [
+    {
+      "action_distribution": {
+        "ACT": 70,
+        "ASK": 77,
+        "IGNORE": 35,
+        "NOTIFY": 53,
+        "SUGGEST": 65,
+        "WAIT": 50
+      },
+      "counterfactual_pair_count": 35,
+      "example_count": 350,
+      "family_distribution": {
+        "Compositional": 50,
+        "Lexical": 50,
+        "Mixed Adversarial": 50,
+        "Negation": 50,
+        "Rendering": 50,
+        "Scope": 50,
+        "Temporal": 50
+      },
+      "ground_truth_sha256": "0948c24ef89afe55eb6a47445d9d978f17b2323223623193e7a0fb868dbd62c5",
+      "invariance_group_count": 35,
+      "run_id": "Q1",
+      "sanitized_input_sha256": "94facfb351718e15f94c550e763f8d5b358fd7ff7149b4d1b6be3e802023f3c3",
+      "seed": 17041,
+      "unknown_required_case_count": 21
+    },
+    {
+      "action_distribution": {
+        "ACT": 70,
+        "ASK": 77,
+        "IGNORE": 35,
+        "NOTIFY": 54,
+        "SUGGEST": 64,
+        "WAIT": 50
+      },
+      "counterfactual_pair_count": 35,
+      "example_count": 350,
+      "family_distribution": {
+        "Compositional": 50,
+        "Lexical": 50,
+        "Mixed Adversarial": 50,
+        "Negation": 50,
+        "Rendering": 50,
+        "Scope": 50,
+        "Temporal": 50
+      },
+      "ground_truth_sha256": "6a2e68b42bf61ad894d63802365f613b9f11fc0cbcc8b90bcb6e212387a2bfad",
+      "invariance_group_count": 35,
+      "run_id": "Q2",
+      "sanitized_input_sha256": "c95ce66ca588c48db95607c21e65e173e69c7962b9d5184f90176c1e0ee29d8e",
+      "seed": 27109,
+      "unknown_required_case_count": 21
+    },
+    {
+      "action_distribution": {
+        "ACT": 70,
+        "ASK": 77,
+        "IGNORE": 35,
+        "NOTIFY": 55,
+        "SUGGEST": 64,
+        "WAIT": 49
+      },
+      "counterfactual_pair_count": 35,
+      "example_count": 350,
+      "family_distribution": {
+        "Compositional": 50,
+        "Lexical": 50,
+        "Mixed Adversarial": 50,
+        "Negation": 50,
+        "Rendering": 50,
+        "Scope": 50,
+        "Temporal": 50
+      },
+      "ground_truth_sha256": "aed83e654e3eb7fe12b27129d54d889dff6bc7366c658825d797833995a01295",
+      "invariance_group_count": 35,
+      "run_id": "Q3",
+      "sanitized_input_sha256": "f03912b71422e6cbc5f42cc236f32fefae9aa3c827cf862c6d27666374dc1a7d",
+      "seed": 38183,
+      "unknown_required_case_count": 21
+    },
+    {
+      "action_distribution": {
+        "ACT": 70,
+        "ASK": 77,
+        "IGNORE": 35,
+        "NOTIFY": 55,
+        "SUGGEST": 64,
+        "WAIT": 49
+      },
+      "counterfactual_pair_count": 35,
+      "example_count": 350,
+      "family_distribution": {
+        "Compositional": 50,
+        "Lexical": 50,
+        "Mixed Adversarial": 50,
+        "Negation": 50,
+        "Rendering": 50,
+        "Scope": 50,
+        "Temporal": 50
+      },
+      "ground_truth_sha256": "a60157dad1702514cb8b2fe427462d1c2c12fd3befacb7243634a099c368f7bc",
+      "invariance_group_count": 35,
+      "run_id": "Q4",
+      "sanitized_input_sha256": "eeb718a20c9822017d21c3637aaf91e93e96b432b6ac4dba1e61f2ae58395ffc",
+      "seed": 49253,
+      "unknown_required_case_count": 21
+    },
+    {
+      "action_distribution": {
+        "ACT": 70,
+        "ASK": 77,
+        "IGNORE": 35,
+        "NOTIFY": 54,
+        "SUGGEST": 64,
+        "WAIT": 50
+      },
+      "counterfactual_pair_count": 35,
+      "example_count": 350,
+      "family_distribution": {
+        "Compositional": 50,
+        "Lexical": 50,
+        "Mixed Adversarial": 50,
+        "Negation": 50,
+        "Rendering": 50,
+        "Scope": 50,
+        "Temporal": 50
+      },
+      "ground_truth_sha256": "e56a84579f7ccae609a49be0b5cdd91b88f4c44b805604e96bb1c283983c9334",
+      "invariance_group_count": 35,
+      "run_id": "Q5",
+      "sanitized_input_sha256": "bc76aca109261da9637842f1b89b4ebc0d66dfc08b9cf3acb2b5d688441000f7",
+      "seed": 60317,
+      "unknown_required_case_count": 21
+    }
+  ],
+  "run_count": 5,
+  "schema_version": "v7r-1",
+  "total_example_count": 1750
+}

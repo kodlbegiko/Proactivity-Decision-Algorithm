@@ -1,0 +1,488 @@
+{
+  "action": {
+    "accuracy": 0.21944444444444444,
+    "action_disappearance": [
+      "ACT"
+    ],
+    "catastrophic_collapse": false,
+    "forbidden_act": 0,
+    "invalid_action": 0,
+    "macro_f1": 0.13705802930668654,
+    "max_prediction_class_share": 0.6916666666666667,
+    "per_action": {
+      "ACT": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 60
+      },
+      "ASK": {
+        "f1": 0.304,
+        "precision": 0.2923076923076923,
+        "recall": 0.31666666666666665,
+        "support": 60
+      },
+      "IGNORE": {
+        "f1": 0.343042071197411,
+        "precision": 0.21285140562248997,
+        "recall": 0.8833333333333333,
+        "support": 60
+      },
+      "NOTIFY": {
+        "f1": 0.03278688524590164,
+        "precision": 1.0,
+        "recall": 0.016666666666666666,
+        "support": 60
+      },
+      "SUGGEST": {
+        "f1": 0.05263157894736842,
+        "precision": 0.125,
+        "recall": 0.03333333333333333,
+        "support": 60
+      },
+      "WAIT": {
+        "f1": 0.0898876404494382,
+        "precision": 0.13793103448275862,
+        "recall": 0.06666666666666667,
+        "support": 60
+      }
+    },
+    "prediction_distribution": {
+      "ACT": 0,
+      "ASK": 65,
+      "IGNORE": 249,
+      "NOTIFY": 1,
+      "SUGGEST": 16,
+      "WAIT": 29
+    },
+    "single_class_collapse": false,
+    "two_class_collapse": false
+  },
+  "factor": {
+    "act_critical_factor_macro_accuracy": 0.4182539682539682,
+    "critical_factor_unknown_rate": 0.31230158730158736,
+    "exact_latent_state_reconstruction": 0.0,
+    "per_field": {
+      "acknowledged": {
+        "accuracy": 0.5055555555555555,
+        "confidence_brier": 0.33746053121670105,
+        "confusion_labels": [
+          "__FALSE__",
+          "__TRUE__",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            144,
+            167,
+            0
+          ],
+          [
+            0,
+            38,
+            11
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.4660898156961149,
+        "mean_confidence": 0.8008745537243429,
+        "unknown_rate": 0.030555555555555555
+      },
+      "clarification_possible": {
+        "accuracy": 0.9416666666666667,
+        "confidence_brier": 0.08336255411390132,
+        "confusion_labels": [
+          "__FALSE__",
+          "__TRUE__",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            29,
+            21,
+            0
+          ],
+          [
+            0,
+            310,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.8507079523687276,
+        "mean_confidence": 0.7903457420102841,
+        "unknown_rate": 0.0
+      },
+      "completed": {
+        "accuracy": 0.9138888888888889,
+        "confidence_brier": 0.09003561846447575,
+        "confusion_labels": [
+          "__FALSE__",
+          "__TRUE__",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            329,
+            0,
+            0
+          ],
+          [
+            17,
+            0,
+            14
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.4874074074074074,
+        "mean_confidence": 0.8003769755528434,
+        "unknown_rate": 0.03888888888888889
+      },
+      "deferral_available": {
+        "accuracy": 0.6194444444444445,
+        "confidence_brier": 0.24553172357741151,
+        "confusion_labels": [
+          "__FALSE__",
+          "__TRUE__",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            212,
+            21,
+            35
+          ],
+          [
+            39,
+            11,
+            42
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.4971875194232084,
+        "mean_confidence": 0.7561967082426785,
+        "unknown_rate": 0.21388888888888888
+      },
+      "execution_possible": {
+        "accuracy": 0.5333333333333333,
+        "confidence_brier": 0.27733150960303965,
+        "confusion_labels": [
+          "__FALSE__",
+          "__TRUE__",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            25,
+            0,
+            5
+          ],
+          [
+            98,
+            167,
+            65
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.49941478938993433,
+        "mean_confidence": 0.7687205419975867,
+        "unknown_rate": 0.19444444444444445
+      },
+      "information": {
+        "accuracy": 0.23333333333333334,
+        "confidence_brier": 0.46476860006330584,
+        "confusion_labels": [
+          "sufficient",
+          "insufficient",
+          "contradictory",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            67,
+            168,
+            0,
+            86
+          ],
+          [
+            2,
+            16,
+            0,
+            4
+          ],
+          [
+            0,
+            8,
+            1,
+            8
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.20141118832707616,
+        "mean_confidence": 0.7602328092552783,
+        "unknown_rate": 0.2722222222222222
+      },
+      "need": {
+        "accuracy": 0.28055555555555556,
+        "confidence_brier": 0.4423085717296126,
+        "confusion_labels": [
+          "none",
+          "optional",
+          "material",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            60,
+            0,
+            0,
+            1
+          ],
+          [
+            43,
+            0,
+            3,
+            1
+          ],
+          [
+            164,
+            0,
+            41,
+            47
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.2142935618545375,
+        "mean_confidence": 0.7753091505294633,
+        "unknown_rate": 0.1361111111111111
+      },
+      "permission": {
+        "accuracy": 0.2,
+        "confidence_brier": 0.4748448704013373,
+        "confusion_labels": [
+          "not_required",
+          "missing",
+          "granted",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            127,
+            138
+          ],
+          [
+            0,
+            20,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            52,
+            23
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.46981627296587924,
+        "mean_confidence": 0.7640808746486907,
+        "unknown_rate": 0.44722222222222224
+      },
+      "reversibility": {
+        "accuracy": 0.22777777777777777,
+        "confidence_brier": 0.48123161581470675,
+        "confusion_labels": [
+          "reversible",
+          "irreversible",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            35,
+            45,
+            230
+          ],
+          [
+            0,
+            47,
+            3
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.4324351908552766,
+        "mean_confidence": 0.762982591271705,
+        "unknown_rate": 0.6472222222222223
+      },
+      "risk": {
+        "accuracy": 0.6055555555555555,
+        "confidence_brier": 0.23558956936832318,
+        "confusion_labels": [
+          "low",
+          "medium",
+          "high",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            212,
+            0,
+            0,
+            97
+          ],
+          [
+            5,
+            0,
+            0,
+            25
+          ],
+          [
+            10,
+            0,
+            6,
+            5
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.41182974018794916,
+        "mean_confidence": 0.6940376530399377,
+        "unknown_rate": 0.3527777777777778
+      },
+      "side_effect": {
+        "accuracy": 0.8472222222222222,
+        "confidence_brier": 0.1291410977473113,
+        "confusion_labels": [
+          "none",
+          "local",
+          "external",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            195,
+            6,
+            0,
+            43
+          ],
+          [
+            0,
+            59,
+            0,
+            6
+          ],
+          [
+            0,
+            0,
+            51,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.9320249985398049,
+        "mean_confidence": 0.7460633653132482,
+        "unknown_rate": 0.1361111111111111
+      },
+      "urgency": {
+        "accuracy": 0.5805555555555556,
+        "confidence_brier": 0.255390666050958,
+        "confusion_labels": [
+          "none",
+          "normal",
+          "high",
+          "expired",
+          "__UNKNOWN__"
+        ],
+        "confusion_matrix": [
+          [
+            194,
+            0,
+            0,
+            0,
+            63
+          ],
+          [
+            0,
+            15,
+            0,
+            0,
+            28
+          ],
+          [
+            23,
+            0,
+            0,
+            0,
+            23
+          ],
+          [
+            6,
+            5,
+            0,
+            0,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.32113095238095235,
+        "mean_confidence": 0.7689028941386213,
+        "unknown_rate": 0.325
+      }
+    }
+  }
+}

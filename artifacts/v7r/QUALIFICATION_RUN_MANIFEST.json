@@ -1,0 +1,87 @@
+{
+  "branch": "research/candidate-v7-independent-requalification",
+  "fresh_protected_example_count": 1750,
+  "implementation_commit": "ef9d092b6cb40c1bb92bd33352e73db116865d08",
+  "prediction_manifests": {
+    "Q1": {
+      "config_id": "V7A-01",
+      "example_count": 350,
+      "ground_truth_accessed": false,
+      "input_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/protected/Q1/sanitized_input.jsonl",
+      "input_sha256": "94facfb351718e15f94c550e763f8d5b358fd7ff7149b4d1b6be3e802023f3c3",
+      "prediction_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/predictions/Q1.jsonl",
+      "prediction_sha256": "9e308118e7a4258f7f284aff0414e5483cdbe8b43156ca7782c3d7cae0d77d7d",
+      "runner_input_contract": [
+        "example_id",
+        "text"
+      ]
+    },
+    "Q2": {
+      "config_id": "V7A-01",
+      "example_count": 350,
+      "ground_truth_accessed": false,
+      "input_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/protected/Q2/sanitized_input.jsonl",
+      "input_sha256": "c95ce66ca588c48db95607c21e65e173e69c7962b9d5184f90176c1e0ee29d8e",
+      "prediction_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/predictions/Q2.jsonl",
+      "prediction_sha256": "f2fe26571470d7a31f4b66030d5e516003ac120640b7e3d75fdbf6939ba2d9b8",
+      "runner_input_contract": [
+        "example_id",
+        "text"
+      ]
+    },
+    "Q3": {
+      "config_id": "V7A-01",
+      "example_count": 350,
+      "ground_truth_accessed": false,
+      "input_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/protected/Q3/sanitized_input.jsonl",
+      "input_sha256": "f03912b71422e6cbc5f42cc236f32fefae9aa3c827cf862c6d27666374dc1a7d",
+      "prediction_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/predictions/Q3.jsonl",
+      "prediction_sha256": "13a700cb080cf55cf0503b8eeb13bb060e426321d4fccc5f05f294e0f848b9b3",
+      "runner_input_contract": [
+        "example_id",
+        "text"
+      ]
+    },
+    "Q4": {
+      "config_id": "V7A-01",
+      "example_count": 350,
+      "ground_truth_accessed": false,
+      "input_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/protected/Q4/sanitized_input.jsonl",
+      "input_sha256": "eeb718a20c9822017d21c3637aaf91e93e96b432b6ac4dba1e61f2ae58395ffc",
+      "prediction_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/predictions/Q4.jsonl",
+      "prediction_sha256": "ab04b019a59b3c89013bb894b67b31f3636f73169b3f98f8d316b3195018923f",
+      "runner_input_contract": [
+        "example_id",
+        "text"
+      ]
+    },
+    "Q5": {
+      "config_id": "V7A-01",
+      "example_count": 350,
+      "ground_truth_accessed": false,
+      "input_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/protected/Q5/sanitized_input.jsonl",
+      "input_sha256": "bc76aca109261da9637842f1b89b4ebc0d66dfc08b9cf3acb2b5d688441000f7",
+      "prediction_path": "/home/runner/work/Proactivity-Decision-Algorithm/Proactivity-Decision-Algorithm/.v7r_work/predictions/Q5.jsonl",
+      "prediction_sha256": "70048229e802aa51bd2d404da760abd89022020a7f87d29c17a5fa4a621b4c44",
+      "runner_input_contract": [
+        "example_id",
+        "text"
+      ]
+    }
+  },
+  "qualification_run_count": 5,
+  "run_ids": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5"
+  ],
+  "seeds": {
+    "Q1": 17041,
+    "Q2": 27109,
+    "Q3": 38183,
+    "Q4": 49253,
+    "Q5": 60317
+  }
+}

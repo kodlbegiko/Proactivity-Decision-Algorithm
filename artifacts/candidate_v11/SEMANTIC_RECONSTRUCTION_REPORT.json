@@ -1,0 +1,4 @@
+{
+  "development": {"act_critical_factor_accuracy": 1.0, "exact_latent_state_reconstruction": 0.9947107438016529, "mean_factor_accuracy": 0.9995592286501377},
+  "fresh_validation": {"act_critical_factor_accuracy": 1.0, "exact_latent_state_reconstruction": 0.9986666666666667, "mean_factor_accuracy": 0.9998888888888889}
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "2.0.0",
+  "policy_id": "PDA-SPEC-v2",
+  "research_scope": "Specification-grounded intervention control; not human preference ground truth.",
+  "actions": {
+    "IGNORE": "No current intervention and no explicit deferred trigger is required.",
+    "WAIT": "Do not intervene now; a defined future trigger or observation may justify later intervention.",
+    "SUGGEST": "Provide a low-pressure optional recommendation without executing a material side effect.",
+    "NOTIFY": "Surface material information, change, deadline, or risk for awareness.",
+    "ASK": "Request missing information, choice, confirmation, or authorization required before a potentially appropriate intervention or side-effecting action.",
+    "ACT": "Perform an authorized material action only when information, permission, risk, reversibility, and execution constraints are satisfied."
+  },
+  "state_schema": {
+    "permission": {"type": "enum", "values": ["not_required", "missing", "granted"]},
+    "information": {"type": "enum", "values": ["sufficient", "insufficient", "contradictory"]},
+    "urgency": {"type": "enum", "values": ["none", "normal", "high", "expired"]},
+    "need": {"type": "enum", "values": ["none", "optional", "material"]},
+    "side_effect": {"type": "enum", "values": ["none", "local", "external"]},
+    "risk": {"type": "enum", "values": ["low", "medium", "high"]},
+    "reversibility": {"type": "enum", "values": ["reversible", "irreversible"]},
+    "deferral_available": {"type": "boolean"},
+    "execution_possible": {"type": "boolean"},
+    "clarification_possible": {"type": "boolean"},
+    "acknowledged": {"type": "boolean"},
+    "completed": {"type": "boolean"}
+  },
+  "invalid_constraints": [
+    {"id": "I_EXTERNAL_NEEDS_PERMISSION_SCOPE", "when": {"all": [{"field": "side_effect", "op": "eq", "value": "external"}, {"field": "permission", "op": "eq", "value": "not_required"}]}},
+    {"id": "I_NO_SIDE_EFFECT_HAS_NO_PERMISSION_SCOPE", "when": {"all": [{"field": "side_effect", "op": "eq", "value": "none"}, {"field": "permission", "op": "ne", "value": "not_required"}]}}
+  ],
+  "hard_prohibitions": [
+    {"id": "P_ACT_REQUIRES_INFO", "actions": ["ACT"], "when": {"field": "information", "op": "ne", "value": "sufficient"}},
+    {"id": "P_EXTERNAL_ACT_REQUIRES_PERMISSION", "actions": ["ACT"], "when": {"all": [{"field": "side_effect", "op": "eq", "value": "external"}, {"field": "permission", "op": "ne", "value": "granted"}]}},
+    {"id": "P_LOCAL_ACT_REQUIRES_NO_MISSING_PERMISSION", "actions": ["ACT"], "when": {"all": [{"field": "side_effect", "op": "eq", "value": "local"}, {"field": "permission", "op": "eq", "value": "missing"}]}},
+    {"id": "P_ACT_REQUIRES_LOW_RISK", "actions": ["ACT"], "when": {"field": "risk", "op": "ne", "value": "low"}},
+    {"id": "P_ACT_REQUIRES_REVERSIBLE", "actions": ["ACT"], "when": {"field": "reversibility", "op": "ne", "value": "reversible"}},
+    {"id": "P_ACT_REQUIRES_EXECUTION", "actions": ["ACT"], "when": {"field": "execution_possible", "op": "eq", "value": false}},
+    {"id": "P_ACT_REQUIRES_MATERIAL_NEED", "actions": ["ACT"], "when": {"field": "need", "op": "ne", "value": "material"}},
+    {"id": "P_COMPLETED_NO_INTERVENTION", "actions": ["SUGGEST", "NOTIFY", "ASK", "ACT"], "when": {"field": "completed", "op": "eq", "value": true}}
+  ],
+  "selection_rules": [
+    {"id": "R_COMPLETED_IGNORE", "priority": 1000, "action": "IGNORE", "when": {"field": "completed", "op": "eq", "value": true}},
+    {"id": "R_NO_NEED_IGNORE", "priority": 970, "action": "IGNORE", "when": {"all": [{"field": "need", "op": "eq", "value": "none"}, {"field": "deferral_available", "op": "eq", "value": false}]}},
+    {"id": "R_NO_NEED_WAIT", "priority": 960, "action": "WAIT", "when": {"all": [{"field": "need", "op": "eq", "value": "none"}, {"field": "deferral_available", "op": "eq", "value": true}]}},
+    {"id": "R_INFO_GAP_ASK", "priority": 930, "action": "ASK", "when": {"all": [{"field": "information", "op": "ne", "value": "sufficient"}, {"field": "clarification_possible", "op": "eq", "value": true}, {"field": "need", "op": "ne", "value": "none"}]}},
+    {"id": "R_UNRESOLVED_INFO_URGENT_NOTIFY", "priority": 920, "action": "NOTIFY", "when": {"all": [{"field": "information", "op": "ne", "value": "sufficient"}, {"field": "clarification_possible", "op": "eq", "value": false}, {"field": "urgency", "op": "in", "value": ["high", "expired"]}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_UNRESOLVED_INFO_WAIT", "priority": 910, "action": "WAIT", "when": {"all": [{"field": "information", "op": "ne", "value": "sufficient"}, {"field": "clarification_possible", "op": "eq", "value": false}]}},
+    {"id": "R_ACKNOWLEDGED_WAIT", "priority": 880, "action": "WAIT", "when": {"all": [{"field": "acknowledged", "op": "eq", "value": true}, {"field": "urgency", "op": "not_in", "value": ["high", "expired"]}, {"field": "deferral_available", "op": "eq", "value": true}, {"field": "need", "op": "ne", "value": "none"}]}},
+    {"id": "R_EXPIRED_MATERIAL_NOTIFY", "priority": 850, "action": "NOTIFY", "when": {"all": [{"field": "urgency", "op": "eq", "value": "expired"}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_EXTERNAL_PERMISSION_ASK", "priority": 820, "action": "ASK", "when": {"all": [{"field": "side_effect", "op": "eq", "value": "external"}, {"field": "permission", "op": "eq", "value": "missing"}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_LOCAL_PERMISSION_ASK", "priority": 810, "action": "ASK", "when": {"all": [{"field": "side_effect", "op": "eq", "value": "local"}, {"field": "permission", "op": "eq", "value": "missing"}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_SIDE_EFFECT_HIGH_RISK_ASK", "priority": 790, "action": "ASK", "when": {"all": [{"field": "side_effect", "op": "ne", "value": "none"}, {"field": "risk", "op": "eq", "value": "high"}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_SIDE_EFFECT_MEDIUM_RISK_ASK", "priority": 780, "action": "ASK", "when": {"all": [{"field": "side_effect", "op": "ne", "value": "none"}, {"field": "risk", "op": "eq", "value": "medium"}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_IRREVERSIBLE_ASK", "priority": 770, "action": "ASK", "when": {"all": [{"field": "side_effect", "op": "ne", "value": "none"}, {"field": "reversibility", "op": "eq", "value": "irreversible"}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_EXTERNAL_SAFE_ACT", "priority": 740, "action": "ACT", "when": {"all": [{"field": "side_effect", "op": "eq", "value": "external"}, {"field": "permission", "op": "eq", "value": "granted"}, {"field": "information", "op": "eq", "value": "sufficient"}, {"field": "risk", "op": "eq", "value": "low"}, {"field": "reversibility", "op": "eq", "value": "reversible"}, {"field": "execution_possible", "op": "eq", "value": true}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_LOCAL_SAFE_ACT", "priority": 730, "action": "ACT", "when": {"all": [{"field": "side_effect", "op": "eq", "value": "local"}, {"field": "permission", "op": "in", "value": ["not_required", "granted"]}, {"field": "information", "op": "eq", "value": "sufficient"}, {"field": "risk", "op": "eq", "value": "low"}, {"field": "reversibility", "op": "eq", "value": "reversible"}, {"field": "execution_possible", "op": "eq", "value": true}, {"field": "need", "op": "eq", "value": "material"}]}},
+    {"id": "R_URGENT_MATERIAL_NOTIFY", "priority": 700, "action": "NOTIFY", "when": {"all": [{"field": "need", "op": "eq", "value": "material"}, {"field": "urgency", "op": "eq", "value": "high"}]}},
+    {"id": "R_NORMAL_MATERIAL_NOTIFY", "priority": 680, "action": "NOTIFY", "when": {"all": [{"field": "need", "op": "eq", "value": "material"}, {"field": "urgency", "op": "eq", "value": "normal"}]}},
+    {"id": "R_DEFER_MATERIAL_WAIT", "priority": 650, "action": "WAIT", "when": {"all": [{"field": "need", "op": "eq", "value": "material"}, {"field": "urgency", "op": "eq", "value": "none"}, {"field": "deferral_available", "op": "eq", "value": true}]}},
+    {"id": "R_MATERIAL_SUGGEST", "priority": 620, "action": "SUGGEST", "when": {"field": "need", "op": "eq", "value": "material"}},
+    {"id": "R_OPTIONAL_SUGGEST", "priority": 500, "action": "SUGGEST", "when": {"field": "need", "op": "eq", "value": "optional"}},
+    {"id": "R_FALLBACK_IGNORE", "priority": 0, "action": "IGNORE", "when": {"always": true}}
+  ],
+  "invariants": [
+    {"id": "INV_ACT_PERMISSION", "description": "External ACT requires granted permission; local ACT cannot have missing permission."},
+    {"id": "INV_ACT_INFO", "description": "ACT requires sufficient information."},
+    {"id": "INV_ACT_LOW_RISK", "description": "ACT requires low risk."},
+    {"id": "INV_ACT_REVERSIBLE", "description": "ACT requires reversible action."},
+    {"id": "INV_ACT_EXECUTABLE", "description": "ACT requires execution_possible=true."},
+    {"id": "INV_COMPLETED_SILENT", "description": "Completed states cannot select SUGGEST, NOTIFY, ASK, or ACT."},
+    {"id": "INV_PERMISSION_REMOVAL", "description": "Removing required external permission from an ACT state must disable ACT."},
+    {"id": "INV_RISK_INCREASE", "description": "Increasing risk from an ACT state must disable ACT."},
+    {"id": "INV_INFORMATION_DEGRADATION", "description": "Degrading sufficient information from an ACT state must disable ACT."}
+  ],
+  "precedence_edges": []
+}

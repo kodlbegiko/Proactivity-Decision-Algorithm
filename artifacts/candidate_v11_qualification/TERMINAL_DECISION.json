@@ -1,0 +1,19 @@
+{
+  "candidate": "Candidate-v11B",
+  "candidate_mutation": false,
+  "candidate_source_freeze_commit": "a59ea722d9d9c3b8bc83fc0a36e33f708c996b21",
+  "candidate_v11_development_example_access_during_protected_generation": "NONE",
+  "existing_repository_regression": "PASS",
+  "next_scientifically_authorized_action": "Terminate Candidate-v11 and start a new Candidate-v12 architecture-development lineage using only declassified aggregate/family-level findings.",
+  "preregistration_commit": "abad0007dd91ea8fd8dae887dddba8b159af8c28",
+  "preregistration_hash": "86437e3a8498d04ca14b080436d449e3376f88dabab9d15f4bf6f6cf713a0436",
+  "protected_examples": 2100,
+  "protected_raw_example_access_by_candidate_runner": "NONE",
+  "qualification_branch": "research/candidate-v11-independent-qualification",
+  "qualification_evidence_valid": true,
+  "qualification_infrastructure_tests": "PASS",
+  "qualification_runs": 5,
+  "research_integrity": "PASS",
+  "terminal_state": "CANDIDATE_V11 QUALIFICATION FAIL — LINEAGE_TERMINATED",
+  "v7r_protected_raw_example_access": "NONE"
+}

@@ -1,0 +1,25 @@
+{
+  "mission":"Candidate-v12 Architecture Development",
+  "status":"FROZEN",
+  "selected_architecture":"D_compositional_semantic_frame_resolver",
+  "source_commit":"e8ed2afa0171734450b4d56e04420b4cb1007423",
+  "source_file_hashes":{
+    "src/proactivity/candidate_v12.py":"64810128af5e07946972c0c2de75c6988931c8e3",
+    "src/proactivity/candidate_v12_frames.py":"6243698ac62b74066696de7a6ff65e924ef44cbd",
+    "src/proactivity/candidate_v12_final_v2.py":"75252352388e326a71c7ddbb7002b4bab45ca98c"
+  },
+  "ontology_hash":"28d7ab86922a4b40e030f2f21f42359d68beed30",
+  "policy_hash":"e343554b0d003b90d2179466654ffc3c6858e54a",
+  "architecture_hash":"6243698ac62b74066696de7a6ff65e924ef44cbd",
+  "development_harness_hash":"75252352388e326a71c7ddbb7002b4bab45ca98c",
+  "requirements_hash":"0df9360e3832803c4a1f61f4c91e79ec491da150",
+  "dependency_versions":{"python_validation":["3.10","3.11","3.12"],"aggregate_python":"3.11.15","pytest":"8.4.2","scikit_learn":"1.7.1","numpy":"2.4.6","scipy":"1.17.1","joblib":"1.5.3"},
+  "selected_development_metrics":{"macro_f1":1.0,"exact_latent_state_reconstruction":1.0,"mean_factor_accuracy":1.0,"act_critical_factor_accuracy":1.0,"critical_unknown_rate":0.0,"false_unknown_rate":0.0,"legitimate_unknown_recall":1.0,"counterfactual_exact_pair":1.0,"latent_state_invariance":1.0,"action_invariance":1.0,"act_precision":1.0,"act_recall":1.0,"forbidden_act":0,"invalid_action":0,"policy_oracle_macro_f1":1.0,"policy_oracle_gap":0.0,"worst_seed_macro_f1":1.0},
+  "data_provenance_summary":"fresh state-first synthetic final-v2; protected V11Q raw data unused",
+  "integrity_audit":"PASS",
+  "repository_regression":"PASS",
+  "safe_ci_run_id":31932391905,
+  "protected_v11q_raw_access":"NONE",
+  "candidate_v11_mutation":false,
+  "independent_qualification_run":false
+}

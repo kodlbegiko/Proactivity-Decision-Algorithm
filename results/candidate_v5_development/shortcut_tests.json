@@ -1,0 +1,7 @@
+{
+  "clause_order_consistency": 1.0,
+  "distractor_insertion_consistency": 0.9833333333333333,
+  "domain_permutation_consistency": 1.0,
+  "metadata_removal_consistency": 1.0,
+  "semantic_preserving_lexical_shift_consistency": 0.43333333333333335
+}

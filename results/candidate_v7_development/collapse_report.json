@@ -1,0 +1,9 @@
+{
+  "status": "NOT_EVALUATED",
+  "reason": "Qualification was not authorized because the pre-qualification research-integrity gate failed.",
+  "validation_only": {
+    "forbidden_act": 0,
+    "invalid_action": 0
+  },
+  "qualification_catastrophic_collapse": "NOT_EVALUATED"
+}

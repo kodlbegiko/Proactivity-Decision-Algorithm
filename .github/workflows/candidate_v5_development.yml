@@ -1,0 +1,218 @@
+name: Candidate-v5 Semantic Generalization Development
+
+on:
+  push:
+    branches:
+      - research/candidate-v5-semantic-generalization
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: candidate-v5-semantic-generalization
+  cancel-in-progress: false
+
+env:
+  PYTHONPATH: src
+  TOKENIZERS_PARALLELISM: "false"
+  OMP_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+  CANDIDATE_V5_PREREG: d064d8cf66e2354d38e0b0b69ba5bffd6ff386ef
+  CANDIDATE_V5_BASE: 370aac305c14c4ddc2fa2f782cbb3f0fdde4f630
+
+jobs:
+  authoritative:
+    name: Authoritative Candidate-v5 development qualification
+    runs-on: ubuntu-latest
+    outputs:
+      dataset_freeze: ${{ steps.refs.outputs.dataset_freeze }}
+      selection_commit: ${{ steps.refs.outputs.selection_commit }}
+      qualification_commit: ${{ steps.refs.outputs.qualification_commit }}
+      terminal_commit: ${{ steps.refs.outputs.terminal_commit }}
+      terminal_state: ${{ steps.refs.outputs.terminal_state }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: research/candidate-v5-semantic-generalization
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install pinned semantic runtime
+        run: |
+          python -m pip install --disable-pip-version-check "scikit-learn==1.7.1" "sentence-transformers==5.1.0"
+      - name: Verify chronology, syntax, and research-integrity boundary
+        run: |
+          git merge-base --is-ancestor "$CANDIDATE_V5_BASE" "$CANDIDATE_V5_PREREG"
+          git merge-base --is-ancestor "$CANDIDATE_V5_PREREG" HEAD
+          python -m py_compile src/proactivity/candidate_v5.py src/proactivity/candidate_v5_data.py src/proactivity/candidate_v5_metrics.py src/proactivity/candidate_v5_evaluate.py scripts/check_candidate_v5_research_integrity.py
+          python scripts/check_candidate_v5_research_integrity.py
+      - name: Generate fresh development-safe datasets
+        run: |
+          test ! -e data/candidate_v5_development/manifest.json
+          python -m proactivity.candidate_v5_data --output data/candidate_v5_development --seed 20260815
+          python - <<'PY'
+          import json, hashlib
+          from pathlib import Path
+          m=json.loads(Path('data/candidate_v5_development/manifest.json').read_text())
+          expected={'train.jsonl':2400,'validation.jsonl':600,'development_ood.jsonl':600,'lexical_holdout.jsonl':360,'rendering_holdout.jsonl':360,'compositional_holdout.jsonl':360,'negation.jsonl':240,'counterfactual.jsonl':256,'invariance.jsonl':240}
+          for n,c in expected.items():
+              assert m['files'][n]['records']==c,(n,m['files'][n]['records'],c)
+              assert hashlib.sha256((Path('data/candidate_v5_development')/n).read_bytes()).hexdigest()==m['files'][n]['sha256']
+          assert m['files']['counterfactual.jsonl']['pairs']>=120
+          assert m['files']['invariance.jsonl']['pairs']>=120
+          assert m['quarantine']['candidate_v3_protected_access']==0
+          assert m['quarantine']['candidate_v4_protected_access']==0
+          assert m['quarantine']['candidate_v4_development_corpus_reused'] is False
+          PY
+      - name: Freeze datasets before architecture search
+        id: dataset
+        run: |
+          git config user.name candidate-v5-development-bot
+          git config user.email candidate-v5-development-bot@users.noreply.github.com
+          git add data/candidate_v5_development
+          git commit -m "freeze Candidate-v5 fresh development datasets [skip ci]"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v5-semantic-generalization
+      - name: Run bounded architecture search on validation only
+        run: |
+          python -m proactivity.candidate_v5_evaluate search
+      - name: Freeze selected Candidate-v5 configuration before holdouts
+        id: selection
+        run: |
+          git add results/candidate_v5_development/architecture_search.json results/candidate_v5_development/selected_candidate.json results/candidate_v5_development/validation_metrics.json
+          git commit -m "freeze Candidate-v5 selected validation configuration [skip ci]"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v5-semantic-generalization
+      - name: Evaluate frozen selection on all preregistered holdouts
+        run: |
+          python -m proactivity.candidate_v5_evaluate qualify
+      - name: Commit qualification evidence without rescue
+        id: qualification
+        run: |
+          git add results/candidate_v5_development docs/candidate_v5_development_report.md
+          git commit -m "record Candidate-v5 frozen holdout qualification evidence [skip ci]"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v5-semantic-generalization
+      - name: Create PASS freeze or FAIL terminal evidence
+        env:
+          DATASET_FREEZE: ${{ steps.dataset.outputs.sha }}
+          SELECTION_COMMIT: ${{ steps.selection.outputs.sha }}
+          QUALIFICATION_COMMIT: ${{ steps.qualification.outputs.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib,json,os,subprocess
+          from pathlib import Path
+          q=json.loads(Path('results/candidate_v5_development/qualification_decision.json').read_text())
+          r=json.loads(Path('results/candidate_v5_development/reproducibility.json').read_text())
+          s=json.loads(Path('results/candidate_v5_development/selected_candidate.json').read_text())
+          state=q['terminal_state']
+          source_commit=subprocess.check_output(['git','log','-n','1','--format=%H','--','src/proactivity/candidate_v5.py'],text=True).strip()
+          val=q['validation']['action']
+          payload={
+            'schema_version':1,'terminal_state':state,'branch':'research/candidate-v5-semantic-generalization',
+            'base_commit':os.environ['CANDIDATE_V5_BASE'],'preregistration_commit':os.environ['CANDIDATE_V5_PREREG'],
+            'dataset_freeze_commit':os.environ['DATASET_FREEZE'],'selection_commit':os.environ['SELECTION_COMMIT'],
+            'candidate_source_commit':source_commit,'candidate_source_sha256':hashlib.sha256(Path('src/proactivity/candidate_v5.py').read_bytes()).hexdigest(),
+            'qualification_commit':os.environ['QUALIFICATION_COMMIT'],'ci_run':int(os.environ['GITHUB_RUN_ID']),
+            'selected_candidate':s['architecture'],'selected_architecture':s['architecture'],'selected_config':s['config'],
+            'model_encoder':s['model_identity']['model_id'],'model_revision':s['model_identity'].get('resolved_revision','UNKNOWN'),
+            'validation_accuracy':val['accuracy'],'validation_macro_f1':val['macro_f1'],
+            'development_ood_macro_f1':q['development_ood']['action']['macro_f1'],
+            'lexical_holdout_macro_f1':q['lexical_holdout']['action']['macro_f1'],
+            'rendering_holdout_macro_f1':q['rendering_holdout']['action']['macro_f1'],
+            'compositional_holdout_macro_f1':q['compositional_holdout']['action']['macro_f1'],
+            'counterfactual_exact_pair':q['counterfactual']['exact_pair_correctness'],
+            'invariance_consistency':q['invariance']['action_consistency'],
+            'act_critical_factor_accuracy':q['latent_recovery']['act_critical_factor_macro_accuracy'],
+            'critical_unknown_rate':q['latent_recovery']['critical_factor_unknown_rate'],
+            'prediction_distribution':val['prediction_distribution'],
+            'per_action_recall':{a:val['per_action'][a]['recall'] for a in ('ACT','ASK','IGNORE','NOTIFY','SUGGEST','WAIT')},
+            'forbidden_act':sum(q['safety']['forbidden_act_by_split'].values())+q['safety']['counterfactual_forbidden_act'],
+            'invalid_action':sum(q[n]['action']['invalid_action'] for n in ('development_ood','lexical_holdout','rendering_holdout','compositional_holdout','negation')),
+            'collapse_detected':any(v['catastrophic_collapse'] for v in q['collapse'].values()),
+            'protected_leakage':'NONE_DETECTED','candidate_v3_protected_access':0,'candidate_v4_protected_access':0,
+            'candidate_v4_development_corpus_reused':False,'reproducibility':'PENDING_MATRIX_VERIFICATION',
+            'gate_g':'NOT EXECUTED / NOT AUTHORIZED','gate_h':'NOT EXECUTED',
+            'criteria':q['criteria'],
+          }
+          Path('gate_recovery_v5').mkdir(exist_ok=True)
+          out=Path('gate_recovery_v5/freeze.json' if state.startswith('CANDIDATE V5 DEVELOPMENT PASS') else 'gate_recovery_v5/terminal.json')
+          out.write_text(json.dumps(payload,ensure_ascii=False,sort_keys=True,indent=2)+'\n')
+          PY
+      - name: Freeze terminal evidence
+        id: terminal
+        run: |
+          git add gate_recovery_v5
+          git commit -m "freeze Candidate-v5 development terminal evidence [skip ci]"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v5-semantic-generalization
+      - name: Export authoritative refs
+        id: refs
+        run: |
+          state=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('gate_recovery_v5/freeze.json') if Path('gate_recovery_v5/freeze.json').exists() else Path('gate_recovery_v5/terminal.json')
+          print(json.loads(p.read_text())['terminal_state'])
+          PY
+          )
+          echo "dataset_freeze=${{ steps.dataset.outputs.sha }}" >> "$GITHUB_OUTPUT"
+          echo "selection_commit=${{ steps.selection.outputs.sha }}" >> "$GITHUB_OUTPUT"
+          echo "qualification_commit=${{ steps.qualification.outputs.sha }}" >> "$GITHUB_OUTPUT"
+          echo "terminal_commit=${{ steps.terminal.outputs.sha }}" >> "$GITHUB_OUTPUT"
+          echo "terminal_state=$state" >> "$GITHUB_OUTPUT"
+
+  reproduce:
+    name: Reproducibility Python ${{ matrix.python }}
+    needs: authoritative
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/candidate-v5-semantic-generalization
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify quarantine and source identities
+        run: |
+          python scripts/check_candidate_v5_research_integrity.py
+          python -m py_compile src/proactivity/candidate_v5_data.py scripts/check_candidate_v5_research_integrity.py
+      - name: Regenerate development datasets byte-identically
+        run: |
+          rm -rf /tmp/candidate_v5_regen
+          python -m proactivity.candidate_v5_data --output /tmp/candidate_v5_regen --seed 20260815 >/tmp/generation.json
+          diff -qr data/candidate_v5_development /tmp/candidate_v5_regen
+      - name: Verify terminal evidence and source hash
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('gate_recovery_v5/freeze.json') if Path('gate_recovery_v5/freeze.json').exists() else Path('gate_recovery_v5/terminal.json')
+          t=json.loads(p.read_text()); r=json.loads(Path('results/candidate_v5_development/reproducibility.json').read_text())
+          h=hashlib.sha256(Path('src/proactivity/candidate_v5.py').read_bytes()).hexdigest()
+          assert h==t['candidate_source_sha256']==r['candidate_source_sha256']
+          assert t['candidate_v3_protected_access']==0 and t['candidate_v4_protected_access']==0
+          assert t['candidate_v4_development_corpus_reused'] is False
+          assert t['preregistration_commit']=='d064d8cf66e2354d38e0b0b69ba5bffd6ff386ef'
+          assert Path('results/candidate_v5_development/qualification_decision.json').exists()
+          PY
+
+  terminal:
+    name: Candidate-v5 terminal summary
+    needs: [authoritative, reproduce]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Terminal State: ${{ needs.authoritative.outputs.terminal_state }}"
+          echo "Dataset Freeze: ${{ needs.authoritative.outputs.dataset_freeze }}"
+          echo "Selection Commit: ${{ needs.authoritative.outputs.selection_commit }}"
+          echo "Qualification Commit: ${{ needs.authoritative.outputs.qualification_commit }}"
+          echo "Terminal Evidence Commit: ${{ needs.authoritative.outputs.terminal_commit }}"

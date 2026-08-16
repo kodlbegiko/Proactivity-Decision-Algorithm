@@ -1,0 +1,49 @@
+{
+  "builder_sha256": "5fa22fcc73a561738365931989801323e18f078b126c1d1c557499ed063df49f",
+  "candidate_source_freeze_commit": "a59ea722d9d9c3b8bc83fc0a36e33f708c996b21",
+  "construction_attempt": 0,
+  "incidents": [],
+  "prediction_freeze": {
+    "ground_truth_permissions_during_candidate_execution": "000",
+    "runs": {
+      "Q1": {
+        "prediction_sha256": "542b1f2dd0ef4b5230b819b4227b2911315d79211dee0925503d5aef235a6fde",
+        "predictions_frozen_before_ground_truth_unlock": true,
+        "runner_input_sha256": "a71c810d5a22877b24d5fe1ba81c0d925864a5747cab27cc81747f1be0fb5215"
+      },
+      "Q2": {
+        "prediction_sha256": "d131d780ace749300ba5c2bbfca720b92f106a63f03fd7d05031d2c2ba8f2519",
+        "predictions_frozen_before_ground_truth_unlock": true,
+        "runner_input_sha256": "61de9369121a842b0804df0a46ffebfb6416491181baf8694e541c7823548a2d"
+      },
+      "Q3": {
+        "prediction_sha256": "9633d97b898aaafae52aed8427f4a7beb0ac41efc79e83d11167bd5c9d207c34",
+        "predictions_frozen_before_ground_truth_unlock": true,
+        "runner_input_sha256": "65585a29156bc6bf657542f39a0b0e30845a8108c25a5d7379ee25c264be9537"
+      },
+      "Q4": {
+        "prediction_sha256": "4fbef1804db147419835c2efd6a8e5eb833c8c42b2a97c35a2b1572a5b16bde7",
+        "predictions_frozen_before_ground_truth_unlock": true,
+        "runner_input_sha256": "195ae8864fd0b66dee375575ca79302f2f06d1afb529f1caf097d643a61bdce2"
+      },
+      "Q5": {
+        "prediction_sha256": "7cc99dba2c0f64d18950f187a9625bcec7797200f6a6bbb750c5a736b87e8d7f",
+        "predictions_frozen_before_ground_truth_unlock": true,
+        "runner_input_sha256": "291509c15d62803aa62244e15f327c443e64bd18d1e55cd7337e737b64be85e5"
+      }
+    }
+  },
+  "preregistration_json_sha256": "86437e3a8498d04ca14b080436d449e3376f88dabab9d15f4bf6f6cf713a0436",
+  "protected_manifest_sha256": "b2dc4c53822bc8521b8d0f54bdd5d664aa727c5401ac737f6e4c935d60d2f690",
+  "protocol": "V11Q-1",
+  "raw_protected_data_committed": false,
+  "runner_sha256": "5b9f8befa0150c0c67dacfcbfe61450184205364e1dc47d722217313cc2c01e1",
+  "scorer_sha256": "7905dcec2386b5dd045881f0df46949a6fea56f9de221c121095c99acca83542",
+  "seeds": {
+    "Q1": 6101,
+    "Q2": 6203,
+    "Q3": 6307,
+    "Q4": 6413,
+    "Q5": 6521
+  }
+}

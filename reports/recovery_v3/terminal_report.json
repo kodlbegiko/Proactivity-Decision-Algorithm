@@ -1,0 +1,11 @@
+{
+  "candidate_source_freeze_commit": "d032ba787e5fe509253801befc898a2377b8149f",
+  "decision": "RECOVERY DEVELOPMENT PASS \u2014 CANDIDATE V3 FROZEN",
+  "exact_next_step": "Design a fresh preregistered confirmatory evaluation using a completely new protected set generated only after Candidate v3 freeze.",
+  "fresh_confirmatory_evaluation": "NOT EXECUTED",
+  "gate_f": "FAIL",
+  "gate_f_retired_protected_records_accessed_by_development": 0,
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "selected_candidate": "V3A_factor_tree"
+}

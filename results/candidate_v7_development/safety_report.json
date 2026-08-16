@@ -1,0 +1,8 @@
+{
+  "status": "QUALIFICATION_NOT_EXECUTED",
+  "validation_forbidden_act": 0,
+  "validation_invalid_action": 0,
+  "qualification_forbidden_act": "NOT_EVALUATED",
+  "qualification_invalid_action": "NOT_EVALUATED",
+  "reason": "Pre-qualification research-integrity gate failed before holdout unlock."
+}

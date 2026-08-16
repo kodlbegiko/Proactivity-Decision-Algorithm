@@ -1,0 +1,12 @@
+{
+  "mission": "Candidate-v12 Independent Qualification",
+  "branch": "research/candidate-v12-independent-qualification",
+  "base_commit": "7fe5c915c8139888bc4925282d11b42a223cbf25",
+  "preregistration_commit": "c7b8e3ef57e28c09a3d4f0d74e58e767cf39cebd",
+  "phase_reached": "Q0_IDENTITY_VERIFICATION_STOP",
+  "protected_generation_started": false,
+  "protected_dataset_spent": false,
+  "candidate_mutation": false,
+  "terminal_reason": "FROZEN_CANDIDATE_IDENTITY_MISMATCH",
+  "terminal_state": "CANDIDATE_V12 QUALIFICATION INVALID — EVALUATION_INTEGRITY_FAILURE"
+}

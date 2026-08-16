@@ -1,0 +1,177 @@
+name: candidate-v11-independent-qualification
+
+on:
+  push:
+    branches:
+      - research/candidate-v11-independent-qualification
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: candidate-v11-independent-qualification-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    outputs:
+      phase: ${{ steps.phase.outputs.phase }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: phase
+        shell: bash
+        run: |
+          if [ -f artifacts/candidate_v11_qualification/TERMINAL_DECISION.json ]; then
+            echo "phase=terminal" >> "$GITHUB_OUTPUT"
+          elif [ ! -f evaluation/v11q/preregistration/V11Q_PREREGISTRATION.json ] && [ ! -f evaluation/v11q/PRECHECKED ]; then
+            echo "phase=precheck" >> "$GITHUB_OUTPUT"
+          elif [ ! -f evaluation/v11q/preregistration/V11Q_PREREGISTRATION.json ] && [ -f evaluation/v11q/PRECHECKED ]; then
+            echo "phase=freeze" >> "$GITHUB_OUTPUT"
+          elif [ ! -f evaluation/v11q/AUTHORIZED ]; then
+            echo "phase=wait" >> "$GITHUB_OUTPUT"
+          else
+            echo "phase=run" >> "$GITHUB_OUTPUT"
+          fi
+
+  precheck:
+    needs: control
+    if: needs.control.outputs.phase == 'precheck'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONPATH: "src:."
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile V11Q infrastructure
+        run: python -m py_compile evaluation/v11q/*.py tests/test_candidate_v11_qualification.py
+      - name: Pre-preregistration infrastructure tests
+        run: >-
+          python -m pytest -q tests/test_candidate_v11_qualification.py
+          -k "not preregistration_before_authorization_and_seed_freeze and not candidate_immutable_hash"
+
+  preregister:
+    needs: control
+    if: needs.control.outputs.phase == 'freeze'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONPATH: "src:."
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Freeze immutable candidate and preregistration
+        run: python -m evaluation.v11q.orchestrate freeze
+      - name: Commit preregistration before any protected realization
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evaluation/v11q/CANDIDATE_IMMUTABLE_MANIFEST.json evaluation/v11q/preregistration artifacts/candidate_v11_qualification
+          git commit -m "qualification: preregister protected evaluation protocol"
+          git push origin HEAD:research/candidate-v11-independent-qualification
+
+  regression:
+    needs: control
+    if: needs.control.outputs.phase == 'run'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONPATH: "src:."
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Materialize frozen V7R runtime only inside regression job
+        shell: bash
+        run: |
+          cat evaluation/v7r/runtime_bundle.b64.part* | base64 --decode > /tmp/v7r_runtime.tar.gz
+          echo "8f4464ba7d127732436e1e3e350f8a8b0f0daf6e391daf516edc7baa3267a9d5  /tmp/v7r_runtime.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/v7r_runtime.tar.gz -C .
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install repository test dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Prepare deterministic repository regression fixtures
+        shell: bash
+        run: |
+          python scripts/generate_development_v1.py
+          sha256sum -c data/development/development_v1.sha256
+          python scripts/build_annotation_packets.py --validate-only
+          PYTHONPATH=src python scripts/generate_development_v2.py
+          sha256sum -c data/development/development_v2.sha256
+          PYTHONPATH=src python scripts/validate_development_v2.py
+          rm -rf data/benchmark_v2
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir data/benchmark_v2
+      - name: Complete repository regression suite
+        run: python -m pytest -q
+
+  qualification:
+    needs: [control, regression]
+    if: always() && needs.control.outputs.phase == 'run' && needs.regression.result == 'success'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONPATH: "src:."
+      V11Q_REGRESSION_STATUS: "PASS"
+      V11Q_TEST_STATUS: "PASS"
+      V11Q_WORKSPACE: "/tmp/v11q-protected"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install qualification dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Verify frozen protocol before protected realization
+        run: python -m evaluation.v11q.orchestrate verify
+      - name: Qualification-specific tests in V7R-free job
+        run: python -m pytest -q tests/test_candidate_v11_qualification.py
+      - name: Execute immutable Q1-Q5 protected qualification
+        run: python -m evaluation.v11q.orchestrate execute
+      - name: Commit only non-sensitive terminal evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/candidate_v11_qualification
+          git commit -m "qualification: publish candidate-v11 protected terminal decision"
+          git push origin HEAD:research/candidate-v11-independent-qualification
+      - name: Upload non-sensitive qualification audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-v11-qualification-audit
+          path: artifacts/candidate_v11_qualification
+          retention-days: 30
+          if-no-files-found: error
+
+  terminal-guard:
+    needs: control
+    if: needs.control.outputs.phase == 'terminal'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Terminal evidence already exists; qualification rerun is intentionally suppressed."
+
+  preregistered-wait:
+    needs: control
+    if: needs.control.outputs.phase == 'wait'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "V11Q is preregistered and frozen; execution awaits the separate AUTHORIZED chronology marker."
