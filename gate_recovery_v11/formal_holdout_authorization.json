@@ -1,0 +1,11 @@
+{
+  "candidate": "Candidate-v11",
+  "authorized": true,
+  "selected_architecture": "V11-A",
+  "candidate_freeze_commit": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
+  "candidate_freeze_blob": "da631df11fd7c99733dc6e71a4cd2bf0b33c9723",
+  "holdout_order": ["H1","H2","H3","H4","H5","H6","H7","H8","H9","H10","H11","H12","H13","H14","H15","H16"],
+  "fail_fast": true,
+  "individual_failed_rows_may_be_inspected": false,
+  "formal_holdout_roots_materialized_before_freeze": false
+}

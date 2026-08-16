@@ -1,0 +1,15 @@
+{
+  "candidate": "Candidate-v11",
+  "authorized": true,
+  "authorization_scope": "single preregistered development qualification run",
+  "base_sha": "0bed752075356b94cf823a172ec86382f558fa17",
+  "preregistration_commit": "25ed20b5e8f53d3506275fd12cc688dcb1e80701",
+  "split_inventory_commit": "16fd1d777bb219fa73af8a738cfba75a26c60cbb",
+  "implementation_head_before_authorization": "a8cd436ff9dfa8c63f0319317d894da0c606fb3b",
+  "seeds_frozen": true,
+  "sizes_frozen": true,
+  "thresholds_frozen": true,
+  "architecture_selection_rule_frozen": true,
+  "candidate_v10_individual_failed_evidence_accessed": false,
+  "rerun_on_scientific_failure_allowed": false
+}
