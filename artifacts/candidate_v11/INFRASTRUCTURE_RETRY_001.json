@@ -1,0 +1,15 @@
+{
+  "retry_id": "INFRASTRUCTURE_RETRY_001",
+  "workflow_run_id": 31927021540,
+  "job_id": 95116078441,
+  "failure_class": "dependency_failure",
+  "failure": "python -m pytest -q failed before test collection because pytest was not installed",
+  "evidence": "No module named pytest",
+  "protected_labels_exposed": false,
+  "candidate_mutated": false,
+  "scientific_parameters_changed": false,
+  "validation_seed_changed": false,
+  "thresholds_changed": false,
+  "authorized_retry": true,
+  "remediation": "install pytest in CI before running the unchanged full regression suite and frozen Candidate-v11 check"
+}
