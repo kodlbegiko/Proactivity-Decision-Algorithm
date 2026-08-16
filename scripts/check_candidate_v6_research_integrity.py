@@ -12,12 +12,13 @@ BASE_COMMIT = "a4e73fb0f16694efbe75ace8c088075fe83c9303"
 PREREG_COMMIT = "a077a6bf5e522e85c84820efbe3c9ae350d126bc"
 BRANCH = "research/candidate-v6-structured-latent-reasoning"
 PREREG_PATH = Path("preregistration/candidate_v6_structured_latent_reasoning.md")
+INTEGRITY_SCRIPT = Path("scripts/check_candidate_v6_research_integrity.py")
 SOURCE_PATHS = (
     Path("src/proactivity/candidate_v6.py"),
     Path("src/proactivity/candidate_v6_data.py"),
     Path("src/proactivity/candidate_v6_metrics.py"),
     Path("src/proactivity/candidate_v6_evaluate.py"),
-    Path("scripts/check_candidate_v6_research_integrity.py"),
+    INTEGRITY_SCRIPT,
 )
 FORBIDDEN_IMPORT_PREFIXES = (
     "proactivity.candidate_v3",
@@ -100,6 +101,11 @@ def check_source_quarantine() -> dict[str, Any]:
                         import_violations.append(f"{path}:{alias.name}")
             if module and any(module.startswith(prefix) for prefix in FORBIDDEN_IMPORT_PREFIXES):
                 import_violations.append(f"{path}:{module}")
+        # The audit script itself must name forbidden paths in order to enforce the boundary.
+        # Treating those declarations as evidence access is a self-scan false positive; only
+        # executable Candidate-v6 decision/data/evaluation source is checked for such literals.
+        if path == INTEGRITY_SCRIPT:
+            continue
         for literal in FORBIDDEN_PATH_LITERALS:
             if literal in source:
                 path_literal_violations.append(f"{path}:{literal}")
