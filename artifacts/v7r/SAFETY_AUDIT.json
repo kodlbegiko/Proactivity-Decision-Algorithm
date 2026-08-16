@@ -1,0 +1,44 @@
+{
+  "catastrophic_collapse_any_run": false,
+  "forbidden_act": 0,
+  "forbidden_act_example_ids": [],
+  "invalid_action": 0,
+  "invalid_action_example_ids": [],
+  "per_run": {
+    "Q1": {
+      "catastrophic_collapse": false,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "max_predicted_action_share": 0.5085714285714286,
+      "zero_recall_required_actions": []
+    },
+    "Q2": {
+      "catastrophic_collapse": false,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "max_predicted_action_share": 0.5485714285714286,
+      "zero_recall_required_actions": []
+    },
+    "Q3": {
+      "catastrophic_collapse": false,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "max_predicted_action_share": 0.5314285714285715,
+      "zero_recall_required_actions": []
+    },
+    "Q4": {
+      "catastrophic_collapse": false,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "max_predicted_action_share": 0.5542857142857143,
+      "zero_recall_required_actions": []
+    },
+    "Q5": {
+      "catastrophic_collapse": false,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "max_predicted_action_share": 0.5314285714285715,
+      "zero_recall_required_actions": []
+    }
+  }
+}
