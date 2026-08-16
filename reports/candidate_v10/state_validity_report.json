@@ -1,0 +1,14 @@
+{
+  "V10-A": {
+    "invalid_states": 0,
+    "state_validity": 1.0
+  },
+  "V10-B": {
+    "invalid_states": 0,
+    "state_validity": 1.0
+  },
+  "V10-C": {
+    "invalid_states": 0,
+    "state_validity": 1.0
+  }
+}

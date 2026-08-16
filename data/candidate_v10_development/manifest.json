@@ -1,0 +1,104 @@
+{
+  "act_boundary": {
+    "file": "act_boundary.jsonl",
+    "n": 2000,
+    "seed": 101007,
+    "sha256": "545a47a6c4534dc5afd2c7c5e7536162a9da5de623b280272312194e48cf671e"
+  },
+  "compositional": {
+    "file": "compositional.jsonl",
+    "n": 1500,
+    "seed": 101015,
+    "sha256": "ecd12cb0a74846a1a8bb6a99faf7559f316fdcf6c601c3c1f4bf2c848b85ad28"
+  },
+  "contradiction": {
+    "file": "contradiction.jsonl",
+    "n": 1000,
+    "seed": 101009,
+    "sha256": "b07abafddcb3c57cd773e30e2bf12bec990002f3edfd02c79ecd44de0214f5d5"
+  },
+  "counterfactual": {
+    "file": "counterfactual.jsonl",
+    "n": 1500,
+    "seed": 101016,
+    "sha256": "e09b3d13f3240bce89449421d063f28618d405a0fed12d153e3d8b76d02f2b01"
+  },
+  "cross_factor_distractor": {
+    "file": "cross_factor_distractor.jsonl",
+    "n": 1500,
+    "seed": 101013,
+    "sha256": "7ba5ae1c102eeef4dc48f6dcd961a4752643c90ae3f6288c1c0ea8e631860cca"
+  },
+  "domain_transfer": {
+    "file": "domain_transfer.jsonl",
+    "n": 1500,
+    "seed": 101005,
+    "sha256": "535a971ffe28d8744f39c1eeadf1606c6575f6419914591a05134472d463b279"
+  },
+  "ellipsis": {
+    "file": "ellipsis.jsonl",
+    "n": 1000,
+    "seed": 101011,
+    "sha256": "dfbc123d4a10e3bce7c4264fe6b4c17b509056c56919009a170f1c4656335a28"
+  },
+  "lexical_novelty": {
+    "file": "lexical_novelty.jsonl",
+    "n": 2000,
+    "seed": 101003,
+    "sha256": "95ad72be37d0d49435f50113f98b1fab5eed4e0ef42739ad7dd5a2985d181fe6"
+  },
+  "negation": {
+    "file": "negation.jsonl",
+    "n": 1000,
+    "seed": 101008,
+    "sha256": "60b3486cf79dbf0420f1dd0c1bc8ef3ba4ecfd45d3d84c416410a61254dd83df"
+  },
+  "permission_scope": {
+    "file": "permission_scope.jsonl",
+    "n": 1000,
+    "seed": 101017,
+    "sha256": "7275a0f88606b7aa82704152c9ef18ac91f81294f89350b980d763f11e5fa347"
+  },
+  "pragmatic": {
+    "file": "pragmatic.jsonl",
+    "n": 1000,
+    "seed": 101012,
+    "sha256": "e2f9e5c1828dadc76f98d5bbfce64e1497842050703de8887860f93b9a476bd3"
+  },
+  "state_validity_stress": {
+    "file": "state_validity_stress.jsonl",
+    "n": 2500,
+    "seed": 101006,
+    "sha256": "a08b1541ab291680d5a2b4814f2251a54f63244fcc06573884b702f42b9b540f"
+  },
+  "supersession": {
+    "file": "supersession.jsonl",
+    "n": 1000,
+    "seed": 101010,
+    "sha256": "fbf042b5985e2bd4faf1512f7c7ea4f4b13715ab77c1500bb7eb638bcece1f1f"
+  },
+  "syntactic_novelty": {
+    "file": "syntactic_novelty.jsonl",
+    "n": 2000,
+    "seed": 101004,
+    "sha256": "74acf264ef63ec1a1c9fe121bad6f7c9de99cca4105eb87d5e6e56eccce42ebf"
+  },
+  "train": {
+    "file": "train.jsonl",
+    "n": 12000,
+    "seed": 101001,
+    "sha256": "91cac1290a9b62d88d3470bd180170380e6d7c1b2f9dfd9784ac03fc8f1ade19"
+  },
+  "uncertainty": {
+    "file": "uncertainty.jsonl",
+    "n": 1000,
+    "seed": 101014,
+    "sha256": "51db60100f763b57b84073c65fd9ca84034d84ee17185a3932cce5bda0267236"
+  },
+  "validation": {
+    "file": "validation.jsonl",
+    "n": 3000,
+    "seed": 101002,
+    "sha256": "914074b43e9545b2998363a87e8961c425d09e8a94eafef91806f5409329fad9"
+  }
+}

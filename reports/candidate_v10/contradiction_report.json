@@ -1,0 +1,14 @@
+{
+  "V10-A": {
+    "detection": 0.023,
+    "false_certainty": 977
+  },
+  "V10-B": {
+    "detection": 0.228,
+    "false_certainty": 20
+  },
+  "V10-C": {
+    "detection": 0.023,
+    "false_certainty": 977
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "V10-A": {
+    "critical_factor_accuracy": 1.0,
+    "exact_structured_state_accuracy": 1.0
+  },
+  "V10-B": {
+    "critical_factor_accuracy": 0.9945833333333334,
+    "exact_structured_state_accuracy": 0.9546666666666667
+  },
+  "V10-C": {
+    "critical_factor_accuracy": 1.0,
+    "exact_structured_state_accuracy": 1.0
+  }
+}

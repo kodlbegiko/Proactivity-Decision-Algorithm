@@ -1,0 +1,17 @@
+{
+  "V10-A": {
+    "domain": 1.0,
+    "lexical": 0.374125,
+    "syntactic": 1.0
+  },
+  "V10-B": {
+    "domain": 0.9960833333333333,
+    "lexical": 0.8506875,
+    "syntactic": 0.9650625
+  },
+  "V10-C": {
+    "domain": 1.0,
+    "lexical": 0.8506875,
+    "syntactic": 1.0
+  }
+}

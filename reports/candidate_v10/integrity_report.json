@@ -1,0 +1,16 @@
+{
+  "candidate_frozen_before_holdouts": false,
+  "candidate_modified_after_holdout": false,
+  "candidate_v10_preregistered_before_results": true,
+  "candidate_v9_h1_individual_evidence_accessed": false,
+  "candidate_v9_h1_individual_evidence_used_for_development": false,
+  "candidate_v9_modified": false,
+  "formal_holdout_rerun": false,
+  "leakage_detected": false,
+  "lexical_split_changed_after_results": false,
+  "protected_evidence_used_for_development": false,
+  "seed_changed_after_results": false,
+  "syntax_split_changed_after_results": false,
+  "threshold_changed_after_results": false,
+  "training_data_changed_after_results": false
+}

@@ -1,0 +1,14 @@
+{
+  "development": [
+    "file operation",
+    "local application change",
+    "notification",
+    "account setting"
+  ],
+  "validation": [
+    "message sending",
+    "scheduling",
+    "system configuration",
+    "deletion"
+  ]
+}
