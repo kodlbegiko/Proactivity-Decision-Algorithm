@@ -1,0 +1,6 @@
+Candidate-v11B V11Q immutable five-run execution authorized.
+preregistration_commit=abad0007dd91ea8fd8dae887dddba8b159af8c28
+preregistration_json_sha256=86437e3a8498d04ca14b080436d449e3376f88dabab9d15f4bf6f6cf713a0436
+scientific_parameters_frozen=true
+score_driven_reruns_forbidden=true
+candidate_mutation_forbidden=true
