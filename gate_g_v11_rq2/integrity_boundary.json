@@ -1,0 +1,14 @@
+{
+  "lineage": "GG-V11-RQ2-20260816",
+  "previous_gate_g_terminal_state": "GATE G INVALID — EVALUATION INTEGRITY FAILURE",
+  "previous_gate_g_pr": 29,
+  "previous_gate_g_used_as_scientific_evidence": false,
+  "candidate_modification_permitted": false,
+  "row_level_historical_development_inspection_permitted": false,
+  "row_level_historical_protected_inspection_permitted": false,
+  "row_level_previous_gate_g_inspection_permitted": false,
+  "row_level_gate_g_v2_human_inspection_permitted": false,
+  "phase_a_performance_scoring_permitted": false,
+  "formal_trial_started": false,
+  "formal_trial_definition": "first Candidate-v11 prediction call on a G1-G16 scientific case"
+}
