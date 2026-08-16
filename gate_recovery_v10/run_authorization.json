@@ -1,10 +1,15 @@
 {
   "candidate": "Candidate-v10",
   "authorized_stage": "PRE_FREEZE_DEVELOPMENT_QUALIFICATION",
+  "authorization_attempt": 2,
   "preregistration_commit": "1581df0c3fa730628ba31577578a019cb2974180",
   "split_freeze_commit": "c107cccbeedee4298ad4168723484c15c6431b97",
-  "implementation_head_before_results": "10ef9a3905bbdb59e1a95fba2c523b702d729cc9",
-  "one_shot": true,
+  "infrastructure_amendment_commit": "b62aae275472a514ca6fa7773ae00317470a8ee0",
+  "infrastructure_incident_commit": "6cbcad69842431810953af4ff3d656ea8ad12a30",
+  "implementation_head_before_any_metrics": "10ef9a3905bbdb59e1a95fba2c523b702d729cc9",
+  "prior_attempt_failed_before_metrics": true,
+  "prior_attempt_semantic_result": false,
+  "semantic_evaluation_one_shot": true,
   "formal_holdouts_authorized": false,
   "protected_authorized": false,
   "candidate_v9_h1_individual_evidence_accessed": false
