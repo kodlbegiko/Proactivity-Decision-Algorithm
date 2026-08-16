@@ -1,0 +1,11 @@
+{
+  "candidate": "Candidate-v11B",
+  "candidate_source_freeze_commit": "a59ea722d9d9c3b8bc83fc0a36e33f708c996b21",
+  "development_branch": "research/candidate-v11-post-v7r-semantic-generalization",
+  "development_terminal_commit": "fdfbf1662c0406637d3847635b25187b2f3c317b",
+  "lineage": "Candidate-v11B Independent Protected Qualification",
+  "qualification_branch": "research/candidate-v11-independent-qualification",
+  "qualification_executed": false,
+  "research_integrity": "PENDING",
+  "terminal_decision": "PENDING"
+}

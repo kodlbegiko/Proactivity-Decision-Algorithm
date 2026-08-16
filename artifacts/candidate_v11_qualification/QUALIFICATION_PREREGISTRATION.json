@@ -1,0 +1,147 @@
+{
+  "acceptance_criteria": {
+    "act_critical_factor_accuracy": 0.97,
+    "act_precision": 0.95,
+    "act_recall": 0.9,
+    "catastrophic_collapse": false,
+    "counterfactual_exact_pair": 0.85,
+    "critical_unknown_rate_max": 0.05,
+    "exact_latent_state_reconstruction": 0.75,
+    "family_macro_f1": {
+      "Compositional": 0.85,
+      "Lexical": 0.85,
+      "Mixed Adversarial": 0.75,
+      "Negation": 0.85,
+      "Rendering": 0.85,
+      "Scope": 0.85,
+      "Temporal": 0.85
+    },
+    "forbidden_act": 0,
+    "fresh_ood_macro_f1": 0.88,
+    "invalid_action": 0,
+    "invariance_action_consistency": 0.92,
+    "mean_factor_accuracy": 0.93
+  },
+  "aggregation_rule": "report pooled aggregate plus Q1-Q5 complete metrics and mean/median/min/max/population-standard-deviation; no run may be excluded or replaced",
+  "all_implementation_hashes": {
+    "auditor.py": "d701f6205f8f288f80b9c4db950998447bb829dbdc65a8c2390838617c97d8b3",
+    "common.py": "08f6d552fda8aa256432214a3907eba2ca5389383a035ad344513019bf913b5f",
+    "orchestrate.py": "304157ab28e928b9f58876e8840df97d2e717fcdf52f8d70b7614e14ebb24d98",
+    "protected_builder.py": "5fa22fcc73a561738365931989801323e18f078b126c1d1c557499ed063df49f",
+    "runner.py": "5b9f8befa0150c0c67dacfcbfe61450184205364e1dc47d722217313cc2c01e1",
+    "scorer.py": "7905dcec2386b5dd045881f0df46949a6fea56f9de221c121095c99acca83542"
+  },
+  "auditor_implementation_hash": "d701f6205f8f288f80b9c4db950998447bb829dbdc65a8c2390838617c97d8b3",
+  "candidate_hashes": {
+    "candidate_blob_hashes": {
+      "src/proactivity/candidate_v11.py": {
+        "git_blob": "661df3bcc9b26cb7e47fc319a589c31f6fd6b922",
+        "sha256": "cf763c2b613582962e062964ab5c4779ee2f4ba862aaa20ecd9f31df3b7767b8"
+      }
+    },
+    "candidate_id": "Candidate-v11B",
+    "candidate_source_freeze_commit": "a59ea722d9d9c3b8bc83fc0a36e33f708c996b21",
+    "candidate_source_paths": [
+      "src/proactivity/candidate_v11.py"
+    ],
+    "development_terminal_commit": "fdfbf1662c0406637d3847635b25187b2f3c317b",
+    "evaluation_protocol_version": "V11Q-1",
+    "immutable": true,
+    "ontology_hash": "360efdf29f8c3be1e08a5e2b1010bc0ea3768450c905407038e1cea3030f6e67",
+    "policy_hash": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+  },
+  "candidate_id": "Candidate-v11B",
+  "candidate_runner_input_keys": [
+    "example_id",
+    "text"
+  ],
+  "construction": {
+    "action_balancing_rule": "core contributes exactly 50 examples per action; invariance contributes exactly 6 per action; counterfactual source endpoints contribute exactly 7 per action; target endpoints are determined only by one-factor oracle-changing neighbors",
+    "core_examples_per_run": 300,
+    "counterfactual_pairs_per_run": 42,
+    "families": [
+      "Lexical",
+      "Rendering",
+      "Compositional",
+      "Negation",
+      "Scope",
+      "Temporal",
+      "Mixed Adversarial"
+    ],
+    "generator_must_not_import": [
+      "proactivity.candidate_v11",
+      "benchmark_v11.generator"
+    ],
+    "ground_truth_source": "formal state + frozen Protocol-v2 oracle only",
+    "invariance_groups_per_run": 12,
+    "invariance_realizations_per_group": 3,
+    "primary_family_rule": "deterministic rotation across action-stratified core states; every primary family must have positive support in every run",
+    "realization_mechanisms": [
+      "independent semantic phrase inventory authored from Protocol-v2 state meanings",
+      "lexical paraphrase",
+      "rendering variation",
+      "multi-clause composition",
+      "structural negation",
+      "scope-focused wording",
+      "past-to-current supersession",
+      "mixed adversarial combinations of at least three linguistic phenomena"
+    ],
+    "semantic_state_sampling_rule": "enumerate valid Protocol-v2 formal states, evaluate only with frozen Protocol-v2 oracle, bucket by oracle action, shuffle each bucket with the frozen run seed, then sample without score feedback"
+  },
+  "counterfactual_design": "42 minimum pairs per run; pair members differ in exactly one formal state field and the oracle action must change; both exact state reconstruction and action must be correct for pair credit",
+  "examples_per_run": 420,
+  "frozen_before_realization": true,
+  "generation_implementation_hash": "5fa22fcc73a561738365931989801323e18f078b126c1d1c557499ed063df49f",
+  "invariance_design": "12 groups per run, three independent realizations of one identical formal state; action consistency and correct consistency are reported",
+  "overlap_policy": {
+    "exact_text_overlap_required": 0,
+    "max_construction_attempts": 3,
+    "normalized_exact_overlap_required": 0,
+    "pre_prediction_rebuild_allowed": true,
+    "rebuild_rule": "same frozen seed plus deterministic construction-attempt salt; rebuild is allowed only before any candidate prediction and only for exact/normalized overlap, never for scores"
+  },
+  "protected_storage": "raw protected examples exist only in ephemeral CI workspace; repository receives manifests, hashes, aggregate reports, and terminal evidence only",
+  "protocol_version": "V11Q-1",
+  "qualification_run_count": 5,
+  "retry_policy": {
+    "allowed_reasons": [
+      "corrupted_artifact",
+      "dependency_failure",
+      "deterministic_serialization_bug",
+      "machine_interruption",
+      "runner_crash",
+      "unavailable_infrastructure"
+    ],
+    "candidate_must_remain_unchanged": true,
+    "dataset_must_remain_unchanged_after_prediction_begins": true,
+    "score_driven_retry": false,
+    "scorer_must_remain_unchanged": true,
+    "seed_must_remain_unchanged": true
+  },
+  "run_ids": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5"
+  ],
+  "runner_implementation_hash": "5b9f8befa0150c0c67dacfcbfe61450184205364e1dc47d722217313cc2c01e1",
+  "scoring_implementation_hash": "7905dcec2386b5dd045881f0df46949a6fea56f9de221c121095c99acca83542",
+  "seeds": {
+    "Q1": 6101,
+    "Q2": 6203,
+    "Q3": 6307,
+    "Q4": 6413,
+    "Q5": 6521
+  },
+  "terminal_decision_rule": {
+    "all_scientific_criteria_pass": "CANDIDATE_V11 QUALIFICATION PASS — FRESH_CONFIRMATORY_AUTHORIZED",
+    "evidence_invalid": "CANDIDATE_V11 QUALIFICATION INVALID — NO_ARCHITECTURE_CONCLUSION",
+    "integrity_fail": "CANDIDATE_V11 QUALIFICATION INVALID — NO_ARCHITECTURE_CONCLUSION",
+    "otherwise": "CANDIDATE_V11 QUALIFICATION FAIL — LINEAGE_TERMINATED"
+  },
+  "terminal_threshold_scope": "formal acceptance thresholds apply to pooled protected metrics exactly as listed; all preregistered runs remain in the pooled decision and are also reported individually",
+  "total_examples": 2100,
+  "unknown_design": "one tenth of core cases attempt omission of exactly one field only when at least two valid values for that field preserve the same oracle action; omitted fields are scored as SEMANTICALLY_UNSPECIFIED and excluded from concrete-value factor denominators",
+  "v7r_boundary": "V11Q qualification job must not materialize or read V7R protected raw data; V7R runtime materialization is confined to a separate regression job"
+}
