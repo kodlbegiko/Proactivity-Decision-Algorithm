@@ -1,6 +1,11 @@
 {
   "protocol": "Candidate-v11 Independent Gate G External-Validity Audit",
-  "preregistration_version": "1.0",
+  "preregistration_version": "1.1-pre-metric-infrastructure-revision",
+  "supersedes_preregistration_sha": "cb222aefc1eb957a571667d0421d44fcc7fef7d3",
+  "revision_reason": "The first authorized CI run never reached evaluation because pytest was absent on fresh runners. No performance metrics or candidate predictions were generated. This revision changes only CI infrastructure evidence; all scientific evaluator, generator, oracle, seeds, sample sizes, metrics, thresholds, and terminal logic remain frozen and unchanged.",
+  "pre_metric_infrastructure_incident": "gate_g_v11/incidents/pre_metric_ci_001.json",
+  "pre_metric_repair_commit": "eb0b1c0500546cb96c13cbc904e06cc40bf6c61d",
+  "ci_workflow_git_blob": "9cf0bcaf77011f6f0fa9d9ea67375f07e9ec682d",
   "candidate_sha": "3cdf4c9432b13f6ae003fa475a794e7491495d00",
   "candidate_freeze_sha": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
   "selected_architecture": "V11-A",
