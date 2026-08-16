@@ -1,0 +1,6 @@
+{
+  "status": "NOT_COMPLETED_FORMAL_DEVELOPMENT_TERMINAL",
+  "reason": "H1 runtime semantic failure terminated the lineage before formal calibration/protected evaluation.",
+  "probabilistic_calibration_supported": false,
+  "validation_false_certainty": 0
+}

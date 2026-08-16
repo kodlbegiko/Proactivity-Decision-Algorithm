@@ -1,0 +1,19 @@
+{
+  "terminal_state": "CANDIDATE_V8 DEVELOPMENT FAIL — NO CANDIDATE QUALIFIED",
+  "candidate": "V8-C",
+  "candidate_freeze_sha": "d407786021b9d0fd12370973c669f23cc6c31fb9",
+  "trigger_gate": "H1_DEV_OOD",
+  "trigger": "Runtime semantic failure: invalid structured state emitted by frozen Candidate-v8 parser during formal DEV-OOD prediction.",
+  "exception": {
+    "type": "ValueError",
+    "message": "invalid state",
+    "origin": "candidate_v8.policy.oracle_action",
+    "call_path": ["benchmark_v8.holdouts.h1", "benchmark_v8.evaluation.evaluate_rows", "candidate_v8.model.predict", "candidate_v8.policy.oracle_action"]
+  },
+  "classification": "FROZEN_CANDIDATE_SEMANTIC_FAILURE_NOT_INFRASTRUCTURE_ONLY",
+  "formal_holdout_observed": true,
+  "candidate_repair_allowed": false,
+  "rerun_allowed": false,
+  "protected_allowed": false,
+  "next_lineage_if_continued": "Candidate-v9"
+}

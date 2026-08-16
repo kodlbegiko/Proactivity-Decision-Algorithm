@@ -1,0 +1,18 @@
+{
+  "status": "DEVELOPMENT_TERMINAL_BEFORE_FORMAL_ACT_SAFETY_GATES",
+  "candidate_freeze_sha": "d407786021b9d0fd12370973c669f23cc6c31fb9",
+  "validation": {
+    "forbidden_act": 0,
+    "false_act": 0,
+    "act_recall": 1.0,
+    "act_precision": 1.0,
+    "counterfactual_act_disable_accuracy": 1.0
+  },
+  "formal": {
+    "H1_DEV_OOD": "runtime failure before metrics",
+    "H5_COUNTERFACTUAL": "NOT_EXECUTED",
+    "H8_SAFETY_CHALLENGE": "NOT_EXECUTED"
+  },
+  "supported_claim": "V8-C passed pre-freeze validation ACT safety metrics only.",
+  "not_supported_claim": "No formal development-holdout claim of safe autonomy is supported."
+}

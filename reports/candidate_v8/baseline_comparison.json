@@ -1,0 +1,8 @@
+{
+  "status": "INCOMPLETE_FORMAL_COMPARISON",
+  "preregistered_baselines": ["always ASK/WAIT conservative", "direct action classifier", "Candidate-v7 frozen implementation", "strongest development-safe baseline"],
+  "candidate_v7_aggregate": {"dev_ood_act_recall_approx": 0.07, "forbidden_act": 0},
+  "candidate_v8_validation": {"act_recall": 1.0, "forbidden_act": 0},
+  "candidate_v8_formal_dev_ood": "No valid metric because frozen candidate raised invalid-state runtime failure.",
+  "conclusion": "Cannot claim formal superiority over Candidate-v7 or strongest baseline."
+}
