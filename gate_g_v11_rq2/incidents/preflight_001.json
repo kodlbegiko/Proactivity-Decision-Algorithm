@@ -1,0 +1,19 @@
+{
+  "incident_id": "preflight_001",
+  "lineage": "GG-V11-RQ2-20260816",
+  "phase": "A",
+  "classification": "PRE-FORMAL INFRASTRUCTURE FAILURE",
+  "affected_ci_run_id": 31930857065,
+  "affected_python_versions": ["3.10", "3.11", "3.12"],
+  "formal_trial_started": false,
+  "candidate_scientific_prediction_calls": 0,
+  "performance_scoring_performed": false,
+  "candidate_modified": false,
+  "scientific_source_changed": false,
+  "root_cause": "The Gate G v2 preflight workflow invoked the full repository pytest suite without first materializing all deterministic legacy repository fixtures required by that suite. The observed missing fixtures included data/development/development_v1.jsonl and data/benchmark_v2/main.jsonl.",
+  "observed_effect": "All three Python matrix jobs failed in the Full repository tests step; the Gate G v2 interface/freeze preflight command was therefore not reached.",
+  "repair": "Update only the pre-formal CI workflow to run the repository's canonical deterministic fixture-generation and hash-validation commands before pytest, while retaining the existing Candidate-v11 Gate G v2 fixture generation.",
+  "candidate_scientific_conclusion": "NONE",
+  "gate_g_v2_scientific_trial_consumed": false,
+  "old_gate_g_status_changed": false
+}
