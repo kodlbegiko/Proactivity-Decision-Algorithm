@@ -10,9 +10,9 @@ from .candidate_v12_dev import macro_f1, state_for_action
 from .candidate_v12_frames import ArchitectureD
 
 
-# Independent realization grammar for the compositional phase.  It deliberately
+# Independent realization grammar for the compositional phase. It deliberately
 # combines factor concepts and predicates that Architecture C never saw as full
-# phrases.  Parser and generator share the public ontology, but not sentence
+# phrases. Parser and generator share the public ontology, but not sentence
 # templates or complete realization strings.
 CONCEPTS: dict[str, tuple[str, ...]] = {
     "permission": ("authorization", "clearance", "approval"),
@@ -30,41 +30,13 @@ CONCEPTS: dict[str, tuple[str, ...]] = {
 }
 
 CUES: dict[str, dict[Any, tuple[str, ...]]] = {
-    "permission": {
-        "granted": ("secured", "issued", "confirmed"),
-        "missing": ("withheld", "revoked", "absent"),
-        "not_required": ("exempt", "waived"),
-    },
-    "information": {
-        "sufficient": ("adequate", "settled", "complete"),
-        "insufficient": ("lacking", "incomplete", "missing"),
-        "contradictory": ("conflicting", "inconsistent", "contradictory"),
-    },
-    "urgency": {
-        "none": ("flexible", "routine", "nonurgent"),
-        "normal": ("standard", "ordinary", "normal"),
-        "high": ("immediate", "pressing", "time-sensitive"),
-        "expired": ("closed", "overdue", "expired"),
-    },
-    "need": {
-        "none": ("unnecessary",),
-        "optional": ("elective", "discretionary", "optional"),
-        "material": ("mandatory", "necessary", "material"),
-    },
-    "side_effect": {
-        "none": ("read-only", "informational"),
-        "local": ("internal", "local"),
-        "external": ("cross-system", "external"),
-    },
-    "risk": {
-        "low": ("small", "minimal", "low"),
-        "medium": ("moderate", "meaningful", "medium"),
-        "high": ("substantial", "severe", "high"),
-    },
-    "reversibility": {
-        "reversible": ("available", "possible", "undoable"),
-        "irreversible": ("unavailable", "impossible", "irreversible"),
-    },
+    "permission": {"granted": ("secured", "issued", "confirmed"), "missing": ("withheld", "revoked", "absent"), "not_required": ("exempt", "waived")},
+    "information": {"sufficient": ("adequate", "settled", "complete"), "insufficient": ("lacking", "incomplete", "missing"), "contradictory": ("conflicting", "inconsistent", "contradictory")},
+    "urgency": {"none": ("flexible", "routine", "nonurgent"), "normal": ("standard", "ordinary", "normal"), "high": ("immediate", "pressing", "time-sensitive"), "expired": ("closed", "overdue", "expired")},
+    "need": {"none": ("unnecessary",), "optional": ("elective", "discretionary", "optional"), "material": ("mandatory", "necessary", "material")},
+    "side_effect": {"none": ("read-only", "informational"), "local": ("internal", "local"), "external": ("cross-system", "external")},
+    "risk": {"low": ("small", "minimal", "low"), "medium": ("moderate", "meaningful", "medium"), "high": ("substantial", "severe", "high")},
+    "reversibility": {"reversible": ("available", "possible", "undoable"), "irreversible": ("unavailable", "impossible", "irreversible")},
     "deferral_available": {True: ("feasible", "available", "allowed"), False: ("prohibited", "unavailable", "blocked")},
     "execution_possible": {True: ("ready", "feasible", "available"), False: ("blocked", "infeasible", "unavailable")},
     "clarification_possible": {True: ("available", "allowed", "feasible"), False: ("blocked", "forbidden", "unavailable")},
@@ -78,7 +50,7 @@ TRAIN_TEMPLATES = (
     "Current {concept}: {cue}",
 )
 HOLDOUT_TEMPLATES = (
-    "Regarding {concept}, evidence now indicates {cue}",
+    "Regarding {concept}, the status now reads {cue}",
     "Operationally, {concept} remains {cue}",
     "At present the {concept} condition is {cue}",
 )
@@ -96,9 +68,7 @@ DISTRACTORS = (
 
 
 def _factor_sentence(factor: str, value: Any, r: random.Random, templates: tuple[str, ...]) -> str:
-    concept = r.choice(CONCEPTS[factor])
-    cue = r.choice(CUES[factor][value])
-    return r.choice(templates).format(concept=concept, cue=cue)
+    return r.choice(templates).format(concept=r.choice(CONCEPTS[factor]), cue=r.choice(CUES[factor][value]))
 
 
 def realize_compositional(state: dict[str, Any], r: random.Random, *, split: str = "holdout", long_context: bool = False) -> str:
@@ -157,12 +127,7 @@ def evaluate_architecture(architecture: Any, records: list[dict[str, Any]]) -> d
 
 
 def conditional_probe() -> bool:
-    text = (
-        "If authorization is secured, the requirement becomes mandatory. "
-        "Regarding authorization, evidence now indicates withheld. "
-        "Regarding requirement, evidence now indicates elective. "
-        "Regarding operation, evidence now indicates internal."
-    )
+    text = "If authorization is secured, the requirement becomes mandatory. Authorization is withheld. Requirement is elective. Operation is internal."
     p = ArchitectureD().parse(text)
     return p.state["permission"] == "missing" and p.state["need"] == "optional"
 
@@ -204,6 +169,16 @@ def missingness_probe() -> bool:
     return p.factors["permission"].epistemic_status == "UNKNOWN" and p.factors["information"].epistemic_status == "UNKNOWN"
 
 
+def modality_probe() -> bool:
+    p = ArchitectureD().parse("Authorization may be secured. Evidence might be adequate. Exposure is small.")
+    return p.factors["permission"].epistemic_status == "UNKNOWN" and p.factors["information"].epistemic_status == "UNKNOWN" and p.state["risk"] == "low"
+
+
+def dependency_probe() -> bool:
+    p = ArchitectureD().parse("Execution depends on authorization. Authorization is withheld. Requirement is mandatory.")
+    return p.state["permission"] == "missing" and p.state["execution_possible"] is False and p.factors["execution_possible"].epistemic_status == "INFERRED"
+
+
 def state_to_action_sufficiency(seed: int = 17001, n: int = 4000) -> dict[str, Any]:
     r = random.Random(seed)
     observed: dict[tuple[Any, ...], str] = {}
@@ -231,6 +206,8 @@ def operator_suite() -> dict[str, bool]:
         "cancellation": cancellation_probe(),
         "user_preference": preference_probe(),
         "explicit_missingness": missingness_probe(),
+        "uncertain_modality": modality_probe(),
+        "dependency": dependency_probe(),
     }
 
 
@@ -238,7 +215,6 @@ def advanced_development_summary() -> dict[str, Any]:
     architectures = [ArchitectureA(), ArchitectureB(), ArchitectureC(), ArchitectureD()]
     comparison_records = make_compositional_records(17101, 720, split="train")
     comparison = [evaluate_architecture(a, comparison_records) for a in architectures]
-
     d = ArchitectureD()
     holdout_seeds = (17201, 17202, 17203, 17204, 17205)
     runs = [evaluate_architecture(d, make_compositional_records(s, 360, split="holdout")) for s in holdout_seeds]
@@ -249,14 +225,7 @@ def advanced_development_summary() -> dict[str, Any]:
     return {
         "comparison": comparison,
         "holdout": pooled,
-        "robustness": {
-            "seeds": list(holdout_seeds),
-            "mean": statistics.mean(mf1),
-            "median": statistics.median(mf1),
-            "minimum": min(mf1),
-            "maximum": max(mf1),
-            "standard_deviation": statistics.pstdev(mf1),
-        },
+        "robustness": {"seeds": list(holdout_seeds), "mean": statistics.mean(mf1), "median": statistics.median(mf1), "minimum": min(mf1), "maximum": max(mf1), "standard_deviation": statistics.pstdev(mf1)},
         "stress": stress,
         "operators": operator_suite(),
         "state_to_action_sufficiency": state_to_action_sufficiency(),
