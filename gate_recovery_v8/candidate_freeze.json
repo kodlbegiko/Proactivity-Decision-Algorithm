@@ -1,0 +1,39 @@
+{
+  "candidate": "V8-C",
+  "base_sha": "83e41d91d264dd7074ea31d61571f14eaa6b09e3",
+  "implementation_parent_sha": "0cafa9996386bac7c06e164d06f5b9c6968669d9",
+  "architecture": "counterfactual-consistent dual-channel evidence-separated structured decoder with temporal supersession and contradiction handling",
+  "validation_qualified": true,
+  "validation_macro_f1": 0.9916809312700169,
+  "validation_act_recall": 1.0,
+  "validation_act_precision": 1.0,
+  "validation_forbidden_act": 0,
+  "validation_false_act": 0,
+  "validation_counterfactual_directional": 1.0,
+  "validation_counterfactual_act_disable": 1.0,
+  "frozen_semantics": [
+    "parser",
+    "architecture",
+    "thresholds",
+    "safety gate",
+    "fallback behavior",
+    "evidence logic",
+    "lexicons",
+    "preprocessing",
+    "action mapping",
+    "confidence rule",
+    "abstention rule"
+  ],
+  "source_hashes": {
+    "model": "3fb8bb2cbe839b4c82dc3929813dd191adcd7c6b",
+    "policy": "5799a35b4c4d9704e2fe8d66173bcabe3d407c8c",
+    "development": "59d7ef5d1aba2c22bcd8b80308e6dfb4ad7ec10d",
+    "generator": "61de08f90678d48091def949b1120c35c7e455b6",
+    "evaluation": "e2bb06c5247f1fd1d823840aee7c3ad62ced1883",
+    "tests": "cc1593da5b082967f843335084ca44b76bfdf6d0",
+    "normative_spec": "e34345bf76179d2c989d9da2effaa013792925fe"
+  },
+  "formal_holdout_observed": false,
+  "protected_seed_generated": false,
+  "freeze_commit": "the Git commit containing this file"
+}
