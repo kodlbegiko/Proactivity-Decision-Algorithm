@@ -1,0 +1,84 @@
+{
+  "architecture": "V7-B",
+  "configuration": {
+    "base_sha": "370aac305c14c4ddc2fa2f782cbb3f0fdde4f630",
+    "baseline": "B4",
+    "ood_threshold": 0.15,
+    "seeds": {
+      "train": 7001,
+      "validation": 7002
+    },
+    "validation_metrics": {
+      "accuracy": 1.0,
+      "act_recall": 1.0,
+      "critical_factor_accuracy": 1.0,
+      "critical_false_positive_rate": 0.0,
+      "exact_state_accuracy": 1.0,
+      "false_act": 0,
+      "false_certainty": 0.0,
+      "forbidden_act": 0,
+      "invalid_action": 0,
+      "macro_f1": 1.0,
+      "max_prediction_share": 0.16666666666666666,
+      "n": 480,
+      "per_action_recall": {
+        "ACT": 1.0,
+        "ASK": 1.0,
+        "IGNORE": 1.0,
+        "NOTIFY": 1.0,
+        "SUGGEST": 1.0,
+        "WAIT": 1.0
+      },
+      "prediction_distribution": {
+        "ACT": 80,
+        "ASK": 80,
+        "IGNORE": 80,
+        "NOTIFY": 80,
+        "SUGGEST": 80,
+        "WAIT": 80
+      }
+    },
+    "variant": "V7-B"
+  },
+  "environment": {
+    "python": "3.12.13"
+  },
+  "must_commit_before_holdouts": true,
+  "source_hashes": {
+    "model": "ca158e66b1c11e159d6cfc0b5ff014a1ce329bbf5b3812b551d3a0cf1f640945",
+    "policy": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4",
+    "preregistration": "83f9ec61bf2ecd325f9b9bbedf0d702ab656429f6388c5ba32e950b8032870b6",
+    "representation": "a9ad4b84e95c5522f38b9a02b99acb7806ca464b76e95d08014582901e979ca2",
+    "safety_gate": "0791ff39487b0d87e9385c11eadc6af64c69ebbde5112a25426f9e78d32841fd"
+  },
+  "validation_results": {
+    "accuracy": 1.0,
+    "act_recall": 1.0,
+    "critical_factor_accuracy": 1.0,
+    "critical_false_positive_rate": 0.0,
+    "exact_state_accuracy": 1.0,
+    "false_act": 0,
+    "false_certainty": 0.0,
+    "forbidden_act": 0,
+    "invalid_action": 0,
+    "macro_f1": 1.0,
+    "max_prediction_share": 0.16666666666666666,
+    "n": 480,
+    "per_action_recall": {
+      "ACT": 1.0,
+      "ASK": 1.0,
+      "IGNORE": 1.0,
+      "NOTIFY": 1.0,
+      "SUGGEST": 1.0,
+      "WAIT": 1.0
+    },
+    "prediction_distribution": {
+      "ACT": 80,
+      "ASK": 80,
+      "IGNORE": 80,
+      "NOTIFY": 80,
+      "SUGGEST": 80,
+      "WAIT": 80
+    }
+  }
+}
