@@ -1,18 +1,47 @@
 {
   "protocol": "Candidate-v11 Independent Gate G External-Validity Audit",
-  "preregistration_version": "1.2-pre-metric-environment-revision",
-  "supersedes_preregistration_sha": "ba3bea9f9eba42da85c65dd2c774b5aaf28d0602",
+  "preregistration_version": "1.3-pre-metric-regression-fixture-revision",
+  "supersedes_preregistration_sha": "525fd0f4758ca19b615316a57777327e9f22fe4e",
   "revision_history": [
     {"sha": "cb222aefc1eb957a571667d0421d44fcc7fef7d3", "reason": "initial preregistration"},
-    {"sha": "ba3bea9f9eba42da85c65dd2c774b5aaf28d0602", "reason": "pre-metric pytest installation repair"}
+    {"sha": "ba3bea9f9eba42da85c65dd2c774b5aaf28d0602", "reason": "pre-metric pytest installation repair"},
+    {"sha": "525fd0f4758ca19b615316a57777327e9f22fe4e", "reason": "pre-metric repository dependency/import repair"}
   ],
-  "revision_reason": "The second authorized CI run never reached Gate G evaluation because full repository dependency/import setup was absent. All evaluation and audit steps were skipped. This revision changes only CI environment evidence; all scientific evaluator, generator, oracle, seeds, sample sizes, metrics, thresholds, and terminal logic remain frozen and unchanged.",
+  "revision_reason": "The third authorized CI run completed dependency installation and real repository test execution but never reached Gate G evaluation. The only five Python 3.12 failures were missing deterministic pre-existing regression fixtures, while 259 tests passed; Gate G evaluation and audit were skipped on all matrix versions. This revision changes only CI fixture-preparation evidence. Scientific evaluator, generator, oracle, candidate, seeds, sample sizes, metrics, thresholds, and terminal logic remain frozen and unchanged.",
   "pre_metric_infrastructure_incidents": [
     "gate_g_v11/incidents/pre_metric_ci_001.json",
-    "gate_g_v11/incidents/pre_metric_ci_002.json"
+    "gate_g_v11/incidents/pre_metric_ci_002.json",
+    "gate_g_v11/incidents/pre_metric_ci_003.json"
   ],
-  "latest_pre_metric_repair_commit": "408da2a4ad7bf37e38893a93b230c516f544b43c",
-  "ci_workflow_git_blob": "3588575c25429758cf8a6104931a0b4bd3bb9651",
+  "latest_pre_metric_repair_commit": "7b9ce1411ad6ea8f0902120f47c5b052825c6735",
+  "ci_workflow_git_blob": "cb1b3faa7d075ab15dc994500df343cae3209dff",
+  "pre_metric_infrastructure_repair_policy": {
+    "allowed_only_when": [
+      "Gate G evaluation step was skipped",
+      "Gate G audit step was skipped",
+      "no Candidate-v11 Gate G predictions were generated",
+      "no Gate G performance metrics were persisted",
+      "no scientific terminal state was reached"
+    ],
+    "allowed_changes": [
+      "dependency installation",
+      "repository import path setup",
+      "deterministic preparation of pre-existing repository regression fixtures",
+      "CI transport or runner setup"
+    ],
+    "forbidden_changes": [
+      "Candidate-v11 source or candidate hashes",
+      "Gate G semantic-case generation",
+      "Gate G surface generation",
+      "Gate G normative oracle",
+      "Gate G evaluator or metric definitions",
+      "Gate G seeds",
+      "Gate G sample sizes",
+      "Gate G acceptance thresholds",
+      "Gate G terminal-state logic"
+    ],
+    "incident_record_required": true
+  },
   "candidate_sha": "3cdf4c9432b13f6ae003fa475a794e7491495d00",
   "candidate_freeze_sha": "2d87fbf19d4715bdfaa3eb56e817b64cbdb2239e",
   "selected_architecture": "V11-A",
