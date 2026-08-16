@@ -1,0 +1,18 @@
+{
+  "deterministic": true,
+  "implementation_commit": "0790d0ebf367f61470f566bead0cb97aff7b0cc9",
+  "source_git_blobs": {
+    "candidate_v9/__init__.py": "7773b8a110dbfc4f474087d5b75c4a45de6758f9",
+    "candidate_v9/policy.py": "aa664fe908bec1778bcb800ce8d9b35ef45bb972",
+    "candidate_v9/development.py": "c9b27cb965e9bc64d1b3f4008212c37d81799173",
+    "candidate_v9/lexicon.py": "bfb6977d8ca6bf68ab639c15bfa3e6f0dfee30f9",
+    "candidate_v9/model.py": "09d3c56fa079c880ff1d424330b6a44778f947d4",
+    "benchmark_v9/__init__.py": "5f7b823e3acdf5f4812c84b54ed27ebf43e4eb65",
+    "benchmark_v9/evaluation.py": "8376dfb7cbfb01638986135e599d485c57a9c393",
+    "benchmark_v9/generator.py": "6b1459f12ccbf242018da7362781c937463350c9",
+    "benchmark_v9/render_inventory.py": "644af2381472d9503a40d6f840e1895f614e5748",
+    "tests/test_candidate_v9.py": "db35bad860da0fa710bea36e30bbffc0c1ac4807",
+    ".github/workflows/candidate_v9_ci.yml": "5b23adf11789def24469395e3b90a1165c8b265e"
+  },
+  "seeds": {"train": 91001, "validation": 91002, "state_validity_stress": 91003, "act_boundary": 91004, "contradiction": 91005, "negation": 91006, "supersession": 91007, "uncertainty": 91008, "permission_scope": 91009, "compositional": 91010, "rendering": 91011, "lexical": 91012}
+}

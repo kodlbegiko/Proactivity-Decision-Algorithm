@@ -1,0 +1,18 @@
+{
+  "candidate_v8_modified":false,
+  "candidate_v8_h1_individual_evidence_accessed":false,
+  "candidate_v8_h1_individual_evidence_used_for_development":false,
+  "candidate_v9_preregistered_before_results":true,
+  "candidate_frozen_before_holdouts":true,
+  "candidate_modified_after_holdout":false,
+  "formal_holdout_rerun":false,
+  "protected_evidence_used_for_development":false,
+  "threshold_changed_after_results":false,
+  "seed_changed_after_results":false,
+  "leakage_detected":false,
+  "H1_individual_records_inspected":false,
+  "H2_H13_executed":false,
+  "protected_executed":false,
+  "potential_non_individual_generator_source_exposure":true,
+  "incident_assessment":"benchmark_v8/generator.py was inspected before Candidate-v9 implementation. It exposed generic historical render inventories but no materialized H1 individual rows, labels, predictions, traces, record IDs, or failure records. Candidate-v9 architecture and render inventory were authored from PDA-SPEC-v2 semantics and fresh seeds. This caution is recorded; protected/row-level contamination is assessed as reasonably excluded."
+}

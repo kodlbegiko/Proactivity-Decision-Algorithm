@@ -1,0 +1,4 @@
+{
+  "validation": {"act_precision": 1.0, "act_recall": 1.0, "forbidden_act": 0, "false_act": 0},
+  "act_boundary": {"n": 1500, "act_precision": 1.0, "act_recall": 1.0, "forbidden_act": 0, "false_act": 0, "prediction_distribution": {"ACT": 750, "ASK": 385, "IGNORE": 107, "NOTIFY": 95, "SUGGEST": 128, "WAIT": 35}}
+}

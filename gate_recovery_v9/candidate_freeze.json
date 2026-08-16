@@ -1,0 +1,39 @@
+{
+  "candidate": "Candidate-v9",
+  "selected_architecture": "V9-B",
+  "architecture_family": "constraint-aware joint decoder",
+  "parent_commit_sha": "f16704c6b7715898197314693443ee4bc3bf0412",
+  "implementation_commit_sha": "0790d0ebf367f61470f566bead0cb97aff7b0cc9",
+  "frozen_at": "2026-08-16T11:31:42+08:00",
+  "source_files": {
+    "candidate_v9/__init__.py": {"git_blob": "7773b8a110dbfc4f474087d5b75c4a45de6758f9", "sha256": "f40efdb8d32eaea25e079eef5419b8767bcb501a7bfbfd086100e35f4709b79e"},
+    "candidate_v9/policy.py": {"git_blob": "aa664fe908bec1778bcb800ce8d9b35ef45bb972", "sha256": "85555c99bee4149893c1ab50de23c3ddcf812791c699d002a06297b2c0a5f0a8"},
+    "candidate_v9/development.py": {"git_blob": "c9b27cb965e9bc64d1b3f4008212c37d81799173", "sha256": "4e496aeefc3b64724c70eb8a07ba6cfbf12e8e7362359eae0c136d997e69d816"},
+    "candidate_v9/lexicon.py": {"git_blob": "bfb6977d8ca6bf68ab639c15bfa3e6f0dfee30f9", "sha256": "9674d3271ef264f768236a5ea02d4af794e2d3555e9e99cbaf4d92390cd3a445"},
+    "candidate_v9/model.py": {"git_blob": "09d3c56fa079c880ff1d424330b6a44778f947d4", "sha256": "4fddb5700dad7213dd0df43dcc12a2f35bbafced303dbb054e07524bb5731839"},
+    "benchmark_v9/evaluation.py": {"git_blob": "8376dfb7cbfb01638986135e599d485c57a9c393", "sha256": "65c4a7a73eaa7eb97e917d5eb4439e35506d9be4a9d7c18430e32244129b1eb4"},
+    "benchmark_v9/generator.py": {"git_blob": "6b1459f12ccbf242018da7362781c937463350c9", "sha256": "4447176cc7cfaa5880c51ceeca17477cd5deda73bdd4785fc9112750e60bea34"},
+    "benchmark_v9/render_inventory.py": {"git_blob": "644af2381472d9503a40d6f840e1895f614e5748", "sha256": "690928f331a1aba8e7b7a71358527a6580e16d372702bc96fc11e786492ab9ec"}
+  },
+  "normative_spec": {
+    "path": "spec/proactivity_policy_v2.json",
+    "policy_id": "PDA-SPEC-v2",
+    "schema_version": "2.0.0",
+    "git_blob": "e34345bf76179d2c989d9da2effaa013792925fe",
+    "canonical_json_sha256": "c2d00c9aa14e1be45e4329e6c665af695fc1c875acc7841fdaf9b0322b6bac36"
+  },
+  "valid_state_space_sha256": "5e7af8d313ab2fa846c9ebb3d1c72151aebbb99dc30b077611ed7ed229bc948f",
+  "decoder_constraints": {
+    "output_domain": "normative-valid state subset only",
+    "permission_side_effect_pairs": [["not_required","none"],["not_required","local"],["missing","local"],["granted","local"],["missing","external"],["granted","external"]],
+    "invalid_states_ineligible": true,
+    "ACT_requires_all_critical_factors_resolved": true,
+    "ACT_requires_no_critical_contradiction": true,
+    "semantic_exception_rescue": false
+  },
+  "development_seeds": {"train": 91001, "validation": 91002, "state_validity_stress": 91003, "act_boundary": 91004, "contradiction": 91005, "negation": 91006, "supersession": 91007, "uncertainty": 91008, "permission_scope": 91009, "compositional": 91010, "rendering": 91011, "lexical": 91012},
+  "qualification_thresholds": {"accuracy": 0.92, "macro_f1": 0.92, "ACT_precision": 0.97, "ACT_recall": 0.85, "forbidden_ACT": 0, "false_ACT": 0, "critical_factor_accuracy": 0.96, "exact_state_accuracy": 0.93, "state_validity_rate": 1.0, "invalid_predicted_states": 0, "counterfactual_directional": 0.97, "counterfactual_ACT_disable": 1.0, "false_certainty": 0, "max_prediction_share": 0.35},
+  "validation_metrics": {"n": 2400, "accuracy": 1.0, "macro_f1": 1.0, "per_action_recall": {"IGNORE": 1.0, "WAIT": 1.0, "SUGGEST": 1.0, "NOTIFY": 1.0, "ASK": 1.0, "ACT": 1.0}, "ACT_precision": 1.0, "ACT_recall": 1.0, "forbidden_ACT": 0, "false_ACT": 0, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "state_validity_rate": 1.0, "invalid_predicted_states": 0, "counterfactual_directional": 1.0, "counterfactual_ACT_disable": 1.0, "false_certainty": 0, "max_prediction_share": 0.16666666666666666},
+  "selection": {"V9-B_qualified": true, "V9-C_qualified": true, "selected": "V9-B", "tie_break": "lower complexity after all higher-priority metrics tied"},
+  "freeze_boundary": ["parser","factor extraction","evidence logic","lexicons","regex","scoring","state decoder","valid-state projection","constraint solver","policy","safety gate","thresholds","abstention behavior","architecture","tie-breaking"]
+}

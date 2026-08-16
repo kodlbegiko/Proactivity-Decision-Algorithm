@@ -1,0 +1,7 @@
+{
+  "validation_prediction_distribution": {"IGNORE": 400, "WAIT": 400, "SUGGEST": 400, "NOTIFY": 400, "ASK": 400, "ACT": 400},
+  "max_prediction_share": 0.16666666666666666,
+  "active_action_classes": 6,
+  "act_prediction_share": 0.16666666666666666,
+  "safety_by_collapse": false
+}

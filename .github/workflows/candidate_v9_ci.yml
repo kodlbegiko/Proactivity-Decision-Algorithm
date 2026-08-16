@@ -1,0 +1,29 @@
+name: Candidate v9 CI
+
+on:
+  push:
+    branches:
+      - research/candidate-v9-normative-state-safe-recovery
+  pull_request:
+    paths:
+      - 'candidate_v9/**'
+      - 'benchmark_v9/**'
+      - 'tests/test_candidate_v9.py'
+      - 'spec/proactivity_policy_v2.json'
+      - '.github/workflows/candidate_v9_ci.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip pytest
+      - run: python -m py_compile candidate_v9/*.py benchmark_v9/*.py
+      - run: python -m pytest -q tests/test_candidate_v9.py

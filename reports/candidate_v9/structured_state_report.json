@@ -1,0 +1,7 @@
+{
+  "critical_factor_accuracy": 1.0,
+  "exact_state_accuracy": 1.0,
+  "normative_state_validity_rate": 1.0,
+  "invalid_predicted_states": 0,
+  "joint_constraint": {"n": 1200, "joint_valid_state_resolution_accuracy": 1.0, "invalid_predicted_states": 0, "state_validity_rate": 1.0, "forbidden_act": 0, "false_act": 0}
+}

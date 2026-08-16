@@ -1,0 +1,5 @@
+{
+  "terminal_state":"CANDIDATE_V9 DEVELOPMENT FAIL — NO CANDIDATE QUALIFIED","stage":"H1 DEV-OOD","candidate":"Candidate-v9","architecture":"V9-B","candidate_freeze_commit":"e0445c93280ad0416cfe9535de44a940e6888af3","holdout_protocol_commit":"62905232347d829863205a239676fd9213fc77d8",
+  "H1":{"dataset_sha256":"6ff7f1ad552a98d5b197ef420ee51d61ba90e4f850d3f6df9174f35cc33601e8","n":1800,"seed":92001,"macro_f1":0.5771589881576321,"ACT_recall":0.23666666666666666,"ACT_precision":1.0,"forbidden_ACT":0,"false_ACT":0,"state_validity_rate":1.0,"invalid_predicted_states":0,"critical_factor_accuracy":0.9093055555555556,"exact_state_accuracy":0.3983333333333333,"max_prediction_share":0.5688888888888889,"per_action_recall":{"IGNORE":1.0,"WAIT":0.49333333333333335,"SUGGEST":0.5033333333333333,"NOTIFY":0.5366666666666666,"ASK":0.55,"ACT":0.23666666666666666},"prediction_distribution":{"IGNORE":1024,"WAIT":156,"SUGGEST":177,"NOTIFY":207,"ASK":165,"ACT":71}},
+  "H2_H13":"NOT EXECUTED — FAIL FAST","protected":"NOT ELIGIBLE / NOT EXECUTED","candidate_modified_after_holdout":false,"formal_holdout_rerun":false,"semantic_rescue":false,"individual_H1_records_inspected":false
+}
