@@ -1,0 +1,29 @@
+{
+  "normative_spec": "PDA-SPEC-v2",
+  "normative_spec_git_blob_sha": "e34345bf76179d2c989d9da2effaa013792925fe",
+  "state_schema_fields": 12,
+  "theoretical_combinations": 62208,
+  "invalid_combinations": 20736,
+  "valid_combinations": 41472,
+  "invalid_reason_distribution": {
+    "I_EXTERNAL_NEEDS_PERMISSION_SCOPE": 6912,
+    "I_NO_SIDE_EFFECT_HAS_NO_PERMISSION_SCOPE": 13824
+  },
+  "valid_state_action_distribution": {
+    "IGNORE": 24192,
+    "WAIT": 7518,
+    "SUGGEST": 2076,
+    "NOTIFY": 1938,
+    "ASK": 5688,
+    "ACT": 60
+  },
+  "act_compatible_valid_states": 60,
+  "ask_compatible_states": 5688,
+  "notify_compatible_states": 1938,
+  "wait_compatible_states": 7518,
+  "suggest_compatible_states": 2076,
+  "ignore_compatible_states": 24192,
+  "valid_state_space_sha256": "5e7af8d313ab2fa846c9ebb3d1c72151aebbb99dc30b077611ed7ed229bc948f",
+  "decoder_output_domain_requirement": "subset_of_41472_normative_valid_states",
+  "audit_pass": true
+}
