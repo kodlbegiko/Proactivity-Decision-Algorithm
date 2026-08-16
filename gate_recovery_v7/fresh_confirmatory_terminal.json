@@ -1,0 +1,15 @@
+{
+  "candidate_freeze_commit": "545af659abd420843e7b5313f4daf0de4d3ac95a",
+  "integrity": {
+    "candidate_frozen_before_first_holdout": true,
+    "candidate_modified_after_holdout": false,
+    "formal_protected_rerun": false,
+    "historical_protected_evidence_used_for_development": false,
+    "historical_protected_individual_evidence_accessed": false,
+    "leakage_detected": false,
+    "protected_generated_after_candidate_freeze": false,
+    "protected_generator_frozen_before_seed": false
+  },
+  "protected": "NOT_EXECUTED",
+  "terminal_state": "CANDIDATE_V7 DEVELOPMENT FAIL \u2014 NO CANDIDATE QUALIFIED"
+}

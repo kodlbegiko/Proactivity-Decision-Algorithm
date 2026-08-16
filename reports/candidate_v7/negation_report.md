@@ -1,0 +1,34 @@
+# negation report
+
+PASS: **True**
+
+```json
+{
+  "accuracy": 0.9625,
+  "act_recall": 0.0,
+  "critical_factor_accuracy": 0.9863095238095239,
+  "critical_false_positive_rate": 0.0,
+  "exact_state_accuracy": 0.9041666666666667,
+  "false_act": 0,
+  "false_certainty": 0.0,
+  "forbidden_act": 0,
+  "invalid_action": 0,
+  "macro_f1": 0.6388539616678003,
+  "max_prediction_share": 0.6041666666666666,
+  "n": 240,
+  "per_action_recall": {
+    "ACT": 0.0,
+    "ASK": 1.0,
+    "IGNORE": 0.0,
+    "NOTIFY": 0.8378378378378378,
+    "SUGGEST": 0.9565217391304348,
+    "WAIT": 0.9523809523809523
+  },
+  "prediction_distribution": {
+    "ASK": 145,
+    "NOTIFY": 31,
+    "SUGGEST": 44,
+    "WAIT": 20
+  }
+}
+```

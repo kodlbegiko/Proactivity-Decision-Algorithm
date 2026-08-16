@@ -1,0 +1,36 @@
+# compositional report
+
+PASS: **True**
+
+```json
+{
+  "accuracy": 0.8266666666666667,
+  "act_recall": 0.16,
+  "critical_factor_accuracy": 0.9814285714285714,
+  "critical_false_positive_rate": 0.0,
+  "exact_state_accuracy": 0.87,
+  "false_act": 0,
+  "false_certainty": 0.0,
+  "forbidden_act": 0,
+  "invalid_action": 0,
+  "macro_f1": 0.790938231279454,
+  "max_prediction_share": 0.2633333333333333,
+  "n": 300,
+  "per_action_recall": {
+    "ACT": 0.16,
+    "ASK": 1.0,
+    "IGNORE": 0.98,
+    "NOTIFY": 1.0,
+    "SUGGEST": 1.0,
+    "WAIT": 0.82
+  },
+  "prediction_distribution": {
+    "ACT": 8,
+    "ASK": 79,
+    "IGNORE": 49,
+    "NOTIFY": 50,
+    "SUGGEST": 55,
+    "WAIT": 59
+  }
+}
+```

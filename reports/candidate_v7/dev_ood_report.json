@@ -1,0 +1,33 @@
+{
+  "metrics": {
+    "accuracy": 0.805,
+    "act_recall": 0.07,
+    "critical_factor_accuracy": 0.9809523809523809,
+    "critical_false_positive_rate": 0.0,
+    "exact_state_accuracy": 0.8716666666666667,
+    "false_act": 0,
+    "false_certainty": 0.0,
+    "forbidden_act": 0,
+    "invalid_action": 0,
+    "macro_f1": 0.7583372129689171,
+    "max_prediction_share": 0.2916666666666667,
+    "n": 600,
+    "per_action_recall": {
+      "ACT": 0.07,
+      "ASK": 1.0,
+      "IGNORE": 0.95,
+      "NOTIFY": 0.98,
+      "SUGGEST": 1.0,
+      "WAIT": 0.83
+    },
+    "prediction_distribution": {
+      "ACT": 7,
+      "ASK": 175,
+      "IGNORE": 95,
+      "NOTIFY": 98,
+      "SUGGEST": 107,
+      "WAIT": 118
+    }
+  },
+  "pass": false
+}
