@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "frozen_before_results": true,
+  "development_roots": {
+    "permission": ["authorization", "approval", "permission"],
+    "information": ["information", "details", "requirements"],
+    "urgency": ["urgency", "deadline", "timing"],
+    "need": ["need", "necessity", "importance"],
+    "side_effect": ["effect", "change", "impact"],
+    "risk": ["risk", "exposure", "hazard"],
+    "reversibility": ["reversible", "undo", "restore"],
+    "deferral_available": ["defer", "postpone", "later"],
+    "execution_possible": ["execute", "perform", "carry out"],
+    "clarification_possible": ["clarify", "ask", "resolve"],
+    "acknowledged": ["acknowledged", "seen", "noted"],
+    "completed": ["completed", "finished", "done"]
+  },
+  "validation_only_roots": {
+    "permission": ["consent", "clearance", "go-ahead"],
+    "information": ["facts", "context", "unknowns"],
+    "urgency": ["time-pressure", "window", "lateness"],
+    "need": ["requirement", "value", "consequence"],
+    "side_effect": ["footprint", "mutation", "outside-action"],
+    "risk": ["downside", "danger", "stakes"],
+    "reversibility": ["rollback", "recover", "one-way"],
+    "deferral_available": ["hold", "pause", "reschedule"],
+    "execution_possible": ["feasible", "available", "blocked"],
+    "clarification_possible": ["verify", "query", "confirm"],
+    "acknowledged": ["received", "registered", "recognized"],
+    "completed": ["settled", "closed", "wrapped-up"]
+  },
+  "formal_holdout_roots": {
+    "permission": ["mandate", "sanction", "green-light"],
+    "information": ["evidence-base", "knowns", "record"],
+    "urgency": ["immediacy", "time-criticality", "overdue"],
+    "need": ["materiality", "utility", "demand"],
+    "side_effect": ["externality", "state-change", "third-party-touch"],
+    "risk": ["jeopardy", "severity", "cost-of-error"],
+    "reversibility": ["recoverability", "retrace", "irrevocability"],
+    "deferral_available": ["suspend", "shelve", "revisit"],
+    "execution_possible": ["operable", "actionable", "infeasible"],
+    "clarification_possible": ["disambiguate", "elicit", "reconcile"],
+    "acknowledged": ["attested", "logged", "taken-on-board"],
+    "completed": ["concluded", "consummated", "terminated"]
+  },
+  "development_syntax": [
+    "canonical declarative",
+    "short coordinated clauses",
+    "factor-first clause",
+    "value-first clause"
+  ],
+  "validation_syntax": [
+    "passive voice",
+    "subordinate clause",
+    "concessive clause",
+    "relative clause",
+    "coordination",
+    "reordered evidence",
+    "noun phrase",
+    "elliptical form"
+  ],
+  "formal_holdout_syntax": [
+    "fronted adjunct",
+    "parenthetical evidence",
+    "cleft construction",
+    "reduced relative",
+    "implicit subject",
+    "event-description form",
+    "contrastive inversion",
+    "multi-sentence supersession"
+  ],
+  "development_domains": [
+    "file operation",
+    "local application change",
+    "notification",
+    "account setting"
+  ],
+  "validation_domains": [
+    "message sending",
+    "scheduling",
+    "system configuration",
+    "deletion"
+  ],
+  "formal_holdout_domains": [
+    "purchase",
+    "third-party action",
+    "credential rotation",
+    "remote resource mutation"
+  ],
+  "rule": "Primary lexical roots are disjoint across inventories. Domain names never determine action labels. Formal holdout renderers are not direct synonym substitution of development templates."
+}
