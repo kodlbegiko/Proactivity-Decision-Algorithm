@@ -1,0 +1,1 @@
+{"internal_holdout":{"examples":1600,"macro_f1":1.0,"exact_latent_state_reconstruction":1.0,"mean_factor_accuracy":1.0,"act_critical_factor_accuracy":1.0,"invalid_action":0,"forbidden_act":0},"action_distribution":{"ACT":267,"ASK":268,"IGNORE":267,"NOTIFY":266,"SUGGEST":266,"WAIT":266}}

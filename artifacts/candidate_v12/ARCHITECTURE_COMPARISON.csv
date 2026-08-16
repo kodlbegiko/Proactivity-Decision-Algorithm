@@ -1,0 +1,4 @@
+architecture,macro_f1,exact_latent_state_reconstruction,mean_factor_accuracy,act_critical_factor_accuracy,act_precision,act_recall,forbidden_act
+A_canonical_structured_parser,0.047619047619047616,0.0,0.48222222222222216,0.3685714285714286,0,0,0
+B_factor_specific_evidence,0.11697222293248784,0.021666666666666667,0.8298611111111112,0.8026190476190476,0,0,0
+C_typed_proposition_constraint_resolver,1.0,1.0,1.0,1.0,1.0,1.0,0

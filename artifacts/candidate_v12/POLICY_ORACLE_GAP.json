@@ -1,0 +1,1 @@
+{"predicted_state_policy_macro_f1":1.0,"ground_truth_state_policy_oracle_macro_f1":1.0,"gap":0.0,"interpretation":"No policy gap on controlled internal synthetic holdout; does not establish external validity."}

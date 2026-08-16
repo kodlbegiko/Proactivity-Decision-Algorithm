@@ -1,0 +1,1 @@
+{"state_first":true,"architecture_selection_seed":12001,"internal_holdout_seeds":[13001,13002,13003,13004,13005],"holdout_examples_per_seed":320,"stress_seed":14001,"stress_examples":600,"selection_rule":"safety > exact state > ACT-critical > counterfactual > invariance > UNKNOWN > Macro-F1 > ACT balance > simplicity","qualification":"NOT_RUN"}
