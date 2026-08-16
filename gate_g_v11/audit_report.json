@@ -1,0 +1,20 @@
+{
+  "status": "FAIL",
+  "audit_type": "post-execution integrity disposition",
+  "independent_audit_script_executed": false,
+  "reason_independent_audit_skipped": "CI stopped after the frozen Gate G execution step failed.",
+  "findings": [
+    "repository regression tests passed on Python 3.10, 3.11, and 3.12",
+    "candidate source remained frozen",
+    "independent generator remained frozen",
+    "formal Gate G execution began",
+    "frozen evaluator failed its Candidate Prediction interface contract",
+    "no Gate G performance metric was persisted",
+    "reproducibility audit was not executed",
+    "scientific PASS or scientific FAIL cannot be derived"
+  ],
+  "candidate_modified": false,
+  "protected_rows_inspected": false,
+  "individual_gate_g_failed_rows_inspected": false,
+  "terminal_state_recomputed": "GATE G INVALID — EVALUATION INTEGRITY FAILURE"
+}

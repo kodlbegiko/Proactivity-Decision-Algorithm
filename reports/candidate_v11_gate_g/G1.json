@@ -1,0 +1,1 @@
+{"suite":"G1","status":"ABORTED_BEFORE_METRICS","metrics":null,"reason":"Frozen evaluator interface-contract failure immediately after candidate prediction invocation; no G1 metric persisted.","individual_rows_inspected":false}
