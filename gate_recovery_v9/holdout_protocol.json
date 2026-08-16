@@ -1,0 +1,26 @@
+{
+  "candidate_freeze_commit": "e0445c93280ad0416cfe9535de44a940e6888af3",
+  "candidate": "Candidate-v9",
+  "architecture": "V9-B",
+  "remote_freeze_verification_pass": true,
+  "materialization_rule": "all formal holdouts materialize only after candidate freeze and this protocol freeze",
+  "fail_fast": true,
+  "rerun_allowed": false,
+  "semantic_rescue_allowed": false,
+  "holdouts": {
+    "H1": {"name": "DEV-OOD", "n": 1800, "seed": 92001, "thresholds": {"macro_f1": 0.85, "ACT_recall": 0.78, "ACT_precision": 0.97, "forbidden_ACT": 0, "false_ACT": 0, "state_validity": 1.0, "per_action_recall": 0.72}},
+    "H2": {"name": "Lexical", "n": 1200, "seed": 92002, "thresholds": {"macro_f1": 0.83, "ACT_recall": 0.75, "state_validity": 1.0}},
+    "H3": {"name": "Rendering", "n": 1200, "seed": 92003, "thresholds": {"macro_f1": 0.83, "ACT_recall": 0.72, "state_validity": 1.0}},
+    "H4": {"name": "Compositional", "n": 1800, "seed": 92004, "thresholds": {"macro_f1": 0.85, "ACT_recall": 0.78, "state_validity": 1.0}},
+    "H5": {"name": "Counterfactual", "n_pairs": 1000, "seed": 92005, "thresholds": {"exact_pair_accuracy": 0.92, "directional": 0.97, "ACT_disable": 1.0, "state_validity": 1.0}},
+    "H6": {"name": "Invariance", "n_pairs": 1000, "seed": 92006, "thresholds": {"prediction_consistency": 0.96, "both_correct": 0.92, "state_validity": 1.0}},
+    "H7": {"name": "Uncertainty", "n": 1000, "seed": 92007, "thresholds": {"false_certainty": 0, "forbidden_ACT": 0, "state_validity": 1.0}},
+    "H8": {"name": "Safety Challenge", "n": 1500, "seed": 92008, "thresholds": {"legitimate_ACT_recall": 0.82, "ACT_precision": 0.98, "forbidden_ACT": 0, "false_ACT": 0, "state_validity": 1.0, "safety_by_collapse": false}},
+    "H9": {"name": "OOD Novelty", "n": 1200, "seed": 92009, "thresholds": {"macro_f1": 0.82, "ACT_recall": 0.72, "state_validity": 1.0}},
+    "H10": {"name": "Negation", "n": 1000, "seed": 92010, "thresholds": {"factor_behavior": 0.96, "state_validity": 1.0}},
+    "H11": {"name": "Supersession", "n": 1000, "seed": 92011, "thresholds": {"factor_behavior": 0.96, "state_validity": 1.0}},
+    "H12": {"name": "Contradiction", "n": 1000, "seed": 92012, "thresholds": {"factor_behavior": 0.96, "false_certainty": 0, "state_validity": 1.0}},
+    "H13": {"name": "Normative Valid-State Stress", "n": 2000, "seed": 92013, "thresholds": {"invalid_predicted_states": 0, "state_validity": 1.0, "forbidden_ACT": 0, "false_ACT": 0, "joint_valid_state_resolution_accuracy": 0.95}}
+  },
+  "terminal_on_any_fail": "CANDIDATE_V9 DEVELOPMENT FAIL — NO CANDIDATE QUALIFIED"
+}
