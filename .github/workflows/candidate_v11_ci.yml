@@ -1,0 +1,21 @@
+name: candidate-v11-ci
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  regression-and-v11:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Full repository regression suite
+        run: python -m pytest -q
+      - name: Candidate-v11 frozen development checks
+        run: python -m benchmark_v11.run_development --check

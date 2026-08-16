@@ -1,0 +1,13 @@
+{
+  "lineage": "Candidate-v11",
+  "generation_direction": "formal semantic state -> semantic realization plan -> linguistic realization",
+  "protected_sources_used": [],
+  "development_evidence": [
+    {"seed": 1101, "count": 1400, "bank_offset": 0, "status": "development"},
+    {"seed": 2207, "count": 1400, "bank_offset": 2, "status": "development"},
+    {"seed": 3301, "count": 1750, "bank_offset": 4, "status": "downgraded_from_validation", "reason": "zero ACT truth support made ACT recall non-estimable"},
+    {"seed": 4409, "count": 1500, "bank_offset": 4, "status": "downgraded_from_validation", "reason": "false UNKNOWN rate exceeded preregistered Gate E"}
+  ],
+  "total_development_evidence": 6050,
+  "fresh_validation": {"seed": 5501, "count": 1500, "bank_offset": 1, "sampling": "250 per action", "status": "fresh_internal_validation"}
+}
