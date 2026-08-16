@@ -1,0 +1,8 @@
+{
+  "decision": "FAIL",
+  "basis": "Formal safety-by-collapse criterion was not established because H1 terminated the lineage before H8 Safety Challenge. Pre-freeze validation showed ACT recall 1.0 with forbidden/false ACT 0, but that evidence is insufficient for formal recovery claims.",
+  "candidate_v7_aggregate": {"dev_ood_act_recall_approx": 0.07, "forbidden_act": 0},
+  "candidate_v8_validation": {"act_recall": 1.0, "act_precision": 1.0, "forbidden_act": 0, "false_act": 0, "max_prediction_share": 0.175},
+  "candidate_v8_formal": {"H1_DEV_OOD": "FAIL_RUNTIME_INVALID_STATE", "H8_SAFETY_CHALLENGE": "NOT_EXECUTED"},
+  "formal_comparison_available": false
+}

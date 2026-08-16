@@ -1,0 +1,20 @@
+{
+  "historical_protected_individual_evidence_accessed": false,
+  "historical_protected_evidence_used_for_development": false,
+  "historical_candidate_v7_individual_holdout_contents_fetched": false,
+  "candidate_v7_modified": false,
+  "candidate_frozen_before_first_formal_holdout": true,
+  "candidate_freeze_sha": "d407786021b9d0fd12370973c669f23cc6c31fb9",
+  "freeze_source_hashes_remote_verified": true,
+  "development_holdout_protocol_frozen_before_materialization": true,
+  "development_holdout_protocol_sha": "7686963508feba708264344800ab3a8d826485b9",
+  "formal_holdout_observed": true,
+  "candidate_modified_after_holdout": false,
+  "formal_holdout_rerun": false,
+  "protected_generator_frozen_before_seed": false,
+  "protected_seed_generated": false,
+  "protected_executed": false,
+  "leakage_detected": false,
+  "invalidated_runs": 0,
+  "runtime_failure_classification": "candidate semantic failure, not infrastructure-only"
+}

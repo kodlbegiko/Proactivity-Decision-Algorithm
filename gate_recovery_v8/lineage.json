@@ -1,0 +1,8 @@
+{
+  "lineage": "Candidate-v8 fresh",
+  "base_sha": "83e41d91d264dd7074ea31d61571f14eaa6b09e3",
+  "candidate_v7_terminal": "CANDIDATE_V7 DEVELOPMENT FAIL — NO CANDIDATE QUALIFIED",
+  "candidate_v7_immutable": true,
+  "holdouts_materialized": false,
+  "protected_materialized": false
+}
