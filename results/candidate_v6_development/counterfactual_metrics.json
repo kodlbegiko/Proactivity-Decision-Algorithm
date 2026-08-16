@@ -1,0 +1,19 @@
+{
+  "critical_factor_consistency": 1.0,
+  "directional_change_accuracy": 0.9055555555555556,
+  "exact_pair_correctness": 0.8555555555555555,
+  "forbidden_act": 0,
+  "pairs": 180,
+  "transition_specific_accuracy": {
+    "acknowledged": 1.0,
+    "completed": 0.7692307692307693,
+    "deferral_available": 1.0,
+    "execution_possible": 1.0,
+    "information": 0.6538461538461539,
+    "need": 0.8076923076923077,
+    "permission": 1.0,
+    "reversibility": 1.0,
+    "risk": 1.0,
+    "urgency": 0.7567567567567568
+  }
+}

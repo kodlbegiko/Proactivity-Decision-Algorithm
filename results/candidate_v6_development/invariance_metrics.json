@@ -1,0 +1,7 @@
+{
+  "action_consistency": 0.8444444444444444,
+  "exact_both_correctness": 0.7388888888888889,
+  "factor_state_consistency": 0.4777777777777778,
+  "mean_confidence_delta": 0.07698736323940533,
+  "pairs": 180
+}
