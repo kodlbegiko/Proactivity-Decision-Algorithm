@@ -1,0 +1,23 @@
+{
+  "act_precision": 1.0,
+  "act_recall": 0.031746031746031744,
+  "catastrophic_collapse": false,
+  "forbidden_act": 0,
+  "invalid_action": 0,
+  "prediction_action_distribution": {
+    "ACT": 10,
+    "ASK": 874,
+    "IGNORE": 710,
+    "NOTIFY": 77,
+    "SUGGEST": 118,
+    "WAIT": 311
+  },
+  "truth_action_distribution": {
+    "ACT": 315,
+    "ASK": 368,
+    "IGNORE": 376,
+    "NOTIFY": 339,
+    "SUGGEST": 333,
+    "WAIT": 369
+  }
+}

@@ -5,7 +5,7 @@
   "development_terminal_commit": "fdfbf1662c0406637d3847635b25187b2f3c317b",
   "lineage": "Candidate-v11B Independent Protected Qualification",
   "qualification_branch": "research/candidate-v11-independent-qualification",
-  "qualification_executed": false,
-  "research_integrity": "PENDING",
-  "terminal_decision": "PENDING"
+  "qualification_executed": true,
+  "research_integrity": "PASS",
+  "terminal_decision": "CANDIDATE_V11 QUALIFICATION FAIL — LINEAGE_TERMINATED"
 }
