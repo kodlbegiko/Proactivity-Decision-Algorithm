@@ -26,12 +26,13 @@
     "gate_g_v11/audit_gate_g.py": "3eb5dee6a89d67356341b6bcdc1b6aca298050db"
   },
   "spec_git_blob": "e34345bf76179d2c989d9da2effaa013792925fe",
-  "ci_workflow_git_blob": "3588575c25429758cf8a6104931a0b4bd3bb9651",
+  "ci_workflow_git_blob": "cb1b3faa7d075ab15dc994500df343cae3209dff",
   "pre_metric_infrastructure_incidents": [
     "gate_g_v11/incidents/pre_metric_ci_001.json",
-    "gate_g_v11/incidents/pre_metric_ci_002.json"
+    "gate_g_v11/incidents/pre_metric_ci_002.json",
+    "gate_g_v11/incidents/pre_metric_ci_003.json"
   ],
-  "latest_pre_metric_repair_commit": "408da2a4ad7bf37e38893a93b230c516f544b43c",
+  "latest_pre_metric_repair_commit": "7b9ce1411ad6ea8f0902120f47c5b052825c6735",
   "benchmark_v11_generator_dependency": false,
   "gold_source": "spec/proactivity_policy_v2.json via gate_g_v11/protocol_oracle.py",
   "candidate_output_used_for_generation": false,
