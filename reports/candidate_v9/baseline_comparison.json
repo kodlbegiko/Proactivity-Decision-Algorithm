@@ -1,0 +1,9 @@
+{
+  "candidate_v7": "historical aggregate only; not rerun",
+  "candidate_v8": "historical pre-freeze aggregate only; H1 individual evidence not rerun",
+  "majority_baseline": {"expected_accuracy_on_balanced_validation": 0.16666666666666666},
+  "simple_heuristic_baseline": "not selected; Candidate-v9 architecture-family comparison is primary",
+  "V9-A": {"qualified": false, "macro_f1": 1.0, "state_validity": 1.0},
+  "V9-B": {"qualified": true, "macro_f1": 1.0, "state_validity": 1.0},
+  "V9-C": {"qualified": true, "macro_f1": 1.0, "state_validity": 1.0}
+}

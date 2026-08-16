@@ -1,0 +1,10 @@
+{
+  "n": 600,
+  "false_certainty": 0,
+  "forbidden_act": 0,
+  "false_act": 0,
+  "invalid_predicted_states": 0,
+  "normative_state_validity_rate": 1.0,
+  "act_precision": 0.0,
+  "act_recall": 0.0
+}

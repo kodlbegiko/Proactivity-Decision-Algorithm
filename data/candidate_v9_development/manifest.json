@@ -1,0 +1,8 @@
+{
+  "materialized_locally": true,
+  "raw_jsonl_committed": false,
+  "reason": "Raw deterministic development JSONL totals ~16 MB; repository records exact seeds, generator source hashes and dataset SHA256 instead.",
+  "generator": "benchmark_v9/generator.py",
+  "recreate": "PYTHONPATH=. python -c 'from candidate_v9.development import materialize_development_data; materialize_development_data(\".\")'",
+  "sha256_manifest": "reports/candidate_v9/development_data_manifest.json"
+}

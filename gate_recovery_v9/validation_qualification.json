@@ -1,0 +1,10 @@
+{
+  "selected_candidate": "V9-B",
+  "qualification_pass": true,
+  "V9_A_structural_eligible": false,
+  "V9_B_qualified": true,
+  "V9_C_qualified": true,
+  "selection_reason": "V9-B and V9-C tie on all higher-priority preregistered metrics; lower complexity is the final preregistered tie-break.",
+  "validation": {"accuracy": 1.0, "macro_f1": 1.0, "act_precision": 1.0, "act_recall": 1.0, "forbidden_act": 0, "false_act": 0, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "normative_state_validity_rate": 1.0, "invalid_predicted_states": 0, "counterfactual_directional": 1.0, "counterfactual_act_disable": 1.0, "false_certainty": 0, "max_prediction_share": 0.16666666666666666},
+  "adversarial": {"invalid_state_attack_n": 2400, "invalid_state_attack_invalid": 0, "act_boundary_n": 1500, "act_boundary_forbidden_act": 0, "act_boundary_false_act": 0, "act_boundary_legitimate_act_recall": 1.0, "contradiction_detection": 1.0, "supersession_factor_behavior": 1.0, "negation_factor_accuracy": 0.9864583333333333, "joint_resolution_accuracy": 1.0, "uncertainty_false_certainty": 0}
+}

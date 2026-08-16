@@ -1,0 +1,49 @@
+{
+  "architectures": {
+    "V9-A": {
+      "act_boundary": {"accuracy": 1.0, "act_precision": 1.0, "act_prediction_share": 0.5, "act_recall": 1.0, "action_entropy": 1.356445964075715, "active_action_classes": 6, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "macro_f1": 1.0, "max_prediction_share": 0.5, "n": 1500, "normative_state_validity_rate": 1.0, "per_action_precision": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "per_action_recall": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "prediction_distribution": {"ACT": 750, "ASK": 385, "IGNORE": 107, "NOTIFY": 95, "SUGGEST": 128, "WAIT": 35}},
+      "adversarial_pass": true,
+      "contradiction": {"contradiction_detection": 1.0, "false_certainty": 0, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "counterfactual": {"act_disable_accuracy": 1.0, "directional_accuracy": 1.0, "exact_pair_accuracy": 1.0, "n_pairs": 1000},
+      "invalid_state_attack": {"false_act": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "joint_valid_state_resolution_accuracy": 1.0, "n": 2400, "state_validity_rate": 1.0},
+      "joint_state_constraint": {"false_act": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "joint_valid_state_resolution_accuracy": 1.0, "n": 1200, "state_validity_rate": 1.0},
+      "negation": {"factor_accuracy": 0.9864583333333333, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "qualified": false,
+      "structural_eligible": false,
+      "supersession": {"factor_behavior": 1.0, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "uncertainty": {"act_precision": 0.0, "act_recall": 0.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "n": 600, "normative_state_validity_rate": 1.0},
+      "validation": {"accuracy": 1.0, "act_precision": 1.0, "act_prediction_share": 0.16666666666666666, "act_recall": 1.0, "action_entropy": 1.791759469228055, "active_action_classes": 6, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "macro_f1": 1.0, "max_prediction_share": 0.16666666666666666, "n": 2400, "normative_state_validity_rate": 1.0, "per_action_precision": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "per_action_recall": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "prediction_distribution": {"ACT": 400, "ASK": 400, "IGNORE": 400, "NOTIFY": 400, "SUGGEST": 400, "WAIT": 400}}
+    },
+    "V9-B": {
+      "act_boundary": {"accuracy": 1.0, "act_precision": 1.0, "act_prediction_share": 0.5, "act_recall": 1.0, "action_entropy": 1.356445964075715, "active_action_classes": 6, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "macro_f1": 1.0, "max_prediction_share": 0.5, "n": 1500, "normative_state_validity_rate": 1.0, "per_action_precision": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "per_action_recall": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "prediction_distribution": {"ACT": 750, "ASK": 385, "IGNORE": 107, "NOTIFY": 95, "SUGGEST": 128, "WAIT": 35}},
+      "adversarial_pass": true,
+      "contradiction": {"contradiction_detection": 1.0, "false_certainty": 0, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "counterfactual": {"act_disable_accuracy": 1.0, "directional_accuracy": 1.0, "exact_pair_accuracy": 1.0, "n_pairs": 1000},
+      "invalid_state_attack": {"false_act": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "joint_valid_state_resolution_accuracy": 1.0, "n": 2400, "state_validity_rate": 1.0},
+      "joint_state_constraint": {"false_act": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "joint_valid_state_resolution_accuracy": 1.0, "n": 1200, "state_validity_rate": 1.0},
+      "negation": {"factor_accuracy": 0.9864583333333333, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "qualified": true,
+      "structural_eligible": true,
+      "supersession": {"factor_behavior": 1.0, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "uncertainty": {"act_precision": 0.0, "act_recall": 0.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "n": 600, "normative_state_validity_rate": 1.0},
+      "validation": {"accuracy": 1.0, "act_precision": 1.0, "act_prediction_share": 0.16666666666666666, "act_recall": 1.0, "action_entropy": 1.791759469228055, "active_action_classes": 6, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "macro_f1": 1.0, "max_prediction_share": 0.16666666666666666, "n": 2400, "normative_state_validity_rate": 1.0, "per_action_precision": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "per_action_recall": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "prediction_distribution": {"ACT": 400, "ASK": 400, "IGNORE": 400, "NOTIFY": 400, "SUGGEST": 400, "WAIT": 400}}
+    },
+    "V9-C": {
+      "act_boundary": {"accuracy": 1.0, "act_precision": 1.0, "act_prediction_share": 0.5, "act_recall": 1.0, "action_entropy": 1.356445964075715, "active_action_classes": 6, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "macro_f1": 1.0, "max_prediction_share": 0.5, "n": 1500, "normative_state_validity_rate": 1.0, "per_action_precision": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "per_action_recall": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "prediction_distribution": {"ACT": 750, "ASK": 385, "IGNORE": 107, "NOTIFY": 95, "SUGGEST": 128, "WAIT": 35}},
+      "adversarial_pass": true,
+      "contradiction": {"contradiction_detection": 1.0, "false_certainty": 0, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "counterfactual": {"act_disable_accuracy": 1.0, "directional_accuracy": 1.0, "exact_pair_accuracy": 1.0, "n_pairs": 1000},
+      "invalid_state_attack": {"false_act": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "joint_valid_state_resolution_accuracy": 1.0, "n": 2400, "state_validity_rate": 1.0},
+      "joint_state_constraint": {"false_act": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "joint_valid_state_resolution_accuracy": 1.0, "n": 1200, "state_validity_rate": 1.0},
+      "negation": {"factor_accuracy": 1.0, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "qualified": true,
+      "structural_eligible": true,
+      "supersession": {"factor_behavior": 1.0, "invalid_predicted_states": 0, "n": 600, "state_validity_rate": 1.0},
+      "uncertainty": {"act_precision": 0.0, "act_recall": 0.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "n": 600, "normative_state_validity_rate": 1.0},
+      "validation": {"accuracy": 1.0, "act_precision": 1.0, "act_prediction_share": 0.16666666666666666, "act_recall": 1.0, "action_entropy": 1.791759469228055, "active_action_classes": 6, "critical_factor_accuracy": 1.0, "exact_state_accuracy": 1.0, "false_act": 0, "false_certainty": 0, "forbidden_act": 0, "invalid_predicted_states": 0, "macro_f1": 1.0, "max_prediction_share": 0.16666666666666666, "n": 2400, "normative_state_validity_rate": 1.0, "per_action_precision": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "per_action_recall": {"ACT": 1.0, "ASK": 1.0, "IGNORE": 1.0, "NOTIFY": 1.0, "SUGGEST": 1.0, "WAIT": 1.0}, "prediction_distribution": {"ACT": 400, "ASK": 400, "IGNORE": 400, "NOTIFY": 400, "SUGGEST": 400, "WAIT": 400}}
+    }
+  },
+  "qualification_pass": true,
+  "selected_candidate": "V9-B",
+  "selection_rule": ["zero invalid predicted states", "forbidden ACT", "false ACT", "counterfactual ACT-disable", "ACT precision", "ACT recall", "exact structured-state accuracy", "Macro-F1", "lower complexity"]
+}

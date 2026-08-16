@@ -1,0 +1,6 @@
+{
+  "n_pairs": 1000,
+  "exact_pair_accuracy": 1.0,
+  "directional_accuracy": 1.0,
+  "act_disable_accuracy": 1.0
+}

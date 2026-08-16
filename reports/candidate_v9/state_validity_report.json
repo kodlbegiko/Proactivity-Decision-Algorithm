@@ -1,0 +1,5 @@
+{
+  "validation": {"rate": 1.0, "invalid": 0},
+  "invalid_state_attack": {"n": 2400, "joint_valid_state_resolution_accuracy": 1.0, "invalid_predicted_states": 0, "state_validity_rate": 1.0, "forbidden_act": 0, "false_act": 0},
+  "joint_state_constraint": {"n": 1200, "joint_valid_state_resolution_accuracy": 1.0, "invalid_predicted_states": 0, "state_validity_rate": 1.0, "forbidden_act": 0, "false_act": 0}
+}
