@@ -1,0 +1,12 @@
+{
+  "base_sha": "83e41d91d264dd7074ea31d61571f14eaa6b09e3",
+  "candidate_v7_frozen_sha": "545af659abd420843e7b5313f4daf0de4d3ac95a",
+  "lineage": "Candidate-v8 fresh",
+  "seeds": {"train": 8001, "validation": 8002, "validation_stress": 8003, "counterfactual_validation": 8004},
+  "train_n": 4800,
+  "validation_n": 1200,
+  "architectures": ["V8-A", "V8-B", "V8-C"],
+  "thresholds": {"macro_f1": 0.90, "accuracy": 0.90, "per_action_recall": 0.80, "act_recall": 0.85, "act_precision": 0.95, "forbidden_act": 0, "false_act": 0, "critical_factor_accuracy": 0.95, "exact_state_accuracy": 0.90, "critical_false_positive_rate": 0, "false_certainty": 0, "max_prediction_share": 0.35, "counterfactual_directional_accuracy": 0.95, "counterfactual_act_disable_accuracy": 1.0},
+  "post_freeze_holdouts_materialized": false,
+  "protected_seed_generated": false
+}
