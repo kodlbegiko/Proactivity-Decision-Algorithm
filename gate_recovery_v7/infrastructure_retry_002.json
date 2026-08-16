@@ -1,0 +1,27 @@
+{
+  "retry_id": "infrastructure_retry_002",
+  "failed_run": 31923028511,
+  "failure_phase": "Stage A complete dataset regeneration after source tests",
+  "failure_classification": "pre-evaluation dataset-generation implementation defect",
+  "complete_dataset_existed": false,
+  "partial_dataset_directory_created": true,
+  "validation_score_existed": false,
+  "qualification_holdout_score_existed": false,
+  "source_tests": "10/10 passed on Python 3.10, 3.11, and 3.12 before generator failure",
+  "root_cause": "The generator incorrectly required every action-balanced record to come from a distinct formal state. Protocol-v2 has only 60 distinct valid ACT formal states, below the preregistered train quota of 800 ACT records.",
+  "repair_scope": [
+    "Preserve the fixed action-balanced quotas, dataset sizes, seeds, formal-state-to-semantic-plan direction, oracle, and surface realization rules.",
+    "When an action's ranked valid formal-state pool is smaller than its fixed quota, deterministically cycle that pool; record identity and surface realization remain index-dependent."
+  ],
+  "generator_sampling_mechanics_modified": true,
+  "scientific_data_specification_modified": false,
+  "scientific_configuration_modified": false,
+  "architecture_family_modified": false,
+  "threshold_modified": false,
+  "dataset_size_modified": false,
+  "seed_modified": false,
+  "holdout_used_for_repair": false,
+  "protected_example_used_for_repair": false,
+  "scientific_evaluation_evidence_observed": false,
+  "retry_scientifically_legal": true
+}

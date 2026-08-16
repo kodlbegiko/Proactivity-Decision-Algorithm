@@ -1,0 +1,286 @@
+name: Candidate-v7 Proposition-Logic Development
+
+on:
+  push:
+    branches:
+      - research/candidate-v7-proposition-logic-reasoning
+    paths:
+      - gate_recovery_v7/source_freeze.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: candidate-v7-proposition-logic-development
+  cancel-in-progress: false
+
+jobs:
+  reproducibility:
+    name: Stage A / Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install test runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . 'pytest>=8,<9'
+      - name: Candidate-v7 source tests
+        run: |
+          pytest -q \
+            tests/test_candidate_v7.py \
+            tests/test_candidate_v7_negation.py \
+            tests/test_candidate_v7_scope.py \
+            tests/test_candidate_v7_temporal.py \
+            tests/test_candidate_v7_integrity.py
+      - name: Regenerate complete Candidate-v7 dataset
+        run: |
+          rm -rf /tmp/candidate_v7
+          python scripts/run_candidate_v7.py generate --output /tmp/candidate_v7
+          cp /tmp/candidate_v7/manifest.json "/tmp/manifest-py${{ matrix.python-version }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: candidate-v7-repro-${{ matrix.python-version }}
+          path: /tmp/manifest-py${{ matrix.python-version }}.json
+          if-no-files-found: error
+
+  authoritative:
+    name: Stage B / Authoritative Python 3.11
+    needs: reproducibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . 'pytest>=8,<9'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: candidate-v7-repro-*
+          path: /tmp/repro
+          merge-multiple: true
+      - name: Initialize frozen lineage identifiers
+        id: ids
+        shell: bash
+        run: |
+          SOURCE_FREEZE_COMMIT="$GITHUB_SHA"
+          SOURCE_COMMIT="$(git rev-parse "${SOURCE_FREEZE_COMMIT}^")"
+          PREREG_COMMIT="$(git rev-parse "${SOURCE_COMMIT}^")"
+          test "$PREREG_COMMIT" = "520033a76a848262290dd1221f9fc79fcba08539"
+          echo "source_freeze_commit=$SOURCE_FREEZE_COMMIT" >> "$GITHUB_OUTPUT"
+          echo "source_commit=$SOURCE_COMMIT" >> "$GITHUB_OUTPUT"
+          echo "prereg_commit=$PREREG_COMMIT" >> "$GITHUB_OUTPUT"
+          git config user.name candidate-v7-mission-bot
+          git config user.email candidate-v7-mission-bot@users.noreply.github.com
+      - name: Verify cross-version byte-identical manifests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = sorted(Path('/tmp/repro').glob('manifest-py*.json'))
+          assert len(files) == 3, files
+          payloads = [p.read_bytes() for p in files]
+          assert payloads[0] == payloads[1] == payloads[2], [p.name for p in files]
+          print('byte-identical manifests:', [p.name for p in files])
+          PY
+      - name: Generate and freeze canonical dataset
+        id: dataset
+        shell: bash
+        run: |
+          rm -rf data/candidate_v7_development
+          python scripts/run_candidate_v7.py generate --output data/candidate_v7_development
+          cmp data/candidate_v7_development/manifest.json /tmp/repro/manifest-py3.11.json
+          mkdir -p results/candidate_v7_development gate_recovery_v7
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          manifest = Path('data/candidate_v7_development/manifest.json').read_bytes()
+          repro = {
+            'python_versions': ['3.10','3.11','3.12'],
+            'byte_identical_manifest': True,
+            'canonical_python': '3.11',
+            'manifest_sha256': hashlib.sha256(manifest).hexdigest(),
+          }
+          Path('results/candidate_v7_development/reproducibility.json').write_text(json.dumps(repro, indent=2, sort_keys=True)+'\n')
+          freeze = {
+            'status':'DATASET_FROZEN',
+            'source_freeze_commit':'${{ steps.ids.outputs.source_freeze_commit }}',
+            'manifest_sha256':repro['manifest_sha256'],
+            'sizes_preregistered':True,
+            'seeds_preregistered':True,
+            'holdouts_not_used_for_selection':True,
+          }
+          Path('gate_recovery_v7/dataset_freeze.json').write_text(json.dumps(freeze, indent=2, sort_keys=True)+'\n')
+          PY
+          git add data/candidate_v7_development results/candidate_v7_development/reproducibility.json gate_recovery_v7/dataset_freeze.json
+          git commit -m "candidate-v7: freeze fresh development dataset [skip ci]"
+          DATASET_COMMIT="$(git rev-parse HEAD)"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "commit=$DATASET_COMMIT" >> "$GITHUB_OUTPUT"
+      - name: Validation-only architecture search and candidate freeze
+        id: selected
+        shell: bash
+        run: |
+          python scripts/run_candidate_v7.py search --data data/candidate_v7_development --results results/candidate_v7_development
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          selected=json.loads(Path('results/candidate_v7_development/selected_candidate.json').read_text())
+          freeze={
+            'status':'SELECTED_CANDIDATE_FROZEN',
+            'dataset_freeze_commit':'${{ steps.dataset.outputs.commit }}',
+            'source_commit':'${{ steps.ids.outputs.source_commit }}',
+            'config':selected['config'],
+            'architecture':selected['architecture'],
+            'selection_source':'validation_only',
+            'qualification_holdouts_observed':False,
+          }
+          Path('gate_recovery_v7/selected_candidate_freeze.json').write_text(json.dumps(freeze, indent=2, sort_keys=True)+'\n')
+          PY
+          git add results/candidate_v7_development/architecture_search.json results/candidate_v7_development/selected_candidate.json gate_recovery_v7/selected_candidate_freeze.json
+          git commit -m "candidate-v7: freeze validation-selected candidate [skip ci]"
+          SELECTED_COMMIT="$(git rev-parse HEAD)"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "commit=$SELECTED_COMMIT" >> "$GITHUB_OUTPUT"
+      - name: Pre-qualification research-integrity audit
+        run: |
+          python scripts/check_candidate_v7_research_integrity.py \
+            --phase prequalification \
+            --prereg-commit '${{ steps.ids.outputs.prereg_commit }}' \
+            --source-commit '${{ steps.ids.outputs.source_commit }}' \
+            --source-freeze-commit '${{ steps.ids.outputs.source_freeze_commit }}' \
+            --dataset-commit '${{ steps.dataset.outputs.commit }}' \
+            --selected-commit '${{ steps.selected.outputs.commit }}'
+      - name: Record exactly-one qualification start
+        id: qstart
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          marker={
+            'status':'STARTED',
+            'qualification_run_count':1,
+            'scientific_metrics_observed':False,
+            'selected_candidate_commit':'${{ steps.selected.outputs.commit }}',
+            'holdout_use':'exactly_once',
+          }
+          Path('gate_recovery_v7/qualification_execution.json').write_text(json.dumps(marker, indent=2, sort_keys=True)+'\n')
+          PY
+          git add gate_recovery_v7/qualification_execution.json results/candidate_v7_development/research_integrity.json
+          git commit -m "candidate-v7: record qualification execution start [skip ci]"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Exactly-one qualification execution
+        run: |
+          python scripts/run_candidate_v7.py qualify --data data/candidate_v7_development --results results/candidate_v7_development
+      - name: Baselines and mandatory ablations
+        run: |
+          python scripts/run_candidate_v7.py baselines --data data/candidate_v7_development --results results/candidate_v7_development
+          python scripts/run_candidate_v7.py ablations --data data/candidate_v7_development --results results/candidate_v7_development
+      - name: Freeze qualification evidence
+        id: qualification
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path('gate_recovery_v7/qualification_execution.json')
+          marker=json.loads(path.read_text())
+          marker['status']='COMPLETE'
+          marker['scientific_metrics_observed']=True
+          path.write_text(json.dumps(marker, indent=2, sort_keys=True)+'\n')
+          PY
+          git add results/candidate_v7_development gate_recovery_v7/qualification_execution.json
+          git commit -m "candidate-v7: freeze qualification, baseline, and ablation evidence [skip ci]"
+          QUALIFICATION_COMMIT="$(git rev-parse HEAD)"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "commit=$QUALIFICATION_COMMIT" >> "$GITHUB_OUTPUT"
+      - name: Terminal research-integrity audit
+        id: terminal_audit
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_candidate_v7_research_integrity.py \
+            --phase terminal \
+            --prereg-commit '${{ steps.ids.outputs.prereg_commit }}' \
+            --source-commit '${{ steps.ids.outputs.source_commit }}' \
+            --source-freeze-commit '${{ steps.ids.outputs.source_freeze_commit }}' \
+            --dataset-commit '${{ steps.dataset.outputs.commit }}' \
+            --selected-commit '${{ steps.selected.outputs.commit }}' \
+            --qualification-commit '${{ steps.qualification.outputs.commit }}'
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then echo "failed=false" >> "$GITHUB_OUTPUT"; else echo "failed=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Terminal scientific decision
+        run: |
+          python scripts/run_candidate_v7.py decision --results results/candidate_v7_development
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          integrity=json.loads(Path('results/candidate_v7_development/research_integrity.json').read_text())
+          decision_path=Path('results/candidate_v7_development/qualification_decision.json')
+          decision=json.loads(decision_path.read_text())
+          if integrity.get('status') != 'PASS':
+              decision['terminal_state']='CANDIDATE V7 DEVELOPMENT INVALID — RESEARCH INTEGRITY OR EVALUATION FAILURE'
+              decision['fresh_confirmatory']='NOT_AUTHORIZED'
+              decision['integrity_override']=True
+              decision_path.write_text(json.dumps(decision, indent=2, sort_keys=True)+'\n')
+          terminal={
+            'terminal_state':decision['terminal_state'],
+            'preregistration_commit':'${{ steps.ids.outputs.prereg_commit }}',
+            'source_commit':'${{ steps.ids.outputs.source_commit }}',
+            'source_freeze_commit':'${{ steps.ids.outputs.source_freeze_commit }}',
+            'dataset_freeze_commit':'${{ steps.dataset.outputs.commit }}',
+            'selected_candidate_commit':'${{ steps.selected.outputs.commit }}',
+            'qualification_commit':'${{ steps.qualification.outputs.commit }}',
+            'github_actions_run':'${{ github.run_id }}',
+            'fresh_confirmatory':decision['fresh_confirmatory'],
+            'gate_g':'NOT_EXECUTED',
+          }
+          Path('gate_recovery_v7/terminal.json').write_text(json.dumps(terminal, indent=2, sort_keys=True)+'\n')
+          PY
+      - name: Freeze terminal evidence
+        id: terminal
+        shell: bash
+        run: |
+          git add results/candidate_v7_development/research_integrity.json results/candidate_v7_development/qualification_decision.json gate_recovery_v7/terminal.json
+          git commit -m "candidate-v7: freeze terminal scientific decision [skip ci]"
+          TERMINAL_COMMIT="$(git rev-parse HEAD)"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "commit=$TERMINAL_COMMIT" >> "$GITHUB_OUTPUT"
+      - name: Write and freeze final terminal report
+        id: report
+        shell: bash
+        run: |
+          python scripts/run_candidate_v7.py report \
+            --results results/candidate_v7_development \
+            --output docs/candidate_v7_development_terminal_report.md \
+            --branch "$GITHUB_REF_NAME" \
+            --prereg-commit '${{ steps.ids.outputs.prereg_commit }}' \
+            --source-commit '${{ steps.ids.outputs.source_commit }}' \
+            --source-freeze-commit '${{ steps.ids.outputs.source_freeze_commit }}' \
+            --dataset-commit '${{ steps.dataset.outputs.commit }}' \
+            --selected-commit '${{ steps.selected.outputs.commit }}' \
+            --qualification-commit '${{ steps.qualification.outputs.commit }}' \
+            --terminal-commit '${{ steps.terminal.outputs.commit }}' \
+            --run-id '${{ github.run_id }}'
+          git add docs/candidate_v7_development_terminal_report.md
+          git commit -m "candidate-v7: record development terminal report [skip ci]"
+          REPORT_COMMIT="$(git rev-parse HEAD)"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "commit=$REPORT_COMMIT" >> "$GITHUB_OUTPUT"
+      - name: Final machine-readable summary
+        run: |
+          cat gate_recovery_v7/terminal.json
+          cat results/candidate_v7_development/qualification_decision.json
