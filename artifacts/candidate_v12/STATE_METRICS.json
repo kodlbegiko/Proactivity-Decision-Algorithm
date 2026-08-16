@@ -1,1 +1,11 @@
-{"internal_holdout":{"examples":1600,"macro_f1":1.0,"exact_latent_state_reconstruction":1.0,"mean_factor_accuracy":1.0,"act_critical_factor_accuracy":1.0,"invalid_action":0,"forbidden_act":0},"action_distribution":{"ACT":267,"ASK":268,"IGNORE":267,"NOTIFY":266,"SUGGEST":266,"WAIT":266}}
+{
+  "architecture":"D_compositional_semantic_frame_resolver",
+  "internal_holdout_examples":1800,
+  "macro_f1":1.0,
+  "exact_latent_state_reconstruction":1.0,
+  "mean_factor_accuracy":1.0,
+  "act_critical_factor_accuracy":1.0,
+  "critical_unknown_rate":0.0,
+  "false_unknown_rate":0.0,
+  "action_distribution":{"ACT":300,"ASK":300,"IGNORE":300,"NOTIFY":300,"SUGGEST":300,"WAIT":300}
+}

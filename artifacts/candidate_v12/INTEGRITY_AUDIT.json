@@ -1,1 +1,11 @@
-{"status":"PASS","protected_v11q_raw_access":"NONE","candidate_v11_mutation":false,"protected_generator_access":"NONE","protected_sentence_level_access":"NONE","development_sources":["fresh synthetic","public spec","declassified aggregates"]}
+{
+  "status":"PASS",
+  "protected_v11q_raw_access":"NONE",
+  "protected_sentence_level_access":"NONE",
+  "protected_generator_content_inspected":false,
+  "candidate_v11_mutation":false,
+  "candidate_v11_blob":"661df3bcc9b26cb7e47fc319a589c31f6fd6b922",
+  "v11q_paths_diff_from_start":false,
+  "research_thresholds_relaxed_after_results":false,
+  "independent_qualification_run":false
+}

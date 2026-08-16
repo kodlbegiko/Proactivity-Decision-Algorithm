@@ -1,1 +1,4 @@
-{"negation":{"full":1.0,"ablated":0.7833333333333333},"temporal":{"full":1.0,"ablated":0.4888888888888889},"ontology":{"full":1.0,"ablated":0.0}}
+{
+  "probes":{"conditional":true,"double_negation":true,"temporal_supersession":true,"contradiction":true,"entity_binding":true,"cancellation":true,"user_preference":true,"explicit_missingness":true,"uncertain_modality":true,"dependency":true,"generator_no_cross_factor_collision":true},
+  "mechanistic":{"temporal":{"full":1.0,"ablated":0.5666666666666667,"delta":0.43333333333333335},"contradiction_safety":{"full":1.0,"ablated":0.0,"delta":1.0},"frame_composition":{"full_exact_state":1.0,"lexical_c_exact_state":0.0,"no_operator_exact_state":0.0,"delta_vs_c":1.0}}
+}

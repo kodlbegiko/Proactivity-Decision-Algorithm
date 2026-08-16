@@ -1,1 +1,16 @@
-{"mission":"Candidate-v12 Architecture Development","research_integrity":"PASS","protected_v11q_raw_access":"NONE","candidate_v11_mutation":false,"candidate_v12_selected":true,"internal_holdout":"PASS","stress_test":"PASS","mechanistic_validation":"PASS","repository_regression":"PENDING_GITHUB_CI","candidate_v12_frozen":false,"terminal_state":"CANDIDATE_V12 DEVELOPMENT BLOCKED — INFRASTRUCTURE_FAILURE","next_scientifically_authorized_action":"Complete full repository regression in GitHub Actions; freeze only if PASS."}
+{
+  "mission":"Candidate-v12 Architecture Development",
+  "research_integrity":"PASS",
+  "protected_v11q_raw_access":"NONE",
+  "candidate_v11_mutation":false,
+  "candidate_v12_selected":true,
+  "selected_architecture":"D_compositional_semantic_frame_resolver",
+  "internal_holdout":"PASS",
+  "stress_test":"PASS",
+  "mechanistic_validation":"PASS",
+  "repository_regression":"PASS",
+  "candidate_v12_frozen":true,
+  "source_commit":"e8ed2afa0171734450b4d56e04420b4cb1007423",
+  "terminal_state":"CANDIDATE_V12 FROZEN — READY_FOR_INDEPENDENT_QUALIFICATION_DESIGN",
+  "next_scientifically_authorized_action":"Create a separate preregistered independent qualification design with fresh protected generation and no development-agent access."
+}

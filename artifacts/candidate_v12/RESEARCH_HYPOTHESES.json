@@ -1,1 +1,10 @@
-{"H1":"structured semantic state vs surface baseline","H2":"semantic operators","H3":"UNKNOWN calibration","H4":"counterfactual sensitivity","H5":"invariance","H6":"ACT precision and recall with deterministic policy","H7":"Policy Oracle Gap attribution"}
+{
+  "H1": {"claim":"structured semantic state improves OOD development behavior over surface heuristics","status":"SUPPORTED_IN_CONTROLLED_DEVELOPMENT"},
+  "H2": {"claim":"explicit operators improve negation/temporal/compositional behavior","status":"SUPPORTED_IN_CONTROLLED_DEVELOPMENT"},
+  "H3": {"claim":"evidence-level uncertainty reduces false UNKNOWN while preserving legitimate UNKNOWN","status":"SUPPORTED_IN_CONTROLLED_DEVELOPMENT"},
+  "H4": {"claim":"counterfactual-aware state inference improves exact-pair correctness","status":"SUPPORTED_IN_CONTROLLED_DEVELOPMENT"},
+  "H5": {"claim":"meaning-preserving invariance improves realization robustness","status":"SUPPORTED_IN_CONTROLLED_DEVELOPMENT"},
+  "H6": {"claim":"deterministic policy over accurate state can achieve high ACT precision and recall","status":"SUPPORTED_IN_CONTROLLED_DEVELOPMENT"},
+  "H7": {"claim":"V11 action failure is primarily upstream state inference rather than policy oracle","status":"SUPPORTED_BY_V11_AGGREGATES_AND_POLICY_ORACLE_DIAGNOSTIC"},
+  "external_scientific_claim": "PENDING_INDEPENDENT_QUALIFICATION"
+}

@@ -1,11 +1,15 @@
 {
-  "mission":"Candidate-v12 Architecture Development",
-  "parent_terminal":"CANDIDATE_V11 QUALIFICATION FAIL — LINEAGE_TERMINATED",
-  "start_commit":"8eb8bab27e00082879bfd7421353800f10ccf3c5",
-  "branch":"research/candidate-v12-semantic-state-architecture",
-  "protected_data_prohibition":true,
-  "allowed_v11q_evidence":"aggregate/family-level only",
-  "selected_architecture":"C_typed_proposition_constraint_resolver",
-  "current_phase":"PHASE_8_PENDING_REPOSITORY_REGRESSION",
-  "freeze_status":"NOT_FROZEN"
+  "mission": "Candidate-v12 Architecture Development",
+  "parent_terminal": "CANDIDATE_V11 QUALIFICATION FAIL — LINEAGE_TERMINATED",
+  "start_commit": "8eb8bab27e00082879bfd7421353800f10ccf3c5",
+  "source_commit": "e8ed2afa0171734450b4d56e04420b4cb1007423",
+  "branch": "research/candidate-v12-semantic-state-architecture",
+  "protected_data_prohibition": true,
+  "protected_v11q_raw_access": "NONE",
+  "candidate_v11_mutation": false,
+  "architectures_seriously_evaluated": 4,
+  "selected_architecture": "D_compositional_semantic_frame_resolver",
+  "current_phase": "PHASE_8_FREEZE_COMPLETE",
+  "freeze_status": "FROZEN",
+  "independent_qualification": "NOT_RUN"
 }

@@ -1,5 +1,7 @@
 # Candidate-v12 Integrity Boundaries
 
-Forbidden: V11Q raw protected examples/labels, per-example protected predictions/errors, protected counterfactual/invariance realizations, hidden protected generator content, and score-driven protected tuning.
+Forbidden and not inspected: V11Q raw protected examples/labels, per-example protected predictions/errors, protected counterfactual/invariance realizations, and hidden protected generator content. Candidate-v11 source was not modified.
 
-Used inputs: frozen public repository code, PDA-SPEC-v2, declassified V11Q aggregate metrics, and fresh Candidate-v12 synthetic development data. Candidate-v11 mutation is prohibited and did not occur.
+The development CI verifies the frozen V11 source blob, checks no diff to V11Q/benchmark/protected-artifact paths, and scans V12 source for protected module/test references. Hash-only identity checks do not expose protected sentence-level content.
+
+Allowed inputs: public PDA-SPEC-v2, frozen repository code, declassified V11Q aggregates, and fresh Candidate-v12 synthetic development data. Integrity status: PASS.

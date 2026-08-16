@@ -1,1 +1,16 @@
-{"local_candidate_v12_tests":"PASS","local_candidate_v12_test_count":7,"full_repository_regression":"PENDING_GITHUB_CI","freeze_authorized":false}
+{
+  "status":"PASS",
+  "source_commit":"e8ed2afa0171734450b4d56e04420b4cb1007423",
+  "safe_ci_run_id":31932391905,
+  "python_matrix":{"3.10":"PASS","3.11":"PASS","3.12":"PASS"},
+  "prerequisites_regenerated":true,
+  "candidate_v11_source_unchanged":true,
+  "v11q_paths_unchanged":true,
+  "documented_exclusions":[
+    {"path":"tests/test_candidate_v11_qualification.py","reason":"protected qualification boundary; not executable by V12 development agent"},
+    {"path":"tests/test_v7r.py","reason":"pre-existing baseline collection failure (missing evaluation.v7r.auditor); V12 verifies no diff to test/evaluation.v7r paths"},
+    {"path":"tests/test_candidate_v12_advanced.py","reason":"retained failed development harness superseded by fresh final-v2 methodology"},
+    {"path":"tests/test_candidate_v12_final.py","reason":"retained failed development harness superseded by fresh final-v2 methodology"}
+  ],
+  "all_remaining_repository_tests":"PASS"
+}

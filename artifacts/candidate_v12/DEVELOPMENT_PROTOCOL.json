@@ -1,1 +1,17 @@
-{"state_first":true,"architecture_selection_seed":12001,"internal_holdout_seeds":[13001,13002,13003,13004,13005],"holdout_examples_per_seed":320,"stress_seed":14001,"stress_examples":600,"selection_rule":"safety > exact state > ACT-critical > counterfactual > invariance > UNKNOWN > Macro-F1 > ACT balance > simplicity","qualification":"NOT_RUN"}
+{
+  "state_first": true,
+  "architecture_comparison_seed": 20501,
+  "internal_holdout_seeds": [20511,20512,20513,20514,20515],
+  "holdout_examples_per_seed": 360,
+  "pooled_holdout_examples": 1800,
+  "stress_seed": 20521,
+  "stress_examples": 720,
+  "unknown_seed": 20601,
+  "counterfactual_seed": 20602,
+  "invariance_seed": 20603,
+  "mechanistic_seed": 20604,
+  "state_to_action_seed": 20605,
+  "collision_audit_seed": 20600,
+  "selection_rule": "safety > exact state > ACT-critical > counterfactual > invariance > UNKNOWN > Macro-F1 > ACT balance > simplicity",
+  "qualification": "NOT_RUN"
+}

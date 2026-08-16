@@ -1,5 +1,5 @@
 # Candidate-v12 Uncertainty Model
 
-No extracted evidence produces epistemic `UNKNOWN`; competing current evidence can produce `CONTRADICTED`; ontology-derived values can be `INFERRED`. This separates parser uncertainty from normative policy values.
+Missing evidence is represented as epistemic `UNKNOWN`; competing current evidence can become `CONTRADICTED`; ontology/dependency-derived state can be `INFERRED`. Uncertain modality such as `may`/`might` is not treated as an asserted current value.
 
-Missing-evidence probes omit one factor from otherwise controlled realizations. False UNKNOWN is measured independently on complete examples.
+Fresh final-v2 probes: legitimate UNKNOWN recall=1.0, false UNKNOWN rate=0.0, critical UNKNOWN rate=0.0. This is controlled development evidence only.
