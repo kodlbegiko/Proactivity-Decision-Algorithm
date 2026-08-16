@@ -32,8 +32,9 @@ jobs:
       - name: Materialize frozen V7R runtime bundle
         shell: bash
         run: |
-          echo "8f4464ba7d127732436e1e3e350f8a8b0f0daf6e391daf516edc7baa3267a9d5  evaluation/v7r/runtime_bundle.tar.gz" | sha256sum -c -
-          tar -xzf evaluation/v7r/runtime_bundle.tar.gz -C .
+          cat evaluation/v7r/runtime_bundle.b64.part* | base64 --decode > /tmp/v7r_runtime.tar.gz
+          echo "8f4464ba7d127732436e1e3e350f8a8b0f0daf6e391daf516edc7baa3267a9d5  /tmp/v7r_runtime.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/v7r_runtime.tar.gz -C .
 
       - name: Set up Python
         uses: actions/setup-python@v5
