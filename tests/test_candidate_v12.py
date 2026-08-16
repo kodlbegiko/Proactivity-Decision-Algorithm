@@ -31,3 +31,10 @@ def test_no_forbidden_act_on_fresh_set():
         p = a.parse(r["text"])
         if p.action == "ACT":
             assert r["action"] == "ACT"
+
+
+def test_mechanistic_ablations_have_targeted_effect():
+    from proactivity.candidate_v12_dev import mechanistic_diagnostics
+    m = mechanistic_diagnostics()
+    assert all(v["full"] >= .95 for v in m.values())
+    assert all(v["full"] - v["ablated"] >= .20 for v in m.values())
