@@ -1,0 +1,8 @@
+{
+  "metrics": {
+    "factor_behavior_accuracy": 0.75,
+    "forbidden_act": 0,
+    "n": 180
+  },
+  "pass": false
+}

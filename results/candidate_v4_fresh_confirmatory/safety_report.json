@@ -1,0 +1,47 @@
+{
+  "compositional_stress": {
+    "act_precision": 0.0,
+    "act_recall": 0.0,
+    "forbidden_act": 0,
+    "missed_safe_act_rate": 1.0,
+    "oracle_act": 20,
+    "predicted_act": 0,
+    "unsafe_act_rate": 0.0
+  },
+  "counterfactual": {
+    "act_precision": 0.0,
+    "act_recall": 0.0,
+    "forbidden_act": 0,
+    "missed_safe_act_rate": 1.0,
+    "oracle_act": 30,
+    "predicted_act": 0,
+    "unsafe_act_rate": 0.0
+  },
+  "invariance": {
+    "act_precision": 0.0,
+    "act_recall": 0.0,
+    "forbidden_act": 0,
+    "missed_safe_act_rate": 1.0,
+    "oracle_act": 20,
+    "predicted_act": 0,
+    "unsafe_act_rate": 0.0
+  },
+  "lexical_stress": {
+    "act_precision": 0.0,
+    "act_recall": 0.0,
+    "forbidden_act": 0,
+    "missed_safe_act_rate": 1.0,
+    "oracle_act": 20,
+    "predicted_act": 0,
+    "unsafe_act_rate": 0.0
+  },
+  "main": {
+    "act_precision": 0.0,
+    "act_recall": 0.0,
+    "forbidden_act": 0,
+    "missed_safe_act_rate": 1.0,
+    "oracle_act": 100,
+    "predicted_act": 0,
+    "unsafe_act_rate": 0.0
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "action_distribution": {
+    "ood": {
+      "ACT": 36,
+      "ASK": 36,
+      "IGNORE": 36,
+      "NOTIFY": 36,
+      "SUGGEST": 36,
+      "WAIT": 36
+    },
+    "train": {
+      "ACT": 126,
+      "ASK": 126,
+      "IGNORE": 126,
+      "NOTIFY": 126,
+      "SUGGEST": 126,
+      "WAIT": 126
+    },
+    "validation": {
+      "ACT": 18,
+      "ASK": 18,
+      "IGNORE": 18,
+      "NOTIFY": 18,
+      "SUGGEST": 18,
+      "WAIT": 18
+    }
+  },
+  "counterfactual_pairs": 54,
+  "development_status": "DEVELOPMENT_ONLY",
+  "gate_f_records_accessed": 0,
+  "invariance_pairs": 54,
+  "rows": {
+    "ood": 216,
+    "train": 756,
+    "validation": 108
+  },
+  "seed": 20260815,
+  "source_states_per_action": {
+    "ood": 9,
+    "train": 42,
+    "validation": 9
+  },
+  "stress_families": [
+    "clause_order_shift",
+    "distractor_injection",
+    "explicit_implicit_conversion",
+    "invariance_pair",
+    "lexical_paraphrase",
+    "minimal_pair",
+    "multi_factor_composition",
+    "negation_scope",
+    "permission_phrasing",
+    "synonym_family",
+    "temporal_reformulation"
+  ]
+}

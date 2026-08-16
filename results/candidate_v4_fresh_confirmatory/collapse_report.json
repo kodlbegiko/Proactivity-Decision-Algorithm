@@ -1,0 +1,14 @@
+{
+  "action_disappearance": [
+    "ACT",
+    "ASK",
+    "IGNORE",
+    "NOTIFY"
+  ],
+  "catastrophic_max_share_collapse": true,
+  "catastrophic_three_or_more_zero_recall": true,
+  "collapse_detected": true,
+  "single_class_collapse": false,
+  "two_class_collapse": true,
+  "zero_recall_action_count": 4
+}

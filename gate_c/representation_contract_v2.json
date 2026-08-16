@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "track_a": {
+    "purpose": "mechanistic structured-state diagnostics only",
+    "transport_fields": ["scenario_id", "domain", "state"],
+    "model_input_fields": ["domain", "state"]
+  },
+  "track_b": {
+    "purpose": "synthetic semantic observation/context evaluation",
+    "transport_fields": ["scenario_id", "domain", "observation"],
+    "model_input_fields": ["domain", "observation"]
+  },
+  "transport_only_fields": ["scenario_id"],
+  "oracle_private_fields": [
+    "split", "state", "oracle_action", "matched_rule", "prohibition_rules",
+    "template_family", "state_family_id", "relation_group",
+    "counterfactual_family_id", "prohibition_counterfactual_id",
+    "temporal_sequence_id", "temporal_step"
+  ],
+  "forbidden_candidate_import_prefixes": [
+    "proactivity.specification",
+    "proactivity.benchmark_v2"
+  ],
+  "forbidden_candidate_paths": [
+    "data/benchmark_v2/private.jsonl",
+    "data/benchmark_v2/relations.json",
+    "reports/gate_c_report.json",
+    "spec/proactivity_policy_v2.json"
+  ],
+  "anti_circularity_rule": "A future evaluated candidate must not call, import, copy at runtime, or read the frozen oracle/private evidence. The evaluation harness must strip transport-only identifiers from model input.",
+  "claim_boundary": "Track A measures mechanistic rule compliance. Track B measures compliance from deterministic synthetic semantic context. Neither track alone establishes broad real-world contextual proactivity."
+}

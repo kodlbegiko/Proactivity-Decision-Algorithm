@@ -1,0 +1,120 @@
+{
+  "brier": 0.0007417857142857151,
+  "ece": 0.02155357142857143,
+  "per_factor": {
+    "execution_possible": {
+      "brier": 0.0004000000000000007,
+      "ece": 0.020000000000000018,
+      "reliability": [
+        {
+          "bin": [
+            0.9,
+            1.0
+          ],
+          "empirical_correct_support": 1.0,
+          "mean_confidence": 0.98,
+          "n": 480
+        }
+      ]
+    },
+    "information": {
+      "brier": 0.0004000000000000007,
+      "ece": 0.020000000000000018,
+      "reliability": [
+        {
+          "bin": [
+            0.9,
+            1.0
+          ],
+          "empirical_correct_support": 1.0,
+          "mean_confidence": 0.98,
+          "n": 480
+        }
+      ]
+    },
+    "need": {
+      "brier": 0.0004000000000000007,
+      "ece": 0.020000000000000018,
+      "reliability": [
+        {
+          "bin": [
+            0.9,
+            1.0
+          ],
+          "empirical_correct_support": 1.0,
+          "mean_confidence": 0.98,
+          "n": 480
+        }
+      ]
+    },
+    "permission": {
+      "brier": 0.002792500000000001,
+      "ece": 0.030874999999999913,
+      "reliability": [
+        {
+          "bin": [
+            0.2,
+            0.3
+          ],
+          "empirical_correct_support": 0.0,
+          "mean_confidence": 0.2,
+          "n": 29
+        },
+        {
+          "bin": [
+            0.9,
+            1.0
+          ],
+          "empirical_correct_support": 1.0,
+          "mean_confidence": 0.9800000000000001,
+          "n": 451
+        }
+      ]
+    },
+    "reversibility": {
+      "brier": 0.0004000000000000007,
+      "ece": 0.020000000000000018,
+      "reliability": [
+        {
+          "bin": [
+            0.9,
+            1.0
+          ],
+          "empirical_correct_support": 1.0,
+          "mean_confidence": 0.98,
+          "n": 480
+        }
+      ]
+    },
+    "risk": {
+      "brier": 0.0004000000000000007,
+      "ece": 0.020000000000000018,
+      "reliability": [
+        {
+          "bin": [
+            0.9,
+            1.0
+          ],
+          "empirical_correct_support": 1.0,
+          "mean_confidence": 0.98,
+          "n": 480
+        }
+      ]
+    },
+    "side_effect": {
+      "brier": 0.0004000000000000007,
+      "ece": 0.020000000000000018,
+      "reliability": [
+        {
+          "bin": [
+            0.9,
+            1.0
+          ],
+          "empirical_correct_support": 1.0,
+          "mean_confidence": 0.98,
+          "n": 480
+        }
+      ]
+    }
+  }
+}
