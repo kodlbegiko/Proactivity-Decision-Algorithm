@@ -1,0 +1,16 @@
+{
+  "candidate": "Candidate-v11",
+  "mission": "Fresh Semantic Abstraction & Contradiction Reasoning",
+  "branch": "research/candidate-v11-semantic-abstraction-contradiction-reasoning",
+  "base_sha": "0bed752075356b94cf823a172ec86382f558fa17",
+  "base_terminal_state": "CANDIDATE_V10 DEVELOPMENT FAIL — NO CANDIDATE QUALIFIED",
+  "base_terminal_stage": "PRE_FREEZE_ARCHITECTURE_QUALIFICATION",
+  "normative_policy": "spec/proactivity_policy_v2.json",
+  "policy_id": "PDA-SPEC-v2",
+  "candidate_v10_individual_failed_evidence_accessed": false,
+  "candidate_v10_failed_rows_inspected": false,
+  "candidate_v10_failed_prompts_inspected": false,
+  "candidate_v10_failed_predictions_inspected": false,
+  "development_integrity": "CLEAN",
+  "lineage_status": "PRE_METRIC_DEVELOPMENT"
+}
