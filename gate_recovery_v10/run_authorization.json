@@ -1,0 +1,11 @@
+{
+  "candidate": "Candidate-v10",
+  "authorized_stage": "PRE_FREEZE_DEVELOPMENT_QUALIFICATION",
+  "preregistration_commit": "1581df0c3fa730628ba31577578a019cb2974180",
+  "split_freeze_commit": "c107cccbeedee4298ad4168723484c15c6431b97",
+  "implementation_head_before_results": "10ef9a3905bbdb59e1a95fba2c523b702d729cc9",
+  "one_shot": true,
+  "formal_holdouts_authorized": false,
+  "protected_authorized": false,
+  "candidate_v9_h1_individual_evidence_accessed": false
+}
