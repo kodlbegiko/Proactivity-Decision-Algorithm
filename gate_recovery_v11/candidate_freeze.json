@@ -1,0 +1,96 @@
+{
+  "architecture_results": {
+    "V11-A": {
+      "failed_checks": [],
+      "qualified": true
+    },
+    "V11-B": {
+      "failed_checks": [],
+      "qualified": true
+    },
+    "V11-C": {
+      "failed_checks": [],
+      "qualified": true
+    }
+  },
+  "architecture_selection_rule_frozen": true,
+  "authorization_commit": "8b60c8a4bd49bf16cf0ef02705e8fd8a92c4bb95",
+  "base_sha": "0bed752075356b94cf823a172ec86382f558fa17",
+  "candidate": "Candidate-v11",
+  "dataset_sha256": {
+    "act_boundary": "79e1b9175c6c8071c07525f7ceaff5abe77b517ba18db08858417e6df29d764b",
+    "compositional": "a7c2db2dec6227b217af51992dcffa3cf26c196944dce8d22d24be45907dda82",
+    "contradiction": "564b1d8212ce147f346de0788bdba81d1c2ca5a32a0d09b217b28610f4e1e857",
+    "counterfactual": "64c870b7d95449ca13d0cb981602d2b7118e5ca832836096b488c4a3871dbc18",
+    "cross_factor_distractor": "3caa2a1f89be14481e70d341428ae15795e6ee4057b7ee91de25db64a7893697",
+    "domain_transfer": "9281d14da9ab2a2755edee48aa805310263d1f6ebd2809657a92ded6fb4ae798",
+    "ellipsis_pragmatic": "9075b4fe3fb21fd9f3697b947aea0a4997e884521ee36bf30eeb46e746c9bbdd",
+    "lexical_abstraction": "b388f02f7d1cb736163bfd66a3abb9befc22504b88cc8f245c3112e649a612c2",
+    "modality_uncertainty": "94cbae5f2b6ddcd338a0c170aa281b25e53144a6bad3a6a5c43bdc250b230c92",
+    "negation": "ea66c9b1a23ca3be37693f637cb1e343976dc21664b3555246d78330419e65f6",
+    "scope": "0d5caf8845f775d5bf2375a656833c321b81f17f4b8d4f5cf281daf2cb76be32",
+    "semantic_paraphrase": "236e1527a69280a0f0a54af99cf7cb0e0c09fe4a6936c038863484cc1003ad57",
+    "state_validity": "dc4421211d799c5f8c3edc901409c054cee579c8add03b8401fbb2fd5d15f89d",
+    "supersession": "cd6077c997b04e4cc3c9f20c15edac2795602c9bdcf276aaa66b344e0f60ba1c",
+    "syntax_generalization": "a00624383ec612867881ae38a04dbed212f461b038f9cdf49347210773f56bc3",
+    "train": "d9fc694e62bfef3e805a4e9daf596fc9451c2e95e4cc64845883bfcbad8344d2",
+    "validation": "09211d16de3e5681347511b044905c33f43ff6ff236361fab9030fb90600edf4"
+  },
+  "domain_inventory_sha256": "8c5cc399e9607b057efa701069294a3b94482b963ae5e83299a1ee738d124f46",
+  "exact_parent_commit": "8b60c8a4bd49bf16cf0ef02705e8fd8a92c4bb95",
+  "freeze_manifest_sha256": "25d66cbe8f46181e67ea73d17f701e90c1d3023ab4bd0e264ca615ebf7e4a7f4",
+  "freeze_timestamp": "2026-08-16T12:42:07+08:00",
+  "implementation_commit": "a8cd436ff9dfa8c63f0319317d894da0c606fb3b",
+  "integrity": {
+    "candidate_v10_individual_failed_evidence_accessed": false,
+    "status": "PASS"
+  },
+  "lexical_inventory_sha256": "909810a17e689a3d6d7c0f72c86c244e2545550cbfa0ee59678d0ad2aaa4c7fc",
+  "model_parameters": {
+    "family": "V11-A",
+    "learning": "deterministic compositional frame parsing",
+    "remote_models": false,
+    "trained_weights": false
+  },
+  "normative_spec_git_blob": "e34345bf76179d2c989d9da2effaa013792925fe",
+  "preregistration_commit": "25ed20b5e8f53d3506275fd12cc688dcb1e80701",
+  "qualification_metrics": {
+    "ACT_precision": 1.0,
+    "ACT_recall": 1.0,
+    "counterfactual_ACT_disable": 1.0,
+    "counterfactual_directional": 1.0,
+    "critical_factor_accuracy": 1.0,
+    "cross_factor_confusion": 0.013916666666666688,
+    "domain_transfer": 1.0,
+    "exact_structured_state_accuracy": 1.0,
+    "false_ACT": 0,
+    "forbidden_ACT": 0,
+    "invalid_states": 0,
+    "lexical_abstraction": 1.0,
+    "max_action_share": 0.16675,
+    "negation": 1.0,
+    "scope_accuracy": 1.0,
+    "semantic_paraphrase": 1.0,
+    "state_validity": 1.0,
+    "supersession": 1.0,
+    "syntax_generalization": 1.0,
+    "validation_accuracy": 1.0,
+    "validation_macro_f1": 1.0,
+    "contradiction_detection": 1.0,
+    "contradiction_false_certainty": 0
+  },
+  "selected_architecture": "V11-A",
+  "selection_reason": "All V11-A/V11-B/V11-C passed all preregistered qualification gates; fixed tie-break selected lower architecture complexity.",
+  "source_git_blobs": {
+    "benchmark_v11/generator.py": "167565a126a096ea64c459a3cac93b498df08f2a",
+    "benchmark_v11/split_inventory.json": "cb7114e4eaa21203acd80e2b02edd0ac8e76b879",
+    "candidate_v11/model.py": "77553f7821113b48a2ffcd368ca23195853f8fb0",
+    "spec/proactivity_policy_v2.json": "e34345bf76179d2c989d9da2effaa013792925fe"
+  },
+  "split_semantic_sha256": "d20d8dc8d6748cbed9ac87567685d3f58bd05648afc2058684931c735376eb73",
+  "syntax_inventory_sha256": "039158f98182e8b5695064a149878f9774db02a868df2d897230bf7ce87be9d8",
+  "thresholds_frozen": true,
+  "training_data_sha256": "d9fc694e62bfef3e805a4e9daf596fc9451c2e95e4cc64845883bfcbad8344d2",
+  "training_seed": 111001,
+  "validation_data_sha256": "09211d16de3e5681347511b044905c33f43ff6ff236361fab9030fb90600edf4"
+}
