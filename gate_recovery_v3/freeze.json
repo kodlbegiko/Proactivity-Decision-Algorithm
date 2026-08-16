@@ -1,0 +1,55 @@
+{
+  "base_gate_e_administrative_sha": "a9ca08024e42a6a926a4cb015af7f745880f894d",
+  "candidate_identity": "V3A_factor_tree",
+  "candidate_search_source_sha256": "26800e511550cdf6ea22f0ab6addf7550655770b8e55729184746db11cd0e1fe",
+  "candidate_source_freeze_commit": "d032ba787e5fe509253801befc898a2377b8149f",
+  "candidate_source_immutable_after_freeze": true,
+  "candidate_source_sha256": "280494c9b0530bc2ce4ea624c32d37a7aa22dc6b0da034bd95d594bf2890ff1b",
+  "configuration": {
+    "class_weight": "balanced",
+    "family": "robust semantic factor parser + bounded decision tree",
+    "max_depth": 14,
+    "seed": 20260815
+  },
+  "data_hashes": {
+    "counterfactual_relations.jsonl": "3b08182eb172941b9a940886b93b1a924f80309c527bbd196116afa93b973e3e",
+    "generation_summary.json": "1ffaa5dbb66da5f5902affe3c71cb2bb9b33488a53435deadb8b0fd28c02b0a2",
+    "invariance_relations.jsonl": "307da36a892184db90fb36c9cfc5923c74f2045ba85e8b88277e253e79350970",
+    "ood.jsonl": "6b79b95db52a706904ddbb819c25741ad7119ccaeef01d401cbe88436d71bcc7",
+    "ood_private.jsonl": "481d04f77e7b143eb7fd1c961bbebc638025c4d8e4429175badc6148315bb5e0",
+    "train.jsonl": "e33a8f3af59bbeb47ad4e2109e56b28ddbfef704539279f1c9f532020d7189d4",
+    "train_private.jsonl": "421e5f1888870afef1e24afb352b6ae378b94494ea0717a7e2ee91d405002b4f",
+    "validation.jsonl": "837df6106aa4c010764f7ca086228810d8e6af2bc8ead1ae5ab057a7abc91ac1",
+    "validation_private.jsonl": "17758fdf4de5cb4f24831f5b9194f89d068b873e19d387ea1b7eedbf55363059"
+  },
+  "dependency": "scikit-learn==1.7.1",
+  "evaluator_sha256": "e3841078427255415d72e9a0e9b489c10b452f18fa5e895a695de9a63d518151",
+  "factor_diagnostics_sha256": "6013ba52de47625961a51b2e72d3334460fa4d9a8762dc279a95a763470cefa6",
+  "fresh_confirmatory_evaluation": "NOT EXECUTED",
+  "gate_f_historical_scientific_sha": "23d183086368d0921c9af2f6c326d4c97214f267",
+  "gate_f_historical_status": "FAIL",
+  "gate_f_retired_protected_records_accessed_by_development": 0,
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "generator_sha256": "e0001befecce5c20018f7ea763e803b9e99383d106cec8c2d1e2891bfe15bc49",
+  "preregistration_commit": "393491528f2e226987beff580f75f1f8c630aaf3",
+  "python_matrix": [
+    "3.10",
+    "3.11",
+    "3.12"
+  ],
+  "qualification_ci_run_id": 31882883965,
+  "root_cause_diagnostic_sha256": "766963fb9744f99c583e38c43b4f7b566bfdb2b267681cc00c737cba31fba146",
+  "root_cause_report_sha256": "25213b7abc0076158b076683ded60a797cf64145003194ca740ae1d9d122f9e9",
+  "seed": 20260815,
+  "selected_metrics": {
+    "counterfactual_exact_pair": 0.9444444444444444,
+    "dev_ood_forbidden_act": 0,
+    "dev_ood_macro_f1": 0.9453044375644994,
+    "invariance_consistency": 1.0,
+    "validation_forbidden_act": 0,
+    "validation_macro_f1": 0.9814241486068113
+  },
+  "selection_evidence_sha256": "34f690771cb38902c5b20d604c9f6900c5a620e914dbe5d726082859372e93e6",
+  "status": "RECOVERY DEVELOPMENT PASS \u2014 CANDIDATE V3 FROZEN"
+}

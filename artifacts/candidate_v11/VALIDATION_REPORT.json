@@ -1,0 +1,13 @@
+{
+  "architecture_mutated_after_validation_began": false,
+  "bank_offset": 1,
+  "counterfactual": {"counterfactual_exact_pair": 1.0, "pair_count": 280},
+  "example_count": 1500,
+  "false_unknown_rate": 0.0,
+  "invariance": {"action_consistency": 1.0, "groups": 350, "latent_consistency": 1.0},
+  "metrics": {"act_critical_factor_accuracy": 1.0, "act_precision": 1.0, "act_recall": 1.0, "action_distribution": {"ACT": 250, "ASK": 251, "IGNORE": 248, "NOTIFY": 250, "SUGGEST": 250, "WAIT": 251}, "catastrophic_collapse": false, "critical_unknown_rate": 0.0, "exact_latent_state_reconstruction": 0.9986666666666667, "family_macro_f1": {"Compositional": 0.9954946727549467, "Lexical": 1.0, "Mixed Adversarial": 0.994703656998739, "Negation": 1.0, "Rendering": 1.0, "Scope": 1.0, "Temporal": 1.0}, "forbidden_act": 0, "fresh_ood_macro_f1": 0.9986653199624845, "invalid_action": 0, "mean_factor_accuracy": 0.9998888888888889},
+  "sampling": "action-stratified: 250 truth examples per action",
+  "seed": 5501,
+  "status": "PASS",
+  "unknown_calibration": {"case_count": 280, "legitimate_unknown_recall": 1.0}
+}

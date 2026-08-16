@@ -1,0 +1,212 @@
+{
+  "candidate": "Candidate-v7 Proposition-Logic Semantic Reasoning",
+  "compositional_rule": "signature_mod_7==0 held out from train/validation",
+  "counts": {
+    "compositional_holdout": 800,
+    "counterfactual": 480,
+    "development_ood": 1200,
+    "invariance": 480,
+    "lexical_holdout": 800,
+    "negation_holdout": 600,
+    "rendering_holdout": 800,
+    "scope_holdout": 600,
+    "temporal_holdout": 600,
+    "train": 4800,
+    "validation": 1200
+  },
+  "direction": "formal_state->semantic_plan->typed_propositions->surface_realization",
+  "families": {
+    "compositional_holdout": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "alt"
+      ],
+      "semantic_template_family": [
+        "state-plan-compositional_holdout"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    },
+    "counterfactual": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-counterfactual"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    },
+    "development_ood": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "alt"
+      ],
+      "semantic_template_family": [
+        "state-plan-development_ood"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    },
+    "invariance": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-invariance"
+      ],
+      "surface_realization_family": [
+        "bullet",
+        "conversation",
+        "declarative",
+        "multisentence",
+        "reordered",
+        "terse"
+      ]
+    },
+    "lexical_holdout": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "holdout"
+      ],
+      "semantic_template_family": [
+        "state-plan-lexical_holdout"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    },
+    "negation_holdout": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-negation_holdout"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    },
+    "rendering_holdout": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-rendering_holdout"
+      ],
+      "surface_realization_family": [
+        "bullet",
+        "conversation",
+        "multisentence",
+        "parenthetical",
+        "reordered",
+        "terse"
+      ]
+    },
+    "scope_holdout": {
+      "construction_family": [
+        "scope-contrast"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-scope_holdout"
+      ],
+      "surface_realization_family": [
+        "contrast"
+      ]
+    },
+    "temporal_holdout": {
+      "construction_family": [
+        "temporal-mixed"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-temporal_holdout"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    },
+    "train": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-train"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    },
+    "validation": {
+      "construction_family": [
+        "assertive-propositions"
+      ],
+      "lexical_family": [
+        "core"
+      ],
+      "semantic_template_family": [
+        "state-plan-validation"
+      ],
+      "surface_realization_family": [
+        "declarative"
+      ]
+    }
+  },
+  "generator_revision": "v7-proposition-logic-r1",
+  "hashes": {
+    "compositional_holdout.jsonl": "61b8838b7ea341aef92e218dae2b8ec0b87cd82c7714e0efed6bd79ad2756550",
+    "counterfactual.jsonl": "8c80cd8bfafa4bafde676b283c425de235f4e25fe0a7579a647a68a4a896c216",
+    "development_ood.jsonl": "1ebd90d9295acc895a1cd71a7e4e796ebf567907787f4c8e5e60fd9fd9095492",
+    "invariance.jsonl": "a7baf0ab48f5a5df1efb0cf9e9190fe597414d3b55681a97e494f834dff1bc6b",
+    "lexical_holdout.jsonl": "5923ed531069a4084a5ba5f805f43392bd0376704360a41eb7aada8c16512e8c",
+    "negation_holdout.jsonl": "0b3ba0951949800141e2b968f965eb818ee916aff3dfb9c642d04ea9006ebe20",
+    "rendering_holdout.jsonl": "846d1a215891a3ff5f13b114c01903a499b5a8cba59984c52c416735b76e9f58",
+    "scope_holdout.jsonl": "67adcb3a011c26fc3260a392e23612e0df85b7002e45794565d888ec80bb7603",
+    "temporal_holdout.jsonl": "124086dfb4ecce374a42f5c9b190946109eb10e14c8a4a1d93c1c4e963a48e25",
+    "train.jsonl": "83bbd963b0adc12936be161e4f64e0659c5829b4ad967eda00fd006e2fefcfc9",
+    "validation.jsonl": "7718164a26ade58fb841ae2185530a10b502fa8c2e0f12326d5f63ea7a3e46bc"
+  },
+  "lexical_isolation": true,
+  "seeds": {
+    "compositional_holdout": 7006,
+    "counterfactual": 7010,
+    "development_ood": 7003,
+    "invariance": 7011,
+    "lexical_holdout": 7004,
+    "negation_holdout": 7007,
+    "rendering_holdout": 7005,
+    "scope_holdout": 7008,
+    "temporal_holdout": 7009,
+    "train": 7001,
+    "validation": 7002
+  }
+}

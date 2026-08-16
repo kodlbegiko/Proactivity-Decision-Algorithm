@@ -1,0 +1,10 @@
+{
+  "byte_identical_manifest": true,
+  "canonical_python": "3.11",
+  "manifest_sha256": "951cf59df3f4664d4f271365ea69b36b7af78ef63304d95d6f5289482e1d6f10",
+  "python_versions": [
+    "3.10",
+    "3.11",
+    "3.12"
+  ]
+}

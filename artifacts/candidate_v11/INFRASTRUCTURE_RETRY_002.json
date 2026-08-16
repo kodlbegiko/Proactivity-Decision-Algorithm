@@ -1,0 +1,16 @@
+{
+  "retry_id": "INFRASTRUCTURE_RETRY_002",
+  "workflow_run_id": 31927050062,
+  "job_id": 95116148237,
+  "failure_class": "fixture_materialization_failure",
+  "failure": "full pytest collection failed because the frozen V7R runtime bundle had not been materialized",
+  "evidence": "ImportError: cannot import name 'auditor' from 'evaluation.v7r'",
+  "existing_reference_setup": ".github/workflows/candidate_v7_requalification.yml materializes runtime_bundle.b64.part* and deterministic repository regression fixtures before pytest",
+  "protected_labels_exposed": false,
+  "candidate_mutated": false,
+  "scientific_parameters_changed": false,
+  "validation_seed_changed": false,
+  "thresholds_changed": false,
+  "authorized_retry": true,
+  "remediation": "mirror the existing V7R pre-test runtime materialization and deterministic fixture preparation before running the unchanged full pytest suite"
+}

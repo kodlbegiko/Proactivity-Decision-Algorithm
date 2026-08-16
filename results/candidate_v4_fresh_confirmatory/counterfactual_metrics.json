@@ -1,0 +1,53 @@
+{
+  "directionally_correct_behavior": 0.26666666666666666,
+  "exact_pair_correctness": 0.0,
+  "forbidden_act": 0,
+  "pairs": 60,
+  "transition_specific": {
+    "acknowledged": {
+      "directional": 0.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "completed": {
+      "directional": 0.6666666666666666,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "deferral_available": {
+      "directional": 0.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "execution_possible": {
+      "directional": 0.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "information": {
+      "directional": 0.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "permission": {
+      "directional": 0.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "reversibility": {
+      "directional": 0.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "risk": {
+      "directional": 0.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 6
+    },
+    "urgency": {
+      "directional": 1.0,
+      "exact_pair_correctness": 0.0,
+      "pairs": 12
+    }
+  }
+}

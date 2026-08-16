@@ -1,0 +1,52 @@
+{
+  "files": {
+    "compositional_holdout.jsonl": {
+      "records": 360,
+      "sha256": "d43fe61e676d94e355d383ea4558a027a359d7b049251288d3bd818389b52277"
+    },
+    "counterfactual.jsonl": {
+      "pairs": 128,
+      "records": 256,
+      "sha256": "0cc32319f2e37dab45fb9b227aa91d4cb9cc354f85a78571a8772871d1837d09"
+    },
+    "development_ood.jsonl": {
+      "records": 600,
+      "sha256": "c97f64335784eb280b5edf7ce00e586311b3ee966a0e9d62712e8f41b9b689f4"
+    },
+    "invariance.jsonl": {
+      "pairs": 120,
+      "records": 240,
+      "sha256": "0301a898cc81660f1bf2a013a256a6ee0a9b0cc6b95eae1f4514158c74abcff8"
+    },
+    "lexical_holdout.jsonl": {
+      "records": 360,
+      "sha256": "36735ba3e6e367cedbd8985d2784a901a8e1c44286b711c9765a41287f61397c"
+    },
+    "negation.jsonl": {
+      "records": 240,
+      "sha256": "ecbeedddbc00629bf5d29da132be4e181ce6526b0ad663b3fa0eaa062177d881"
+    },
+    "rendering_holdout.jsonl": {
+      "records": 360,
+      "sha256": "c8c86b988422c1bda176cfa08a053ac9684099f082e7de338e2ad885d41fc364"
+    },
+    "train.jsonl": {
+      "records": 2400,
+      "sha256": "836f90703ef0657fdd95945a4517eed93c16b58bd740f7b0ce4216308f14773c"
+    },
+    "validation.jsonl": {
+      "records": 600,
+      "sha256": "8563136362aa2ba438c342026cd8556d65e33295d4ae0c2e95b6cf1afa52ee82"
+    }
+  },
+  "generator_sha256": "c1e21059c57aed172814f623e3688fb996e5ad64bdfae6e83713c142e45b0f40",
+  "mission": "candidate_v5_fresh_lineage_development",
+  "quarantine": {
+    "candidate_v3_protected_access": 0,
+    "candidate_v4_development_corpus_reused": false,
+    "candidate_v4_protected_access": 0
+  },
+  "schema_version": 1,
+  "seed": 20260815,
+  "spec_sha256": "ea06eeb85ffa375740e778d273b57d79e7f4f96d0eb68eb74ed2ef9df6d827a4"
+}

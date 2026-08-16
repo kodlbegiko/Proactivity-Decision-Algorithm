@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Development v1 annotation row",
+  "type": "object",
+  "required": ["scenario_id", "preferred_action", "acceptable_actions", "confidence", "ambiguity_flag", "reason_code", "criticality"],
+  "properties": {
+    "scenario_id": {"type": "string", "pattern": "^dv1-[0-9a-f]{12}$"},
+    "preferred_action": {"enum": ["IGNORE", "WAIT", "SUGGEST", "NOTIFY", "ASK", "ACT"]},
+    "acceptable_actions": {"type": "string", "minLength": 3},
+    "confidence": {"type": "integer", "minimum": 1, "maximum": 5},
+    "ambiguity_flag": {"type": "boolean"},
+    "reason_code": {"enum": ["no_expected_value", "timing", "interruption_cost", "missing_context", "permission", "risk", "redundant", "stale_context", "delay_cost", "criticality", "other"]},
+    "criticality": {"enum": ["NONE", "IMPORTANT", "CRITICAL"]}
+  },
+  "additionalProperties": false
+}

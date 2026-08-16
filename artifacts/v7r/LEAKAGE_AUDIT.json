@@ -1,0 +1,13 @@
+{
+  "actual_protected_example_access": "NONE",
+  "exact_text_overlap_count": 0,
+  "exact_text_overlap_example_ids": [],
+  "fresh_records_scanned": 1750,
+  "high_simhash_similarity_threshold": 0.94,
+  "high_similarity_count": 0,
+  "high_similarity_example_ids": [],
+  "interpretation": "Exact full-text overlap is treated as contamination. High lexical similarity is reported as a diagnostic because shared task vocabulary alone is not evidence of protected-example access.",
+  "legacy_text_records_scanned": 12360,
+  "maximum_observed_simhash_similarity": 0.84375,
+  "raw_legacy_text_emitted": false
+}

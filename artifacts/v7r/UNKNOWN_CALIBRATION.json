@@ -1,0 +1,33 @@
+{
+  "critical_unknown_rate": 0.6405714285714286,
+  "false_unknown_rate": 0.3972720746590093,
+  "legitimate_critical_unknown_recall": 1.0,
+  "legitimate_unknown_recall": 1.0,
+  "per_run": {
+    "Q1": {
+      "critical_unknown_rate": 0.6371428571428571,
+      "false_unknown_rate": 0.3924383823881311,
+      "legitimate_unknown_recall": 1.0
+    },
+    "Q2": {
+      "critical_unknown_rate": 0.6371428571428571,
+      "false_unknown_rate": 0.4063173007896626,
+      "legitimate_unknown_recall": 1.0
+    },
+    "Q3": {
+      "critical_unknown_rate": 0.64,
+      "false_unknown_rate": 0.3938741325675999,
+      "legitimate_unknown_recall": 1.0
+    },
+    "Q4": {
+      "critical_unknown_rate": 0.6371428571428571,
+      "false_unknown_rate": 0.3948312993539124,
+      "legitimate_unknown_recall": 1.0
+    },
+    "Q5": {
+      "critical_unknown_rate": 0.6514285714285715,
+      "false_unknown_rate": 0.3988992581957406,
+      "legitimate_unknown_recall": 1.0
+    }
+  }
+}

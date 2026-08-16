@@ -1,0 +1,18 @@
+{
+  "incident_id": "V7R-INFRA-RETRY-001",
+  "classification": "TECHNICAL_INFRASTRUCTURE_FAILURE_PRE_PROTECTED_REALIZATION",
+  "workflow_run_id": 31924975697,
+  "failed_step": "Materialize frozen V7R runtime bundle",
+  "cause": "GitHub blob transport produced bytes whose SHA256 did not match the frozen runtime bundle digest",
+  "protected_dataset_realized": false,
+  "candidate_inference_executed": false,
+  "ground_truth_or_labels_observed": false,
+  "scores_observed": false,
+  "candidate_changed": false,
+  "preregistration_changed": false,
+  "seeds_changed": false,
+  "runtime_semantics_changed": false,
+  "repair": "Store the exact same frozen runtime bundle as ordered base64 text parts; concatenate and decode in Actions; require the original SHA256 before extraction",
+  "retry_authorized_under_preregistration": true,
+  "scientific_interpretation": "NONE"
+}

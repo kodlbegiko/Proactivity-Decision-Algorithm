@@ -1,0 +1,11 @@
+{
+  "action_consistency": 0.43333333333333335,
+  "critical_factor_consistency": 0.44166666666666665,
+  "directional_change_accuracy": 0.43333333333333335,
+  "exact_both_correctness": 0.05,
+  "exact_pair_correctness": 0.05,
+  "forbidden_act": 1,
+  "latent_state_consistency": 0.0,
+  "pairs": 120,
+  "prediction_consistency": 0.43333333333333335
+}

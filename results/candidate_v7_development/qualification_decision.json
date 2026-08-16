@@ -1,0 +1,23 @@
+{
+  "terminal_state": "CANDIDATE V7 DEVELOPMENT INVALID — RESEARCH INTEGRITY OR EVALUATION FAILURE",
+  "development_qualification": "NOT_EXECUTED",
+  "qualification_run_count": 0,
+  "qualification_holdouts_observed": false,
+  "checks": {
+    "preregistration_chronology": true,
+    "source_freeze": true,
+    "cross_version_reproducibility": true,
+    "dataset_freeze": true,
+    "validation_only_selection": true,
+    "selected_candidate_freeze": true,
+    "prequalification_research_integrity_gate": false
+  },
+  "failed_criteria": [
+    "prequalification_research_integrity_gate_validity"
+  ],
+  "integrity_failure_classification": "Auditor self-reference false positive discovered after validation evidence existed; post-validation repair/rerun is not authorized by the preregistered retry rule.",
+  "actual_protected_example_access_evidence": "NONE_OBSERVED",
+  "fresh_confirmatory": "NOT_AUTHORIZED",
+  "gate_g": "NOT_EXECUTED",
+  "ci_success_is_not_scientific_pass": true
+}

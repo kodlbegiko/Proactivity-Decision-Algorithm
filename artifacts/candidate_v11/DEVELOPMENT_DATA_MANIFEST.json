@@ -1,0 +1,13 @@
+{
+  "fresh_validation": {"bank_offset": 1, "count": 1500, "sampling": "action_stratified_250_each", "seed": 5501},
+  "generation_direction": "formal semantic state -> semantic intent plan -> linguistic realization",
+  "lineage": "Candidate-v11",
+  "protected_sources_used": [],
+  "sets": [
+    {"bank_offset": 0, "count": 1400, "seed": 1101, "status": "development"},
+    {"bank_offset": 2, "count": 1400, "seed": 2207, "status": "development"},
+    {"bank_offset": 4, "count": 1750, "reason": "zero ACT truth support; ACT recall non-estimable", "seed": 3301, "status": "downgraded_from_validation"},
+    {"bank_offset": 4, "count": 1500, "reason": "false UNKNOWN rate exceeded Gate E", "seed": 4409, "status": "downgraded_from_validation"}
+  ],
+  "total_development_evidence": 6050
+}

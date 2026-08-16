@@ -1,0 +1,8 @@
+{
+  "attempts": [
+    {"count": 1750, "disposition": "DOWNGRADED_TO_DEVELOPMENT", "reason": "random sample contained zero ACT truth support, so ACT recall could not be estimated; not treated as pass and not silently rerolled", "seed": 3301},
+    {"count": 1500, "disposition": "DOWNGRADED_TO_DEVELOPMENT", "reason": "false UNKNOWN rate exceeded <=0.08 Gate E; architecture returned to development before any new validation", "seed": 4409}
+  ],
+  "best_run_selection": false,
+  "score_driven_rerun": false
+}

@@ -1,0 +1,30 @@
+{
+  "candidate_v3_quarantine": "PASS",
+  "candidate_v4_development_leakage": "NONE_DETECTED",
+  "criteria": {
+    "compositional_each_recall_nonzero": false,
+    "compositional_forbidden_act": true,
+    "compositional_macro_f1": false,
+    "counterfactual_exact_pair": false,
+    "counterfactual_forbidden_act": true,
+    "fewer_than_three_zero_recall": false,
+    "forbidden_act_main": true,
+    "invalid_action": true,
+    "invariance_consistency": false,
+    "invariance_exact_both": false,
+    "lexical_each_recall_nonzero": false,
+    "lexical_forbidden_act": true,
+    "lexical_macro_f1": false,
+    "main_accuracy": false,
+    "main_each_recall": false,
+    "main_macro_f1": false,
+    "main_max_share": false,
+    "no_catastrophic_max_share": false,
+    "no_single_class_collapse": true
+  },
+  "gate_g": "NOT EXECUTED",
+  "gate_h": "NOT EXECUTED",
+  "integrity_errors": [],
+  "protected_leakage": "NONE_DETECTED",
+  "terminal_state": "FRESH CONFIRMATORY FAIL — CANDIDATE V4 LINEAGE TERMINATED"
+}

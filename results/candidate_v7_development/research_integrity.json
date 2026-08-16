@@ -1,0 +1,27 @@
+{
+  "status": "FAIL",
+  "phase": "prequalification",
+  "terminal_effect": "INVALID",
+  "chronology": "PASS",
+  "architecture_search_budget": 12,
+  "validation_only_selection": true,
+  "selected_candidate_commit": "fb4dc35e2447d28d8b2777aca6c6a901bc2aeaf1",
+  "qualification_execution_count": 0,
+  "qualification_holdouts_observed": false,
+  "source_mutation_after_freeze": [],
+  "failed_workflow_run": 31923232067,
+  "auditor_reported_protected_leakage": true,
+  "actual_protected_example_access_evidence": "NONE_OBSERVED",
+  "detector_self_reference_false_positive": true,
+  "false_positive_cause": "scripts/check_candidate_v7_research_integrity.py scanned its own FORBIDDEN_REFERENCES constant strings and classified those detector definitions as forbidden historical path references.",
+  "original_audit_hits": [
+    "scripts/check_candidate_v7_research_integrity.py:data/protected/",
+    "scripts/check_candidate_v7_research_integrity.py:data/candidate_v4_fresh_confirmatory/",
+    "scripts/check_candidate_v7_research_integrity.py:data/candidate_v5_development/",
+    "scripts/check_candidate_v7_research_integrity.py:data/candidate_v6_development/",
+    "scripts/check_candidate_v7_research_integrity.py:results/candidate_v4_fresh_confirmatory/",
+    "scripts/check_candidate_v7_research_integrity.py:results/candidate_v5_development/",
+    "scripts/check_candidate_v7_research_integrity.py:results/candidate_v6_development/"
+  ],
+  "decision": "Do not repair or rerun scientific evaluation after validation evidence exists. Keep qualification holdouts locked and terminate INVALID."
+}

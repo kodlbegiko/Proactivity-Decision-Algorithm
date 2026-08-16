@@ -1,0 +1,250 @@
+name: Candidate-v6 Structured Latent Reasoning Development
+
+on:
+  push:
+    branches:
+      - research/candidate-v6-structured-latent-reasoning
+    paths:
+      - gate_recovery_v6/source_freeze.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: candidate-v6-structured-latent-reasoning
+  cancel-in-progress: false
+
+env:
+  PYTHONHASHSEED: "0"
+  TOKENIZERS_PARALLELISM: "false"
+  CANDIDATE_V6_PREREG_COMMIT: a077a6bf5e522e85c84820efbe3c9ae350d126bc
+
+jobs:
+  reproducibility:
+    name: Dataset reproducibility / Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package only
+        run: python -m pip install -e .
+
+      - name: Verify source chronology and quarantine
+        run: python scripts/check_candidate_v6_research_integrity.py --phase source
+
+      - name: Generate independent deterministic dataset copy
+        env:
+          CANDIDATE_V6_SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          rm -rf /tmp/candidate-v6-data
+          python -m proactivity.candidate_v6_data --out /tmp/candidate-v6-data
+          cd /tmp/candidate-v6-data
+          sha256sum *.jsonl manifest.json | sort > "${GITHUB_WORKSPACE}/hashes.txt"
+
+      - name: Upload byte-identity evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-v6-hashes-${{ matrix.python-version }}
+          path: hashes.txt
+          if-no-files-found: error
+
+  reproducibility_check:
+    name: Compare Python-version dataset identity
+    needs: reproducibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: candidate-v6-hashes-*
+          path: artifacts
+
+      - name: Require byte-identical datasets
+        run: |
+          diff -u artifacts/candidate-v6-hashes-3.10/hashes.txt artifacts/candidate-v6-hashes-3.11/hashes.txt
+          diff -u artifacts/candidate-v6-hashes-3.10/hashes.txt artifacts/candidate-v6-hashes-3.12/hashes.txt
+
+      - name: Build reproducibility evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          hashes = Path("artifacts/candidate-v6-hashes-3.10/hashes.txt").read_text().splitlines()
+          payload = {
+              "status": "PASS",
+              "python_versions": ["3.10", "3.11", "3.12"],
+              "dataset_byte_identity": True,
+              "source_identity": True,
+              "model_revision_identity": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+              "quarantine": "PASS",
+              "deterministic_result_normalization": "canonical JSON/JSONL sort_keys + fixed seed",
+              "hash_manifest": hashes,
+          }
+          Path("reproducibility.json").write_text(json.dumps(payload, sort_keys=True, indent=2) + "\n")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: candidate-v6-reproducibility
+          path: reproducibility.json
+          if-no-files-found: error
+
+  development:
+    name: Authoritative Candidate-v6 development
+    needs: reproducibility_check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: research/candidate-v6-structured-latent-reasoning
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install sentence-transformers==3.4.1
+
+      - name: Verify source boundary before any Candidate-v6 data
+        run: python scripts/check_candidate_v6_research_integrity.py --phase source
+
+      - name: Run Candidate-v6 structural tests
+        run: pytest -q tests/test_candidate_v6.py
+
+      - name: Download reproducibility evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: candidate-v6-reproducibility
+          path: results/candidate_v6_development
+
+      - name: Generate fresh Candidate-v6 development corpus
+        env:
+          CANDIDATE_V6_SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          rm -rf data/candidate_v6_development
+          python -m proactivity.candidate_v6_data --out data/candidate_v6_development
+
+      - name: Verify fresh dataset integrity
+        run: python scripts/check_candidate_v6_research_integrity.py --phase dataset
+
+      - name: Freeze Candidate-v6 dataset
+        id: dataset_freeze
+        run: |
+          git config user.name "candidate-v6-development-bot"
+          git config user.email "candidate-v6-development-bot@users.noreply.github.com"
+          git add data/candidate_v6_development
+          git commit -m "freeze Candidate-v6 development dataset [skip ci]"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v6-structured-latent-reasoning
+
+      - name: Run validation-only architecture search
+        env:
+          CANDIDATE_V6_DATASET_FREEZE_COMMIT: ${{ steps.dataset_freeze.outputs.commit }}
+        run: |
+          python -m proactivity.candidate_v6_evaluate search \
+            --data data/candidate_v6_development \
+            --out results/candidate_v6_development
+
+      - name: Freeze selected Candidate-v6 validation configuration
+        id: selection_freeze
+        run: |
+          git add \
+            results/candidate_v6_development/architecture_search.json \
+            results/candidate_v6_development/validation_metrics.json \
+            results/candidate_v6_development/selected_candidate.json
+          git commit -m "freeze Candidate-v6 selected validation configuration [skip ci]"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v6-structured-latent-reasoning
+
+      - name: Verify holdout unlock boundary
+        run: |
+          python scripts/check_candidate_v6_research_integrity.py \
+            --phase selection \
+            --json-out results/candidate_v6_development/research_integrity.json
+
+      - name: Execute frozen qualification holdouts exactly once
+        run: |
+          python -m proactivity.candidate_v6_evaluate holdouts \
+            --data data/candidate_v6_development \
+            --out results/candidate_v6_development
+
+      - name: Execute preregistered baselines
+        run: |
+          python -m proactivity.candidate_v6_evaluate baselines \
+            --data data/candidate_v6_development \
+            --out results/candidate_v6_development
+
+      - name: Execute preregistered ablations
+        run: |
+          python -m proactivity.candidate_v6_evaluate ablations \
+            --data data/candidate_v6_development \
+            --out results/candidate_v6_development
+
+      - name: Compute frozen qualification decision
+        env:
+          CANDIDATE_V6_RESEARCH_INTEGRITY: PASS
+          CANDIDATE_V6_REPRODUCIBILITY: PASS
+        run: |
+          python -m proactivity.candidate_v6_evaluate qualify \
+            --out results/candidate_v6_development
+
+      - name: Final research-integrity audit
+        run: |
+          python scripts/check_candidate_v6_research_integrity.py \
+            --phase terminal \
+            --json-out results/candidate_v6_development/research_integrity.json
+
+      - name: Commit qualification evidence
+        id: qualification_freeze
+        run: |
+          git add results/candidate_v6_development
+          git commit -m "record Candidate-v6 qualification evidence [skip ci]"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v6-structured-latent-reasoning
+
+      - name: Build terminal evidence
+        env:
+          CANDIDATE_V6_SOURCE_COMMIT: ${{ github.sha }}
+          CANDIDATE_V6_DATASET_FREEZE_COMMIT: ${{ steps.dataset_freeze.outputs.commit }}
+          CANDIDATE_V6_SELECTION_COMMIT: ${{ steps.selection_freeze.outputs.commit }}
+          CANDIDATE_V6_QUALIFICATION_COMMIT: ${{ steps.qualification_freeze.outputs.commit }}
+        run: |
+          python scripts/finalize_candidate_v6.py terminal \
+            --results results/candidate_v6_development \
+            --out gate_recovery_v6/terminal.json
+
+      - name: Freeze terminal evidence
+        id: terminal_freeze
+        run: |
+          git add gate_recovery_v6/terminal.json
+          git commit -m "freeze Candidate-v6 development terminal evidence [skip ci]"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:research/candidate-v6-structured-latent-reasoning
+
+      - name: Build terminal report with frozen evidence identity
+        run: |
+          python scripts/finalize_candidate_v6.py report \
+            --terminal gate_recovery_v6/terminal.json \
+            --terminal-evidence-commit "${{ steps.terminal_freeze.outputs.commit }}" \
+            --out docs/candidate_v6_development_terminal_report.md
+
+      - name: Commit terminal report and stop lineage
+        run: |
+          git add docs/candidate_v6_development_terminal_report.md
+          git commit -m "record Candidate-v6 development terminal report [skip ci]"
+          git push origin HEAD:research/candidate-v6-structured-latent-reasoning
