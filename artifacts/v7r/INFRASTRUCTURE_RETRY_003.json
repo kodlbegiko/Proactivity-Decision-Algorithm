@@ -1,0 +1,27 @@
+{
+  "incident_id": "V7R-INFRA-RETRY-003",
+  "classification": "TECHNICAL_FIXTURE_PREPARATION_FAILURE_PRE_PROTECTED_REALIZATION",
+  "workflow_run_id": 31925214346,
+  "failed_step": "Run full repository test suite before protected realization",
+  "observed_test_result": "113 passed, 5 failed",
+  "cause": "The repository regression suite expects deterministic development_v1 and benchmark_v2 fixtures that the authoritative CI generates before pytest; the V7R workflow invoked pytest before preparing those fixtures",
+  "failed_tests_due_to_missing_files": [
+    "tests/test_gate_b.py::test_development_v1_invariants",
+    "tests/test_gate_b.py::test_counterfactual_and_sequence_metadata_are_separate",
+    "tests/test_gate_b.py::test_raw_projection_hides_researcher_derived_scores",
+    "tests/test_gate_b.py::test_leakage_audit_executes_and_passes_preannotation",
+    "tests/test_gate_d_v2.py::test_frozen_benchmark_hashes"
+  ],
+  "protected_dataset_realized": false,
+  "candidate_inference_executed": false,
+  "ground_truth_or_labels_observed": false,
+  "scores_observed": false,
+  "candidate_changed": false,
+  "preregistration_changed": false,
+  "seeds_changed": false,
+  "runtime_bundle_sha256": "8f4464ba7d127732436e1e3e350f8a8b0f0daf6e391daf516edc7baa3267a9d5",
+  "runtime_semantics_changed": false,
+  "repair": "Prepare the same deterministic regression fixtures used by the repository CI before running the unchanged full pytest suite. These fixtures are legacy regression infrastructure only; the frozen V7R generator does not read them.",
+  "retry_authorized_under_preregistration": true,
+  "scientific_interpretation": "NONE"
+}
