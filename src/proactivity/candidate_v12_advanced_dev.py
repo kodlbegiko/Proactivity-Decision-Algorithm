@@ -7,7 +7,7 @@ from typing import Any
 
 from .candidate_v12 import ACTIONS, ACT_CRITICAL, FIELD_ORDER, ArchitectureA, ArchitectureB, ArchitectureC, policy_action
 from .candidate_v12_dev import macro_f1, state_for_action
-from .candidate_v12_frames import ArchitectureD
+from .candidate_v12_frames import ArchitectureD, extract_frame_evidence
 
 
 # Independent realization grammar for the compositional phase. It deliberately
@@ -44,15 +44,18 @@ CUES: dict[str, dict[Any, tuple[str, ...]]] = {
     "completed": {True: ("finished", "closed", "resolved"), False: ("open", "ongoing", "unfinished")},
 }
 
+# Template literals intentionally avoid words that are themselves ontology factor
+# concepts (e.g. `status`, `evidence`, `record`). The collision audit below
+# enforces this semantically instead of relying on manual inspection.
 TRAIN_TEMPLATES = (
-    "The {concept} status is {cue}",
-    "For {concept}, the current value is {cue}",
+    "The {concept} is {cue}",
+    "For {concept}, mark it {cue}",
     "Current {concept}: {cue}",
 )
 HOLDOUT_TEMPLATES = (
-    "Regarding {concept}, the status now reads {cue}",
+    "Regarding {concept}, it now reads {cue}",
     "Operationally, {concept} remains {cue}",
-    "At present the {concept} condition is {cue}",
+    "At present, {concept} is {cue}",
 )
 STRESS_TEMPLATES = (
     "After reviewing unrelated context, the only decision-relevant point about {concept} is that it is {cue}",
@@ -69,6 +72,23 @@ DISTRACTORS = (
 
 def _factor_sentence(factor: str, value: Any, r: random.Random, templates: tuple[str, ...]) -> str:
     return r.choice(templates).format(concept=r.choice(CONCEPTS[factor]), cue=r.choice(CUES[factor][value]))
+
+
+def realization_collision_audit(seed: int = 17000, repetitions: int = 18) -> bool:
+    r = random.Random(seed)
+    for templates in (TRAIN_TEMPLATES, HOLDOUT_TEMPLATES, STRESS_TEMPLATES):
+        for factor in FIELD_ORDER:
+            for value in CUES[factor]:
+                for _ in range(repetitions):
+                    text = _factor_sentence(factor, value, r, templates)
+                    evidence = extract_frame_evidence(text)
+                    factors = {e.factor for e in evidence}
+                    values = {e.value for e in evidence if e.factor == factor}
+                    if factors - {factor}:
+                        return False
+                    if value not in values:
+                        return False
+    return True
 
 
 def realize_compositional(state: dict[str, Any], r: random.Random, *, split: str = "holdout", long_context: bool = False) -> str:
@@ -208,6 +228,7 @@ def operator_suite() -> dict[str, bool]:
         "explicit_missingness": missingness_probe(),
         "uncertain_modality": modality_probe(),
         "dependency": dependency_probe(),
+        "generator_no_cross_factor_collision": realization_collision_audit(),
     }
 
 
