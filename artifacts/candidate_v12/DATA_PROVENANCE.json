@@ -1,0 +1,10 @@
+{
+  "sources": ["fresh state-first synthetic generators","public PDA-SPEC-v2","declassified Candidate-v11 aggregate findings"],
+  "v11q_raw_used": false,
+  "protected_generator_content_inspected": false,
+  "candidate_v11_mutated": false,
+  "final_realization_lineage": "final-v2 ambiguity-free pools",
+  "failed_development_harnesses_retained": ["candidate_v12_advanced_dev","candidate_v12_final_dev"],
+  "methodology_corrections": ["removed cross-factor concept collisions","removed Entity:clause template ambiguity","moved to fresh 205xx/206xx seeds"],
+  "score_threshold_changes_after_results": false
+}

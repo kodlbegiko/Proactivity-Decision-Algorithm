@@ -1,0 +1,1 @@
+{"status":"PASS","seed":20521,"examples":720,"macro_f1":1.0,"exact_latent_state_reconstruction":1.0,"mean_factor_accuracy":1.0,"act_critical_factor_accuracy":1.0,"act_precision":1.0,"act_recall":1.0,"forbidden_act":0,"invalid_action":0,"policy_oracle_macro_f1":1.0,"policy_oracle_gap":0.0}

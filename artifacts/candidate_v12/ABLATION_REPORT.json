@@ -1,0 +1,7 @@
+{
+  "status":"PASS",
+  "temporal":{"full":1.0,"ablated":0.5666666666666667,"delta":0.43333333333333335},
+  "contradiction_safety":{"full":1.0,"ablated":0.0,"delta":1.0},
+  "frame_composition":{"full_exact_state":1.0,"lexical_c_exact_state":0.0,"no_operator_exact_state":0.0,"delta_vs_c":1.0},
+  "state_to_action_sufficiency":{"states_checked":5000,"unique_states":1602,"conflicting_equal_states":0,"invalid_action":0,"pass":true}
+}

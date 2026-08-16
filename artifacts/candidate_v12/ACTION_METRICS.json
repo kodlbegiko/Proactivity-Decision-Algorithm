@@ -1,0 +1,1 @@
+{"macro_f1":1.0,"act_precision":1.0,"act_recall":1.0,"forbidden_act":0,"invalid_action":0,"action_distribution":{"ACT":300,"ASK":300,"IGNORE":300,"NOTIFY":300,"SUGGEST":300,"WAIT":300}}

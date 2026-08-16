@@ -1,0 +1,36 @@
+name: Candidate v12 aggregate metrics
+
+on:
+  push:
+    branches:
+      - research/candidate-v12-semantic-state-architecture
+  pull_request:
+    branches:
+      - research/candidate-v11-independent-qualification
+
+jobs:
+  aggregate-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Verify protected-data isolation
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=8eb8bab27e00082879bfd7421353800f10ccf3c5
+          git diff --quiet "$BASE" HEAD -- src/proactivity/candidate_v11.py evaluation/v11q benchmark_v11 artifacts/candidate_v11_qualification
+      - name: Emit aggregate-only final-v2 metrics
+        run: |
+          python - <<'PY'
+          import json
+          from proactivity.candidate_v12_final_v2 import final_v2_summary
+          print("CANDIDATE_V12_FINAL_V2_METRICS_BEGIN")
+          print(json.dumps(final_v2_summary(), sort_keys=True, indent=2))
+          print("CANDIDATE_V12_FINAL_V2_METRICS_END")
+          PY
