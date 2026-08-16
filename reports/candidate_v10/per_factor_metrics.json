@@ -1,0 +1,482 @@
+{
+  "V10-A": {
+    "acknowledged": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "clarification_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "completed": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "deferral_available": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "execution_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "information": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "contradictory": 1.0,
+        "insufficient": 1.0,
+        "sufficient": 1.0
+      },
+      "per_value_recall": {
+        "contradictory": 1.0,
+        "insufficient": 1.0,
+        "sufficient": 1.0
+      }
+    },
+    "need": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "material": 1.0,
+        "none": 1.0,
+        "optional": 1.0
+      },
+      "per_value_recall": {
+        "material": 1.0,
+        "none": 1.0,
+        "optional": 1.0
+      }
+    },
+    "permission": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "granted": 1.0,
+        "missing": 1.0,
+        "not_required": 1.0
+      },
+      "per_value_recall": {
+        "granted": 1.0,
+        "missing": 1.0,
+        "not_required": 1.0
+      }
+    },
+    "reversibility": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "irreversible": 1.0,
+        "reversible": 1.0
+      },
+      "per_value_recall": {
+        "irreversible": 1.0,
+        "reversible": 1.0
+      }
+    },
+    "risk": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "high": 1.0,
+        "low": 1.0,
+        "medium": 1.0
+      },
+      "per_value_recall": {
+        "high": 1.0,
+        "low": 1.0,
+        "medium": 1.0
+      }
+    },
+    "side_effect": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "external": 1.0,
+        "local": 1.0,
+        "none": 1.0
+      },
+      "per_value_recall": {
+        "external": 1.0,
+        "local": 1.0,
+        "none": 1.0
+      }
+    },
+    "urgency": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "expired": 1.0,
+        "high": 1.0,
+        "none": 1.0,
+        "normal": 1.0
+      },
+      "per_value_recall": {
+        "expired": 1.0,
+        "high": 1.0,
+        "none": 1.0,
+        "normal": 1.0
+      }
+    }
+  },
+  "V10-B": {
+    "acknowledged": {
+      "accuracy": 0.9996666666666667,
+      "macro_f1": 0.9983920752894666,
+      "per_value_precision": {
+        "False": 0.9996473906911142,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 0.9939393939393939
+      }
+    },
+    "clarification_possible": {
+      "accuracy": 0.993,
+      "macro_f1": 0.984903638486712,
+      "per_value_precision": {
+        "False": 0.9799498746867168,
+        "True": 0.9950019223375625
+      },
+      "per_value_recall": {
+        "False": 0.9678217821782178,
+        "True": 0.9969183359013868
+      }
+    },
+    "completed": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "deferral_available": {
+      "accuracy": 0.9933333333333333,
+      "macro_f1": 0.9831544712525437,
+      "per_value_precision": {
+        "False": 0.992526158445441,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 0.9418604651162791
+      }
+    },
+    "execution_possible": {
+      "accuracy": 0.966,
+      "macro_f1": 0.8808737791508869,
+      "per_value_precision": {
+        "False": 0.8786407766990292,
+        "True": 0.9724409448818898
+      },
+      "per_value_recall": {
+        "False": 0.7015503875968992,
+        "True": 0.9908825674690007
+      }
+    },
+    "information": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "contradictory": 1.0,
+        "insufficient": 1.0,
+        "sufficient": 1.0
+      },
+      "per_value_recall": {
+        "contradictory": 1.0,
+        "insufficient": 1.0,
+        "sufficient": 1.0
+      }
+    },
+    "need": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "material": 1.0,
+        "none": 1.0,
+        "optional": 1.0
+      },
+      "per_value_recall": {
+        "material": 1.0,
+        "none": 1.0,
+        "optional": 1.0
+      }
+    },
+    "permission": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "granted": 1.0,
+        "missing": 1.0,
+        "not_required": 1.0
+      },
+      "per_value_recall": {
+        "granted": 1.0,
+        "missing": 1.0,
+        "not_required": 1.0
+      }
+    },
+    "reversibility": {
+      "accuracy": 0.9906666666666667,
+      "macro_f1": 0.9797648677634108,
+      "per_value_precision": {
+        "irreversible": 0.9625,
+        "reversible": 0.995
+      },
+      "per_value_recall": {
+        "irreversible": 0.9673366834170855,
+        "reversible": 0.9942352036894696
+      }
+    },
+    "risk": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "high": 1.0,
+        "low": 1.0,
+        "medium": 1.0
+      },
+      "per_value_recall": {
+        "high": 1.0,
+        "low": 1.0,
+        "medium": 1.0
+      }
+    },
+    "side_effect": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "external": 1.0,
+        "local": 1.0,
+        "none": 1.0
+      },
+      "per_value_recall": {
+        "external": 1.0,
+        "local": 1.0,
+        "none": 1.0
+      }
+    },
+    "urgency": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "expired": 1.0,
+        "high": 1.0,
+        "none": 1.0,
+        "normal": 1.0
+      },
+      "per_value_recall": {
+        "expired": 1.0,
+        "high": 1.0,
+        "none": 1.0,
+        "normal": 1.0
+      }
+    }
+  },
+  "V10-C": {
+    "acknowledged": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "clarification_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "completed": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "deferral_available": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "execution_possible": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "False": 1.0,
+        "True": 1.0
+      },
+      "per_value_recall": {
+        "False": 1.0,
+        "True": 1.0
+      }
+    },
+    "information": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "contradictory": 1.0,
+        "insufficient": 1.0,
+        "sufficient": 1.0
+      },
+      "per_value_recall": {
+        "contradictory": 1.0,
+        "insufficient": 1.0,
+        "sufficient": 1.0
+      }
+    },
+    "need": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "material": 1.0,
+        "none": 1.0,
+        "optional": 1.0
+      },
+      "per_value_recall": {
+        "material": 1.0,
+        "none": 1.0,
+        "optional": 1.0
+      }
+    },
+    "permission": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "granted": 1.0,
+        "missing": 1.0,
+        "not_required": 1.0
+      },
+      "per_value_recall": {
+        "granted": 1.0,
+        "missing": 1.0,
+        "not_required": 1.0
+      }
+    },
+    "reversibility": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "irreversible": 1.0,
+        "reversible": 1.0
+      },
+      "per_value_recall": {
+        "irreversible": 1.0,
+        "reversible": 1.0
+      }
+    },
+    "risk": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "high": 1.0,
+        "low": 1.0,
+        "medium": 1.0
+      },
+      "per_value_recall": {
+        "high": 1.0,
+        "low": 1.0,
+        "medium": 1.0
+      }
+    },
+    "side_effect": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "external": 1.0,
+        "local": 1.0,
+        "none": 1.0
+      },
+      "per_value_recall": {
+        "external": 1.0,
+        "local": 1.0,
+        "none": 1.0
+      }
+    },
+    "urgency": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_value_precision": {
+        "expired": 1.0,
+        "high": 1.0,
+        "none": 1.0,
+        "normal": 1.0
+      },
+      "per_value_recall": {
+        "expired": 1.0,
+        "high": 1.0,
+        "none": 1.0,
+        "normal": 1.0
+      }
+    }
+  }
+}

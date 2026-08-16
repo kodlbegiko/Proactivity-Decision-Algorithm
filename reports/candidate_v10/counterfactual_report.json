@@ -1,0 +1,17 @@
+{
+  "V10-A": {
+    "ACT_disable": 1.0,
+    "directional_accuracy": 1.0,
+    "exact_pair_accuracy": 1.0
+  },
+  "V10-B": {
+    "ACT_disable": 0.6473333333333333,
+    "directional_accuracy": 0.6473333333333333,
+    "exact_pair_accuracy": 0.6453333333333333
+  },
+  "V10-C": {
+    "ACT_disable": 1.0,
+    "directional_accuracy": 1.0,
+    "exact_pair_accuracy": 1.0
+  }
+}

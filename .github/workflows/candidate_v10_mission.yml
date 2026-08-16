@@ -1,0 +1,61 @@
+name: Candidate-v10 Development Mission
+
+on:
+  push:
+    branches:
+      - research/candidate-v10-semantic-evidence-generalization-recovery
+    paths:
+      - 'gate_recovery_v10/run_authorization.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: candidate-v10-development-mission
+  cancel-in-progress: false
+
+jobs:
+  qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements-candidate-v10.txt
+      - name: Integrity precheck
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('gate_recovery_v10/lineage.json'))
+          assert x['candidate_v9_h1_individual_evidence_accessed'] is False
+          assert x['base_commit']=='8b8149698d7b04147b620c063887cebd901e2252'
+          print('fresh-lineage integrity precheck PASS')
+          PY
+      - name: Compile and unit tests
+        run: |
+          python -m py_compile candidate_v10/*.py benchmark_v10/*.py
+          python -m pytest -q tests/test_candidate_v10.py
+      - name: Materialize fresh data and run preregistered qualification
+        run: python -m benchmark_v10.run_development
+      - name: Commit frozen aggregate development evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/candidate_v10_development reports/candidate_v10 gate_recovery_v10/development_terminal.json gate_recovery_v10/terminal_freeze.json gate_recovery_v10/run_result.json || true
+          git commit -m 'candidate-v10: record validation qualification'
+          QUALIFIED=$(python - <<'PY'
+          import json
+          print('true' if json.load(open('gate_recovery_v10/run_result.json'))['qualified'] else 'false')
+          PY
+          )
+          if [ "$QUALIFIED" = "false" ]; then
+            git commit --allow-empty -m 'candidate-v10: freeze terminal development failure'
+          else
+            git commit --allow-empty -m 'candidate-v10: qualification passed; candidate freeze required'
+          fi
+          git push origin HEAD:research/candidate-v10-semantic-evidence-generalization-recovery

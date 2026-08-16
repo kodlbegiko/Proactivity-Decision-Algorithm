@@ -1,0 +1,15 @@
+{
+  "candidate": "Candidate-v10",
+  "lineage_type": "fresh-development",
+  "branch": "research/candidate-v10-semantic-evidence-generalization-recovery",
+  "base_commit": "8b8149698d7b04147b620c063887cebd901e2252",
+  "candidate_v9_candidate_freeze": "e0445c93280ad0416cfe9535de44a940e6888af3",
+  "candidate_v9_terminal_state": "CANDIDATE_V9 DEVELOPMENT FAIL — NO CANDIDATE QUALIFIED",
+  "allowed_historical_evidence": "Candidate-v9 aggregate metrics and aggregate architectural finding only",
+  "candidate_v9_h1_individual_evidence_accessed": false,
+  "candidate_v9_h1_individual_evidence_used_for_development": false,
+  "candidate_v9_modified": false,
+  "normative_spec_path": "spec/proactivity_policy_v2.json",
+  "normative_spec_immutable": true,
+  "research_question": "Can schema-conditioned semantic evidence inference improve unseen-language factor recovery while preserving valid-by-construction normative state outputs?"
+}

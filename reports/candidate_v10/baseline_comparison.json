@@ -1,0 +1,13 @@
+{
+  "candidate_v9_H1_rerun": false,
+  "candidate_v9_historical_aggregate": {
+    "H1_ACT_precision": 1.0,
+    "H1_ACT_recall": 0.2366666667,
+    "H1_critical_factor_accuracy": 0.9093055556,
+    "H1_exact_state": 0.3983333333,
+    "H1_macro_f1": 0.5771589882,
+    "H1_state_validity": 1.0
+  },
+  "majority_balanced_expected_accuracy": 0.16666666666666666,
+  "simple_heuristic": "V10-A is the registered symbolic baseline"
+}

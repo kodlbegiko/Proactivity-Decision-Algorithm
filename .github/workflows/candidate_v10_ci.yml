@@ -1,0 +1,35 @@
+name: Candidate-v10 CI
+
+on:
+  push:
+    branches:
+      - research/candidate-v10-semantic-evidence-generalization-recovery
+    paths:
+      - 'candidate_v10/**'
+      - 'benchmark_v10/**'
+      - 'tests/test_candidate_v10.py'
+      - 'requirements-candidate-v10.txt'
+      - '.github/workflows/candidate_v10_ci.yml'
+  pull_request:
+    paths:
+      - 'candidate_v10/**'
+      - 'benchmark_v10/**'
+      - 'tests/test_candidate_v10.py'
+      - 'requirements-candidate-v10.txt'
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements-candidate-v10.txt
+      - run: python -m py_compile candidate_v10/*.py benchmark_v10/*.py
+      - run: python -m pytest -q tests/test_candidate_v10.py

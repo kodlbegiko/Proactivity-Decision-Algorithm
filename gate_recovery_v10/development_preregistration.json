@@ -1,0 +1,11 @@
+{
+  "candidate": "Candidate-v10",
+  "status": "FROZEN_BEFORE_RESULTS",
+  "preregistration": "preregistration/candidate_v10_development.md",
+  "architectures": ["V10-A", "V10-B", "V10-C"],
+  "development_seeds": {"train":101001,"validation":101002,"lexical_novelty":101003,"syntactic_novelty":101004,"domain_transfer":101005,"state_validity_stress":101006,"act_boundary":101007,"negation":101008,"contradiction":101009,"supersession":101010,"ellipsis":101011,"pragmatic":101012,"cross_factor_distractor":101013,"uncertainty":101014,"compositional":101015,"counterfactual":101016,"permission_scope":101017},
+  "formal_holdout_seeds": {"H1":102001,"H2":102002,"H3":102003,"H4":102004,"H5":102005,"H6":102006,"H7":102007,"H8":102008,"H9":102009,"H10":102010,"H11":102011,"H12":102012,"H13":102013,"H14":102014,"H15":102015},
+  "protected_seed": 103001,
+  "result_driven_changes_forbidden": true,
+  "candidate_v9_h1_individual_evidence_accessed": false
+}

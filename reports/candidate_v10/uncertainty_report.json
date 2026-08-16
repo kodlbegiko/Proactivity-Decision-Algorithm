@@ -1,0 +1,17 @@
+{
+  "V10-A": {
+    "false_certainty": 1000,
+    "unresolved_precision": 0.0,
+    "unresolved_recall": 0.0
+  },
+  "V10-B": {
+    "false_certainty": 983,
+    "unresolved_precision": 0.10714285714285714,
+    "unresolved_recall": 0.003
+  },
+  "V10-C": {
+    "false_certainty": 1000,
+    "unresolved_precision": 0.0,
+    "unresolved_recall": 0.0
+  }
+}
