@@ -21,6 +21,8 @@ jobs:
         python-version: ["3.10", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -30,6 +32,13 @@ jobs:
           pip install -r requirements.txt
       - name: Materialize deterministic repository fixtures
         run: |
+          python scripts/generate_development_v1.py
+          sha256sum -c data/development/development_v1.sha256
+          PYTHONPATH=src python scripts/generate_development_v2.py
+          sha256sum -c data/development/development_v2.sha256
+          PYTHONPATH=src python scripts/validate_development_v2.py
+          rm -rf data/benchmark_v2
+          PYTHONPATH=src python scripts/generate_benchmark_v2.py --output-dir data/benchmark_v2
           PYTHONPATH=.:src python -m benchmark_v11.run_qualification --generate-only
           PYTHONPATH=.:src python -m benchmark_v11.run_holdouts --generate-only
       - name: Full repository tests
