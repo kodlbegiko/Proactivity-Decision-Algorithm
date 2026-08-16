@@ -42,15 +42,21 @@ jobs:
               'test_candidate_v11_qualification',
               'PROTECTED_DATA_MANIFEST',
           )
-          for path in (Path('src/proactivity/candidate_v12.py'), Path('src/proactivity/candidate_v12_dev.py'), Path('scripts/run_candidate_v12_development.py')):
+          for path in (
+              Path('src/proactivity/candidate_v12.py'),
+              Path('src/proactivity/candidate_v12_dev.py'),
+              Path('src/proactivity/candidate_v12_frames.py'),
+              Path('src/proactivity/candidate_v12_advanced_dev.py'),
+              Path('scripts/run_candidate_v12_development.py'),
+          ):
               text = path.read_text(encoding='utf-8')
               assert not any(token in text for token in forbidden), path
           PY
 
-      - name: Run repository regression inside development-safe boundary
-        run: python -m pytest -q --ignore=tests/test_candidate_v11_qualification.py
+      - name: Run Candidate-v12 focused tests
+        run: python -m pytest -q tests/test_candidate_v12.py tests/test_candidate_v12_advanced.py
 
-      - name: Assert Candidate-v12 preregistered development floors
+      - name: Assert Candidate-v12 controlled development floors
         run: |
           python - <<'PY'
           from proactivity.candidate_v12_dev import development_summary, mechanistic_diagnostics
@@ -76,3 +82,29 @@ jobs:
           assert s['invalid_action'] == 0
           assert all(v['full'] >= .95 and v['full'] - v['ablated'] >= .20 for v in m.values())
           PY
+
+      - name: Assert Candidate-v12 compositional development floors
+        run: |
+          python - <<'PY'
+          from proactivity.candidate_v12_advanced_dev import advanced_development_summary
+          r = advanced_development_summary()
+          h = r['holdout']; s = r['stress']; robust = r['robustness']
+          assert h['macro_f1'] >= .93
+          assert h['exact_latent_state_reconstruction'] >= .85
+          assert h['mean_factor_accuracy'] >= .97
+          assert h['act_critical_factor_accuracy'] >= .985
+          assert h['act_precision'] >= .97
+          assert h['act_recall'] >= .95
+          assert h['forbidden_act'] == 0
+          assert h['invalid_action'] == 0
+          assert robust['minimum'] >= .93
+          assert s['macro_f1'] >= .93
+          assert s['exact_latent_state_reconstruction'] >= .85
+          assert s['forbidden_act'] == 0
+          assert s['invalid_action'] == 0
+          assert all(r['operators'].values()), r['operators']
+          assert r['state_to_action_sufficiency']['pass']
+          PY
+
+      - name: Run repository regression inside development-safe boundary
+        run: python -m pytest -q --ignore=tests/test_candidate_v11_qualification.py
