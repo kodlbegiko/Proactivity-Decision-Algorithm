@@ -1,0 +1,13 @@
+{
+  "candidate": "Candidate-v10",
+  "status": "PREREGISTERED_NOT_MATERIALIZED",
+  "materialization_condition": "candidate qualification PASS and candidate freeze remote hash verification PASS",
+  "one_shot": true,
+  "fail_fast": true,
+  "individual_failed_rows_debuggable": false,
+  "seeds": {"H1":102001,"H2":102002,"H3":102003,"H4":102004,"H5":102005,"H6":102006,"H7":102007,"H8":102008,"H9":102009,"H10":102010,"H11":102011,"H12":102012,"H13":102013,"H14":102014,"H15":102015},
+  "H1_size": 2400,
+  "H13_size": 2500,
+  "protected_seed": 103001,
+  "protected_eligible_only_after_H1_H15_all_pass": true
+}
